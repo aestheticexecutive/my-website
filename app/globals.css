@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand: Champagne gold accent */
+  --color-gold-50:  #fdf8ef;
+  --color-gold-100: #f5edda;
+  --color-gold-200: #e8d5b5;
+  --color-gold-300: #d9bc8a;
+  --color-gold-400: #c9a96e;
+  --color-gold-500: #b8956a;
+  --color-gold-600: #a07545;
+  --color-gold-700: #835c37;
+  --color-gold-800: #6a4a30;
+  --color-gold-900: #563d2a;
+
+  /* Brand: warm neutral palette */
+  --color-cream:    #f9f6f1;
+  --color-blush:    #f0eae3;
+  --color-warm-50:  #faf8f5;
+  --color-warm-100: #f5f0eb;
+  --color-warm-200: #ebe4db;
+  --color-warm-300: #d9cfbf;
+  --color-warm-400: #c0b3a0;
+  --color-warm-500: #9c8e7e;
+  --color-warm-600: #7a6d5f;
+  --color-warm-700: #5a5047;
+  --color-warm-800: #3a3430;
+  --color-warm-900: #1e1a17;
+  --color-warm-950: #120e0b;
+
+  /* Typography */
+  --font-display: var(--font-cormorant);
+  --font-sans:    var(--font-geist);
+}
+
+:root {
+  --background: #f9f6f1;
+  --foreground: #1e1a17;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
