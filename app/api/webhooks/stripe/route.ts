@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { clerkClient } from "@clerk/nextjs/server";
 
 // Stripe sends raw body — disable body parsing
@@ -28,7 +28,7 @@ async function setSubscriptionInactive(clerkUserId: string) {
 }
 
 async function getClerkUserIdFromCustomer(customerId: string): Promise<string | null> {
-  const subscriptions = await stripe.subscriptions.list({
+  const subscriptions = await getStripe().subscriptions.list({
     customer: customerId,
     limit: 1,
   });
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(
+    event = getStripe().webhooks.constructEvent(
       body,
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
