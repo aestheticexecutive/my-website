@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Show, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -50,18 +50,22 @@ export function PublicHeader() {
         {/* Auth actions */}
         <div className="hidden md:flex items-center gap-4">
           <Show when="signed-out">
-            <Link
-              href="/sign-in"
-              className="text-sm text-warm-600 hover:text-warm-900 tracking-wide transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/pricing"
-              className="h-9 px-5 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center"
-            >
-              Get Started
-            </Link>
+            <SignInButton>
+              <button
+                type="button"
+                className="text-sm text-warm-600 hover:text-warm-900 tracking-wide transition-colors"
+              >
+                Sign In
+              </button>
+            </SignInButton>
+            <SignUpButton>
+              <button
+                type="button"
+                className="h-9 px-5 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center"
+              >
+                Sign Up
+              </button>
+            </SignUpButton>
           </Show>
           <Show when="signed-in">
             <Link
@@ -99,20 +103,24 @@ export function PublicHeader() {
           ))}
           <div className="pt-2 border-t border-warm-200 flex flex-col gap-3">
             <Show when="signed-out">
-              <Link
-                href="/sign-in"
-                className="text-sm text-warm-700 hover:text-warm-900 py-1"
-                onClick={() => setMobileOpen(false)}
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/pricing"
-                className="h-9 px-5 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center justify-center"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get Started
-              </Link>
+              <SignInButton>
+                <button
+                  type="button"
+                  className="text-sm text-warm-700 hover:text-warm-900 py-1 text-left"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button
+                  type="button"
+                  className="h-9 px-5 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center justify-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign Up
+                </button>
+              </SignUpButton>
             </Show>
             <Show when="signed-in">
               <Link

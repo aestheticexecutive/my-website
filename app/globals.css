@@ -1,41 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand: Champagne gold accent */
-  --color-gold-50:  #fdf8ef;
-  --color-gold-100: #f5edda;
-  --color-gold-200: #e8d5b5;
-  --color-gold-300: #d9bc8a;
-  --color-gold-400: #c9a96e;
-  --color-gold-500: #b8956a;
-  --color-gold-600: #a07545;
-  --color-gold-700: #835c37;
-  --color-gold-800: #6a4a30;
-  --color-gold-900: #563d2a;
+  /* Brand: warm taupe accent — #a28c75 */
+  --color-gold-50:  #faf7f4;
+  --color-gold-100: #f0e8e0;
+  --color-gold-200: #dfd0c4;
+  --color-gold-300: #c8b3a3;
+  --color-gold-400: #a28c75;
+  --color-gold-500: #8a7560;
+  --color-gold-600: #705e4b;
+  --color-gold-700: #57483a;
+  --color-gold-800: #3f342b;
+  --color-gold-900: #2c231e;
 
-  /* Brand: warm neutral palette */
-  --color-cream:    #f9f6f1;
-  --color-blush:    #f0eae3;
+  /* Brand: deep burgundy dark palette — built around #2f0410 */
+  --color-cream:    #fffdf6;
+  --color-blush:    #f5ede8;
   --color-warm-50:  #faf8f5;
-  --color-warm-100: #f5f0eb;
-  --color-warm-200: #ebe4db;
-  --color-warm-300: #d9cfbf;
-  --color-warm-400: #c0b3a0;
-  --color-warm-500: #9c8e7e;
-  --color-warm-600: #7a6d5f;
-  --color-warm-700: #5a5047;
-  --color-warm-800: #3a3430;
-  --color-warm-900: #1e1a17;
-  --color-warm-950: #120e0b;
+  --color-warm-100: #f4ede8;
+  --color-warm-200: #e5d0cb;
+  --color-warm-300: #c8aaa5;
+  --color-warm-400: #a37f7a;
+  --color-warm-500: #7d5258;
+  --color-warm-600: #5e3040;
+  --color-warm-700: #461828;
+  --color-warm-800: #3a0e1e;
+  --color-warm-900: #2f0410;
+  --color-warm-950: #1a0009;
 
-  /* Typography */
-  --font-display: var(--font-cormorant);
-  --font-sans:    var(--font-geist);
+  /* Typography — brand kit fonts */
+  --font-display: var(--font-tenor);
+  --font-sans:    var(--font-be-vietnam);
 }
 
 :root {
-  --background: #f9f6f1;
-  --foreground: #1e1a17;
+  --background: #fffdf6;
+  --foreground: #1a0c10;
 }
 
 body {

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Cormorant_Garamond } from "next/font/google";
+import { Tenor_Sans } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const tenorSans = Tenor_Sans({
+  variable: "--font-tenor",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const beVietnamPro = Be_Vietnam_Pro({
+  variable: "--font-be-vietnam",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     "Premium membership for aesthetic practice owners and managers. Templates, webinars, and expert resources to grow your medical aesthetics business.",
   openGraph: {
     title: "Aesthetic Executive",
-    description: "Elevate your practice. Grow your business.",
+    description: "Where the business of beauty gets serious.",
     type: "website",
   },
 };
@@ -32,10 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" className={`${geist.variable} ${cormorant.variable} h-full`}>
-        <body className="min-h-full flex flex-col antialiased">{children}</body>
-      </html>
-    </ClerkProvider>
+    <html
+      lang="en"
+      className={`${tenorSans.variable} ${beVietnamPro.variable} h-full`}
+    >
+      <body className="min-h-full flex flex-col antialiased">
+        <ClerkProvider>{children}</ClerkProvider>
+      </body>
+    </html>
   );
 }
