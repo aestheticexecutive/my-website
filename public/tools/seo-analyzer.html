@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Visibility Analyzer — Aesthetic Executive</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0004;
+      --card: #140008;
+      --card2: #2f0410;
+      --gold: #a28c75;
+      --gold-dim: rgba(162,140,117,0.5);
+      --gold-faint: rgba(162,140,117,0.12);
+      --border: rgba(162,140,117,0.18);
+      --cream: #fffdf6;
+      --cream-dim: rgba(255,253,246,0.55);
+      --cream-faint: rgba(255,253,246,0.3);
+      --pass: rgba(34,197,94,0.9);
+      --pass-bg: rgba(34,197,94,0.08);
+      --pass-border: rgba(34,197,94,0.22);
+      --partial: rgba(245,158,11,0.9);
+      --partial-bg: rgba(245,158,11,0.08);
+      --partial-border: rgba(245,158,11,0.25);
+      --fail: rgba(239,68,68,0.9);
+      --fail-bg: rgba(239,68,68,0.07);
+      --fail-border: rgba(239,68,68,0.22);
+    }
+    html, body { background: var(--bg); color: var(--cream); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; font-size: 15px; line-height: 1.6; }
+
+    /* HEADER */
+    .header { background: linear-gradient(135deg, var(--card2) 0%, #1a000c 60%, var(--bg) 100%); border-bottom: 1px solid var(--border); padding: 18px 28px; display: flex; align-items: center; gap: 14px; }
+    .header-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gold-faint); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .header-icon svg { width: 20px; height: 20px; fill: none; stroke: var(--gold); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .header-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 2px; }
+    .header-title { font-size: 20px; font-weight: 300; color: var(--cream); letter-spacing: 0.01em; }
+
+    /* TAB BAR */
+    .tab-bar { display: flex; border-bottom: 1px solid var(--border); background: var(--bg); overflow-x: auto; }
+    .tab-btn { padding: 14px 24px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; border: none; background: none; color: var(--cream-faint); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+    .tab-btn.active { color: var(--cream); border-bottom-color: var(--gold); }
+    .tab-btn:hover:not(.active) { color: var(--cream-dim); }
+
+    /* LAYOUT */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+
+    /* CARDS */
+    .card { background: linear-gradient(145deg, var(--card) 0%, var(--bg) 100%); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 16px; }
+    .card-title { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 6px; }
+
+    /* INPUT SECTION */
+    .input-intro { font-size: 13px; color: var(--cream-dim); line-height: 1.6; margin-bottom: 20px; }
+    .url-form { display: flex; gap: 10px; align-items: stretch; }
+    .url-input { flex: 1; background: rgba(255,253,246,0.04); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--cream); font-size: 14px; outline: none; transition: border-color 0.2s; min-width: 0; }
+    .url-input::placeholder { color: rgba(255,253,246,0.25); }
+    .url-input:focus { border-color: rgba(162,140,117,0.45); }
+    .analyze-btn { padding: 12px 22px; background: var(--gold); color: var(--bg); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
+    .analyze-btn:hover { opacity: 0.88; }
+    .analyze-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .input-note { margin-top: 14px; font-size: 12px; color: var(--cream-faint); }
+
+    /* ERROR */
+    .error-box { background: var(--fail-bg); border: 1px solid var(--fail-border); border-radius: 10px; padding: 16px 20px; color: rgba(239,68,68,0.9); font-size: 13px; margin-top: 14px; display: none; }
+
+    /* LOADING */
+    .loading-card { text-align: center; padding: 48px 28px; }
+    .spinner { width: 48px; height: 48px; border: 3px solid rgba(162,140,117,0.15); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 24px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-title { font-size: 17px; font-weight: 300; color: var(--cream); margin-bottom: 10px; }
+    .loading-step { font-size: 13px; color: var(--gold-dim); min-height: 20px; }
+    .loading-steps { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; }
+    .step-item { display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255,253,246,0.3); transition: color 0.4s; }
+    .step-item.active { color: var(--cream-dim); }
+    .step-item.done { color: rgba(34,197,94,0.6); }
+    .step-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+    /* RESULTS */
+    .score-row { display: flex; align-items: center; gap: 28px; margin-bottom: 24px; flex-wrap: wrap; }
+    .score-ring-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+    .score-ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .score-ring-track { fill: none; stroke: rgba(162,140,117,0.12); stroke-width: 8; }
+    .score-ring-fill { fill: none; stroke: var(--gold); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease; }
+    .score-number { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .score-num { font-size: 28px; font-weight: 300; color: var(--cream); line-height: 1; }
+    .score-denom { font-size: 12px; color: var(--gold-dim); }
+    .score-meta { flex: 1; min-width: 0; }
+    .score-rating { font-size: 20px; font-weight: 300; color: var(--cream); margin-bottom: 8px; }
+    .score-summary { font-size: 13px; color: var(--cream-dim); line-height: 1.65; }
+
+    .priority-box { background: rgba(47,4,16,0.5); border: 1px solid rgba(162,140,117,0.2); border-left: 3px solid var(--gold); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; }
+    .priority-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .priority-text { font-size: 13px; color: var(--cream-dim); line-height: 1.6; }
+
+    .quick-wins { margin-bottom: 24px; }
+    .quick-wins-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 12px; }
+    .quick-win-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .quick-win-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0; }
+    .quick-win-text { font-size: 13px; color: var(--cream-dim); line-height: 1.55; }
+
+    /* CATEGORY GRID */
+    .categories-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 14px; margin-top: 8px; }
+    .category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 600px) { .category-grid { grid-template-columns: 1fr; } .url-form { flex-direction: column; } .score-row { gap: 18px; } }
+    .cat-card { border-radius: 12px; padding: 14px 16px; cursor: pointer; border: 1px solid; transition: opacity 0.15s; }
+    .cat-card.pass { background: var(--pass-bg); border-color: var(--pass-border); }
+    .cat-card.partial { background: var(--partial-bg); border-color: var(--partial-border); }
+    .cat-card.fail { background: var(--fail-bg); border-color: var(--fail-border); }
+    .cat-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .cat-label { font-size: 12px; font-weight: 500; color: var(--cream); flex: 1; line-height: 1.35; }
+    .status-badge { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+    .pass .status-badge { color: var(--pass); background: rgba(34,197,94,0.12); }
+    .partial .status-badge { color: var(--partial); background: rgba(245,158,11,0.12); }
+    .fail .status-badge { color: var(--fail); background: rgba(239,68,68,0.1); }
+    .cat-finding { font-size: 12px; color: var(--cream-faint); line-height: 1.55; margin-bottom: 0; }
+    .cat-fix { font-size: 11.5px; color: rgba(255,253,246,0.45); line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,253,246,0.07); display: none; }
+    .cat-fix.open { display: block; }
+    .cat-fix-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 4px; }
+
+    .results-footer { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .footer-btn { padding: 10px 20px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; border: 1px solid var(--border); }
+    .footer-btn.primary { background: var(--gold); color: var(--bg); border-color: transparent; font-weight: 600; }
+    .footer-btn.secondary { background: transparent; color: var(--gold); }
+    .footer-btn:hover { opacity: 0.8; }
+    .disclaimer { font-size: 11px; color: rgba(255,253,246,0.25); margin-top: 14px; line-height: 1.5; }
+
+    /* SELF AUDIT */
+    .audit-intro { font-size: 13px; color: var(--cream-dim); line-height: 1.65; margin-bottom: 4px; }
+    .audit-tip { font-size: 12px; color: var(--gold-dim); background: rgba(162,140,117,0.07); border: 1px solid rgba(162,140,117,0.15); border-radius: 8px; padding: 10px 14px; margin-bottom: 24px; }
+
+    .audit-score-bar { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .audit-score-num { font-size: 40px; font-weight: 300; color: var(--cream); line-height: 1; }
+    .audit-score-denom { font-size: 16px; color: var(--gold-dim); }
+    .audit-score-info { flex: 1; min-width: 0; }
+    .audit-rating { font-size: 15px; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
+    .audit-rating-note { font-size: 12px; color: var(--cream-faint); }
+    .audit-progress-track { height: 4px; background: rgba(255,253,246,0.07); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+    .audit-progress-fill { height: 100%; border-radius: 2px; background: var(--gold); width: 0%; transition: width 0.4s ease; }
+
+    .q-list { display: flex; flex-direction: column; gap: 10px; }
+    .q-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s; }
+    .q-card.checked { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.04); }
+    .q-header { display: flex; align-items: flex-start; gap: 14px; cursor: pointer; }
+    .q-checkbox { width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid var(--border); background: transparent; cursor: pointer; flex-shrink: 0; margin-top: 1px; appearance: none; -webkit-appearance: none; position: relative; transition: background 0.15s, border-color 0.15s; }
+    .q-checkbox:checked { background: rgba(34,197,94,0.8); border-color: rgba(34,197,94,0.8); }
+    .q-checkbox:checked::after { content: ''; position: absolute; inset: 3px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L4 7L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; }
+    .q-text { flex: 1; }
+    .q-number { font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 2px; }
+    .q-label { font-size: 14px; color: var(--cream); line-height: 1.35; font-weight: 400; }
+    .q-desc { font-size: 12px; color: var(--cream-faint); line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,253,246,0.06); }
+    .q-why { font-size: 11.5px; color: var(--gold-dim); margin-top: 6px; }
+
+    .audit-reset { background: none; border: 1px solid var(--border); color: var(--cream-faint); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: 8px; cursor: pointer; margin-top: 16px; transition: color 0.2s; }
+    .audit-reset:hover { color: var(--cream-dim); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-icon">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  </div>
+  <div>
+    <div class="header-eyebrow">Aesthetic Executive</div>
+    <div class="header-title">SEO Visibility Analyzer</div>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('analyzer')">① AI Website Analyzer</button>
+  <button class="tab-btn" onclick="switchTab('audit')">② Self-Audit Checklist</button>
+</div>
+
+<!-- ═══════════════════════ TAB 1: AI ANALYZER ═══════════════════════ -->
+<div id="tab-analyzer" class="tab-pane active">
+  <div class="container">
+
+    <!-- Input -->
+    <div id="input-section" class="card">
+      <div class="card-title">Analyze Your Website</div>
+      <p class="input-intro">Enter your practice website address below. Our AI will read your site and check it against 10 factors that determine how easily patients can find you on Google — then give you a plain-English report on what's working and what to fix.</p>
+      <div class="url-form">
+        <input id="url-input" class="url-input" type="url" placeholder="https://yourmedspa.com" autocomplete="off" spellcheck="false">
+        <button class="analyze-btn" onclick="runAnalysis()">Analyze</button>
+      </div>
+      <div id="input-error" class="error-box"></div>
+      <p class="input-note">Analysis takes 15–30 seconds. Results are not saved or shared.</p>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading-section" class="card loading-card" style="display:none;">
+      <div class="spinner"></div>
+      <div class="loading-title">Analyzing your website&hellip;</div>
+      <div class="loading-steps" id="loading-steps">
+        <div class="step-item" id="step-0"><div class="step-dot"></div><span>Visiting your website</span></div>
+        <div class="step-item" id="step-1"><div class="step-dot"></div><span>Reading page content</span></div>
+        <div class="step-item" id="step-2"><div class="step-dot"></div><span>Checking 10 SEO factors with AI</span></div>
+        <div class="step-item" id="step-3"><div class="step-dot"></div><span>Preparing your plain-English results</span></div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results-section" style="display:none;">
+
+      <div class="card">
+        <div class="card-title" id="results-url-label">Results for your website</div>
+
+        <div class="score-row">
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 100 100">
+              <circle class="score-ring-track" cx="50" cy="50" r="42"/>
+              <circle class="score-ring-fill" id="score-ring" cx="50" cy="50" r="42" stroke-dasharray="263.9" stroke-dashoffset="263.9"/>
+            </svg>
+            <div class="score-number">
+              <div class="score-num" id="score-num">0</div>
+              <div class="score-denom">/10</div>
+            </div>
+          </div>
+          <div class="score-meta">
+            <div class="score-rating" id="score-rating">—</div>
+            <div class="score-summary" id="score-summary">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="priority-box" id="priority-box" style="display:none;">
+        <div class="priority-label">⚡ Top Priority</div>
+        <div class="priority-text" id="priority-text"></div>
+      </div>
+
+      <div class="card">
+        <div class="quick-wins" id="quick-wins-section" style="display:none;">
+          <div class="quick-wins-title">Quick Wins</div>
+          <div id="quick-wins-list"></div>
+        </div>
+
+        <div class="categories-title">10-Factor Breakdown</div>
+        <div class="category-grid" id="category-grid"></div>
+      </div>
+
+      <div class="results-footer">
+        <button class="footer-btn primary" onclick="printResults()">Print Results</button>
+        <button class="footer-btn secondary" onclick="resetAnalyzer()">Analyze Another URL</button>
+      </div>
+
+      <p class="disclaimer">This analysis is based on the publicly visible content of your homepage at the time of the scan. Some websites load content through JavaScript after the page loads — if findings seem incomplete, this may be why. For a deeper audit, work with an SEO professional.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 2: SELF AUDIT ═══════════════════════ -->
+<div id="tab-audit" class="tab-pane">
+  <div class="container">
+
+    <div class="card" style="margin-bottom:0; border-radius:16px 16px 0 0; border-bottom:none;">
+      <div class="card-title">10-Question SEO Self-Audit</div>
+      <p class="audit-intro">Open your website in another tab, then work through these 10 questions. Check each box if your site passes. Your score updates as you go.</p>
+    </div>
+
+    <div class="audit-score-bar">
+      <div>
+        <span class="audit-score-num" id="audit-num">0</span>
+        <span class="audit-score-denom">/10</span>
+      </div>
+      <div class="audit-score-info">
+        <div class="audit-rating" id="audit-rating">Start checking off what your site has</div>
+        <div class="audit-rating-note" id="audit-note"></div>
+        <div class="audit-progress-track"><div class="audit-progress-fill" id="audit-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="q-list" id="q-list"></div>
+
+    <button class="audit-reset" onclick="resetAudit()">Reset Checklist</button>
+  </div>
+</div>
+
+<script>
+const AUDIT_KEY = 'ae_seo_audit_v1';
+
+const auditQuestions = [
+  {
+    id: 'q1',
+    label: 'Each treatment has its own separate page',
+    desc: 'Your website has individual pages for each major service — not one long "Services" page with everything listed together. For example: a dedicated Botox page, a dedicated Morpheus8 page, a laser hair removal page, etc.',
+    why: 'When someone searches "Morpheus8 near me," Google looks for a page specifically about that treatment. One big services page splits your chances across dozens of treatments at once.'
+  },
+  {
+    id: 'q2',
+    label: 'Treatment pages fully explain the service',
+    desc: "Each treatment page answers the questions patients actually have: What is it? How does it work? What skin concerns does it treat? Who is a good fit? What's recovery like? How many sessions are needed? What results can I expect?",
+    why: 'Google rewards pages that actually educate visitors. A detailed treatment page is far more likely to show up in search results than a one-paragraph blurb.'
+  },
+  {
+    id: 'q3',
+    label: 'Before-and-after patient photos are on treatment pages',
+    desc: "Real patient photos appear on the individual treatment pages — not only in a separate gallery. Each treatment page shows examples of what patients can realistically expect.",
+    why: "Photos show Google (and patients) that you actually perform these treatments. Pages with real results get more clicks and keep visitors on the page longer, both of which help your ranking."
+  },
+  {
+    id: 'q4',
+    label: 'Patient testimonials appear on your website',
+    desc: "Patient reviews or success stories are featured on your website itself — not just on Google or Yelp. Ideally, testimonials appear on treatment pages and/or on a dedicated reviews page.",
+    why: 'Testimonials build trust and are a form of social proof that Google values. They also give the site more relevant content to rank on.'
+  },
+  {
+    id: 'q5',
+    label: 'Your location, phone number, and address are easy to find',
+    desc: "Your city, state, full address, and phone number appear clearly on your homepage, your contact page, and in the footer — not hidden away.",
+    why: "Google needs to know where you're located to show you in local searches like 'med spa near me' or 'Botox in [your city].' If your location is buried or missing, you're invisible to local searches."
+  },
+  {
+    id: 'q6',
+    label: 'You mention nearby cities and communities you serve',
+    desc: "Your content references the surrounding towns and neighborhoods your patients travel from — not just your home city. Example: 'We proudly serve patients from Hilliard, Dublin, Upper Arlington, and Columbus.'",
+    why: "Patients often travel 20–30 minutes for aesthetic treatments. If you only mention your city, you miss everyone searching in nearby communities."
+  },
+  {
+    id: 'q7',
+    label: 'FAQ sections answer questions patients are actually searching',
+    desc: "Treatment pages or a dedicated FAQ page includes the real questions patients Google — like 'Does Morpheus8 hurt?', 'How long does Botox last?', 'Is laser hair removal permanent?', 'How much downtime will I have?'",
+    why: "When Google sees a question on a page that exactly matches what someone searched, it often shows that page right at the top of results. FAQs are one of the easiest wins in SEO."
+  },
+  {
+    id: 'q8',
+    label: 'You have published a blog post in the last 60 days',
+    desc: "Your website has a blog or articles section, and you've added new content within the past two months. Aim for at least 2–4 posts per month on topics your patients are searching.",
+    why: "Google favors websites that are actively updated. A blog also gives you more pages to rank — each post is another opportunity to show up in search."
+  },
+  {
+    id: 'q9',
+    label: 'Your Google Business Profile is complete and being maintained',
+    desc: "Your Google Business listing has accurate hours, phone number, website link, all your services listed, recent photos, and current patient reviews. You post updates at least once a week.",
+    why: "Your Google Business Profile is how you show up on Google Maps and in the local results box. It's arguably as important as your website — and often the first thing patients see."
+  },
+  {
+    id: 'q10',
+    label: 'New visitors can book or contact you within 10 seconds',
+    desc: "A first-time visitor can immediately see how to call, text, book online, or submit a consultation request — without having to scroll or hunt. The option to reach you is visible the moment the page loads.",
+    why: "Google tracks whether visitors stay on your site or immediately leave. When it's hard to take the next step, people bounce — and that signals to Google that your site isn't meeting their needs."
+  }
+];
+
+const ratings = [
+  { min: 9, label: 'Excellent SEO Foundation', note: 'Your website is doing the right things. Keep it up and stay consistent.' },
+  { min: 7, label: 'Strong — With Room to Grow', note: 'Good foundation. Addressing the gaps will meaningfully improve your visibility.' },
+  { min: 5, label: 'Good Start — Gaps to Fill', note: 'You have the basics, but several opportunities to improve how patients find you.' },
+  { min: 3, label: 'Getting Started', note: 'Some work ahead — but the good news is these fixes are within your control.' },
+  { min: 0, label: 'Needs Significant Work', note: 'Real opportunities to improve how many patients find you online.' },
+];
+
+function getAuditRating(score) {
+  return ratings.find(r => score >= r.min) || ratings[ratings.length - 1];
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  btns[tab === 'analyzer' ? 0 : 1].classList.add('active');
+}
+
+// ── AI ANALYZER ───────────────────────────────────────────────────────────
+let stepInterval = null;
+let currentStep = 0;
+
+function setStep(n) {
+  document.querySelectorAll('.step-item').forEach((el, i) => {
+    el.classList.remove('active', 'done');
+    if (i < n) el.classList.add('done');
+    else if (i === n) el.classList.add('active');
+  });
+}
+
+async function runAnalysis() {
+  const rawUrl = document.getElementById('url-input').value.trim();
+  const errBox = document.getElementById('input-error');
+  errBox.style.display = 'none';
+
+  if (!rawUrl) {
+    errBox.textContent = 'Please enter your website URL.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  let url = rawUrl;
+  if (!url.startsWith('http://') && !url.startsWith('https://')) url = 'https://' + url;
+
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('results-section').style.display = 'none';
+  document.getElementById('loading-section').style.display = 'block';
+
+  currentStep = 0;
+  setStep(0);
+  stepInterval = setInterval(() => {
+    currentStep = Math.min(currentStep + 1, 3);
+    setStep(currentStep);
+  }, 5000);
+
+  try {
+    const res = await fetch('/api/analyze-seo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+
+    clearInterval(stepInterval);
+    setStep(4);
+    await new Promise(r => setTimeout(r, 500));
+
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      showError(data.error || 'Something went wrong. Please try again.');
+      return;
+    }
+
+    renderResults(data, url);
+  } catch (e) {
+    clearInterval(stepInterval);
+    showError('Could not connect to the analysis service. Please try again.');
+  }
+}
+
+function showError(msg) {
+  document.getElementById('loading-section').style.display = 'none';
+  document.getElementById('input-section').style.display = 'block';
+  const errBox = document.getElementById('input-error');
+  errBox.textContent = msg;
+  errBox.style.display = 'block';
+}
+
+function renderResults(data, url) {
+  document.getElementById('loading-section').style.display = 'none';
+  document.getElementById('results-section').style.display = 'block';
+
+  try {
+    document.getElementById('results-url-label').textContent = 'Results for ' + new URL(url).hostname;
+  } catch {}
+
+  // Score ring
+  const score = Math.max(0, Math.min(10, data.score || 0));
+  const circumference = 263.9;
+  const offset = circumference - (score / 10) * circumference;
+  const ring = document.getElementById('score-ring');
+  ring.style.strokeDashoffset = circumference;
+  setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+  document.getElementById('score-num').textContent = score;
+  document.getElementById('score-rating').textContent = data.rating || '';
+  document.getElementById('score-summary').textContent = data.summary || '';
+
+  // Color ring by score
+  if (score >= 8) ring.style.stroke = 'rgba(34,197,94,0.85)';
+  else if (score >= 5) ring.style.stroke = '#a28c75';
+  else ring.style.stroke = 'rgba(245,158,11,0.85)';
+
+  // Top priority
+  if (data.top_priority) {
+    document.getElementById('priority-text').textContent = data.top_priority;
+    document.getElementById('priority-box').style.display = 'block';
+  }
+
+  // Quick wins
+  if (data.quick_wins && data.quick_wins.length) {
+    const list = document.getElementById('quick-wins-list');
+    list.innerHTML = '';
+    data.quick_wins.forEach(w => {
+      list.innerHTML += `<div class="quick-win-item"><div class="quick-win-dot"></div><div class="quick-win-text">${esc(w)}</div></div>`;
+    });
+    document.getElementById('quick-wins-section').style.display = 'block';
+  }
+
+  // Categories
+  const grid = document.getElementById('category-grid');
+  grid.innerHTML = '';
+  (data.categories || []).forEach(cat => {
+    const status = cat.status || 'fail';
+    const hasFix = cat.fix && cat.fix.trim();
+    grid.innerHTML += `
+      <div class="cat-card ${status}" onclick="toggleFix(this)">
+        <div class="cat-header">
+          <div class="cat-label">${esc(cat.label)}</div>
+          <div class="status-badge">${status === 'pass' ? 'Pass' : status === 'partial' ? 'Partial' : 'Fix Needed'}</div>
+        </div>
+        <div class="cat-finding">${esc(cat.finding)}</div>
+        ${hasFix ? `<div class="cat-fix"><div class="cat-fix-label">What to do</div>${esc(cat.fix)}</div>` : ''}
+      </div>`;
+  });
+}
+
+function toggleFix(card) {
+  const fix = card.querySelector('.cat-fix');
+  if (fix) fix.classList.toggle('open');
+}
+
+function resetAnalyzer() {
+  document.getElementById('url-input').value = '';
+  document.getElementById('input-error').style.display = 'none';
+  document.getElementById('results-section').style.display = 'none';
+  document.getElementById('input-section').style.display = 'block';
+  document.getElementById('priority-box').style.display = 'none';
+  document.getElementById('quick-wins-section').style.display = 'none';
+}
+
+function printResults() { window.print(); }
+
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ── SELF AUDIT ────────────────────────────────────────────────────────────
+function buildAudit() {
+  const saved = JSON.parse(localStorage.getItem(AUDIT_KEY) || '{}');
+  const list = document.getElementById('q-list');
+  list.innerHTML = '';
+
+  auditQuestions.forEach((q, i) => {
+    const checked = !!saved[q.id];
+    const el = document.createElement('div');
+    el.className = 'q-card' + (checked ? ' checked' : '');
+    el.id = 'qcard-' + q.id;
+    el.innerHTML = `
+      <div class="q-header">
+        <input type="checkbox" class="q-checkbox" id="${q.id}" ${checked ? 'checked' : ''} onchange="toggleAudit('${q.id}')">
+        <div class="q-text">
+          <div class="q-number">${String(i + 1).padStart(2, '0')}</div>
+          <label for="${q.id}" class="q-label" style="cursor:pointer;">${q.label}</label>
+        </div>
+      </div>
+      <div class="q-desc">${q.desc}<div class="q-why">Why it matters: ${q.why}</div></div>`;
+    list.appendChild(el);
+  });
+
+  updateAuditScore();
+}
+
+function toggleAudit(id) {
+  const cb = document.getElementById(id);
+  const card = document.getElementById('qcard-' + id);
+  card.classList.toggle('checked', cb.checked);
+  const saved = JSON.parse(localStorage.getItem(AUDIT_KEY) || '{}');
+  if (cb.checked) saved[id] = true;
+  else delete saved[id];
+  localStorage.setItem(AUDIT_KEY, JSON.stringify(saved));
+  updateAuditScore();
+}
+
+function updateAuditScore() {
+  const saved = JSON.parse(localStorage.getItem(AUDIT_KEY) || '{}');
+  const score = Object.keys(saved).length;
+  document.getElementById('audit-num').textContent = score;
+  document.getElementById('audit-bar').style.width = (score / 10 * 100) + '%';
+  const r = getAuditRating(score);
+  document.getElementById('audit-rating').textContent = r.label;
+  document.getElementById('audit-note').textContent = score > 0 ? r.note : '';
+}
+
+function resetAudit() {
+  localStorage.removeItem(AUDIT_KEY);
+  buildAudit();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+buildAudit();
+
+document.getElementById('url-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') runAnalysis();
+});
+</script>
+</body>
+</html>

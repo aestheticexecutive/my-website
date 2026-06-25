@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Post Generator — Aesthetic Executive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0c0004;
+      --surface:     #140008;
+      --surface-2:   #1a000c;
+      --burgundy:    #2f0410;
+      --gold:        #a28c75;
+      --gold-light:  #c8b3a3;
+      --gold-pale:   rgba(162,140,117,0.1);
+      --cream:       #fffdf6;
+      --cream-mid:   rgba(255,253,246,0.65);
+      --cream-muted: rgba(255,253,246,0.4);
+      --border:      rgba(162,140,117,0.15);
+      --border-mid:  rgba(162,140,117,0.25);
+      --border-strong: rgba(162,140,117,0.35);
+      --radius:      6px;
+      --radius-lg:   12px;
+      --radius-xl:   16px;
+    }
+
+    html { background: var(--bg); }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      width: 100%;
+    }
+    .header-eyebrow {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .header h1 {
+      font-family: 'Tenor Sans', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .header p {
+      font-size: 13.5px;
+      color: var(--cream-muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .gold-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem auto;
+      opacity: 0.6;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: linear-gradient(145deg, var(--surface) 0%, var(--bg) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 700px;
+      padding: 2.5rem;
+    }
+
+    /* ── Progress ── */
+    .progress {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      gap: 0;
+    }
+    .prog-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(162,140,117,0.3);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .prog-item.active { color: var(--cream); }
+    .prog-item.done { color: var(--gold); }
+    .prog-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .prog-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin: 0 10px;
+    }
+
+    /* ── Step ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .step-title {
+      font-family: 'Tenor Sans', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
+    }
+    .step-sub {
+      font-size: 13px;
+      color: var(--cream-muted);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    /* ── Fields ── */
+    .field { margin-bottom: 1.25rem; }
+    .field label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .field label span {
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 300;
+      color: var(--cream-muted);
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--cream);
+      background: rgba(255,253,246,0.04);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      background: rgba(162,140,117,0.06);
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(255,253,246,0.2); }
+    .field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a28c75' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .field select option { background: #1a000c; color: var(--cream); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hint {
+      font-size: 11px;
+      color: var(--cream-muted);
+      margin-top: 5px;
+      font-weight: 300;
+    }
+
+    /* ── Role cards ── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .role-card {
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 18px 12px 14px;
+      cursor: pointer;
+      background: rgba(255,253,246,0.02);
+      text-align: center;
+      transition: all 0.18s;
+    }
+    .role-card:hover { border-color: var(--gold); background: var(--gold-pale); }
+    .role-card.selected {
+      border-color: var(--gold);
+      background: rgba(162,140,117,0.12);
+    }
+    .role-icon {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      display: block;
+      color: rgba(162,140,117,0.4);
+      transition: color 0.18s;
+    }
+    .role-card:hover .role-icon,
+    .role-card.selected .role-icon { color: var(--gold); }
+    .role-name {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      line-height: 1.4;
+      transition: color 0.18s;
+    }
+    .role-card.selected .role-name { color: var(--cream); }
+
+    /* ── Custom role input ── */
+    #customRoleWrap {
+      display: none;
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      background: rgba(162,140,117,0.05);
+    }
+    #customRoleWrap label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    #customRoleInput {
+      width: 100%;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--cream);
+      background: rgba(255,253,246,0.04);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #customRoleInput:focus { border-color: var(--gold); }
+    #customRoleInput::placeholder { color: rgba(255,253,246,0.2); }
+
+    /* ── Tone cards ── */
+    .tone-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px; }
+    .tone-card {
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 14px 10px;
+      cursor: pointer;
+      text-align: center;
+      background: rgba(255,253,246,0.02);
+      transition: all 0.18s;
+    }
+    .tone-card:hover { border-color: var(--gold); background: var(--gold-pale); }
+    .tone-card.selected { border-color: var(--gold); background: rgba(162,140,117,0.1); }
+    .tone-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cream-mid);
+      display: block;
+      transition: color 0.18s;
+    }
+    .tone-card.selected .tone-label { color: var(--cream); }
+    .tone-desc {
+      font-size: 11px;
+      color: var(--cream-muted);
+      margin-top: 3px;
+      font-weight: 300;
+    }
+
+    /* ── Buttons ── */
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .btn {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: var(--radius);
+      padding: 10px 22px;
+      transition: all 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-mid);
+      color: var(--cream-muted);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--cream); }
+    .btn-gold {
+      background: rgba(162,140,117,0.14);
+      border: 1px solid var(--border-strong);
+      color: var(--gold-light);
+    }
+    .btn-gold:hover { background: rgba(162,140,117,0.22); border-color: var(--gold); color: var(--cream); }
+    .btn-gold:disabled { opacity: 0.3; cursor: not-allowed; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--cream-muted);
+      font-size: 11px;
+      padding: 8px 16px;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--cream); }
+    .btn-save {
+      background: rgba(162,140,117,0.12);
+      border: 1px solid var(--border-mid);
+      color: var(--gold);
+      font-size: 11px;
+      padding: 8px 16px;
+    }
+    .btn-save:hover { background: rgba(162,140,117,0.2); border-color: var(--gold); }
+    .btn-save.saved {
+      background: rgba(162,140,117,0.08);
+      border-color: var(--border);
+      color: var(--cream-muted);
+      cursor: default;
+    }
+
+    /* ── Output ── */
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+    .output-label {
+      font-family: 'Tenor Sans', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+    .output-sublabel {
+      font-size: 12px;
+      color: var(--cream-muted);
+      margin-top: 3px;
+    }
+    .output-box {
+      background: rgba(255,253,246,0.03);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: var(--cream-mid);
+      white-space: pre-wrap;
+      max-height: 520px;
+      overflow-y: auto;
+      font-weight: 300;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-mid) transparent;
+    }
+    .output-box.generating {
+      color: var(--cream-muted);
+      font-style: italic;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .output-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .copy-confirm {
+      font-size: 10px;
+      color: var(--gold);
+      align-self: center;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: none;
+    }
+    .save-confirm {
+      font-size: 10px;
+      color: var(--gold);
+      align-self: center;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: none;
+    }
+
+    /* ── Spinner ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--border-mid);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 2.5rem 0 2rem;
+      max-width: 700px;
+      width: 100%;
+    }
+    .section-divider h2 {
+      font-family: 'Tenor Sans', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .section-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Saved Posts ── */
+    #savedSection {
+      max-width: 700px;
+      width: 100%;
+      display: none;
+    }
+    .saved-empty {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--cream-muted);
+      font-size: 13px;
+      font-weight: 300;
+    }
+    .saved-post {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, var(--surface) 0%, var(--bg) 100%);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .saved-post:hover { border-color: var(--border-mid); }
+    .saved-post-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      gap: 12px;
+    }
+    .saved-post-meta { flex: 1; min-width: 0; }
+    .saved-post-role {
+      font-family: 'Tenor Sans', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .saved-post-detail {
+      font-size: 11.5px;
+      color: var(--cream-muted);
+      font-weight: 300;
+    }
+    .saved-post-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .saved-chevron {
+      color: var(--cream-muted);
+      font-size: 12px;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .saved-post.open .saved-chevron { transform: rotate(180deg); }
+    .saved-post-body {
+      display: none;
+      padding: 0 1.25rem 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .saved-post.open .saved-post-body { display: block; }
+    .saved-post-text {
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--cream-mid);
+      white-space: pre-wrap;
+      font-weight: 300;
+      padding-top: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-mid) transparent;
+    }
+    .saved-post-footer {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-delete {
+      background: transparent;
+      border: 1px solid rgba(200,80,80,0.2);
+      color: rgba(200,100,100,0.6);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: var(--radius);
+      padding: 7px 14px;
+      transition: all 0.18s;
+    }
+    .btn-delete:hover { border-color: rgba(200,80,80,0.5); color: rgba(220,100,100,0.9); }
+
+    /* ── Top nav ── */
+    .top-nav {
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    .top-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(162,140,117,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-nav a:hover { color: var(--gold); }
+    .top-nav a svg { flex-shrink: 0; }
+
+    @media (max-width: 520px) {
+      .card { padding: 1.5rem; }
+      .field-row { grid-template-columns: 1fr; }
+      .tone-row { grid-template-columns: 1fr; }
+      .role-grid { grid-template-columns: repeat(2, 1fr); }
+      .progress { gap: 0; }
+      .prog-item { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top nav ── -->
+  <div class="top-nav">
+    <a href="/members/resources/staff">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2L4 6.5L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Staff Resources
+    </a>
+  </div>
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="header-eyebrow">Aesthetic Executive — Member Portal</div>
+    <h1>Job Post Generator</h1>
+    <div class="gold-rule"></div>
+    <p>Enter your practice details and we'll write a polished, industry-specific job posting that attracts top aesthetic talent.</p>
+  </div>
+
+  <!-- ── Main card ── -->
+  <div class="card">
+
+    <!-- Progress -->
+    <div class="progress">
+      <div class="prog-item active" id="ps1"><div class="prog-dot"></div> Practice</div>
+      <div class="prog-line"></div>
+      <div class="prog-item" id="ps2"><div class="prog-dot"></div> Role</div>
+      <div class="prog-line"></div>
+      <div class="prog-item" id="ps3"><div class="prog-dot"></div> Details</div>
+      <div class="prog-line"></div>
+      <div class="prog-item" id="ps4"><div class="prog-dot"></div> Generate</div>
+    </div>
+
+    <!-- ── Step 1: Practice Info ── -->
+    <div class="step active" id="step1">
+      <div class="step-title">Your practice</div>
+      <div class="step-sub">Tell us about your med spa so the job post feels native to your brand.</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Practice name</label>
+          <input type="text" id="practiceName" placeholder="e.g. Luminary Aesthetics" />
+        </div>
+        <div class="field">
+          <label>City &amp; state</label>
+          <input type="text" id="location" placeholder="e.g. Columbus, Ohio" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What makes you different <span>(brief)</span></label>
+        <input type="text" id="practiceDesc" placeholder="e.g. Luxury med spa focused on body contouring and skin rejuvenation" />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Signature services</label>
+          <input type="text" id="services" placeholder="e.g. Morpheus8, Botox, laser, memberships" />
+        </div>
+        <div class="field">
+          <label>Practice size</label>
+          <select id="practiceSize">
+            <option value="">Select...</option>
+            <option>Solo provider (1–2 staff)</option>
+            <option>Small team (3–8 staff)</option>
+            <option>Mid-size (9–20 staff)</option>
+            <option>Larger practice (20+ staff)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <span></span>
+        <button class="btn btn-gold" onclick="goStep(2)">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ── Step 2: Role ── -->
+    <div class="step" id="step2">
+      <div class="step-title">Select a role</div>
+      <div class="step-sub">Choose the position you're hiring for.</div>
+
+      <div class="role-grid">
+        <div class="role-card" data-role="Patient Coordinator" onclick="selectRole(this)">
+          <span class="role-icon">&#9825;</span>
+          <span class="role-name">Patient Coordinator</span>
+        </div>
+        <div class="role-card" data-role="Practice Manager" onclick="selectRole(this)">
+          <span class="role-icon">&#9670;</span>
+          <span class="role-name">Practice Manager</span>
+        </div>
+        <div class="role-card" data-role="Marketing Coordinator" onclick="selectRole(this)">
+          <span class="role-icon">&#8857;</span>
+          <span class="role-name">Marketing Coordinator</span>
+        </div>
+        <div class="role-card" data-role="Sales Coordinator" onclick="selectRole(this)">
+          <span class="role-icon">&#9650;</span>
+          <span class="role-name">Sales Coordinator</span>
+        </div>
+        <div class="role-card" data-role="Licensed Aesthetician" onclick="selectRole(this)">
+          <span class="role-icon">&#10024;</span>
+          <span class="role-name">Licensed Aesthetician</span>
+        </div>
+        <div class="role-card" data-role="Aesthetic Nurse" onclick="selectRole(this)">
+          <span class="role-icon">&#43;</span>
+          <span class="role-name">Aesthetic Nurse</span>
+        </div>
+        <div class="role-card" data-role="Medical Director" onclick="selectRole(this)">
+          <span class="role-icon">&#9737;</span>
+          <span class="role-name">Medical Director</span>
+        </div>
+        <div class="role-card" data-role="custom" onclick="selectRole(this)">
+          <span class="role-icon">&#9998;</span>
+          <span class="role-name">Other Role</span>
+        </div>
+      </div>
+
+      <!-- Custom role input (shown when "Other Role" is selected) -->
+      <div id="customRoleWrap">
+        <label>Enter the role title</label>
+        <input type="text" id="customRoleInput" placeholder="e.g. Laser Technician, Front Desk Coordinator…" oninput="onCustomRoleInput()" />
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goStep(1)">&larr; Back</button>
+        <button class="btn btn-gold" id="nextTo3" onclick="goStep(3)" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ── Step 3: Role Details ── -->
+    <div class="step" id="step3">
+      <div class="step-title">Role details</div>
+      <div class="step-sub">The more specific you are, the more tailored your job post will be.</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Employment type</label>
+          <select id="empType">
+            <option>Full-time</option>
+            <option>Part-time</option>
+            <option>PRN / contract</option>
+            <option>Full-time or part-time</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Compensation range</label>
+          <input type="text" id="compensation" placeholder="e.g. $18–22/hr + commission" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Experience required</label>
+          <select id="experience">
+            <option>Entry level (0–1 year)</option>
+            <option>1–2 years</option>
+            <option>2–4 years</option>
+            <option>4+ years</option>
+            <option>Open to training the right candidate</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Key benefits</label>
+          <input type="text" id="benefits" placeholder="e.g. PTO, health ins., treatment perks" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Anything specific to include <span>(optional but powerful)</span></label>
+        <textarea id="extraNotes" placeholder="Culture notes, must-haves, deal-breakers, unique perks, specific tools or equipment experience needed…"></textarea>
+        <div class="hint">The AI weaves these in naturally — don't hold back.</div>
+      </div>
+
+      <div class="field" style="margin-top:1.5rem;">
+        <label>Tone</label>
+        <div class="tone-row">
+          <div class="tone-card selected" data-tone="Polished and aspirational — luxury brand feel, elevated language" onclick="selectTone(this)">
+            <span class="tone-label">Polished</span>
+            <span class="tone-desc">Luxury brand feel</span>
+          </div>
+          <div class="tone-card" data-tone="Warm and culture-first — team-oriented, approachable, values-driven" onclick="selectTone(this)">
+            <span class="tone-label">Warm</span>
+            <span class="tone-desc">Culture &amp; team focus</span>
+          </div>
+          <div class="tone-card" data-tone="Direct and high-performance — results-driven, energetic, ambitious" onclick="selectTone(this)">
+            <span class="tone-label">Direct</span>
+            <span class="tone-desc">Results-driven</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goStep(2)">&larr; Back</button>
+        <button class="btn btn-gold" id="generateBtn" onclick="generate()">
+          <span class="spinner" id="spinner" style="display:none;"></span>
+          <span id="generateLabel">Generate Job Post</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Step 4: Output ── -->
+    <div class="step" id="step4">
+      <div class="output-header">
+        <div>
+          <div class="output-label" id="outputTitle">Your job post</div>
+          <div class="output-sublabel" id="outputSub"></div>
+        </div>
+      </div>
+
+      <div class="output-box generating" id="output">
+        <span>Crafting your job post&hellip;</span>
+      </div>
+
+      <div class="output-actions">
+        <button class="btn btn-ghost" onclick="copyOutput()">&#9635; Copy</button>
+        <button class="btn btn-save" id="saveBtn" onclick="savePost()">&#9734; Save post</button>
+        <button class="btn btn-ghost" onclick="goStep(3)">&larr; Edit</button>
+        <button class="btn btn-ghost" onclick="resetAll()">&#8635; New post</button>
+        <span class="copy-confirm" id="copyConfirm">Copied</span>
+        <span class="save-confirm" id="saveConfirm">Saved</span>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+
+  <!-- ── Saved Posts Section ── -->
+  <div id="savedSection">
+    <div class="section-divider">
+      <h2>Saved Posts</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div id="savedList"></div>
+  </div>
+
+
+  <script>
+    // ─── STATE ───────────────────────────────────────────────────────────────
+    let currentStep = 1;
+    let selectedRole = null;
+    let selectedTone = "Polished and aspirational — luxury brand feel, elevated language";
+    let lastGeneratedText = "";
+    let lastGeneratedTitle = "";
+    const STORAGE_KEY = "ae_saved_job_posts";
+
+    // ─── NAVIGATION ─────────────────────────────────────────────────────────
+    function goStep(n) {
+      document.getElementById("step" + currentStep).classList.remove("active");
+      updateProgress(currentStep, n);
+      currentStep = n;
+      document.getElementById("step" + n).classList.add("active");
+    }
+
+    function updateProgress(from, to) {
+      [1,2,3,4].forEach(i => {
+        const el = document.getElementById("ps" + i);
+        el.classList.remove("active", "done");
+        if (i < to) el.classList.add("done");
+        else if (i === to) el.classList.add("active");
+      });
+    }
+
+    // ─── ROLE SELECTION ──────────────────────────────────────────────────────
+    function selectRole(el) {
+      document.querySelectorAll(".role-card").forEach(c => c.classList.remove("selected"));
+      el.classList.add("selected");
+      const isCustom = el.dataset.role === "custom";
+      document.getElementById("customRoleWrap").style.display = isCustom ? "block" : "none";
+      if (!isCustom) {
+        selectedRole = el.dataset.role;
+        document.getElementById("nextTo3").disabled = false;
+      } else {
+        // Only enable continue if they've already typed something
+        const val = document.getElementById("customRoleInput").value.trim();
+        selectedRole = val || null;
+        document.getElementById("nextTo3").disabled = !val;
+      }
+    }
+
+    function onCustomRoleInput() {
+      const val = document.getElementById("customRoleInput").value.trim();
+      selectedRole = val || null;
+      document.getElementById("nextTo3").disabled = !val;
+    }
+
+    // ─── TONE SELECTION ──────────────────────────────────────────────────────
+    function selectTone(el) {
+      document.querySelectorAll(".tone-card").forEach(c => c.classList.remove("selected"));
+      el.classList.add("selected");
+      selectedTone = el.dataset.tone;
+    }
+
+    // ─── GENERATE ────────────────────────────────────────────────────────────
+    async function generate() {
+      const btn     = document.getElementById("generateBtn");
+      const spinner = document.getElementById("spinner");
+      const label   = document.getElementById("generateLabel");
+      btn.disabled = true;
+      spinner.style.display = "inline-block";
+      label.textContent = "Generating…";
+
+      goStep(4);
+      updateProgress(3, 4);
+      currentStep = 4;
+
+      // Reset save button
+      const saveBtn = document.getElementById("saveBtn");
+      saveBtn.classList.remove("saved");
+      saveBtn.textContent = "☆ Save post";
+      document.getElementById("saveConfirm").style.display = "none";
+
+      const out = document.getElementById("output");
+      out.classList.add("generating");
+      out.innerHTML = "<span>Crafting your job post&hellip;</span>";
+
+      const practice = document.getElementById("practiceName").value.trim() || "our practice";
+      const loc      = document.getElementById("location").value.trim() || "our area";
+      const desc     = document.getElementById("practiceDesc").value.trim();
+      const services = document.getElementById("services").value.trim();
+      const size     = document.getElementById("practiceSize").value;
+      const empType  = document.getElementById("empType").value;
+      const comp     = document.getElementById("compensation").value.trim() || "competitive";
+      const exp      = document.getElementById("experience").value;
+      const benefits = document.getElementById("benefits").value.trim();
+      const notes    = document.getElementById("extraNotes").value.trim();
+
+      const titleText = selectedRole + " — " + practice;
+      document.getElementById("outputTitle").textContent = titleText;
+      document.getElementById("outputSub").textContent = loc;
+      lastGeneratedTitle = titleText;
+
+      const prompt = `You are an expert medical aesthetics hiring consultant and copywriter. Write a compelling, complete job posting for the following role. Make it feel polished, industry-specific, and genuinely competitive — not generic.
+
+ROLE: ${selectedRole}
+PRACTICE NAME: ${practice}
+LOCATION: ${loc}
+ABOUT THE PRACTICE: ${desc || "A premier medical aesthetics practice"}
+SERVICES / SPECIALTIES: ${services || "Medical aesthetics services"}
+PRACTICE SIZE: ${size || "Growing practice"}
+EMPLOYMENT TYPE: ${empType}
+COMPENSATION: ${comp}
+EXPERIENCE REQUIRED: ${exp}
+BENEFITS: ${benefits || "Competitive benefits package"}
+ADDITIONAL NOTES: ${notes || "None"}
+TONE: ${selectedTone}
+
+Write the complete job posting with these exact sections (use plain text section headers in ALL CAPS, no markdown, no asterisks, no special formatting characters):
+
+ABOUT US
+[2-3 sentences about the practice — specific, not generic]
+
+THE OPPORTUNITY
+[2-3 sentences that speak to the ideal candidate's ambitions and identity]
+
+WHAT YOU'LL DO
+[7-9 bullet points using a dash and space "- " to start each item]
+
+WHAT WE'RE LOOKING FOR
+[6-8 bullet points using a dash and space "- " to start each item]
+
+WHAT WE OFFER
+[5-7 bullet points using a dash and space "- " to start each item]
+
+[Close with 2 sentences — a strong, warm call to action telling them how to apply]
+
+Keep language specific to the medical aesthetics industry. Sound like a thriving, culture-driven practice that top candidates genuinely want to join. Do not use filler phrases like "dynamic team player" or "fast-paced environment." Be specific, direct, and aspirational.`;
+
+      try {
+        const response = await fetch("/api/generate-job-post", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+
+        if (!response.ok) {
+          const err = await response.json().catch(() => ({}));
+          throw new Error(err.error || "API error " + response.status);
+        }
+
+        const data = await response.json();
+        const text = (data.text || "").trim();
+        lastGeneratedText = text;
+
+        out.classList.remove("generating");
+        out.textContent = text;
+
+      } catch (e) {
+        lastGeneratedText = "";
+        out.classList.remove("generating");
+        out.innerHTML = `<span style="color:rgba(220,100,100,0.8);">Something went wrong: ${e.message}</span>`;
+      }
+
+      btn.disabled = false;
+      spinner.style.display = "none";
+      label.textContent = "Generate Job Post";
+    }
+
+    // ─── COPY ────────────────────────────────────────────────────────────────
+    function copyOutput() {
+      const text = document.getElementById("output").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const conf = document.getElementById("copyConfirm");
+        conf.style.display = "inline";
+        setTimeout(() => { conf.style.display = "none"; }, 2200);
+      });
+    }
+
+    // ─── SAVE ────────────────────────────────────────────────────────────────
+    function savePost() {
+      if (!lastGeneratedText) return;
+      const btn = document.getElementById("saveBtn");
+      if (btn.classList.contains("saved")) return;
+
+      const practice = document.getElementById("practiceName").value.trim() || "Practice";
+      const loc      = document.getElementById("location").value.trim() || "";
+
+      const entry = {
+        id:        Date.now(),
+        role:      selectedRole || "Role",
+        practice,
+        location:  loc,
+        text:      lastGeneratedText,
+        savedAt:   new Date().toISOString(),
+      };
+
+      const saved = getSaved();
+      saved.unshift(entry); // newest first
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+
+      btn.classList.add("saved");
+      btn.textContent = "✓ Saved";
+      const conf = document.getElementById("saveConfirm");
+      conf.style.display = "inline";
+      setTimeout(() => { conf.style.display = "none"; }, 2200);
+
+      renderSaved();
+    }
+
+    function getSaved() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+      catch { return []; }
+    }
+
+    function deletePost(id) {
+      const saved = getSaved().filter(e => e.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+      renderSaved();
+    }
+
+    function copySavedPost(id) {
+      const entry = getSaved().find(e => e.id === id);
+      if (!entry) return;
+      navigator.clipboard.writeText(entry.text).then(() => {
+        const el = document.getElementById("copyConfirm_" + id);
+        if (el) { el.style.display = "inline"; setTimeout(() => { el.style.display = "none"; }, 2000); }
+      });
+    }
+
+    function toggleSavedPost(id) {
+      const el = document.getElementById("saved_" + id);
+      if (el) el.classList.toggle("open");
+    }
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    }
+
+    function renderSaved() {
+      const saved = getSaved();
+      const section = document.getElementById("savedSection");
+      const list    = document.getElementById("savedList");
+
+      if (saved.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      list.innerHTML = saved.map(entry => `
+        <div class="saved-post" id="saved_${entry.id}">
+          <div class="saved-post-header" onclick="toggleSavedPost(${entry.id})">
+            <div class="saved-post-meta">
+              <div class="saved-post-role">${escHtml(entry.role)} &mdash; ${escHtml(entry.practice)}</div>
+              <div class="saved-post-detail">${escHtml(entry.location)}${entry.location ? " &middot; " : ""}Saved ${formatDate(entry.savedAt)}</div>
+            </div>
+            <div class="saved-post-actions">
+              <span class="saved-chevron">&#9660;</span>
+            </div>
+          </div>
+          <div class="saved-post-body">
+            <div class="saved-post-text">${escHtml(entry.text)}</div>
+            <div class="saved-post-footer">
+              <button class="btn btn-ghost" onclick="copySavedPost(${entry.id})">&#9635; Copy</button>
+              <span class="copy-confirm" id="copyConfirm_${entry.id}">Copied</span>
+              <button class="btn-delete" onclick="deletePost(${entry.id})">Delete</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // ─── RESET ───────────────────────────────────────────────────────────────
+    function resetAll() {
+      selectedRole = null;
+      selectedTone = "Polished and aspirational — luxury brand feel, elevated language";
+      lastGeneratedText = "";
+      lastGeneratedTitle = "";
+      ["practiceName","location","practiceDesc","services","compensation","benefits","extraNotes"]
+        .forEach(id => { document.getElementById(id).value = ""; });
+      document.getElementById("practiceSize").value = "";
+      document.getElementById("empType").value = "Full-time";
+      document.getElementById("experience").selectedIndex = 0;
+      document.querySelectorAll(".role-card").forEach(c => c.classList.remove("selected"));
+      document.querySelectorAll(".tone-card").forEach(c => c.classList.remove("selected"));
+      document.querySelector(".tone-card").classList.add("selected");
+      document.getElementById("nextTo3").disabled = true;
+      document.getElementById("output").textContent = "";
+      document.getElementById("customRoleWrap").style.display = "none";
+      document.getElementById("customRoleInput").value = "";
+      document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".prog-item").forEach(s => { s.classList.remove("active","done"); });
+      currentStep = 1;
+      document.getElementById("step1").classList.add("active");
+      document.getElementById("ps1").classList.add("active");
+    }
+
+    // ─── INIT ─────────────────────────────────────────────────────────────────
+    renderSaved();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of the Consult — Aesthetic Executive</title>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0004;
+  --sidebar-bg: #060002;
+  --card: #140008;
+  --card-mid: #1a000c;
+  --card-deep: #2f0410;
+  --gold: #a28c75;
+  --gold-bright: #c9a96e;
+  --gold-faint: rgba(162,140,117,0.07);
+  --cream: #fffdf6;
+  --cream-dim: rgba(255,253,246,0.55);
+  --cream-faint: rgba(255,253,246,0.35);
+  --border: rgba(162,140,117,0.12);
+  --border-mid: rgba(162,140,117,0.2);
+  --border-strong: rgba(162,140,117,0.3);
+  --sage: #6b8f71;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+/* ── SPLASH ── */
+#splash {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#splash::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(47,4,16,0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+#splash.hidden { opacity: 0; pointer-events: none; transform: translateY(-16px); }
+
+.splash-eyebrow {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  position: relative;
+  opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
+}
+.splash-title {
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  color: var(--cream);
+  text-align: center; line-height: 1.1;
+  position: relative;
+  opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+}
+.splash-title em { font-style: italic; color: var(--gold); }
+.splash-sub {
+  font-size: 14px; font-weight: 300;
+  color: rgba(255,253,246,0.4); margin-top: 16px;
+  letter-spacing: 0.04em;
+  position: relative;
+  opacity: 0; animation: fadeUp 0.7s 0.75s forwards;
+}
+.splash-divider {
+  width: 40px; height: 1px; background: rgba(162,140,117,0.3);
+  margin: 32px auto;
+  position: relative;
+  opacity: 0; animation: fadeUp 0.6s 0.9s forwards;
+}
+.splash-btn {
+  background: var(--gold); color: #0c0004;
+  border: none; cursor: pointer;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 15px 40px; border-radius: 2px;
+  position: relative;
+  opacity: 0; animation: fadeUp 0.7s 1.1s forwards;
+  transition: background 0.2s, transform 0.15s;
+}
+.splash-btn:hover { background: #c9a96e; transform: translateY(-2px); }
+
+/* ── APP LAYOUT ── */
+#app { display: none; min-height: 100vh; }
+#app.visible { display: flex; }
+
+/* Sidebar */
+#sidebar {
+  width: 272px; min-width: 272px;
+  background: var(--sidebar-bg);
+  min-height: 100vh; position: sticky; top: 0; height: 100vh;
+  overflow-y: auto; display: flex; flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.logo-eyebrow {
+  font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(162,140,117,0.55); margin-bottom: 8px;
+}
+.logo-name {
+  font-family: 'Tenor Sans', serif;
+  font-size: 16px; color: var(--cream); line-height: 1.4;
+}
+.logo-sub {
+  font-size: 11px; color: rgba(255,253,246,0.3);
+  margin-top: 2px; font-weight: 300;
+}
+
+.progress-wrap {
+  padding: 14px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.progress-label {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(162,140,117,0.45); margin-bottom: 8px;
+}
+.progress-track {
+  height: 2px; background: rgba(162,140,117,0.1); border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  border-radius: 2px; transition: width 0.5s ease;
+  width: 0%;
+}
+.progress-pct { font-size: 10px; color: rgba(162,140,117,0.65); margin-top: 6px; }
+
+.nav-sections { flex: 1; padding: 8px 0; }
+
+.nav-btn {
+  width: 100%; text-align: left;
+  background: none; border: none; cursor: pointer;
+  padding: 11px 24px;
+  display: flex; align-items: center; gap: 12px;
+  transition: background 0.2s;
+  border-left: 2px solid transparent;
+}
+.nav-btn:hover { background: rgba(162,140,117,0.04); }
+.nav-btn.active {
+  background: rgba(162,140,117,0.08);
+  border-left-color: var(--gold);
+}
+.nav-btn.completed .nav-icon { background: rgba(107,143,113,0.2); }
+.nav-btn.completed .nav-num,
+.nav-btn.completed .nav-label { color: rgba(107,143,113,0.8); }
+
+.nav-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+  background: rgba(162,140,117,0.07);
+  transition: background 0.2s;
+}
+.nav-btn.active .nav-icon { background: rgba(162,140,117,0.18); }
+
+.nav-text { flex: 1; min-width: 0; }
+.nav-num {
+  font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(162,140,117,0.4); margin-bottom: 1px;
+}
+.nav-label {
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,253,246,0.45); line-height: 1.3;
+  transition: color 0.2s;
+}
+.nav-btn.active .nav-num { color: rgba(162,140,117,0.7); }
+.nav-btn.active .nav-label { color: rgba(255,253,246,0.9); }
+.nav-check { font-size: 11px; color: var(--sage); flex-shrink: 0; }
+
+/* ── MAIN ── */
+#main {
+  flex: 1; min-width: 0;
+  padding: 52px 60px 80px;
+  max-width: 860px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.section { display: none; animation: fadeIn 0.35s ease; }
+.section.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Section header */
+.badge {
+  display: inline-flex; align-items: center;
+  background: rgba(162,140,117,0.1);
+  border: 1px solid rgba(162,140,117,0.22);
+  color: var(--gold);
+  font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 3px;
+  margin-bottom: 16px;
+}
+.section-eyebrow {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(162,140,117,0.6); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-eyebrow::after {
+  content: ''; height: 1px; background: var(--border);
+  flex: 1; max-width: 48px;
+}
+.section-title {
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.15; color: var(--cream);
+  margin-bottom: 14px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-intro {
+  font-size: 15px; line-height: 1.78; color: var(--cream-dim);
+  max-width: 660px; margin-bottom: 36px;
+  font-weight: 300;
+}
+
+/* Stat row */
+.stat-row { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.stat-box {
+  flex: 1; min-width: 130px;
+  background: var(--card-deep);
+  border: 1px solid var(--border-mid);
+  border-radius: 10px; padding: 20px 18px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Tenor Sans', serif;
+  font-size: 34px; color: var(--gold); line-height: 1;
+}
+.stat-label { font-size: 11px; color: rgba(255,253,246,0.4); margin-top: 6px; line-height: 1.5; }
+
+/* Cards */
+.card-grid { display: grid; gap: 14px; margin-bottom: 28px; }
+.card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.card {
+  background: var(--card-mid);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 22px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--border-mid); }
+.card-top { width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); border-radius: 10px 10px 0 0; position: absolute; top: 0; left: 0; }
+.card-icon { font-size: 20px; margin-bottom: 10px; }
+.card-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--cream); }
+.card-body { font-size: 13px; line-height: 1.65; color: var(--cream-faint); }
+
+/* Highlight box */
+.highlight-box {
+  background: linear-gradient(135deg, var(--card-deep) 0%, #1a0008 100%);
+  border: 1px solid var(--border-mid);
+  border-left: 3px solid var(--gold);
+  border-radius: 2px 10px 10px 2px;
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  position: relative; overflow: hidden;
+}
+.highlight-box::before {
+  content: '"';
+  position: absolute; top: -24px; left: 12px;
+  font-family: 'Tenor Sans', serif; font-size: 120px;
+  color: rgba(162,140,117,0.06); line-height: 1; pointer-events: none;
+}
+.highlight-box p {
+  font-family: 'Tenor Sans', serif;
+  font-style: italic; font-size: 16px; line-height: 1.65;
+  color: rgba(255,253,246,0.88); position: relative; z-index: 1;
+}
+.highlight-box .attr {
+  font-family: 'Be Vietnam Pro', sans-serif; font-style: normal;
+  font-size: 9px; color: rgba(162,140,117,0.6);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-top: 14px;
+}
+
+/* Script box */
+.script-box {
+  background: rgba(162,140,117,0.07);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px; margin-bottom: 14px;
+}
+.script-label {
+  font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(162,140,117,0.55); margin-bottom: 8px;
+}
+.script-text {
+  font-size: 14px; line-height: 1.72; color: rgba(255,253,246,0.82);
+  font-style: italic;
+}
+
+/* Checklist */
+.checklist { list-style: none; margin-bottom: 20px; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0; border-bottom: 1px solid rgba(162,140,117,0.07);
+  font-size: 13.5px; line-height: 1.55; color: var(--cream-faint);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: '·'; color: var(--gold); font-size: 22px; line-height: 1;
+  flex-shrink: 0; margin-top: -4px;
+}
+
+/* Accordion */
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 12px; overflow: hidden;
+}
+.acc-header {
+  padding: 17px 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--card);
+  transition: background 0.2s;
+  border: none; width: 100%; text-align: left;
+}
+.acc-header:hover { background: var(--card-mid); }
+.acc-header.open { background: var(--card-mid); border-bottom: 1px solid var(--border); }
+.acc-title { font-size: 13.5px; font-weight: 600; color: var(--cream); }
+.acc-sub { font-size: 11px; color: var(--cream-faint); margin-top: 2px; }
+.acc-arrow { font-size: 16px; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; }
+.acc-header.open .acc-arrow { transform: rotate(180deg); }
+.acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 20px;
+  background: var(--card);
+  font-size: 13.5px; line-height: 1.75; color: var(--cream-faint);
+}
+.acc-body.open { max-height: 1400px; padding: 16px 20px 20px; }
+
+/* Touchpoints row */
+.tp-row {
+  display: flex; gap: 0; margin-bottom: 28px;
+  overflow-x: auto; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.tp {
+  flex: 1; min-width: 66px;
+  background: var(--card);
+  text-align: center; padding: 14px 8px;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.tp:last-child { border-right: none; }
+.tp.hi { background: var(--card-deep); }
+.tp-num {
+  font-family: 'Tenor Sans', serif;
+  font-size: 20px; color: var(--gold); line-height: 1;
+}
+.tp-label { font-size: 9px; line-height: 1.4; color: rgba(255,253,246,0.35); margin-top: 5px; }
+.tp.hi .tp-label { color: rgba(255,253,246,0.55); }
+
+/* Objection cards */
+.obj-grid { display: grid; gap: 10px; margin-bottom: 28px; }
+.obj-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+}
+.obj-trigger {
+  width: 100%; text-align: left; background: none; border: none;
+  cursor: pointer; padding: 16px 20px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  transition: background 0.2s;
+}
+.obj-trigger:hover { background: var(--card-mid); }
+.obj-problem { font-size: 14px; font-weight: 600; color: var(--cream); }
+.obj-badge {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(162,140,117,0.1);
+  border: 1px solid var(--border-mid);
+  color: var(--gold);
+  padding: 3px 8px; border-radius: 100px; flex-shrink: 0; margin-left: 12px; margin-top: 2px;
+}
+.obj-response {
+  max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+  padding: 0 20px; font-size: 13.5px; line-height: 1.72; color: var(--cream-dim);
+  border-top: 0px solid transparent; transition: max-height 0.35s ease, border-top 0.2s;
+}
+.obj-response.open {
+  max-height: 400px; padding: 0 20px 18px;
+  border-top: 1px solid var(--border);
+}
+
+/* Timeline */
+.timeline { margin-bottom: 28px; }
+.tl-item {
+  display: flex; gap: 20px; margin-bottom: 22px; position: relative;
+}
+.tl-item::before {
+  content: '';
+  position: absolute; left: 19px; top: 44px;
+  width: 1px; height: calc(100% + 0px);
+  background: var(--border);
+}
+.tl-item:last-child::before { display: none; }
+.tl-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg); border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; color: var(--gold);
+  flex-shrink: 0; z-index: 1; letter-spacing: 0;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.tl-content { flex: 1; padding-top: 6px; }
+.tl-label { font-size: 13px; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+.tl-detail { font-size: 13px; line-height: 1.65; color: var(--cream-faint); margin-bottom: 10px; }
+
+/* Divider */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 28px 0; position: relative;
+}
+.divider-label {
+  position: absolute; top: -9px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 14px;
+  font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(162,140,117,0.45);
+}
+
+/* Section nav footer */
+.section-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 52px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.foot-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 11px 22px; border-radius: 3px; cursor: pointer;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cream-faint);
+  transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+}
+.foot-btn:hover { border-color: var(--gold); color: var(--gold); }
+.foot-btn.primary {
+  background: var(--card-deep); border-color: rgba(162,140,117,0.3);
+  color: var(--cream);
+}
+.foot-btn.primary:hover { background: #3d0614; border-color: var(--gold); }
+.foot-btn:disabled { opacity: 0.3; pointer-events: none; }
+.complete-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none;
+  border: 1px solid rgba(107,143,113,0.35);
+  color: rgba(107,143,113,0.75);
+  padding: 10px 18px; border-radius: 3px; cursor: pointer;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; transition: all 0.2s;
+}
+.complete-btn:hover, .complete-btn.done {
+  background: rgba(107,143,113,0.15); color: var(--sage);
+  border-color: rgba(107,143,113,0.5);
+}
+
+/* Sub heading */
+.sub-h3 {
+  font-family: 'Tenor Sans', serif;
+  font-size: 18px; color: var(--cream);
+  margin-bottom: 16px; margin-top: 8px;
+}
+
+/* Hint text */
+.hint {
+  font-size: 12px; color: rgba(162,140,117,0.6);
+  margin-top: 8px; margin-bottom: 16px;
+}
+
+/* Scrollbar */
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: rgba(162,140,117,0.15); }
+#main::-webkit-scrollbar { width: 4px; }
+#main::-webkit-scrollbar-thumb { background: rgba(162,140,117,0.1); }
+
+@media (max-width: 860px) {
+  #sidebar { display: none; }
+  #main { padding: 28px 22px 60px; height: auto; overflow-y: unset; }
+  .card-grid.cols-2, .card-grid.cols-3 { grid-template-columns: 1fr; }
+  .stat-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-eyebrow">Aesthetic Executive · Staff Training</div>
+  <h1 class="splash-title">The Art of<br>the <em>Consult</em></h1>
+  <p class="splash-sub">From First Touch to Closed Treatment Plan</p>
+  <div class="splash-divider"></div>
+  <button class="splash-btn" onclick="enterApp()">Begin Training →</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-eyebrow">Aesthetic Executive</div>
+      <div class="logo-name">The Art of the Consult</div>
+      <div class="logo-sub">Conversion Playbook</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">Your Progress</div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-pct" id="progressPct">0% Complete</div>
+    </div>
+
+    <div class="nav-sections" id="navSections"></div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- ══ SECTION 0: OVERVIEW ══ -->
+    <div class="section active" id="sec-0">
+      <div class="section-eyebrow">Welcome</div>
+      <h1 class="section-title">From Lead to<br><em>Loyal Patient</em></h1>
+      <p class="section-intro">This playbook walks through every stage of the consultation journey — the moments that make or break your conversion rate. Use it as a training guide, a team resource, or a self-audit checklist.</p>
+
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">&lt;5</div><div class="stat-label">Minutes to respond to a lead before conversion rates drop dramatically</div></div>
+        <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Touchpoints before a lead goes cold — most practices give up after 2</div></div>
+        <div class="stat-box"><div class="stat-num">3×</div><div class="stat-label">Follow-ups after the consult needed to maximize conversion</div></div>
+      </div>
+
+      <div class="card-grid cols-2">
+        <div class="card"><div class="card-top"></div><div class="card-icon">📲</div><div class="card-title">Stage 1 — Speed to Lead</div><div class="card-body">Responding fast, engaging meaningfully, and turning an inquiry into a booked consultation.</div></div>
+        <div class="card"><div class="card-top"></div><div class="card-icon">📞</div><div class="card-title">Stage 2 — Booking the Consultation</div><div class="card-body">Branded consultations, phone scripts, intelligent questions, and a confident close.</div></div>
+        <div class="card"><div class="card-top"></div><div class="card-icon">✉️</div><div class="card-title">Stage 3 — Pre-Consult Confirmation</div><div class="card-body">Confirmation calls, provider bios, and setting the patient up for a great first impression.</div></div>
+        <div class="card"><div class="card-top"></div><div class="card-icon">🪞</div><div class="card-title">Stage 4 — The Consultation</div><div class="card-body">Opening questions, candidacy doubt, mirror moments, before-and-afters, and treatment plans.</div></div>
+        <div class="card"><div class="card-top"></div><div class="card-icon">💰</div><div class="card-title">Stage 5 — Price & Objections</div><div class="card-body">Presenting confidently, handling hesitation, and arming your team with winning responses.</div></div>
+        <div class="card"><div class="card-top"></div><div class="card-icon">📬</div><div class="card-title">Stage 6 — Post-Consult Follow-Up</div><div class="card-body">The four-touch follow-up sequence and moving patients into your long-term marketing pipeline.</div></div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 1: SPEED TO LEAD ══ -->
+    <div class="section" id="sec-1">
+      <div class="badge">Stage 1</div>
+      <div class="section-eyebrow">The First Impression</div>
+      <h1 class="section-title">Speed to <em>Lead</em></h1>
+      <p class="section-intro">The moment someone reaches out is the highest point of their interest. Every minute you wait, that interest — and your chance — diminishes. Your goal: respond within 5 minutes, every time.</p>
+
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">&lt;5</div><div class="stat-label">Minute response window for maximum conversion probability</div></div>
+        <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Total touchpoints before moving to cold outreach</div></div>
+      </div>
+
+      <div class="sub-h3">The 7-Touch Outreach Sequence</div>
+
+      <div class="tp-row">
+        <div class="tp hi"><div class="tp-num">1</div><div class="tp-label">Call immediately</div></div>
+        <div class="tp hi"><div class="tp-num">2</div><div class="tp-label">Text if no answer</div></div>
+        <div class="tp"><div class="tp-num">3</div><div class="tp-label">Call next day</div></div>
+        <div class="tp"><div class="tp-num">4</div><div class="tp-label">Text next day</div></div>
+        <div class="tp"><div class="tp-num">5</div><div class="tp-label">Call 3–7 days later</div></div>
+        <div class="tp"><div class="tp-num">6</div><div class="tp-label">Text 3–7 days later</div></div>
+        <div class="tp"><div class="tp-num">7</div><div class="tp-label">Final text + incentive</div></div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📱 Text Messaging — Stand Out from the Crowd</div><div class="acc-sub">Make your texts feel personal, not automated</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>Use the patient's first name — every time</li>
+            <li>Add a personal touch: "I saw you reached out about Morpheus8 — I'd love to answer any questions!"</li>
+            <li>Include a before-and-after photo relevant to their inquiry to spark engagement</li>
+            <li>Share your practice mission or core values: <em>"At [Practice], we believe..."</em></li>
+            <li>Keep it conversational — no corporate language, no copy-paste scripts that feel robotic</li>
+          </ul>
+          <div class="script-box">
+            <div class="script-label">Example Text — First Outreach</div>
+            <div class="script-text">"Hi [Name]! This is [Your Name] from [Practice]. I saw you were interested in learning more about your skin — I'd love to chat! Here's a quick before-and-after from one of our recent treatments 👆 When's a good time to connect?"</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Final Touch (Day 10–14) — Incentive Text</div>
+            <div class="script-text">"Hi [Name], I wanted to reach out one more time — we'd love to have you in. As a thank-you for booking this month, I'm happy to offer $50 toward your first service. Would love to get you on the schedule! 💫"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📞 Phone Calls — Beyond Just Answering</div><div class="acc-sub">Every call is a branding opportunity</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>Answer with energy and warmth — your tone sets the entire relationship</li>
+            <li>Have a distinctive, memorable greeting: <em>"Thank you for calling [Practice] — where every detail matters!"</em></li>
+            <li>Never let it ring more than twice during business hours without a plan in place for callbacks</li>
+            <li>If you miss a call: call back within 5 minutes, then text immediately after</li>
+            <li>The goal of the call is not just to answer questions — it's to book a consultation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 2: BOOKING ══ -->
+    <div class="section" id="sec-2">
+      <div class="badge">Stage 2</div>
+      <div class="section-eyebrow">On the Phone</div>
+      <h1 class="section-title">Booking the <em>Consultation</em></h1>
+      <p class="section-intro">This is where you shift from inquiry to commitment. Brand your consultation, ask the right questions, and close the booking — confidently and naturally.</p>
+
+      <div class="highlight-box">
+        <p>Don't book a "Morpheus8 consultation." Book your <strong style="color:var(--cream)">Signature Skin Assessment</strong> — a personalized experience that includes a skin analysis, imaging, body composition review, and a customized treatment plan.</p>
+        <div class="attr">Brand Your Consultation — Name It, Own It</div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">✨ How to Brand Your Consultation</div><div class="acc-sub">What it's called, what it includes, what to tell them</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <p style="margin-top:12px;margin-bottom:14px;font-size:13.5px">Create a name for your consultation that feels premium and exclusive — patients should want to come in because the consult itself sounds valuable.</p>
+          <ul class="checklist">
+            <li><strong style="color:var(--cream)">Name it:</strong> "Your Signature Skin Assessment," "The Radiance Consultation," "Your Complete Beauty Blueprint"</li>
+            <li><strong style="color:var(--cream)">Tell them what's included:</strong> Skin analysis, body composition, 3D imaging, provider review, customized treatment plan</li>
+            <li><strong style="color:var(--cream)">Set expectations:</strong> How long it is, what to bring, what they'll walk away with</li>
+            <li><strong style="color:var(--cream)">Build anticipation:</strong> "You're going to love this — we take a really thorough approach here"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">🎯 Questions to Ask Before They Hang Up</div><div class="acc-sub">Gather intel that makes the consult exceptional</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>What areas are you most interested in treating?</li>
+            <li>What's your main concern — and how long have you been dealing with it?</li>
+            <li>What have you tried before? Did it work?</li>
+            <li>What does your ideal result look like?</li>
+            <li>Is there a specific event or timeline you're working toward?</li>
+            <li>How did you hear about us?</li>
+            <li>Is there anything specific you want to make sure we cover during your visit?</li>
+          </ul>
+          <p class="hint">Add all notes to the appointment — the provider should walk in already knowing their story.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📅 How to Assume & Close the Booking</div><div class="acc-sub">Give options without leaving the door open to hesitation</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <div class="script-box" style="margin-top:12px">
+            <div class="script-label">Assuming the Booking</div>
+            <div class="script-text">"Our next available is [Day] at [Time] — would that work for you?"</div>
+          </div>
+          <p style="font-size:13px;color:var(--cream-faint);margin-bottom:14px">Don't give them your entire calendar. Lead with one strong option — it creates a sense of demand without saying you're fully booked.</p>
+          <div class="script-box">
+            <div class="script-label">If That Time Doesn't Work</div>
+            <div class="script-text">"No problem — what days and times generally work best for you? Let me see what we have that lines up."</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Always Close With</div>
+            <div class="script-text">"Is there anything else I can help you with before we see you on [Date]?"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 3: PRE-CONSULT ══ -->
+    <div class="section" id="sec-3">
+      <div class="badge">Stage 3</div>
+      <div class="section-eyebrow">Before They Arrive</div>
+      <h1 class="section-title">The Pre-Consult <em>Experience</em></h1>
+      <p class="section-intro">The consultation experience starts before they walk in. A thoughtful confirmation call and a personalized provider bio can set the entire tone.</p>
+
+      <div class="card-grid cols-2">
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-icon">📋</div>
+          <div class="card-title">The Confirmation Call</div>
+          <div class="card-body">Confirm day, time, and location. Share any parking or access details. Ask if there's a specific part of the consultation they want to spend extra time on — skincare, tech, payment plans. Document everything.</div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-icon">👤</div>
+          <div class="card-title">The Provider Bio Text</div>
+          <div class="card-body">Send a personalized text with your provider's credentials, experience, and a personal note. Include a photo if possible. This breaks the ice before they arrive and builds immediate trust.</div>
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-label">Sample Provider Bio Text</div>
+        <div class="script-text">"Hi [Name]! 👋 We're so excited to see you on [Day]. You'll be meeting with [Provider Name] — she has [X] years of experience in aesthetic medicine and has performed over [#] treatments. Outside of work, she loves [personal detail]. We know you're in great hands. See you soon!"</div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📝 Intake Forms — Use Them Effectively</div><div class="acc-sub">The form is only as good as what you do with it</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>Design forms to surface concerns, goals, and history — not just basic info</li>
+            <li>If digital completion rates are low, switch to paper or have staff complete it with the patient</li>
+            <li>Providers should review intake form responses before every appointment — every time</li>
+            <li>Use intake data to personalize the consultation opening</li>
+            <li>Revisit and update forms at each visit to track how concerns evolve</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 4: THE CONSULTATION ══ -->
+    <div class="section" id="sec-4">
+      <div class="badge">Stage 4</div>
+      <div class="section-eyebrow">In the Room</div>
+      <h1 class="section-title">The <em>Consultation</em></h1>
+      <p class="section-intro">The best consultations feel like conversations, not sales pitches. Let them talk first. Listen deeply. Then step into your role as the expert they need.</p>
+
+      <div class="highlight-box">
+        <p>The provider's job in the first half of the consultation is to ask questions — not answer them. The more the patient talks, the more trust you build, and the more precise your recommendations become.</p>
+        <div class="attr">Core Consultation Philosophy</div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">🗝️ The 3 Opening Questions</div><div class="acc-sub">Start here. Then just listen.</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <div class="script-box" style="margin-top:12px">
+            <div class="script-label">Opening Question 1 — The Door Opener</div>
+            <div class="script-text">"So, what brought you in today?"</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Opening Question 2 — Treatment History</div>
+            <div class="script-text">"What have you tried before to address this?"</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Opening Question 3 — Expectations</div>
+            <div class="script-text">"What type of results would make you feel really happy with this?"</div>
+          </div>
+          <p style="margin-top:12px;font-size:13px;color:var(--cream-faint)">After each answer — keep going. Don't rush to solutions. Ask follow-up questions and let them fill the silence.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">💬 Deep-Dive Questions to Keep Going</div><div class="acc-sub">Layer these in naturally as the conversation flows</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>Do you have a specific event or timeline you're working toward?</li>
+            <li>What made you finally decide to pick up the phone and book this?</li>
+            <li>How long have you been thinking about addressing this?</li>
+            <li>What skincare products are you currently using?</li>
+            <li>What does your day-to-day routine look like?</li>
+            <li>What do you do for work?</li>
+            <li>Have you visited other practices for aesthetic treatments? What did you love — or not love?</li>
+            <li>What, if anything, are you currently doing to address or cover this concern?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">🔬 Building Candidacy Doubt</div><div class="acc-sub">The technique that builds trust and creates desire</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <p style="margin-top:12px;margin-bottom:16px;font-size:13.5px">After listening, transition into evaluation mode. The best providers aren't yes-people — they evaluate, they recommend, and they protect outcomes. This builds credibility and makes patients <em>want</em> to be a candidate.</p>
+          <div class="script-box">
+            <div class="script-label">Candidacy Bridge Script</div>
+            <div class="script-text">"We have a lot of amazing transformative treatments here — but not every treatment is right for every person. So I'd love to do a really thorough evaluation and see exactly what I think would get you to your goals."</div>
+          </div>
+          <p class="hint">This positions you as a trusted expert — not a salesperson. It also makes patients lean in and want your approval.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">🪞 The Mirror Moment & Compliment Sandwich</div><div class="acc-sub">Validate concerns without making them feel bad</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <p style="margin-top:12px;margin-bottom:14px;font-size:13.5px">Give them the mirror. Let them point to their concerns. Then respond with a compliment sandwich — affirm something genuine, address the concern, and close with a positive outcome vision.</p>
+          <div class="script-box">
+            <div class="script-label">Compliment Sandwich Example</div>
+            <div class="script-text">"Wow, you have a really incredible cheekbone structure — I love that. I do see the fine lines you're pointing to around your eyes. I honestly think if we address those, it's going to make your eyes look so much brighter and really bring out all that beautiful bone structure you already have."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📸 Before-and-Afters & Credentialing</div><div class="acc-sub">Show proof, build confidence, earn trust</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li>Pull out before-and-afters that are relevant to their specific concern and treatment</li>
+            <li>Walk through results conversationally — "Here's what we got for this patient who had a similar concern..."</li>
+            <li>Credential yourself naturally: <em>"I've done hundreds of these procedures — the outcomes are really consistent when we follow the right protocol."</em></li>
+            <li>Highlight what makes your technology or technique different from what they might have seen elsewhere</li>
+            <li>Invite them to ask questions as you go — keep it a dialogue, not a presentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 5: PRICE & OBJECTIONS ══ -->
+    <div class="section" id="sec-5">
+      <div class="badge">Stage 5</div>
+      <div class="section-eyebrow">The Moment of Truth</div>
+      <h1 class="section-title">Price, Plans <em>& Objections</em></h1>
+      <p class="section-intro">You've built trust and shown results. Now step out, build the plan, come back, and present it like the expert you are — with confidence, not apology.</p>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">📄 Building the Treatment Plan</div><div class="acc-sub">What to put on paper — and how to walk back in</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <ul class="checklist" style="margin-top:12px">
+            <li><strong style="color:var(--cream)">Treatment name</strong> — spell it out, make it feel real</li>
+            <li><strong style="color:var(--cream)">Number of recommended sessions</strong></li>
+            <li><strong style="color:var(--cream)">What it treats</strong> — specific to their concern</li>
+            <li><strong style="color:var(--cream)">Downtime expectations</strong></li>
+            <li><strong style="color:var(--cream)">Prep and aftercare notes</strong></li>
+            <li><strong style="color:var(--cream)">Price</strong> — already on the paper, so you don't have to "say" it</li>
+            <li><strong style="color:var(--cream)">At-home care section</strong> — products or habits that will enhance outcomes</li>
+          </ul>
+          <p class="hint">If you've recommended products, bring them into the room in a bag. Let them see, touch, and hold what's in the plan.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div><div class="acc-title">🎙️ How to Present the Plan</div><div class="acc-sub">Walk in confident. This is what they need.</div></div>
+          <span class="acc-arrow">⌄</span>
+        </button>
+        <div class="acc-body">
+          <div class="script-box" style="margin-top:12px">
+            <div class="script-label">Opening the Presentation</div>
+            <div class="script-text">"Okay, so here's what I've put together for you — I'm really excited about this plan. Let me walk you through it."</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Presenting Each Treatment</div>
+            <div class="script-text">"So first, I'd start with [Treatment]. This addresses [concern] by [brief how it works]. Before we do it, you'll want to [prep]. Afterward you can expect [recovery]. And I'd recommend [# of sessions] for the results we're going for."</div>
+          </div>
+          <div class="script-box">
+            <div class="script-label">Closing the Presentation</div>
+            <div class="script-text">"What questions do you have?" ... "Any other questions?" ... "Perfect — let's head up front and get your first treatment on the schedule."</div>
+          </div>
+          <p class="hint">Send them home with a copy of the plan. Take a photo or scan it yourself so you can text it later.</p>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-label">Objection Handling</div></div>
+
+      <div class="sub-h3">Common Objections — Tap to See the Response</div>
+
+      <div class="obj-grid">
+        <div class="obj-card">
+          <button class="obj-trigger" onclick="toggleObj(this)">
+            <div><div class="obj-problem">"That's more than I expected to spend."</div></div>
+            <span class="obj-badge">Price</span>
+          </button>
+          <div class="obj-response">
+            <p style="padding-top:14px">Totally understand — and I want to make sure you understand what's included in that. You're not just paying for a treatment — you're paying for my expertise, the protocol, and the results. Not all treatments are the same. The technique used, the depth, the settings — those things make a massive difference in outcome. Our pricing reflects the level of care and precision you'll get here.</p>
+          </div>
+        </div>
+
+        <div class="obj-card">
+          <button class="obj-trigger" onclick="toggleObj(this)">
+            <div><div class="obj-problem">"I need to think about it / talk to my partner."</div></div>
+            <span class="obj-badge">Hesitation</span>
+          </button>
+          <div class="obj-response">
+            <p style="padding-top:14px">Of course! What questions do you think they might have? Let me answer those now so you have everything you need to make the decision together. I want you to feel completely confident going into this.</p>
+          </div>
+        </div>
+
+        <div class="obj-card">
+          <button class="obj-trigger" onclick="toggleObj(this)">
+            <div><div class="obj-problem">"I've seen it cheaper somewhere else."</div></div>
+            <span class="obj-badge">Competition</span>
+          </button>
+          <div class="obj-response">
+            <p style="padding-top:14px">I hear you — and price is always a fair consideration. What I'd encourage you to ask when comparing is: What technology are they using? What protocol do they follow? How many of these has the provider done? Because the machine, the depth, the technique — those all determine your results. We invest heavily in the highest-quality technology and training, and that's reflected in the consistency of our outcomes.</p>
+          </div>
+        </div>
+
+        <div class="obj-card">
+          <button class="obj-trigger" onclick="toggleObj(this)">
+            <div><div class="obj-problem">"I'm not ready to commit to all of this right now."</div></div>
+            <span class="obj-badge">Timeline</span>
+          </button>
+          <div class="obj-response">
+            <p style="padding-top:14px">No pressure at all! When would you ideally want to start? I'd love to at least get your first appointment on the calendar now — even if it's a few months out — so we can make sure you get the time slot that works best for you. We tend to book out quickly, especially on weekends.</p>
+          </div>
+        </div>
+
+        <div class="obj-card">
+          <button class="obj-trigger" onclick="toggleObj(this)">
+            <div><div class="obj-problem">"Do I have to do all of this at once?"</div></div>
+            <span class="obj-badge">Scope</span>
+          </button>
+          <div class="obj-response">
+            <p style="padding-top:14px">Absolutely not! This is your full plan — your roadmap. We can absolutely prioritize and build toward it over time. What feels most important to you to address first? Let's start there and go from there.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 6: FOLLOW-UP ══ -->
+    <div class="section" id="sec-6">
+      <div class="badge">Stage 6</div>
+      <div class="section-eyebrow">After They Leave</div>
+      <h1 class="section-title">The Follow-Up <em>Sequence</em></h1>
+      <p class="section-intro">Most practices lose patients between the consult and the first treatment. Your follow-up sequence is the bridge. Four touches, done right, can dramatically change your conversion rate.</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">~2h</div>
+          <div class="tl-content">
+            <div class="tl-label">Same Day — The Treatment Plan Text</div>
+            <div class="tl-detail">Text them a photo of their treatment plan. Keep it warm and personal.</div>
+            <div class="script-box">
+              <div class="script-label">Example</div>
+              <div class="script-text">"Hi [Name]! It was so great meeting you today. I'm really excited about the plan we put together — here's a photo of it so you always have it! Please reach out with any questions anytime. 💛"</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">D+2</div>
+          <div class="tl-content">
+            <div class="tl-label">2 Days After — The Check-In</div>
+            <div class="tl-detail">Check in, see if they have questions, gently re-offer booking.</div>
+            <div class="script-box">
+              <div class="script-label">Example</div>
+              <div class="script-text">"Hi [Name]! Just wanted to check in and see if you had any questions about your treatment plan. We'd love to get your first appointment on the books whenever you're ready!"</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">D+7</div>
+          <div class="tl-content">
+            <div class="tl-label">1 Week After — The Soft Ask</div>
+            <div class="tl-detail">Acknowledge they've had time to think. Offer a quick call to address anything that came up.</div>
+            <div class="script-box">
+              <div class="script-label">Example</div>
+              <div class="script-text">"Hi [Name]! Now that you've had a week to think things over, I'd love to set up a quick 10–15 minute call to answer any questions that came up. How does [Day] at [Time] sound?"</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">D+14</div>
+          <div class="tl-content">
+            <div class="tl-label">2 Weeks After — The Final Touch</div>
+            <div class="tl-detail">One last personal reach out. Keep it light. Offer to align on a future timeline if they're not ready.</div>
+            <div class="script-box">
+              <div class="script-label">Example</div>
+              <div class="script-text">"Hey [Name]! Haven't heard back — just wanted to make sure everything was okay! If you're thinking about doing this a little later in the year, totally understand — I'd love to know your ideal timeline so we can make sure to reach out and get you on the schedule."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:4px">
+        <div class="card-top"></div>
+        <div class="card-icon">📧</div>
+        <div class="card-title">After the Follow-Up Sequence</div>
+        <div class="card-body">If they haven't converted after the four-touch sequence, move them into your regular marketing pipeline — email campaigns, promotions, newsletters. They've already been through a consult with you. They're warm. Keep showing up.</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 7: QUICK REFERENCE ══ -->
+    <div class="section" id="sec-7">
+      <div class="section-eyebrow">At a Glance</div>
+      <h1 class="section-title">Quick <em>Reference</em> Card</h1>
+      <p class="section-intro">Everything in one place. Print it, post it, train with it.</p>
+
+      <div class="card-grid cols-2">
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">📲 Speed to Lead</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>Respond within 5 minutes</li>
+              <li>Call first, text immediately if no answer</li>
+              <li>7 touchpoints before cold pipeline</li>
+              <li>Final touch = incentive offer</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">📞 Phone / Booking</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>Brand your consultation — give it a name</li>
+              <li>Ask 5–7 qualifying questions</li>
+              <li>Offer one time slot first</li>
+              <li>Add all notes to the appointment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">✉️ Pre-Consult</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>Confirmation call with specific questions</li>
+              <li>Provider bio text before their visit</li>
+              <li>Intake form — actually use the data</li>
+              <li>Provider reviews intake before every appt</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">🪞 In the Consult</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>3 core questions first — then listen</li>
+              <li>Build candidacy doubt before recommending</li>
+              <li>Mirror moment + compliment sandwich</li>
+              <li>Before-and-afters + credential yourself</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">💰 Treatment Plan</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>Step out and write the plan</li>
+              <li>Present it confidently — not as options</li>
+              <li>Price is on the paper — let it sit</li>
+              <li>Bring products in a bag if recommending</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top"></div>
+          <div class="card-title">📬 Follow-Up</div>
+          <div class="card-body">
+            <ul class="checklist" style="margin-top:8px">
+              <li>~2hr: Text the plan photo</li>
+              <li>Day 2: Check-in message</li>
+              <li>Day 7: Offer a quick call</li>
+              <li>Day 14: Final touch, align on timeline</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <div class="section-footer">
+      <button class="foot-btn" id="prevBtn" onclick="navigate(-1)" disabled>← Previous</button>
+      <button class="complete-btn" id="markBtn" onclick="markComplete()">
+        <span id="markIcon">◇</span> Mark Complete
+      </button>
+      <button class="foot-btn primary" id="nextBtn" onclick="navigate(1)">Next →</button>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const sections = [
+  { id: 'sec-0', label: 'Overview', icon: '⬡', num: 'Intro' },
+  { id: 'sec-1', label: 'Speed to Lead', icon: '⚡', num: 'Stage 1' },
+  { id: 'sec-2', label: 'Booking the Consult', icon: '📞', num: 'Stage 2' },
+  { id: 'sec-3', label: 'Pre-Consult Experience', icon: '✉️', num: 'Stage 3' },
+  { id: 'sec-4', label: 'The Consultation', icon: '🪞', num: 'Stage 4' },
+  { id: 'sec-5', label: 'Price & Objections', icon: '💰', num: 'Stage 5' },
+  { id: 'sec-6', label: 'Follow-Up Sequence', icon: '📬', num: 'Stage 6' },
+  { id: 'sec-7', label: 'Quick Reference', icon: '📋', num: 'Summary' },
+];
+
+let current = 0;
+let completed = new Set();
+
+function enterApp() {
+  document.getElementById('splash').classList.add('hidden');
+  setTimeout(() => {
+    document.getElementById('splash').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    buildNav();
+    updateUI();
+  }, 800);
+}
+
+function buildNav() {
+  const nav = document.getElementById('navSections');
+  nav.innerHTML = '';
+  sections.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-btn' + (i === 0 ? ' active' : '');
+    btn.setAttribute('data-index', i);
+    btn.innerHTML = `
+      <div class="nav-icon">${s.icon}</div>
+      <div class="nav-text">
+        <div class="nav-num">${s.num}</div>
+        <div class="nav-label">${s.label}</div>
+      </div>
+      <span class="nav-check" id="check-${i}"></span>
+    `;
+    btn.onclick = () => goTo(i);
+    nav.appendChild(btn);
+  });
+}
+
+function goTo(index) {
+  document.getElementById(sections[current].id).classList.remove('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  current = index;
+  document.getElementById(sections[current].id).classList.add('active');
+  document.querySelectorAll('.nav-btn')[current].classList.add('active');
+  updateUI();
+  const main = document.getElementById('main');
+  main.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function navigate(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < sections.length) goTo(next);
+}
+
+function markComplete() {
+  if (completed.has(current)) {
+    completed.delete(current);
+  } else {
+    completed.add(current);
+  }
+  updateUI();
+}
+
+function updateUI() {
+  document.getElementById('prevBtn').disabled = current === 0;
+  const isLast = current === sections.length - 1;
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.disabled = isLast;
+  nextBtn.textContent = isLast ? 'Done ✓' : 'Next →';
+
+  const isDone = completed.has(current);
+  const markBtn = document.getElementById('markBtn');
+  markBtn.classList.toggle('done', isDone);
+  markBtn.innerHTML = `<span>${isDone ? '✓' : '◇'}</span> ${isDone ? 'Completed!' : 'Mark Complete'}`;
+
+  document.querySelectorAll('.nav-btn').forEach((btn, i) => {
+    btn.classList.toggle('completed', completed.has(i));
+    const check = document.getElementById('check-' + i);
+    if (check) check.textContent = completed.has(i) ? '✓' : '';
+  });
+
+  const pct = Math.round((completed.size / sections.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '% Complete';
+}
+
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  // Close all others in same parent container
+  const parent = header.closest('.section') || document;
+  parent.querySelectorAll('.acc-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    header.classList.add('open');
+    body.classList.add('open');
+  }
+}
+
+function toggleObj(trigger) {
+  const response = trigger.nextElementSibling;
+  const isOpen = response.classList.contains('open');
+  document.querySelectorAll('.obj-response').forEach(r => r.classList.remove('open'));
+  if (!isOpen) response.classList.add('open');
+}
+</script>
+</body>
+</html>

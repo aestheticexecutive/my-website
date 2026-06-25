@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand Kit Builder | Aesthetic Executive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0c0004; --bg2: #140008; --burgundy: #2f0410;
+    --gold: #a28c75; --gold-dim: rgba(162,140,117,0.6); --gold-faint: rgba(162,140,117,0.12);
+    --cream: #fffdf6; --cream-50: rgba(255,253,246,0.5); --cream-30: rgba(255,253,246,0.3);
+    --cream-15: rgba(255,253,246,0.15); --border: rgba(162,140,117,0.15);
+    --border-bright: rgba(162,140,117,0.28); --radius: 12px;
+  }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: var(--cream); font-family: 'Be Vietnam Pro', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+  /* ── Topbar ── */
+  .topbar { position: sticky; top: 0; z-index: 100; background: rgba(12,0,4,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 60px; gap: 16px; }
+  .topbar-left { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .ae-wordmark { font-family: 'Tenor Sans', serif; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-dim); white-space: nowrap; }
+  .page-title { font-family: 'Tenor Sans', serif; font-size: 15px; color: var(--cream); font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+  #topbar-name { font-size: 13px; color: var(--cream-50); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .autosave-indicator { font-size: 11px; color: var(--cream-30); letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; }
+  .autosave-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(143,201,168,0.6); transition: all 0.3s; }
+  .autosave-dot.saving { background: rgba(162,140,117,0.8); transform: scale(1.3); }
+  .btn-export { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 10px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(162,140,117,0.14); border: 1px solid rgba(162,140,117,0.3); color: var(--gold); cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+  .btn-export:hover { background: rgba(162,140,117,0.22); }
+  .btn-export svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── Tabs ── */
+  .tab-nav { display: flex; border-bottom: 1px solid var(--border); background: rgba(12,0,4,0.6); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 24px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream-30); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: 'Be Vietnam Pro', sans-serif; }
+  .tab-btn:hover { color: var(--cream-50); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── Content ── */
+  .content { max-width: 900px; margin: 0 auto; padding: 36px 24px 80px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Section label ── */
+  .section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 20px; margin-top: 36px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── Resource callout ── */
+  .resource-callout { display: flex; align-items: flex-start; gap: 12px; background: rgba(162,140,117,0.07); border: 1px solid rgba(162,140,117,0.2); border-left: 3px solid rgba(162,140,117,0.5); border-radius: 10px; padding: 14px 16px; margin-bottom: 28px; }
+  .resource-callout-icon { font-size: 16px; flex-shrink: 0; line-height: 1.4; }
+  .resource-callout p { font-size: 12px; color: var(--cream-50); margin-bottom: 6px; }
+  .resource-callout a { color: var(--gold); text-decoration: none; font-size: 12px; border-bottom: 1px solid rgba(162,140,117,0.3); padding-bottom: 1px; transition: all 0.15s; }
+  .resource-callout a:hover { border-bottom-color: var(--gold); }
+
+  /* ── Field rows ── */
+  .field { margin-bottom: 20px; }
+  .field-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+  .field-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-50); font-weight: 400; }
+  .field-hint { font-size: 11px; color: var(--cream-30); margin-bottom: 10px; line-height: 1.5; }
+  input[type="text"], textarea { width: 100%; background: rgba(255,253,246,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 14px; font-weight: 300; color: var(--cream); outline: none; transition: border-color 0.2s; resize: vertical; }
+  input[type="text"]::placeholder, textarea::placeholder { color: var(--cream-30); }
+  input[type="text"]:focus, textarea:focus { border-color: rgba(162,140,117,0.4); }
+  textarea { min-height: 90px; line-height: 1.6; }
+  textarea.tall { min-height: 120px; }
+
+  /* ── AI button ── */
+  .ai-btn { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 20px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(184,160,232,0.1); border: 1px solid rgba(184,160,232,0.25); color: rgba(184,160,232,0.8); cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: 'Be Vietnam Pro', sans-serif; flex-shrink: 0; }
+  .ai-btn:hover { background: rgba(184,160,232,0.18); color: rgba(200,180,255,1); border-color: rgba(184,160,232,0.45); }
+  .ai-btn-sparkle { font-size: 11px; }
+
+  /* ── Tag inputs ── */
+  .tag-input-wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: rgba(255,253,246,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; min-height: 48px; cursor: text; transition: border-color 0.2s; }
+  .tag-input-wrap:focus-within { border-color: rgba(162,140,117,0.4); }
+  .tag-chip { display: inline-flex; align-items: center; gap: 6px; background: rgba(162,140,117,0.14); border: 1px solid rgba(162,140,117,0.28); color: var(--gold); border-radius: 20px; padding: 4px 10px 4px 12px; font-size: 12px; white-space: nowrap; }
+  .tag-chip button { background: none; border: none; color: rgba(162,140,117,0.6); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; width: 16px; height: 16px; border-radius: 50%; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+  .tag-chip button:hover { background: rgba(162,140,117,0.2); color: var(--gold); }
+  .tag-text-input { flex: 1; min-width: 120px; background: none; border: none; outline: none; font-size: 13px; color: var(--cream); font-family: 'Be Vietnam Pro', sans-serif; font-weight: 300; padding: 2px 0; }
+  .tag-text-input::placeholder { color: var(--cream-30); }
+  .suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .suggestion-chip { font-size: 11px; padding: 4px 11px; border-radius: 20px; background: rgba(162,140,117,0.07); border: 1px solid rgba(162,140,117,0.18); color: var(--cream-50); cursor: pointer; transition: all 0.15s; font-family: 'Be Vietnam Pro', sans-serif; }
+  .suggestion-chip:hover { background: rgba(162,140,117,0.14); color: var(--gold); border-color: rgba(162,140,117,0.3); }
+
+  /* ── Color palette ── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
+  .color-slot { display: flex; flex-direction: column; gap: 8px; }
+  .color-swatch-wrap { position: relative; width: 100%; height: 64px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s; }
+  .color-swatch-wrap:hover { border-color: rgba(162,140,117,0.35); }
+  .color-preview { width: 100%; height: 100%; background: rgba(255,253,246,0.05); transition: background 0.15s; }
+  .color-picker-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; border: none; padding: 0; }
+  .color-fields { display: flex; flex-direction: column; gap: 5px; }
+  .color-hex-input, .color-name-input { width: 100%; background: rgba(255,253,246,0.04); border: 1px solid var(--border); border-radius: 7px; padding: 6px 10px; font-size: 12px; font-family: 'Be Vietnam Pro', sans-serif; color: var(--cream); outline: none; transition: border-color 0.2s; }
+  .color-hex-input:focus, .color-name-input:focus { border-color: rgba(162,140,117,0.4); }
+  .color-hex-input::placeholder, .color-name-input::placeholder { color: var(--cream-30); }
+  .color-hex-input { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.05em; }
+
+  /* ── Logo upload ── */
+  .logo-upload-area { position: relative; width: 100%; max-width: 260px; height: 120px; border: 1.5px dashed rgba(162,140,117,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; transition: all 0.2s; background: rgba(255,253,246,0.03); }
+  .logo-upload-area:hover { border-color: rgba(162,140,117,0.55); background: rgba(162,140,117,0.06); }
+  .logo-upload-area.has-image { border-style: solid; border-color: rgba(162,140,117,0.25); }
+  .logo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none; }
+  .logo-placeholder svg { width: 28px; height: 28px; stroke: rgba(162,140,117,0.5); fill: none; stroke-width: 1.5; }
+  .logo-placeholder p { font-size: 12px; color: var(--cream-50); letter-spacing: 0.05em; }
+  .logo-placeholder .hint { font-size: 10px; color: var(--cream-30); }
+  .logo-file-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .logo-preview-img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+  .logo-remove-btn { position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; border-radius: 50%; background: rgba(12,0,4,0.8); border: 1px solid rgba(255,253,246,0.2); color: var(--cream-50); font-size: 13px; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 2; transition: all 0.15s; }
+  .logo-remove-btn:hover { background: rgba(47,4,16,0.9); color: var(--cream); }
+  .logo-upload-area.has-image .logo-remove-btn { display: flex; }
+  .logo-upload-area.has-image .logo-placeholder { display: none; }
+
+  /* ── Brand images grid ── */
+  .brand-images-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 600px) { .brand-images-grid { grid-template-columns: repeat(2, 1fr); } }
+  .brand-image-slot { position: relative; aspect-ratio: 1; border: 1.5px dashed rgba(162,140,117,0.25); border-radius: 10px; overflow: hidden; cursor: pointer; background: rgba(255,253,246,0.03); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .brand-image-slot:hover { border-color: rgba(162,140,117,0.5); background: rgba(162,140,117,0.05); }
+  .brand-image-slot.has-image { border-style: solid; border-color: rgba(162,140,117,0.2); }
+  .brand-image-slot svg { width: 20px; height: 20px; stroke: rgba(162,140,117,0.35); fill: none; stroke-width: 1.5; }
+  .brand-image-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .brand-image-slot img { width: 100%; height: 100%; object-fit: cover; }
+  .brand-slot-remove { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; border-radius: 50%; background: rgba(12,0,4,0.85); border: 1px solid rgba(255,253,246,0.2); color: var(--cream-50); font-size: 11px; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 2; }
+  .brand-image-slot.has-image .brand-slot-remove { display: flex; }
+  .brand-image-slot.has-image input[type="file"] { display: none; }
+
+  /* ── Layout helpers ── */
+  .font-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .font-row, .two-col { grid-template-columns: 1fr; } }
+
+  /* ── AI Modal ── */
+  #ai-modal { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.87); align-items: center; justify-content: center; padding: 24px; }
+  #ai-modal.open { display: flex; }
+  .ai-modal-card { background: #150008; border: 1px solid rgba(184,160,232,0.25); border-radius: 18px; width: 100%; max-width: 540px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.7); }
+  .ai-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1px solid rgba(184,160,232,0.15); }
+  .ai-modal-header-left { display: flex; flex-direction: column; gap: 3px; }
+  .ai-modal-title { font-family: 'Tenor Sans', serif; font-size: 16px; color: var(--cream); font-weight: 400; }
+  .ai-modal-field { font-size: 11px; color: rgba(184,160,232,0.7); letter-spacing: 0.15em; text-transform: uppercase; }
+  .ai-modal-close { background: none; border: none; color: var(--cream-30); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.15s; line-height: 1; }
+  .ai-modal-close:hover { color: var(--cream); background: rgba(255,255,255,0.06); }
+  .ai-modal-body { padding: 22px; }
+  .ai-context-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream-50); margin-bottom: 8px; display: block; }
+  .ai-context-hint { font-size: 11px; color: var(--cream-30); margin-bottom: 10px; }
+  #ai-context { width: 100%; background: rgba(255,253,246,0.05); border: 1px solid rgba(184,160,232,0.2); border-radius: 10px; padding: 12px 14px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 13px; color: var(--cream); outline: none; resize: vertical; min-height: 80px; transition: border-color 0.2s; }
+  #ai-context:focus { border-color: rgba(184,160,232,0.45); }
+  #ai-context::placeholder { color: var(--cream-30); }
+  .ai-practice-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(162,140,117,0.7); margin-top: 8px; }
+  .ai-modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+  .btn-generate { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(184,160,232,0.18); border: 1px solid rgba(184,160,232,0.35); color: rgba(200,180,255,1); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .btn-generate:hover { background: rgba(184,160,232,0.28); }
+  .btn-generate:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-cancel { padding: 11px 20px; border-radius: 10px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,253,246,0.05); border: 1px solid rgba(255,253,246,0.1); color: var(--cream-30); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .btn-cancel:hover { color: var(--cream-50); }
+  .ai-loading { display: none; align-items: center; gap: 10px; padding: 14px 0; color: var(--cream-50); font-size: 13px; }
+  .ai-spinner { width: 18px; height: 18px; border: 2px solid rgba(184,160,232,0.2); border-top-color: rgba(184,160,232,0.8); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ai-result-wrap { display: none; margin-top: 16px; border: 1px solid rgba(162,140,117,0.2); border-radius: 10px; overflow: hidden; }
+  .ai-result-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); padding: 10px 14px 0; }
+  .ai-result-text { padding: 10px 14px 14px; font-size: 13px; color: var(--cream-50); line-height: 1.7; }
+  .ai-result-actions { display: flex; gap: 8px; padding: 10px 14px 14px; border-top: 1px solid var(--border); }
+  .btn-use { padding: 8px 18px; border-radius: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(162,140,117,0.18); border: 1px solid rgba(162,140,117,0.35); color: var(--gold); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .btn-use:hover { background: rgba(162,140,117,0.28); }
+  .btn-regen { padding: 8px 16px; border-radius: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,253,246,0.04); border: 1px solid rgba(255,253,246,0.1); color: var(--cream-30); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .btn-regen:hover { color: var(--cream-50); }
+  .ai-error { display: none; margin-top: 12px; font-size: 12px; color: rgba(220,100,100,0.8); background: rgba(220,100,100,0.08); border: 1px solid rgba(220,100,100,0.2); border-radius: 8px; padding: 10px 12px; }
+
+  /* ── Export overlay ── */
+  #export-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); overflow-y: auto; }
+  .export-toolbar { position: sticky; top: 0; z-index: 10; background: rgba(12,0,4,0.97); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+  .export-toolbar h3 { font-family: 'Tenor Sans', serif; font-size: 14px; color: var(--cream); flex: 1; }
+  .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 10px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(162,140,117,0.18); border: 1px solid rgba(162,140,117,0.35); color: var(--gold); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .btn-print:hover { background: rgba(162,140,117,0.28); }
+  .btn-close { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 10px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,253,246,0.05); border: 1px solid rgba(255,253,246,0.1); color: var(--cream-50); cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; transition: all 0.2s; }
+  .export-doc-wrap { padding: 40px 24px 80px; display: flex; justify-content: center; }
+  #export-doc { width: 100%; max-width: 780px; background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,0.6); font-family: 'Be Vietnam Pro', sans-serif; color: #1a1a1a; }
+
+  /* ── Print ── */
+  @media print {
+    body > * { display: none !important; }
+    #export-overlay { display: block !important; background: none !important; padding: 0 !important; overflow: visible !important; }
+    .export-toolbar { display: none !important; }
+    .export-doc-wrap { padding: 0 !important; }
+    #export-doc { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Topbar ── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="ae-wordmark">The Aesthetic Executive</span>
+    <div class="topbar-sep"></div>
+    <span class="page-title">Brand Kit Builder</span>
+    <span id="topbar-name"></span>
+  </div>
+  <div class="topbar-right">
+    <div class="autosave-indicator">
+      <div class="autosave-dot" id="save-dot"></div>
+      <span id="save-label">Saved</span>
+    </div>
+    <button class="btn-export" onclick="openExport()">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export Brand Kit
+    </button>
+  </div>
+</div>
+
+<!-- ── Tab nav ── -->
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="foundation" onclick="switchTab('foundation')">01 Brand Foundation</button>
+  <button class="tab-btn" data-tab="visual" onclick="switchTab('visual')">02 Visual Identity</button>
+  <button class="tab-btn" data-tab="voice" onclick="switchTab('voice')">03 Brand Voice</button>
+  <button class="tab-btn" data-tab="experience" onclick="switchTab('experience')">04 Target &amp; Experience</button>
+</div>
+
+<div class="content">
+
+  <!-- ── Tab 1: Foundation ── -->
+  <div class="tab-panel active" id="panel-foundation">
+
+    <div class="resource-callout">
+      <span class="resource-callout-icon">📖</span>
+      <div>
+        <p>New to brand strategy? Start with the guide first — it walks through why each section matters before you fill it in.</p>
+        <a href="/members/resources/marketing/brand-kit" target="_blank">Read: Build Your Brand Kit Guide →</a>
+      </div>
+    </div>
+
+    <p class="section-label">Practice Identity</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-name">Practice Name</label>
+      </div>
+      <input type="text" id="f-name" placeholder="e.g. Lumina Aesthetics" oninput="update('practiceName', this.value)" />
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-mission">Mission Statement</label>
+        <button class="ai-btn" onclick="openAI('f-mission','Mission Statement','mission','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">What you do, for whom, and why it matters. 1–2 sentences.</div>
+      <textarea id="f-mission" placeholder="e.g. We help confident women look and feel like the best version of themselves through precise, personalized aesthetic care in an environment designed around trust." oninput="update('mission', this.value)"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-vision">Long-Term Vision</label>
+        <button class="ai-btn" onclick="openAI('f-vision','Long-Term Vision','vision','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Where is your practice in 5–10 years? What does it become?</div>
+      <textarea id="f-vision" placeholder="e.g. To be the most trusted name in aesthetic medicine in our market — a practice that patients refer without hesitation and practitioners want to work for." oninput="update('vision', this.value)"></textarea>
+    </div>
+
+    <p class="section-label">Core Values</p>
+
+    <div class="resource-callout">
+      <span class="resource-callout-icon">💡</span>
+      <div>
+        <p>Already built your ideal client profiles and brand personality? Pull from those here.</p>
+        <a href="/tools/ideal-client-builder.html" target="_blank">Open Ideal Client Builder →</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label">Core Values <span style="text-transform:none;letter-spacing:0;font-size:11px;color:var(--cream-30)">(Enter or comma · up to 5)</span></label>
+        <button class="ai-btn" onclick="openAI(null,'Core Values','values','tags','values','values-wrap','values-input')"><span class="ai-btn-sparkle">✦</span> AI Suggest</button>
+      </div>
+      <div class="field-hint">The 3–5 non-negotiable principles that guide every decision in your practice.</div>
+      <div class="tag-input-wrap" id="values-wrap" onclick="document.getElementById('values-input').focus()">
+        <input class="tag-text-input" id="values-input" placeholder="Type a value and press Enter…" />
+      </div>
+    </div>
+
+    <p class="section-label">Brand Pillars</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-slogan">Slogan / Tagline</label>
+        <button class="ai-btn" onclick="openAI('f-slogan','Slogan / Tagline','slogan','text')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <input type="text" id="f-slogan" placeholder="e.g. Refined. Results. Remembered." oninput="update('slogan', this.value)" />
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-promise">Brand Promise</label>
+        <button class="ai-btn" onclick="openAI('f-promise','Brand Promise','promise','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">The one thing every patient can count on — the non-negotiable experience standard.</div>
+      <textarea id="f-promise" placeholder="e.g. Every patient who walks through our doors is treated as if they are our only patient that day." oninput="update('promise', this.value)"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-differentiator">What Sets You Apart</label>
+        <button class="ai-btn" onclick="openAI('f-differentiator','What Sets You Apart','differentiator','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Why do patients choose you over competitors?</div>
+      <textarea id="f-differentiator" placeholder="e.g. We're the only practice in the area with dual board-certified injectors and a dedicated aesthetic concierge. We don't do volume — we do relationships." oninput="update('differentiator', this.value)"></textarea>
+    </div>
+
+  </div>
+
+  <!-- ── Tab 2: Visual Identity ── -->
+  <div class="tab-panel" id="panel-visual">
+
+    <p class="section-label">Logo</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label">Logo Upload</label>
+      </div>
+      <div class="field-hint">Upload your primary logo file. PNG or SVG recommended. This will appear on the cover of your exported brand kit.</div>
+      <div class="logo-upload-area" id="logo-upload-area" onclick="document.getElementById('logo-file-input').click()">
+        <div class="logo-placeholder" id="logo-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Upload Logo</p>
+          <p class="hint">PNG · SVG · JPG</p>
+        </div>
+        <img class="logo-preview-img" id="logo-preview-img" style="display:none;" />
+        <button class="logo-remove-btn" id="logo-remove-btn" onclick="event.stopPropagation();removeLogo()">✕</button>
+        <input type="file" class="logo-file-input" id="logo-file-input" accept="image/*" onchange="handleLogoUpload(this.files[0])" />
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-logo">Logo Notes</label>
+        <button class="ai-btn" onclick="openAI('f-logo','Logo Notes','logoDescription','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Describe your logo versions, color usage rules, and file format guidance.</div>
+      <textarea id="f-logo" placeholder="e.g. Primary: full wordmark in Tenor Sans, uppercase, gold on dark. Alternate: wordmark on white background. Icon: monogram in a thin circle. Files in SVG + PNG (white, black, and gold versions)." oninput="update('logoDescription', this.value)"></textarea>
+    </div>
+
+    <p class="section-label">Color Palette</p>
+
+    <div class="field">
+      <label class="field-label" style="display:block;margin-bottom:8px;">Brand Colors <span style="text-transform:none;letter-spacing:0;font-size:11px;color:var(--cream-30)">(click swatch to pick · enter HEX · add a name)</span></label>
+      <div class="field-hint">Include your primary, secondary, and accent colors with exact HEX codes. These render as full swatches in your exported kit.</div>
+      <div class="color-grid" id="color-grid"></div>
+    </div>
+
+    <p class="section-label">Typography</p>
+
+    <div class="field">
+      <label class="field-label" style="display:block;margin-bottom:8px;">Brand Fonts</label>
+      <div class="field-hint">Enter font names exactly as used (Google Fonts or your brand files). All three display large in your exported kit.</div>
+      <div class="font-row">
+        <div>
+          <label class="field-label" for="f-font1" style="font-size:10px;margin-bottom:6px;">Primary / Display</label>
+          <input type="text" id="f-font1" placeholder="e.g. Tenor Sans" oninput="update('fontPrimary', this.value)" />
+        </div>
+        <div>
+          <label class="field-label" for="f-font2" style="font-size:10px;margin-bottom:6px;">Secondary</label>
+          <input type="text" id="f-font2" placeholder="e.g. Cormorant Garamond" oninput="update('fontSecondary', this.value)" />
+        </div>
+        <div>
+          <label class="field-label" for="f-font3" style="font-size:10px;margin-bottom:6px;">Body / Accent</label>
+          <input type="text" id="f-font3" placeholder="e.g. Be Vietnam Pro" oninput="update('fontBody', this.value)" />
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Brand Imagery</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label">Mood Board / Brand Images</label>
+      </div>
+      <div class="field-hint">Upload up to 8 brand images — photography examples, mood board images, or inspiration shots. These appear in your exported kit as a visual reference.</div>
+      <div class="brand-images-grid" id="brand-images-grid"></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-photo">Photography Style Notes</label>
+        <button class="ai-btn" onclick="openAI('f-photo','Photography Style','photographyStyle','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Describe your brand photography aesthetic — lighting, mood, subject style, backgrounds, editing style.</div>
+      <textarea id="f-photo" placeholder="e.g. Warm, natural lighting. Skin-forward close-ups. Neutral backgrounds — cream, stone, white linen. No harsh flash or clinical lighting. Models reflect our target demographic: women 30–55, polished but approachable. Editing: warm tones, soft contrast, never oversaturated." oninput="update('photographyStyle', this.value)"></textarea>
+    </div>
+
+  </div>
+
+  <!-- ── Tab 3: Brand Voice ── -->
+  <div class="tab-panel" id="panel-voice">
+
+    <p class="section-label">Personality</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label">Tone Words <span style="text-transform:none;letter-spacing:0;font-size:11px;color:var(--cream-30)">(Enter or comma to add)</span></label>
+        <button class="ai-btn" onclick="openAI(null,'Tone Words','toneWords','tags','toneWords','tone-wrap','tone-input')"><span class="ai-btn-sparkle">✦</span> AI Suggest</button>
+      </div>
+      <div class="field-hint">5–8 adjectives that describe how your brand communicates.</div>
+      <div class="tag-input-wrap" id="tone-wrap" onclick="document.getElementById('tone-input').focus()">
+        <input class="tag-text-input" id="tone-input" placeholder="Type a word and press Enter…" />
+      </div>
+      <div class="suggestions" id="tone-suggestions">
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','luxurious')">luxurious</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','approachable')">approachable</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','empowering')">empowering</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','clinical')">clinical</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','warm')">warm</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','refined')">refined</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','confident')">confident</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','expert')">expert</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','discreet')">discreet</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','nurturing')">nurturing</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','results-driven')">results-driven</span>
+        <span class="suggestion-chip" onclick="addSuggestion('toneWords','innovative')">innovative</span>
+      </div>
+    </div>
+
+    <p class="section-label">Language Guide</p>
+
+    <div class="two-col">
+      <div class="field">
+        <div class="field-label-row">
+          <label class="field-label" for="f-lang-use">Language to Use</label>
+          <button class="ai-btn" onclick="openAI('f-lang-use','Language to Use','languageUse','textarea')"><span class="ai-btn-sparkle">✦</span> AI</button>
+        </div>
+        <div class="field-hint">Phrases and words that feel on-brand.</div>
+        <textarea class="tall" id="f-lang-use" placeholder='e.g. "Your goals" not "what you want done". "Recommend" not "upsell". We use first names.' oninput="update('languageUse', this.value)"></textarea>
+      </div>
+      <div class="field">
+        <div class="field-label-row">
+          <label class="field-label" for="f-lang-avoid">Language to Avoid</label>
+          <button class="ai-btn" onclick="openAI('f-lang-avoid','Language to Avoid','languageAvoid','textarea')"><span class="ai-btn-sparkle">✦</span> AI</button>
+        </div>
+        <div class="field-hint">Words and tones that are off-brand.</div>
+        <textarea class="tall" id="f-lang-avoid" placeholder='e.g. Avoid "cheap", "discount", "anti-aging", pushy sales language, excessive exclamation marks.' oninput="update('languageAvoid', this.value)"></textarea>
+      </div>
+    </div>
+
+    <p class="section-label">Sample Messaging</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-social">Sample Social Caption</label>
+        <button class="ai-btn" onclick="openAI('f-social','Sample Social Caption','sampleSocial','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <textarea id="f-social" placeholder="e.g. There's something different about a patient who finally feels seen. Not just treated — heard. That's what we show up to do every day." oninput="update('sampleSocial', this.value)"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-email">Sample Email Opening</label>
+        <button class="ai-btn" onclick="openAI('f-email','Sample Email Opening','sampleEmail','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <textarea id="f-email" placeholder="e.g. We hope you've been feeling incredible since your last visit with us. We wanted to reach out personally with something we think you'll love…" oninput="update('sampleEmail', this.value)"></textarea>
+    </div>
+
+  </div>
+
+  <!-- ── Tab 4: Target & Experience ── -->
+  <div class="tab-panel" id="panel-experience">
+
+    <p class="section-label">Target Client</p>
+
+    <div class="resource-callout">
+      <span class="resource-callout-icon">👤</span>
+      <div>
+        <p>Haven't built your ideal client profiles yet? The Ideal Client Builder helps you map out 3 detailed personas before filling this in.</p>
+        <a href="/tools/ideal-client-builder.html" target="_blank">Open Ideal Client Builder →</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-target">Target Client Overview</label>
+        <button class="ai-btn" onclick="openAI('f-target','Target Client','targetClient','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Who is your ideal patient? Age, lifestyle, values, income, what they care about.</div>
+      <textarea class="tall" id="f-target" placeholder="e.g. Women 30–55, professionals and entrepreneurs, household income $150K+. Values her appearance as an investment in confidence. Researches before she books. Expects premium experience and personalized attention. She doesn't want to look different — she wants to look like herself, but refreshed." oninput="update('targetClient', this.value)"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label">Top Patient Concerns <span style="text-transform:none;letter-spacing:0;font-size:11px;color:var(--cream-30)">(Enter or comma to add)</span></label>
+      </div>
+      <div class="tag-input-wrap" id="concerns-wrap" onclick="document.getElementById('concerns-input').focus()">
+        <input class="tag-text-input" id="concerns-input" placeholder="e.g. fine lines, skin texture…" />
+      </div>
+      <div class="suggestions">
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','fine lines')">fine lines</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','volume loss')">volume loss</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','skin laxity')">skin laxity</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','hyperpigmentation')">hyperpigmentation</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','texture')">texture</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','body contouring')">body contouring</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','under-eye hollows')">under-eye hollows</span>
+        <span class="suggestion-chip" onclick="addSuggestion('clientConcerns','jawline definition')">jawline definition</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-discovery">How Patients Find You</label>
+        <button class="ai-btn" onclick="openAI('f-discovery','How Patients Find You','discoveryChannels','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <textarea id="f-discovery" placeholder="e.g. Instagram (primary), Google search, word of mouth from existing patients, referrals from local physicians." oninput="update('discoveryChannels', this.value)"></textarea>
+    </div>
+
+    <p class="section-label">Experience Standards</p>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-consult">Consultation Experience</label>
+        <button class="ai-btn" onclick="openAI('f-consult','Consultation Experience','consultationExperience','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">How should a consultation feel? What do patients leave feeling?</div>
+      <textarea id="f-consult" placeholder="e.g. The patient should leave feeling truly heard — not sold to. We open every consult by asking about their goals in their words, not ours. We educate before we recommend. We never rush." oninput="update('consultationExperience', this.value)"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row">
+        <label class="field-label" for="f-ambiance">Facility Ambiance</label>
+        <button class="ai-btn" onclick="openAI('f-ambiance','Facility Ambiance','facilityAmbiance','textarea')"><span class="ai-btn-sparkle">✦</span> AI Write</button>
+      </div>
+      <div class="field-hint">Scent, music, lighting, decor, hospitality touches.</div>
+      <textarea id="f-ambiance" placeholder="e.g. Scent: light diffuser — white tea or clean linen. Music: low-tempo instrumental. Lighting: warm, never fluorescent. Decor: minimal, warm neutrals, live botanicals." oninput="update('facilityAmbiance', this.value)"></textarea>
+    </div>
+
+    <div class="two-col">
+      <div class="field">
+        <div class="field-label-row">
+          <label class="field-label" for="f-followup">Follow-Up Standard</label>
+          <button class="ai-btn" onclick="openAI('f-followup','Follow-Up Standard','followUp','textarea')"><span class="ai-btn-sparkle">✦</span> AI</button>
+        </div>
+        <textarea id="f-followup" placeholder="e.g. Personal text from provider within 48 hours. Email check-in at 2 weeks. Rebooking outreach at 8 weeks." oninput="update('followUp', this.value)"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" style="display:block;margin-bottom:8px;" for="f-mission-link">Mission &amp; Vision done?</label>
+        <div style="background:rgba(162,140,117,0.06);border:1px solid rgba(162,140,117,0.18);border-radius:10px;padding:14px 16px;">
+          <p style="font-size:12px;color:var(--cream-30);margin-bottom:10px;">If you need help defining your mission and vision, explore:</p>
+          <a href="/members/resources/marketing/brand-kit" target="_blank" style="display:block;font-size:12px;color:var(--gold);text-decoration:none;margin-bottom:6px;border-bottom:1px solid rgba(162,140,117,0.25);padding-bottom:6px;">Brand Kit Guide →</a>
+          <a href="/members/resources/marketing" target="_blank" style="display:block;font-size:12px;color:rgba(162,140,117,0.65);text-decoration:none;">All Marketing Resources →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Export Overlay ── -->
+<div id="export-overlay">
+  <div class="export-toolbar">
+    <h3>Brand Kit Preview</h3>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Export as PDF
+    </button>
+    <button class="btn-close" onclick="closeExport()">✕ Close</button>
+  </div>
+  <div class="export-doc-wrap">
+    <div id="export-doc"></div>
+  </div>
+</div>
+
+<!-- ── AI Modal ── -->
+<div id="ai-modal">
+  <div class="ai-modal-card">
+    <div class="ai-modal-header">
+      <div class="ai-modal-header-left">
+        <div class="ai-modal-title">✦ AI Write</div>
+        <div class="ai-modal-field" id="ai-modal-field-name"></div>
+      </div>
+      <button class="ai-modal-close" onclick="closeAI()">✕</button>
+    </div>
+    <div class="ai-modal-body">
+      <label class="ai-context-label">Tell us about your practice</label>
+      <div class="ai-context-hint">The more specific your context, the better the result. Include your location, specialty focus, patient demographic, or price point.</div>
+      <textarea id="ai-context" rows="3" placeholder="e.g. High-end med spa in Nashville, TN. We specialize in natural-looking injectables and skin for professional women 35–55. Our price point is premium. We pride ourselves on a calm, unhurried experience."></textarea>
+      <div class="ai-practice-tag" id="ai-practice-tag" style="display:none;">
+        <span style="color:var(--cream-30);">Practice:</span>
+        <span id="ai-practice-name-label"></span>
+      </div>
+      <div class="ai-modal-actions">
+        <button class="btn-generate" id="ai-generate-btn" onclick="runGenerate()">✦ Generate</button>
+        <button class="btn-cancel" onclick="closeAI()">Cancel</button>
+      </div>
+      <div class="ai-loading" id="ai-loading">
+        <div class="ai-spinner"></div>
+        <span>Writing for your brand…</span>
+      </div>
+      <div class="ai-result-wrap" id="ai-result-wrap">
+        <div class="ai-result-label">Generated</div>
+        <div class="ai-result-text" id="ai-result-text"></div>
+        <div class="ai-result-actions">
+          <button class="btn-use" onclick="applyGenerated()">Use This</button>
+          <button class="btn-regen" onclick="runGenerate()">↺ Regenerate</button>
+        </div>
+      </div>
+      <div class="ai-error" id="ai-error"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────
+const state = {
+  practiceName: '', mission: '', vision: '', values: [], slogan: '', promise: '', differentiator: '',
+  colors: Array(6).fill(null).map(() => ({ hex: '', name: '' })),
+  fontPrimary: '', fontSecondary: '', fontBody: '',
+  logoDescription: '', photographyStyle: '',
+  logoImage: '', brandImages: Array(8).fill(''),
+  toneWords: [], languageUse: '', languageAvoid: '',
+  sampleSocial: '', sampleEmail: '',
+  targetClient: '', clientConcerns: [],
+  consultationExperience: '', facilityAmbiance: '', followUp: '', discoveryChannels: '',
+};
+
+// ── Autosave ──────────────────────────────────────────────────────
+let saveTimer = null;
+function update(key, val) {
+  state[key] = val;
+  scheduleSave();
+  if (key === 'practiceName') {
+    const el = document.getElementById('topbar-name');
+    el.textContent = val ? '· ' + val : '';
+    const ptag = document.getElementById('ai-practice-tag');
+    const pname = document.getElementById('ai-practice-name-label');
+    if (val) { ptag.style.display = 'flex'; pname.textContent = val; }
+    else { ptag.style.display = 'none'; }
+  }
+}
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  const dot = document.getElementById('save-dot'), label = document.getElementById('save-label');
+  dot.classList.add('saving'); label.textContent = 'Saving…';
+  saveTimer = setTimeout(() => {
+    try { localStorage.setItem('ae_brand_kit', JSON.stringify(state)); } catch(e) { console.warn('Save failed:', e); }
+    dot.classList.remove('saving'); label.textContent = 'Saved';
+  }, 600);
+}
+
+function loadSaved() {
+  const raw = localStorage.getItem('ae_brand_kit');
+  if (!raw) return;
+  try {
+    const saved = JSON.parse(raw);
+    Object.assign(state, saved);
+    if (!state.colors || state.colors.length < 6) state.colors = Array(6).fill(null).map((_,i) => state.colors?.[i] || { hex:'', name:'' });
+    if (!state.brandImages || state.brandImages.length < 8) state.brandImages = Array(8).fill('').map((_,i) => state.brandImages?.[i] || '');
+    // Restore text fields
+    [['f-name','practiceName'],['f-mission','mission'],['f-vision','vision'],['f-slogan','slogan'],
+     ['f-promise','promise'],['f-differentiator','differentiator'],['f-font1','fontPrimary'],
+     ['f-font2','fontSecondary'],['f-font3','fontBody'],['f-logo','logoDescription'],
+     ['f-photo','photographyStyle'],['f-lang-use','languageUse'],['f-lang-avoid','languageAvoid'],
+     ['f-social','sampleSocial'],['f-email','sampleEmail'],['f-target','targetClient'],
+     ['f-consult','consultationExperience'],['f-ambiance','facilityAmbiance'],
+     ['f-followup','followUp'],['f-discovery','discoveryChannels'],
+    ].forEach(([id, key]) => { const el = document.getElementById(id); if (el && state[key]) el.value = state[key]; });
+    if (state.practiceName) {
+      document.getElementById('topbar-name').textContent = '· ' + state.practiceName;
+      document.getElementById('ai-practice-name-label').textContent = state.practiceName;
+      document.getElementById('ai-practice-tag').style.display = 'flex';
+    }
+    renderColorGrid();
+    renderLogoUpload();
+    renderBrandImagesGrid();
+    renderTagChips('values', 'values-wrap', 'values-input');
+    renderTagChips('toneWords', 'tone-wrap', 'tone-input');
+    renderTagChips('clientConcerns', 'concerns-wrap', 'concerns-input');
+  } catch(e) { console.warn('Load failed:', e); }
+}
+
+// ── Tab switching ─────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+}
+
+// ── Tag inputs ────────────────────────────────────────────────────
+function renderTagChips(stateKey, wrapId, inputId) {
+  const wrap = document.getElementById(wrapId);
+  const input = document.getElementById(inputId);
+  wrap.querySelectorAll('.tag-chip').forEach(c => c.remove());
+  (state[stateKey] || []).forEach((val, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip';
+    chip.innerHTML = escHtml(val) + '<button onclick="removeTag(\'' + stateKey + '\',' + i + ',\'' + wrapId + '\',\'' + inputId + '\')">×</button>';
+    wrap.insertBefore(chip, input);
+  });
+}
+function removeTag(stateKey, idx, wrapId, inputId) {
+  state[stateKey].splice(idx, 1); renderTagChips(stateKey, wrapId, inputId); scheduleSave();
+}
+function addTag(stateKey, val, wrapId, inputId, maxCount) {
+  val = val.trim().replace(/,$/, '');
+  if (!val) return;
+  if (!state[stateKey]) state[stateKey] = [];
+  if (maxCount && state[stateKey].length >= maxCount) return;
+  if (!state[stateKey].includes(val)) { state[stateKey].push(val); renderTagChips(stateKey, wrapId, inputId); scheduleSave(); }
+}
+function addSuggestion(stateKey, val) {
+  const map = { toneWords: ['tone-wrap','tone-input'], clientConcerns: ['concerns-wrap','concerns-input'], values: ['values-wrap','values-input'] };
+  const [w, i] = map[stateKey] || ['',''];
+  addTag(stateKey, val, w, i);
+}
+function setupTagInput(stateKey, wrapId, inputId, maxCount) {
+  const input = document.getElementById(inputId);
+  input.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ',') && this.value.trim()) {
+      e.preventDefault(); addTag(stateKey, this.value, wrapId, inputId, maxCount); this.value = '';
+    } else if (e.key === 'Backspace' && !this.value && state[stateKey]?.length) {
+      state[stateKey].pop(); renderTagChips(stateKey, wrapId, inputId); scheduleSave();
+    }
+  });
+}
+
+// ── Color palette ─────────────────────────────────────────────────
+function isValidHex(h) { return /^#[0-9A-Fa-f]{6}$/.test(h); }
+function renderColorGrid() {
+  const grid = document.getElementById('color-grid'); grid.innerHTML = '';
+  for (let i = 0; i < 6; i++) {
+    const slot = state.colors[i] || { hex: '', name: '' };
+    const bg = slot.hex && isValidHex(slot.hex) ? slot.hex : '';
+    const div = document.createElement('div'); div.className = 'color-slot';
+    div.innerHTML = `
+      <div class="color-swatch-wrap">
+        <div class="color-preview" id="cp-prev-${i}" style="background:${bg || 'rgba(255,253,246,0.05)'}"></div>
+        <input type="color" class="color-picker-input" id="cp-pick-${i}" value="${bg || '#a28c75'}" oninput="onColorPicker(${i},this.value)" />
+      </div>
+      <div class="color-fields">
+        <input type="text" class="color-hex-input" id="cp-hex-${i}" value="${escHtml(slot.hex)}" placeholder="#hex" maxlength="7" oninput="onColorHex(${i},this.value)" />
+        <input type="text" class="color-name-input" id="cp-name-${i}" value="${escHtml(slot.name)}" placeholder="Name (e.g. Champagne)" oninput="onColorName(${i},this.value)" />
+      </div>`;
+    grid.appendChild(div);
+  }
+}
+function onColorPicker(i, val) {
+  state.colors[i].hex = val;
+  const prev = document.getElementById('cp-prev-' + i), hexEl = document.getElementById('cp-hex-' + i);
+  if (prev) prev.style.background = val; if (hexEl) hexEl.value = val; scheduleSave();
+}
+function onColorHex(i, val) {
+  state.colors[i].hex = val;
+  if (isValidHex(val)) {
+    const prev = document.getElementById('cp-prev-' + i), pick = document.getElementById('cp-pick-' + i);
+    if (prev) prev.style.background = val; if (pick) pick.value = val;
+  } else if (!val) { const prev = document.getElementById('cp-prev-' + i); if (prev) prev.style.background = 'rgba(255,253,246,0.05)'; }
+  scheduleSave();
+}
+function onColorName(i, val) { state.colors[i].name = val; scheduleSave(); }
+
+// ── Image utilities ───────────────────────────────────────────────
+function compressImage(file, maxDim, quality, cb) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if (w > maxDim || h > maxDim) { if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; } else { w = Math.round(w * maxDim / h); h = maxDim; } }
+      const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Logo upload ───────────────────────────────────────────────────
+function handleLogoUpload(file) {
+  if (!file) return;
+  compressImage(file, 1200, 0.88, base64 => {
+    state.logoImage = base64;
+    renderLogoUpload(); scheduleSave();
+  });
+}
+function renderLogoUpload() {
+  const area = document.getElementById('logo-upload-area');
+  const img = document.getElementById('logo-preview-img');
+  const ph = document.getElementById('logo-placeholder');
+  if (state.logoImage) {
+    img.src = state.logoImage; img.style.display = 'block';
+    ph.style.display = 'none'; area.classList.add('has-image');
+  } else {
+    img.style.display = 'none'; ph.style.display = 'flex'; area.classList.remove('has-image');
+  }
+}
+function removeLogo() {
+  state.logoImage = ''; renderLogoUpload(); scheduleSave();
+  document.getElementById('logo-file-input').value = '';
+}
+
+// ── Brand images grid ─────────────────────────────────────────────
+function renderBrandImagesGrid() {
+  const grid = document.getElementById('brand-images-grid'); grid.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const imgSrc = state.brandImages[i] || '';
+    const slot = document.createElement('div');
+    slot.className = 'brand-image-slot' + (imgSrc ? ' has-image' : '');
+    slot.id = 'brand-slot-' + i;
+    if (imgSrc) {
+      slot.innerHTML = `<img src="${imgSrc}" alt="Brand image ${i+1}" /><button class="brand-slot-remove" onclick="event.stopPropagation();removeBrandImage(${i})">✕</button>`;
+    } else {
+      slot.innerHTML = `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><input type="file" accept="image/*" onchange="handleBrandImageUpload(this.files[0],${i})" />`;
+    }
+    grid.appendChild(slot);
+  }
+}
+function handleBrandImageUpload(file, idx) {
+  if (!file) return;
+  compressImage(file, 900, 0.8, base64 => {
+    state.brandImages[idx] = base64; renderBrandImagesGrid(); scheduleSave();
+  });
+}
+function removeBrandImage(idx) {
+  state.brandImages[idx] = ''; renderBrandImagesGrid(); scheduleSave();
+}
+
+// ── AI Modal ──────────────────────────────────────────────────────
+const aiState = { fieldId: null, fieldLabel: '', fieldType: 'textarea', stateKey: '', wrapId: '', inputId: '', generatedText: '' };
+
+function openAI(fieldId, fieldLabel, stateKey, fieldType, tagsKey, wrapId, inputId) {
+  aiState.fieldId = fieldId; aiState.fieldLabel = fieldLabel; aiState.fieldType = fieldType;
+  aiState.stateKey = stateKey; aiState.wrapId = wrapId || ''; aiState.inputId = inputId || '';
+  aiState.tagsKey = tagsKey || stateKey; aiState.generatedText = '';
+  document.getElementById('ai-modal-field-name').textContent = fieldLabel;
+  document.getElementById('ai-result-wrap').style.display = 'none';
+  document.getElementById('ai-loading').style.display = 'none';
+  document.getElementById('ai-error').style.display = 'none';
+  document.getElementById('ai-generate-btn').disabled = false;
+  document.getElementById('ai-modal').classList.add('open');
+  setTimeout(() => document.getElementById('ai-context').focus(), 100);
+}
+function closeAI() { document.getElementById('ai-modal').classList.remove('open'); }
+
+async function runGenerate() {
+  const context = document.getElementById('ai-context').value.trim();
+  if (!context) { document.getElementById('ai-context').focus(); return; }
+  document.getElementById('ai-generate-btn').disabled = true;
+  document.getElementById('ai-loading').style.display = 'flex';
+  document.getElementById('ai-result-wrap').style.display = 'none';
+  document.getElementById('ai-error').style.display = 'none';
+  try {
+    const res = await fetch('/api/generate/brand-kit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ field: aiState.stateKey, context, practiceName: state.practiceName || '' }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || 'Generation failed');
+    aiState.generatedText = data.text;
+    document.getElementById('ai-result-text').textContent = data.text;
+    document.getElementById('ai-result-wrap').style.display = 'block';
+  } catch(err) {
+    const errEl = document.getElementById('ai-error');
+    errEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errEl.style.display = 'block';
+  } finally {
+    document.getElementById('ai-loading').style.display = 'none';
+    document.getElementById('ai-generate-btn').disabled = false;
+  }
+}
+
+function applyGenerated() {
+  const text = aiState.generatedText;
+  if (!text) return;
+  if (aiState.fieldType === 'tags') {
+    const items = text.split(/[,\n]+/).map(s => s.trim().replace(/^[-•*·\d.]+\s*/, '')).filter(Boolean);
+    items.forEach(item => addTag(aiState.tagsKey, item, aiState.wrapId, aiState.inputId));
+  } else {
+    const el = document.getElementById(aiState.fieldId);
+    if (el) { el.value = text; update(aiState.stateKey, text); }
+  }
+  closeAI();
+}
+
+// ── Export ────────────────────────────────────────────────────────
+function openExport() { buildExport(); document.getElementById('export-overlay').style.display = 'block'; document.body.style.overflow = 'hidden'; }
+function closeExport() { document.getElementById('export-overlay').style.display = 'none'; document.body.style.overflow = ''; }
+function escHtml(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function buildExport() {
+  const primaryColor = (state.colors.find(c => c.hex && isValidHex(c.hex)) || {}).hex || '#a28c75';
+  const practiceName = state.practiceName || 'Your Practice';
+  const year = new Date().getFullYear();
+  const defined = state.colors.filter(c => c.hex && isValidHex(c.hex));
+
+  // Color swatches
+  const swatchW = defined.length > 0 ? Math.min(110, Math.floor((680 - defined.length * 8) / defined.length)) : 100;
+  const swatchesHtml = defined.length
+    ? defined.map(c => `<div style="display:inline-block;width:${swatchW}px;margin:0 6px 0 0;vertical-align:top;"><div style="height:72px;border-radius:8px;background:${c.hex};margin-bottom:8px;"></div><p style="font-family:'Courier New',monospace;font-size:10px;color:#555;margin:0 0 2px;">${escHtml(c.hex)}</p>${c.name ? `<p style="font-size:11px;color:#888;margin:0;">${escHtml(c.name)}</p>` : ''}</div>`).join('')
+    : '<p style="font-size:13px;color:#999;font-style:italic;">No colors defined yet.</p>';
+
+  // Fonts
+  const fonts = [['Primary / Display', state.fontPrimary], ['Secondary', state.fontSecondary], ['Body / Accent', state.fontBody]].filter(f => f[1]);
+  const fontsHtml = fonts.length
+    ? fonts.map(([l, v]) => `<div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f0f0f0;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 6px;">${l}</p><p style="font-size:30px;font-family:'${escHtml(v)}',serif,sans-serif;color:#1a1a1a;line-height:1.2;margin:0;">${escHtml(v)}</p></div>`).join('')
+    : '<p style="font-size:13px;color:#999;font-style:italic;">No fonts defined yet.</p>';
+
+  // Chips helper
+  const chips = (arr, color) => arr.length ? arr.map(v => `<span style="display:inline-block;border:1px solid ${color};color:${color};border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">${escHtml(v)}</span>`).join('') : '';
+  const grayChips = (arr) => arr.length ? arr.map(v => `<span style="display:inline-block;background:#f5f5f5;color:#555;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">${escHtml(v)}</span>`).join('') : '';
+
+  // Brand images grid (up to 8)
+  const imgs = (state.brandImages || []).filter(Boolean);
+  const imagesHtml = imgs.length ? `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:0;">
+      ${imgs.map(src => `<div style="aspect-ratio:1;border-radius:6px;overflow:hidden;"><img src="${src}" style="width:100%;height:100%;object-fit:cover;" /></div>`).join('')}
+    </div>` : '';
+
+  // Logo on cover
+  const logoHtml = state.logoImage ? `<img src="${state.logoImage}" style="height:80px;object-fit:contain;margin-bottom:20px;filter:brightness(0) invert(1);" />` : '';
+
+  // Section helper
+  const section = (num, title, content) => `
+    <div style="margin-bottom:0;page-break-inside:avoid;">
+      <div style="background:${primaryColor};padding:16px 36px;">
+        <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'Be Vietnam Pro',sans-serif;">0${num}</span>
+        <h2 style="font-family:'Tenor Sans','Georgia',serif;font-size:20px;font-weight:400;color:#fff;margin:4px 0 0;">${title}</h2>
+      </div>
+      <div style="padding:26px 36px;background:#fff;">${content}</div>
+    </div>`;
+  const row = (label, val) => val ? `<div style="margin-bottom:18px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 6px;font-family:'Be Vietnam Pro',sans-serif;">${label}</p><p style="font-size:13px;color:#333;line-height:1.65;margin:0;font-family:'Be Vietnam Pro',sans-serif;font-weight:300;">${escHtml(val)}</p></div>` : '';
+  const div = `<div style="height:1px;background:#f0f0f0;margin:18px 0;"></div>`;
+  const quote = (label, val) => val ? `${div}<div style="margin-bottom:18px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 8px;">${label}</p><div style="background:#f9f9f9;border-left:3px solid ${primaryColor};padding:12px 14px;border-radius:0 6px 6px 0;"><p style="font-size:13px;color:#444;line-height:1.7;margin:0;font-style:italic;">"${escHtml(val)}"</p></div></div>` : '';
+
+  document.getElementById('export-doc').innerHTML = `
+    <div style="font-family:'Be Vietnam Pro',sans-serif;color:#1a1a1a;">
+      <!-- Cover -->
+      <div style="background:linear-gradient(145deg,#1a0a0c,#0c0004,#150008);padding:72px 48px;text-align:center;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        ${logoHtml}
+        <p style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:${primaryColor};margin:0 0 20px;font-family:'Be Vietnam Pro',sans-serif;">Brand Kit</p>
+        <h1 style="font-family:'Tenor Sans','Georgia',serif;font-size:44px;font-weight:400;color:#fff;margin:0 0 14px;line-height:1.1;">${escHtml(practiceName)}</h1>
+        ${state.slogan ? `<p style="font-size:15px;color:rgba(255,255,255,0.5);margin:0 0 28px;letter-spacing:0.08em;font-style:italic;">${escHtml(state.slogan)}</p>` : ''}
+        <div style="width:36px;height:1px;background:${primaryColor};margin:20px auto 0;"></div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.25);margin:14px 0 0;letter-spacing:2px;text-transform:uppercase;">${year}</p>
+      </div>
+      <!-- Contents -->
+      <div style="background:#fafafa;padding:24px 36px;border-bottom:1px solid #eee;">
+        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#aaa;margin:0 0 14px;">Contents</p>
+        ${['Brand Foundation','Visual Identity','Brand Voice','Target Client &amp; Experience'].map((t,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid #f0f0f0;"><span style="font-size:11px;color:${primaryColor};font-family:'Courier New',monospace;width:22px;">0${i+1}</span><span style="font-size:13px;color:#333;font-family:'Tenor Sans',serif;">${t}</span></div>`).join('')}
+      </div>
+      ${section(1, 'Brand Foundation', `
+        ${row('Mission Statement', state.mission)}
+        ${state.mission && state.vision ? div : ''}
+        ${row('Long-Term Vision', state.vision)}
+        ${(state.mission || state.vision) && state.values.length ? div : ''}
+        ${state.values.length ? `<div style="margin-bottom:18px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 8px;">Core Values</p><div>${chips(state.values, primaryColor)}</div></div>` : ''}
+        ${state.differentiator ? `${div}${row('What Sets Us Apart', state.differentiator)}` : ''}
+        ${state.promise ? `${div}${row('Brand Promise', state.promise)}` : ''}
+        ${state.slogan ? `${div}${row('Slogan / Tagline', state.slogan)}` : ''}
+      `)}
+      ${section(2, 'Visual Identity', `
+        <div style="margin-bottom:22px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 14px;">Color Palette</p><div style="white-space:nowrap;overflow-x:auto;">${swatchesHtml}</div></div>
+        ${div}
+        <div style="margin-bottom:22px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 14px;">Typography</p>${fontsHtml}</div>
+        ${imgs.length ? `${div}<div style="margin-bottom:22px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 14px;">Brand Imagery</p>${imagesHtml}</div>` : ''}
+        ${state.logoDescription ? `${div}${row('Logo', state.logoDescription)}` : ''}
+        ${state.photographyStyle ? `${div}${row('Photography Style', state.photographyStyle)}` : ''}
+      `)}
+      ${section(3, 'Brand Voice', `
+        ${state.toneWords.length ? `<div style="margin-bottom:18px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 8px;">Brand Personality</p>${chips(state.toneWords, primaryColor)}</div>${div}` : ''}
+        ${state.languageUse ? `${row('Language to Use', state.languageUse)}${state.languageAvoid ? div : ''}` : ''}
+        ${state.languageAvoid ? row('Language to Avoid', state.languageAvoid) : ''}
+        ${quote('Sample Social Caption', state.sampleSocial)}
+        ${quote('Sample Email Opening', state.sampleEmail)}
+      `)}
+      ${section(4, 'Target Client &amp; Experience', `
+        ${row('Target Client', state.targetClient)}
+        ${state.clientConcerns.length ? `${div}<div style="margin-bottom:18px;"><p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin:0 0 8px;">Top Patient Concerns</p>${grayChips(state.clientConcerns)}</div>` : ''}
+        ${state.discoveryChannels ? `${div}${row('How Patients Find Us', state.discoveryChannels)}` : ''}
+        ${state.consultationExperience ? `${div}${row('Consultation Experience', state.consultationExperience)}` : ''}
+        ${state.facilityAmbiance ? `${div}${row('Facility Ambiance', state.facilityAmbiance)}` : ''}
+        ${state.followUp ? `${div}${row('Follow-Up Standard', state.followUp)}` : ''}
+      `)}
+      <!-- Footer -->
+      <div style="background:#fafafa;padding:18px 36px;border-top:1px solid #eee;text-align:center;">
+        <p style="font-size:10px;color:#ccc;letter-spacing:2px;text-transform:uppercase;margin:0;">Created with The Aesthetic Executive · Brand Kit Builder · ${year}</p>
+      </div>
+    </div>`;
+}
+
+// ── Enter key submits AI generation ──────────────────────────────
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeAI(); closeExport(); }
+});
+
+// ── Init ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  renderColorGrid();
+  renderBrandImagesGrid();
+  setupTagInput('values', 'values-wrap', 'values-input', 5);
+  setupTagInput('toneWords', 'tone-wrap', 'tone-input');
+  setupTagInput('clientConcerns', 'concerns-wrap', 'concerns-input');
+  loadSaved();
+  document.getElementById('export-overlay').addEventListener('click', function(e) { if (e.target === this) closeExport(); });
+  document.getElementById('ai-modal').addEventListener('click', function(e) { if (e.target === this) closeAI(); });
+});
+</script>
+</body>
+</html>

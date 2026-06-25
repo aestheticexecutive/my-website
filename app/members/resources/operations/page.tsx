@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Settings, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -213,6 +213,206 @@ export default function OperationsResourcesPage() {
           })}
         </div>
       </div>
+
+      {/* ── Secret Shopping ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            Secret Shopping
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        {/* Interactive log — feature card */}
+        <Link
+          href="/tools/secret-shopper-log.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mb-5"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            {/* Icon */}
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.12)",
+                border: "1px solid rgba(162,140,117,0.25)",
+              }}
+            >
+              <Search size={24} style={{ color: "#a28c75" }} />
+            </div>
+
+            {/* Copy */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Secret Shopper Log
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.15)",
+                    border: "1px solid rgba(162,140,117,0.3)",
+                    color: "#a28c75",
+                  }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Log every secret shop in one place — own practice or competitor. Fill in all 9
+                sections of the questionnaire, upload photos of forms or signage, add notes, and
+                track your overall score across every visit. Your full competitive intelligence library,
+                always at hand.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["9-section questionnaire", "Photo uploads", "1–10 scoring", "Shop history log"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CTA */}
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg transition-all duration-200"
+                style={{
+                  background: "rgba(162,140,117,0.12)",
+                  border: "1px solid rgba(162,140,117,0.25)",
+                  color: "#a28c75",
+                }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Two smaller cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          {/* Guide card */}
+          <Link
+            href="/members/resources/operations/secret-shopping"
+            className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+            style={{
+              background: "rgba(162,140,117,0.03)",
+              borderColor: "rgba(162,140,117,0.13)",
+            }}
+          >
+            <div className="p-7 flex flex-col md:flex-row md:items-center gap-5">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{
+                  background: "rgba(162,140,117,0.1)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                }}
+              >
+                <FileText size={18} style={{ color: "#a28c75" }} />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                  <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
+                    Why Secret Shop?
+                  </h3>
+                  <span
+                    className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                    style={{
+                      background: "rgba(162,140,117,0.1)",
+                      border: "1px solid rgba(162,140,117,0.22)",
+                      color: "rgba(162,140,117,0.75)",
+                    }}
+                  >
+                    Guide
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                  The strategy behind secret shopping — why to shop yourself, why to shop
+                  competitors, cadence, how to debrief findings, and what to do with the results.
+                </p>
+              </div>
+              <span
+                className="flex-shrink-0 inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg"
+                style={{
+                  background: "rgba(162,140,117,0.08)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                  color: "rgba(162,140,117,0.7)",
+                }}
+              >
+                Read
+                <ExternalLink size={11} />
+              </span>
+            </div>
+          </Link>
+
+          {/* Printable questionnaire card */}
+          <Link
+            href="/tools/secret-shopper-questionnaire.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+            style={{
+              background: "rgba(162,140,117,0.03)",
+              borderColor: "rgba(162,140,117,0.13)",
+            }}
+          >
+            <div className="p-7 flex flex-col md:flex-row md:items-center gap-5">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{
+                  background: "rgba(162,140,117,0.1)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                }}
+              >
+                <Download size={18} style={{ color: "#a28c75" }} />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                  <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
+                    Printable Questionnaire
+                  </h3>
+                  <span
+                    className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                    style={{
+                      background: "rgba(162,140,117,0.1)",
+                      border: "1px solid rgba(162,140,117,0.22)",
+                      color: "rgba(162,140,117,0.75)",
+                    }}
+                  >
+                    Print / PDF
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                  All 9 sections with write-in lines and scoring boxes — formatted for print.
+                  Take it on a shop, fill it in by hand, then log your answers and photos digitally.
+                </p>
+              </div>
+              <span
+                className="flex-shrink-0 inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg"
+                style={{
+                  background: "rgba(162,140,117,0.08)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                  color: "rgba(162,140,117,0.7)",
+                }}
+              >
+                Print
+                <ExternalLink size={11} />
+              </span>
+            </div>
+          </Link>
+
+        </div>
+      </div>
+
     </div>
   );
 }

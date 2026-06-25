@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Health Assessment | Aesthetic Executive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0004; --bg2: #140008; --bg3: #1a000c; --burg: #2f0410;
+      --gold: #a28c75; --gold2: #c8b3a3; --cream: #fffdf6;
+      --muted: rgba(255,253,246,0.45); --dimmed: rgba(255,253,246,0.25);
+      --border: rgba(162,140,117,0.15); --border2: rgba(162,140,117,0.25);
+      --red: rgba(200,80,80,0.75); --amber: rgba(212,168,83,0.8); --green: rgba(143,201,168,0.8);
+    }
+    html { font-size: 16px; }
+    body { background: var(--bg); color: var(--cream); font-family: 'Be Vietnam Pro', sans-serif; font-weight: 300; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'Tenor Sans', serif; }
+
+    /* Back nav */
+    .back-nav { padding: 20px 32px; border-bottom: 1px solid var(--border); }
+    .back-nav a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(162,140,117,0.65); transition: color 0.2s; }
+    .back-nav a:hover { color: var(--gold); }
+
+    /* Header */
+    .page-header { max-width: 860px; margin: 0 auto; padding: 44px 32px 32px; }
+    .page-header h1 { font-size: clamp(28px, 5vw, 44px); color: var(--cream); line-height: 1.15; margin-bottom: 10px; }
+    .page-header p { font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 560px; }
+
+    /* Stepper */
+    .stepper { max-width: 860px; margin: 0 auto 32px; padding: 0 32px; display: flex; align-items: center; }
+    .step-item { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .step-item:last-child { flex: 0; }
+    .step-dot { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; border: 1px solid var(--border2); color: rgba(162,140,117,0.5); transition: all 0.3s; }
+    .step-dot.active { background: rgba(162,140,117,0.15); border-color: var(--gold); color: var(--gold); }
+    .step-dot.done { background: rgba(162,140,117,0.18); border-color: rgba(162,140,117,0.4); color: var(--gold); }
+    .step-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(162,140,117,0.4); white-space: nowrap; transition: color 0.3s; }
+    .step-label.active { color: var(--gold2); }
+    .step-label.done { color: rgba(162,140,117,0.55); }
+    .step-line { flex: 1; height: 1px; background: var(--border); margin: 0 10px; }
+    @media(max-width:600px){ .step-label{display:none;} .step-line{margin:0 5px;} }
+
+    /* Wizard */
+    .wizard { max-width: 860px; margin: 0 auto; padding: 0 32px 80px; }
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+    .step-panel > h2 { font-size: 22px; color: var(--cream); margin-bottom: 6px; }
+    .step-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+
+    /* Fields */
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+    .field label .opt { font-size: 10px; color: rgba(162,140,117,0.4); text-transform: none; letter-spacing: 0.08em; margin-left: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; background: rgba(255,253,246,0.04); border: 1px solid rgba(162,140,117,0.2); border-radius: 10px;
+      color: var(--cream); font-family: 'Be Vietnam Pro', sans-serif; font-weight: 300; font-size: 14px;
+      padding: 12px 14px; outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    .field input:focus, .field textarea:focus { border-color: rgba(162,140,117,0.45); background: rgba(255,253,246,0.06); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,253,246,0.2); }
+    .field textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+    .field .hint { font-size: 11px; color: rgba(162,140,117,0.4); margin-top: 5px; line-height: 1.5; }
+
+    /* Bullets builder */
+    .bullets-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+    .bullet-row { display: flex; align-items: center; gap: 8px; }
+    .bullet-row span { color: var(--gold); font-size: 14px; flex-shrink: 0; }
+    .bullet-row input { flex: 1; }
+    .bullet-row .del-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid rgba(162,140,117,0.15); background: transparent; cursor: pointer; color: rgba(162,140,117,0.35); transition: all 0.2s; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .bullet-row .del-btn:hover { border-color: rgba(200,60,60,0.3); color: rgba(200,100,100,0.7); }
+
+    /* Rating rows */
+    .rating-area { border-bottom: 1px solid rgba(162,140,117,0.07); padding: 16px 0; }
+    .rating-area:first-child { padding-top: 0; }
+    .rating-area:last-child { border-bottom: none; padding-bottom: 0; }
+    .rating-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+    .rating-label { font-size: 14px; color: var(--cream); font-weight: 400; }
+    .rating-desc { font-size: 11px; color: rgba(255,253,246,0.35); margin-top: 2px; }
+    .rating-pills { display: flex; gap: 6px; }
+    .pill-btn {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgba(162,140,117,0.2);
+      background: transparent; color: rgba(162,140,117,0.5); font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .pill-btn:hover { background: rgba(162,140,117,0.1); border-color: rgba(162,140,117,0.4); color: var(--gold); }
+    .pill-btn.selected { background: rgba(162,140,117,0.18); border-color: var(--gold); color: var(--gold); }
+    .pill-btn.sel-1 { background: rgba(200,80,80,0.12); border-color: rgba(200,80,80,0.4); color: rgba(200,110,110,0.9); }
+    .pill-btn.sel-2 { background: rgba(200,80,80,0.08); border-color: rgba(200,80,80,0.3); color: rgba(200,130,110,0.85); }
+    .pill-btn.sel-3 { background: rgba(212,168,83,0.1); border-color: rgba(212,168,83,0.35); color: rgba(212,168,83,0.9); }
+    .pill-btn.sel-4 { background: rgba(143,201,168,0.1); border-color: rgba(143,201,168,0.3); color: rgba(143,201,168,0.9); }
+    .pill-btn.sel-5 { background: rgba(143,201,168,0.15); border-color: rgba(143,201,168,0.45); color: rgba(143,201,168,1); }
+    .rating-note { font-size: 13px; color: var(--cream); font-family: 'Be Vietnam Pro', sans-serif; font-weight: 300; background: rgba(255,253,246,0.03); border: 1px solid rgba(162,140,117,0.12); border-radius: 8px; padding: 10px 12px; outline: none; width: 100%; resize: none; min-height: 56px; transition: border-color 0.2s; }
+    .rating-note:focus { border-color: rgba(162,140,117,0.35); }
+    .rating-note::placeholder { color: rgba(255,253,246,0.18); font-size: 12px; }
+
+    /* Average score banner */
+    .score-banner { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 12px; margin-bottom: 16px; }
+    .score-banner .score-num { font-family: 'Tenor Sans', serif; font-size: 32px; color: var(--cream); line-height: 1; }
+    .score-banner .score-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(162,140,117,0.5); }
+
+    /* Strategy cards */
+    .strategy-card { background: linear-gradient(145deg, var(--bg3) 0%, var(--bg) 100%); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .strategy-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .strategy-num { font-family: 'Tenor Sans', serif; font-size: 18px; color: rgba(162,140,117,0.3); }
+    .strategy-title { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(162,140,117,0.5); }
+    .field-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media(max-width:580px){ .field-row-2{grid-template-columns:1fr;} }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; border: none; border-radius: 8px; padding: 10px 18px; transition: all 0.2s; }
+    .btn-primary { background: rgba(162,140,117,0.15); border: 1px solid rgba(162,140,117,0.3); color: var(--gold); }
+    .btn-primary:hover { background: rgba(162,140,117,0.22); border-color: rgba(162,140,117,0.5); }
+    .btn-ghost { background: transparent; border: 1px solid rgba(162,140,117,0.15); color: rgba(162,140,117,0.5); }
+    .btn-ghost:hover { border-color: rgba(162,140,117,0.3); color: var(--gold); }
+    .btn-save { background: linear-gradient(135deg,rgba(162,140,117,0.2),rgba(162,140,117,0.1)); border: 1px solid rgba(162,140,117,0.4); color: var(--gold); padding: 12px 24px; font-size: 12px; }
+    .btn-save:hover { background: linear-gradient(135deg,rgba(162,140,117,0.28),rgba(162,140,117,0.15)); border-color: rgba(162,140,117,0.6); }
+    .btn-sm { padding: 6px 12px; font-size: 10px; }
+
+    /* Output */
+    #outputSection { display: none; }
+    #outputSection.visible { display: block; }
+    .output-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .output-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Rating bars */
+    .rating-bars { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: flex; align-items: center; gap: 10px; }
+    .bar-label { font-size: 12px; color: rgba(255,253,246,0.55); flex-shrink: 0; width: 220px; }
+    .bar-track { flex: 1; height: 6px; background: rgba(255,253,246,0.06); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+    .bar-score { font-size: 12px; font-weight: 500; flex-shrink: 0; width: 20px; text-align: right; }
+    .bar-0 { background: rgba(255,253,246,0.1); }
+    .bar-1, .bar-2 { background: rgba(200,80,80,0.65); }
+    .bar-3 { background: rgba(212,168,83,0.7); }
+    .bar-4, .bar-5 { background: rgba(143,201,168,0.75); }
+    .score-1, .score-2 { color: rgba(200,110,110,0.9); }
+    .score-3 { color: rgba(212,168,83,0.9); }
+    .score-4, .score-5 { color: rgba(143,201,168,0.9); }
+
+    /* Priority areas */
+    .priority-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .priority-tag { font-size: 11px; padding: 5px 12px; border-radius: 100px; background: rgba(200,80,80,0.1); border: 1px solid rgba(200,80,80,0.25); color: rgba(200,130,120,0.9); }
+
+    /* Strategy output */
+    .strategy-output { display: flex; flex-direction: column; gap: 14px; }
+    .strategy-output-card { background: rgba(162,140,117,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .strategy-output-area { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(162,140,117,0.5); margin-bottom: 8px; }
+    .strategy-output-strategy { font-size: 14px; color: var(--cream); margin-bottom: 10px; line-height: 1.55; }
+    .strategy-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .strategy-meta-item { font-size: 11px; padding: 3px 10px; border-radius: 6px; background: rgba(162,140,117,0.07); border: 1px solid rgba(162,140,117,0.13); color: rgba(255,253,246,0.4); }
+
+    /* Loading */
+    .loading-wrap { display: none; flex-direction: column; align-items: center; padding: 56px 0; gap: 16px; }
+    .loading-wrap.visible { display: flex; }
+    .spinner { width: 36px; height: 36px; border: 2px solid rgba(162,140,117,0.15); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* History */
+    #historySection { display: none; margin-top: 56px; }
+    #historySection.visible { display: block; }
+    .history-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .history-header h3 { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(162,140,117,0.45); white-space: nowrap; }
+    .history-header .line { flex: 1; height: 1px; background: var(--border); }
+    .history-list { display: flex; flex-direction: column; gap: 12px; }
+    .history-card { background: rgba(255,253,246,0.02); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .history-card-header { padding: 16px 20px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: background 0.2s; }
+    .history-card-header:hover { background: rgba(255,253,246,0.03); }
+    .history-score-big { font-family: 'Tenor Sans', serif; font-size: 28px; line-height: 1; flex-shrink: 0; }
+    .history-card-info { flex: 1; min-width: 0; }
+    .history-card-date { font-size: 13px; color: var(--cream); margin-bottom: 4px; }
+    .history-card-priorities { font-size: 11px; color: rgba(255,253,246,0.35); }
+    .history-mini-bars { display: flex; gap: 3px; align-items: flex-end; height: 28px; flex-shrink: 0; }
+    .history-mini-bar { width: 8px; border-radius: 2px; }
+    .history-card-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .history-card-body { display: none; padding: 0 20px 16px; }
+    .history-card-body.open { display: block; }
+    .history-detail-section { margin-bottom: 14px; }
+    .history-detail-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(162,140,117,0.45); margin-bottom: 8px; }
+    .history-rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .history-rating-label { font-size: 12px; color: rgba(255,253,246,0.45); flex: 1; }
+    .history-rating-score { font-size: 12px; font-weight: 500; width: 16px; text-align: right; }
+    .history-note-text { font-size: 11px; color: rgba(255,253,246,0.3); font-style: italic; margin-left: 0; }
+
+    /* Trend badge */
+    .trend { font-size: 11px; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; }
+    .trend-up { background: rgba(143,201,168,0.1); color: rgba(143,201,168,0.9); }
+    .trend-down { background: rgba(200,80,80,0.1); color: rgba(200,110,110,0.9); }
+    .trend-same { background: rgba(162,140,117,0.08); color: rgba(162,140,117,0.6); }
+
+    /* Section box */
+    .section-box { background: rgba(162,140,117,0.04); border: 1px solid var(--border); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; }
+    .section-box-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(162,140,117,0.45); margin-bottom: 12px; }
+
+    /* Add bullet btn */
+    .add-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(162,140,117,0.5); background: transparent; border: 1px dashed rgba(162,140,117,0.2); border-radius: 7px; padding: 7px 14px; cursor: pointer; transition: all 0.2s; }
+    .add-btn:hover { border-color: rgba(162,140,117,0.4); color: var(--gold); }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .back-nav, .stepper, #wizardSection, #historySection, .output-actions, .btn { display: none !important; }
+      #outputSection { display: block !important; }
+      .rating-bars .bar-label { color: #444; }
+      .priority-tag { border-color: #ccc; color: #888; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <a href="/members/resources/staff">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Staff Resources
+  </a>
+</nav>
+
+<div class="page-header">
+  <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;padding:5px 12px;border-radius:100px;background:rgba(162,140,117,0.1);border:1px solid rgba(162,140,117,0.25);color:#a28c75;margin-bottom:14px;">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Interactive Exercise
+  </div>
+  <h1 class="display">Team Health Assessment</h1>
+  <p>Rate your team across 8 key areas, capture what you hear from your team, and build a targeted strategy to improve — then save each assessment to track progress over time.</p>
+</div>
+
+<!-- Stepper -->
+<div class="stepper" id="stepper">
+  <div class="step-item"><div class="step-dot active" id="dot1">1</div><span class="step-label active" id="lbl1">Your Vision</span></div>
+  <div class="step-line"></div>
+  <div class="step-item"><div class="step-dot" id="dot2">2</div><span class="step-label" id="lbl2">Team Rating</span></div>
+  <div class="step-line"></div>
+  <div class="step-item"><div class="step-dot" id="dot3">3</div><span class="step-label" id="lbl3">Team Pulse</span></div>
+  <div class="step-line"></div>
+  <div class="step-item"><div class="step-dot" id="dot4">4</div><span class="step-label" id="lbl4">Your Strategy</span></div>
+</div>
+
+<!-- Wizard -->
+<div class="wizard" id="wizardSection">
+
+  <!-- Step 1: Vision -->
+  <div class="step-panel active" id="step1">
+    <h2 class="display">Define what great looks like</h2>
+    <p class="step-sub">Before assessing where you are, get clear on where you want to go. These prompts help you define your target — the team culture and satisfaction level you're building toward.</p>
+
+    <div class="field">
+      <label>What does a high-performing, happy team look like to you?</label>
+      <textarea id="v1" placeholder="Describe what you'd see, hear, and feel on a team that's truly thriving…" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>How would you know if your team felt deeply satisfied in their roles?</label>
+      <textarea id="v2" placeholder="What behaviors, conversations, or signals would tell you people were genuinely engaged?" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>What behaviors and attitudes would you see more of if your team was fully engaged?</label>
+      <textarea id="v3" placeholder="Think about initiative, communication, collaboration, energy, ownership…" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>What kind of culture do you want to be known for as a leader?</label>
+      <textarea id="v4" placeholder="If a team member described working for you to a friend, what would you want them to say?" rows="3"></textarea>
+    </div>
+
+    <div class="section-box" style="margin-top:8px;">
+      <p class="section-box-label">Your target vision — 3 to 5 bullets</p>
+      <p style="font-size:12px;color:rgba(255,253,246,0.35);margin-bottom:14px;">Based on your answers above, write 3–5 statements that describe your ideal team culture. Be specific — this becomes your north star.</p>
+      <div class="bullets-list" id="bulletsList">
+        <div class="bullet-row"><span>·</span><input type="text" placeholder="e.g. Every team member feels seen, heard, and appreciated weekly" /><button class="del-btn" onclick="removeBullet(this)" title="Remove">×</button></div>
+        <div class="bullet-row"><span>·</span><input type="text" placeholder="e.g. People bring problems to me without fear of judgment" /><button class="del-btn" onclick="removeBullet(this)" title="Remove">×</button></div>
+        <div class="bullet-row"><span>·</span><input type="text" placeholder="e.g. We celebrate wins loudly and process failures constructively" /><button class="del-btn" onclick="removeBullet(this)" title="Remove">×</button></div>
+      </div>
+      <button class="add-btn" onclick="addBullet()" id="addBulletBtn">+ Add bullet</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goTo(2)">Next — Rate Your Team <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Step 2: Ratings -->
+  <div class="step-panel" id="step2">
+    <h2 class="display">Where is your team today?</h2>
+    <p class="step-sub">Rate your team honestly on a 1–5 scale across 8 key areas. Add notes on what's driving each score. Your lowest 2–3 areas will become your strategy focus.</p>
+
+    <div id="avgBanner" class="score-banner" style="background:rgba(162,140,117,0.05);border:1px solid var(--border);display:none;">
+      <div>
+        <div class="score-num" id="avgNum">—</div>
+        <div class="score-label">Average score</div>
+      </div>
+      <div style="flex:1;height:4px;background:rgba(255,253,246,0.06);border-radius:4px;overflow:hidden;margin-left:8px;">
+        <div id="avgBar" style="height:100%;border-radius:4px;transition:width 0.4s ease;background:var(--gold);width:0%;"></div>
+      </div>
+    </div>
+
+    <div id="ratingAreas">
+      <!-- Generated by JS -->
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goTo(1)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Back</button>
+      <button class="btn btn-primary" onclick="goTo(3)">Next — Team Pulse <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Step 3: Team Pulse -->
+  <div class="step-panel" id="step3">
+    <h2 class="display">Ask your team</h2>
+    <p class="step-sub">Run a short anonymous survey or roundtable with your team using these questions. Record the key themes and responses below — then compare to your own self-assessment.</p>
+
+    <div class="section-box" style="margin-bottom:24px;">
+      <p class="section-box-label">Suggested survey or roundtable questions</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:8px;font-size:13px;color:rgba(255,253,246,0.4);"><span style="color:#a28c75;flex-shrink:0;">·</span>What motivates you most at work right now?</div>
+        <div style="display:flex;gap:8px;font-size:13px;color:rgba(255,253,246,0.4);"><span style="color:#a28c75;flex-shrink:0;">·</span>When do you feel most connected to the team?</div>
+        <div style="display:flex;gap:8px;font-size:13px;color:rgba(255,253,246,0.4);"><span style="color:#a28c75;flex-shrink:0;">·</span>What's one thing I could do more of — or less of — to improve the team experience?</div>
+        <div style="display:flex;gap:8px;font-size:13px;color:rgba(255,253,246,0.4);"><span style="color:#a28c75;flex-shrink:0;">·</span>On a scale of 1–10, how satisfied are you with your current role and team environment?</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>What motivates your team most right now?</label>
+      <textarea id="tp1" placeholder="What themes came up around motivation, purpose, and what energizes people?" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>When do they feel most connected to the team?</label>
+      <textarea id="tp2" placeholder="What situations, rituals, or moments did people point to?" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>What should you do more of — or less of?</label>
+      <textarea id="tp3" placeholder="What feedback did you hear about your own leadership or team management?" rows="3"></textarea>
+    </div>
+    <div class="field">
+      <label>Team satisfaction scores (1–10) <span class="opt">from their survey</span></label>
+      <textarea id="tp4" placeholder="e.g. Range was 6–8, average around 7. A few people scored 5 — unclear why." rows="2"></textarea>
+    </div>
+    <div class="field">
+      <label>Themes — do they match or contradict your self-assessment?</label>
+      <textarea id="tp5" placeholder="What surprised you? Where did your team's perception match yours, and where did it differ?" rows="4"></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goTo(2)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Back</button>
+      <button class="btn btn-primary" onclick="goTo(4)">Next — Build Your Strategy <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Step 4: Strategy -->
+  <div class="step-panel" id="step4">
+    <h2 class="display">Build your strategy plan</h2>
+    <p class="step-sub">Based on your lowest-rated areas, build 2–3 targeted strategies. Keep each one specific, assigned, and measurable — vague plans don't get done.</p>
+
+    <div id="priorityBanner" style="margin-bottom:20px;display:none;">
+      <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:10px;">Your priority focus areas (lowest ratings)</p>
+      <div class="priority-tags" id="priorityTagList"></div>
+    </div>
+
+    <div id="strategyCards">
+      <!-- Generated by JS -->
+    </div>
+
+    <div style="height:1px;background:var(--border);margin:24px 0;"></div>
+
+    <div class="section-box">
+      <p class="section-box-label">Follow-up &amp; reinforcement</p>
+      <div class="field" style="margin-bottom:14px;">
+        <label>Check-in frequency <span class="opt">how often will you review progress?</span></label>
+        <select id="checkInFreq">
+          <option value="">Select cadence…</option>
+          <option>Every 2 weeks</option>
+          <option>Monthly</option>
+          <option>Every 6 weeks</option>
+          <option>Quarterly</option>
+        </select>
+      </div>
+      <div class="field" style="margin-bottom:14px;">
+        <label>Next assessment date <span class="opt">when will you repeat this exercise?</span></label>
+        <input type="date" id="nextDate" />
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>Notes &amp; commitments</label>
+        <textarea id="followUpNotes" placeholder="What specific commitments are you making from this assessment? What won't you let slip?" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goTo(3)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Back</button>
+      <button class="btn btn-primary" onclick="reviewAndSave()">Review &amp; Save Assessment <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Output -->
+<div class="wizard">
+  <div id="outputSection">
+    <div class="output-header">
+      <div>
+        <h2 class="display" id="outputTitle" style="font-size:22px;color:var(--cream);">Team Health Assessment</h2>
+        <p id="outputDate" style="font-size:12px;color:rgba(162,140,117,0.5);margin-top:3px;"></p>
+      </div>
+      <div class="output-actions">
+        <button class="btn btn-ghost btn-sm" onclick="saveAssessment()" id="saveBtn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="startOver()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          Start Over
+        </button>
+      </div>
+    </div>
+
+    <!-- Score summary -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;" id="outputSummaryGrid">
+      <div style="background:linear-gradient(145deg,#1a000c,#0c0004);border:1px solid rgba(162,140,117,0.15);border-radius:14px;padding:20px 24px;">
+        <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:8px;">Average Score</p>
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <span class="display" id="outAvgScore" style="font-size:40px;color:var(--cream);line-height:1;">—</span>
+          <span style="font-size:14px;color:rgba(255,253,246,0.3);">/ 5</span>
+        </div>
+      </div>
+      <div style="background:linear-gradient(145deg,#1a000c,#0c0004);border:1px solid rgba(162,140,117,0.15);border-radius:14px;padding:20px 24px;">
+        <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:10px;">Priority Focus Areas</p>
+        <div class="priority-tags" id="outPriorityTags"></div>
+      </div>
+    </div>
+    @media(max-width:560px){#outputSummaryGrid{grid-template-columns:1fr;}}
+
+    <!-- Rating bars -->
+    <div style="background:linear-gradient(145deg,#140008,#0c0004);border:1px solid rgba(162,140,117,0.12);border-radius:14px;padding:22px 24px;margin-bottom:20px;">
+      <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:16px;">8-Area Rating Breakdown</p>
+      <div class="rating-bars" id="outRatingBars"></div>
+    </div>
+
+    <!-- Strategies output -->
+    <div id="outStrategiesWrap" style="margin-bottom:20px;display:none;">
+      <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:14px;">Strategy Plan</p>
+      <div class="strategy-output" id="outStrategies"></div>
+    </div>
+
+    <!-- Team pulse -->
+    <div id="outPulseWrap" style="background:rgba(162,140,117,0.04);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:20px;display:none;">
+      <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:14px;">Team Pulse Notes</p>
+      <div id="outPulse" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+    <!-- Follow up -->
+    <div id="outFollowWrap" style="background:rgba(162,140,117,0.04);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:none;">
+      <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(162,140,117,0.45);margin-bottom:10px;">Follow-Up Plan</p>
+      <div id="outFollow" style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgba(255,253,246,0.5);"></div>
+    </div>
+
+  </div>
+
+  <!-- History -->
+  <div id="historySection">
+    <div class="history-header">
+      <h3>Assessment History</h3>
+      <div class="line"></div>
+    </div>
+    <div class="history-list" id="historyList"></div>
+  </div>
+
+</div>
+
+<script>
+// ── Constants ─────────────────────────────────────────────────────
+const AREAS = [
+  { id:'trust',        label:'Trust between team members',         desc:'Do people rely on and respect each other?' },
+  { id:'communication',label:'Communication & transparency',        desc:'Are conversations open and honest?' },
+  { id:'roleClarity',  label:'Role clarity & expectations',         desc:'Does everyone know what they own?' },
+  { id:'recognition',  label:'Recognition & appreciation',          desc:'Do people feel seen and valued?' },
+  { id:'workLife',     label:'Work-life balance & burnout risk',     desc:'Is the pace sustainable?' },
+  { id:'psychSafety',  label:'Psychological safety',                desc:'Can people speak up without fear?' },
+  { id:'camaraderie',  label:'Camaraderie & peer support',          desc:'Do people genuinely enjoy working together?' },
+  { id:'growth',       label:'Growth & development opportunities',   desc:'Are people moving forward?' },
+];
+
+const STRAT_COUNT = 3;
+let currentStep = 1;
+let savedAssessment = null;
+
+// ── Build rating UI ───────────────────────────────────────────────
+function buildRatingUI() {
+  const container = document.getElementById('ratingAreas');
+  container.innerHTML = AREAS.map((area, i) => `
+    <div class="rating-area">
+      <div class="rating-top">
+        <div>
+          <div class="rating-label">${area.label}</div>
+          <div class="rating-desc">${area.desc}</div>
+        </div>
+        <div class="rating-pills" id="pills_${area.id}">
+          ${[1,2,3,4,5].map(n => `<button class="pill-btn" data-area="${area.id}" data-val="${n}" onclick="setRating('${area.id}',${n})">${n}</button>`).join('')}
+        </div>
+      </div>
+      <textarea class="rating-note" id="note_${area.id}" placeholder="Notes or examples for this area…" rows="2"></textarea>
+    </div>
+  `).join('');
+}
+
+// ── Build strategy UI ─────────────────────────────────────────────
+function buildStrategyUI() {
+  const container = document.getElementById('strategyCards');
+  container.innerHTML = Array.from({length: STRAT_COUNT}, (_, i) => `
+    <div class="strategy-card">
+      <div class="strategy-card-header">
+        <span class="strategy-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="strategy-title">Strategy ${i+1}</span>
+      </div>
+      <div class="field" style="margin-bottom:12px;">
+        <label>Focus Area</label>
+        <input type="text" id="sf_${i}" placeholder="e.g. Recognition & appreciation" />
+      </div>
+      <div class="field" style="margin-bottom:12px;">
+        <label>Strategy / Action</label>
+        <textarea id="ss_${i}" rows="2" placeholder="What specifically will you do?"></textarea>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0;">
+          <label>Who's Involved</label>
+          <input type="text" id="sw_${i}" placeholder="e.g. Me + team leads" />
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Timeline</label>
+          <input type="text" id="st_${i}" placeholder="e.g. Starting next month" />
+        </div>
+      </div>
+      <div class="field" style="margin-top:12px;margin-bottom:0;">
+        <label>How to Measure Success</label>
+        <input type="text" id="sm_${i}" placeholder="e.g. Team survey score improves by 1 point in 60 days" />
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── Rating logic ──────────────────────────────────────────────────
+function setRating(areaId, val) {
+  const pills = document.querySelectorAll(`[data-area="${areaId}"]`);
+  pills.forEach(p => {
+    p.className = 'pill-btn';
+    if (parseInt(p.dataset.val) === val) p.classList.add(`sel-${val}`);
+  });
+  updateAverage();
+}
+
+function getRating(areaId) {
+  const selected = document.querySelector(`[data-area="${areaId}"].pill-btn[class*="sel-"]`);
+  return selected ? parseInt(selected.dataset.val) : 0;
+}
+
+function updateAverage() {
+  const ratings = AREAS.map(a => getRating(a.id)).filter(r => r > 0);
+  if (!ratings.length) { document.getElementById('avgBanner').style.display = 'none'; return; }
+  const avg = (ratings.reduce((a,b) => a+b, 0) / ratings.length).toFixed(1);
+  document.getElementById('avgNum').textContent = avg;
+  document.getElementById('avgBar').style.width = (parseFloat(avg)/5*100) + '%';
+  const color = avg < 2.5 ? 'rgba(200,80,80,0.7)' : avg < 3.5 ? 'rgba(212,168,83,0.7)' : 'rgba(143,201,168,0.75)';
+  document.getElementById('avgBar').style.background = color;
+  document.getElementById('avgBanner').style.display = 'flex';
+}
+
+function getPriorityAreas() {
+  return AREAS
+    .map(a => ({ label: a.label, rating: getRating(a.id) }))
+    .filter(a => a.rating > 0)
+    .sort((a,b) => a.rating - b.rating)
+    .slice(0, 3)
+    .map(a => a.label);
+}
+
+// ── Navigation ────────────────────────────────────────────────────
+function goTo(n) {
+  document.getElementById('step' + currentStep).classList.remove('active');
+  ['dot','lbl'].forEach(p => {
+    document.getElementById(p + currentStep).classList.remove('active');
+    document.getElementById(p + currentStep).classList.add('done');
+  });
+  if (n < currentStep) {
+    for (let i = n; i <= 4; i++) {
+      document.getElementById('dot' + i).classList.remove('done','active');
+      document.getElementById('lbl' + i).classList.remove('done','active');
+    }
+  }
+  currentStep = n;
+  document.getElementById('step' + n).classList.add('active');
+  document.getElementById('dot' + n).classList.add('active');
+  document.getElementById('lbl' + n).classList.add('active');
+
+  if (n === 4) prefillStrategyAreas();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prefillStrategyAreas() {
+  const priorities = getPriorityAreas();
+  // Show priority banner
+  if (priorities.length) {
+    document.getElementById('priorityBanner').style.display = 'block';
+    document.getElementById('priorityTagList').innerHTML = priorities.map(p => `<span class="priority-tag">${p}</span>`).join('');
+  }
+  // Pre-fill strategy focus areas
+  priorities.forEach((area, i) => {
+    const el = document.getElementById(`sf_${i}`);
+    if (el && !el.value) el.value = area;
+  });
+}
+
+// ── Bullets ───────────────────────────────────────────────────────
+function addBullet() {
+  const list = document.getElementById('bulletsList');
+  if (list.children.length >= 5) return;
+  const div = document.createElement('div');
+  div.className = 'bullet-row';
+  div.innerHTML = '<span>·</span><input type="text" placeholder="Your vision statement…" /><button class="del-btn" onclick="removeBullet(this)" title="Remove">×</button>';
+  list.appendChild(div);
+  if (list.children.length >= 5) document.getElementById('addBulletBtn').style.display = 'none';
+}
+
+function removeBullet(btn) {
+  btn.parentElement.remove();
+  document.getElementById('addBulletBtn').style.display = '';
+}
+
+function getBullets() {
+  return Array.from(document.querySelectorAll('#bulletsList .bullet-row input')).map(i => i.value.trim()).filter(Boolean);
+}
+
+// ── Review & Save ─────────────────────────────────────────────────
+function reviewAndSave() {
+  buildOutput();
+  document.getElementById('wizardSection').style.display = 'none';
+  document.getElementById('outputSection').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildOutput() {
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+  document.getElementById('outputDate').textContent = 'Assessment — ' + dateStr;
+
+  // Average
+  const ratings = AREAS.map(a => ({ ...a, rating: getRating(a.id), notes: (document.getElementById('note_'+a.id)||{}).value||'' }));
+  const scored = ratings.filter(r => r.rating > 0);
+  const avg = scored.length ? (scored.reduce((s,r)=>s+r.rating,0)/scored.length).toFixed(1) : '—';
+  document.getElementById('outAvgScore').textContent = avg;
+  const avgColor = avg < 2.5 ? '#e07070' : avg < 3.5 ? '#d4a853' : '#8fc9a8';
+  document.getElementById('outAvgScore').style.color = avgColor;
+
+  // Priority tags
+  const priorities = getPriorityAreas();
+  document.getElementById('outPriorityTags').innerHTML = priorities.map(p => `<span class="priority-tag">${p}</span>`).join('') || '<span style="font-size:12px;color:rgba(255,253,246,0.3);">Rate areas in Step 2 to see priorities</span>';
+
+  // Bars
+  const barsContainer = document.getElementById('outRatingBars');
+  barsContainer.innerHTML = AREAS.map(area => {
+    const r = getRating(area.id);
+    const pct = r ? (r/5*100)+'%' : '0%';
+    const cls = r <= 2 ? (r===0?'bar-0':'bar-1') : r===3 ? 'bar-3' : 'bar-4';
+    const scls = r <= 2 ? (r===0?'':'score-1') : r===3 ? 'score-3' : 'score-4';
+    return `<div class="bar-row">
+      <div class="bar-label">${area.label}</div>
+      <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct};"></div></div>
+      <div class="bar-score ${scls}">${r||'—'}</div>
+    </div>`;
+  }).join('');
+
+  // Strategies
+  const strategies = Array.from({length: STRAT_COUNT}, (_,i) => ({
+    focusArea: (document.getElementById(`sf_${i}`)||{}).value||'',
+    strategy:  (document.getElementById(`ss_${i}`)||{}).value||'',
+    who:       (document.getElementById(`sw_${i}`)||{}).value||'',
+    timeline:  (document.getElementById(`st_${i}`)||{}).value||'',
+    measure:   (document.getElementById(`sm_${i}`)||{}).value||'',
+  })).filter(s => s.focusArea || s.strategy);
+
+  if (strategies.length) {
+    document.getElementById('outStrategiesWrap').style.display = 'block';
+    document.getElementById('outStrategies').innerHTML = strategies.map(s => `
+      <div class="strategy-output-card">
+        <div class="strategy-output-area">${s.focusArea || 'Focus Area'}</div>
+        ${s.strategy ? `<div class="strategy-output-strategy">${s.strategy}</div>` : ''}
+        <div class="strategy-meta">
+          ${s.who ? `<span class="strategy-meta-item">👥 ${s.who}</span>` : ''}
+          ${s.timeline ? `<span class="strategy-meta-item">📅 ${s.timeline}</span>` : ''}
+          ${s.measure ? `<span class="strategy-meta-item">📊 ${s.measure}</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Team pulse
+  const pulseFields = [
+    { label:'What motivates them', val: (document.getElementById('tp1')||{}).value||'' },
+    { label:'When they feel connected', val: (document.getElementById('tp2')||{}).value||'' },
+    { label:'Do more / less of', val: (document.getElementById('tp3')||{}).value||'' },
+    { label:'Satisfaction scores', val: (document.getElementById('tp4')||{}).value||'' },
+    { label:'Themes vs. self-assessment', val: (document.getElementById('tp5')||{}).value||'' },
+  ].filter(f => f.val);
+  if (pulseFields.length) {
+    document.getElementById('outPulseWrap').style.display = 'block';
+    document.getElementById('outPulse').innerHTML = pulseFields.map(f => `
+      <div>
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(162,140,117,0.4);margin-bottom:3px;">${f.label}</div>
+        <div style="font-size:13px;color:rgba(255,253,246,0.5);line-height:1.6;">${f.val}</div>
+      </div>
+    `).join('');
+  }
+
+  // Follow-up
+  const freq = (document.getElementById('checkInFreq')||{}).value||'';
+  const nextDate = (document.getElementById('nextDate')||{}).value||'';
+  const followNotes = (document.getElementById('followUpNotes')||{}).value||'';
+  const followItems = [
+    freq ? `Check-in frequency: ${freq}` : null,
+    nextDate ? `Next assessment: ${new Date(nextDate+'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}` : null,
+    followNotes ? `Notes: ${followNotes}` : null,
+  ].filter(Boolean);
+  if (followItems.length) {
+    document.getElementById('outFollowWrap').style.display = 'block';
+    document.getElementById('outFollow').innerHTML = followItems.map(i => `<div>· ${i}</div>`).join('');
+  }
+
+  // Store current assessment data
+  savedAssessment = {
+    id: Date.now(),
+    savedAt: now.toISOString(),
+    avg: parseFloat(avg) || 0,
+    ratings: ratings,
+    priorities: priorities,
+    vision: {
+      q1: v('v1'), q2: v('v2'), q3: v('v3'), q4: v('v4'),
+      bullets: getBullets(),
+    },
+    teamPulse: { q1:v('tp1'), q2:v('tp2'), q3:v('tp3'), q4:v('tp4'), themes:v('tp5') },
+    strategies: Array.from({length: STRAT_COUNT}, (_,i) => ({
+      focusArea: v(`sf_${i}`), strategy: v(`ss_${i}`), who: v(`sw_${i}`), timeline: v(`st_${i}`), measure: v(`sm_${i}`)
+    })),
+    followUp: { freq: v('checkInFreq'), nextDate: v('nextDate'), notes: v('followUpNotes') },
+  };
+}
+
+function v(id) { return (document.getElementById(id)||{}).value?.trim()||''; }
+
+// ── Save ──────────────────────────────────────────────────────────
+function saveAssessment() {
+  if (!savedAssessment) return;
+  const all = JSON.parse(localStorage.getItem('ae_team_assessments')||'[]');
+  all.unshift(savedAssessment);
+  localStorage.setItem('ae_team_assessments', JSON.stringify(all.slice(0,30)));
+  renderHistory();
+  const btn = document.getElementById('saveBtn');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Saved';
+  setTimeout(() => btn.innerHTML = orig, 2000);
+}
+
+// ── History ───────────────────────────────────────────────────────
+function renderHistory() {
+  const all = JSON.parse(localStorage.getItem('ae_team_assessments')||'[]');
+  const section = document.getElementById('historySection');
+  const list = document.getElementById('historyList');
+  if (!all.length) { section.classList.remove('visible'); return; }
+  section.classList.add('visible');
+
+  list.innerHTML = all.map((entry, idx) => {
+    const date = new Date(entry.savedAt).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const avg = entry.avg || 0;
+    const avgColor = avg < 2.5 ? '#e07070' : avg < 3.5 ? '#d4a853' : '#8fc9a8';
+    const prev = all[idx+1];
+    let trend = '';
+    if (prev) {
+      const diff = avg - prev.avg;
+      if (diff > 0.2) trend = '<span class="trend trend-up">↑ Improved</span>';
+      else if (diff < -0.2) trend = '<span class="trend trend-down">↓ Declined</span>';
+      else trend = '<span class="trend trend-same">→ Stable</span>';
+    }
+
+    // Mini bars
+    const miniBars = (entry.ratings||[]).map(r => {
+      const h = r.rating ? Math.max(6, r.rating/5*28) : 4;
+      const c = !r.rating ? 'rgba(255,255,255,0.06)' : r.rating<=2 ? 'rgba(200,80,80,0.5)' : r.rating===3 ? 'rgba(212,168,83,0.6)' : 'rgba(143,201,168,0.65)';
+      return `<div class="history-mini-bar" style="height:${h}px;background:${c};"></div>`;
+    }).join('');
+
+    // Ratings detail
+    const ratingsDetail = (entry.ratings||[]).map(r => {
+      const sc = !r.rating ? '' : r.rating<=2 ? 'score-1' : r.rating===3 ? 'score-3' : 'score-4';
+      return `<div class="history-rating-row">
+        <span class="history-rating-label">${r.label}</span>
+        <span class="history-rating-score ${sc}">${r.rating||'—'}</span>
+      </div>${r.notes ? `<div class="history-note-text" style="font-size:11px;color:rgba(255,253,246,0.28);font-style:italic;padding-left:0;margin-bottom:4px;">${r.notes}</div>` : ''}`;
+    }).join('');
+
+    return `
+      <div class="history-card">
+        <div class="history-card-header" onclick="toggleHistory(${entry.id})">
+          <div class="history-score-big" style="color:${avgColor};">${avg.toFixed(1)}</div>
+          <div class="history-card-info">
+            <div class="history-card-date">${date} ${trend}</div>
+            <div class="history-card-priorities">${(entry.priorities||[]).slice(0,2).join(' · ') || 'No ratings recorded'}</div>
+          </div>
+          <div class="history-mini-bars">${miniBars}</div>
+          <div class="history-card-actions">
+            <button class="btn btn-ghost btn-sm" onclick="loadAssessment(event,${entry.id})">Load</button>
+            <button class="btn btn-ghost btn-sm" onclick="deleteAssessment(event,${entry.id})" style="color:rgba(200,100,100,0.6);">Delete</button>
+          </div>
+        </div>
+        <div class="history-card-body" id="hbody_${entry.id}">
+          <div style="height:1px;background:rgba(162,140,117,0.07);margin-bottom:14px;"></div>
+          <div class="history-detail-label">Ratings</div>
+          ${ratingsDetail}
+          ${entry.vision?.bullets?.length ? `
+            <div class="history-detail-label" style="margin-top:14px;">Vision Bullets</div>
+            ${entry.vision.bullets.map(b=>`<div style="font-size:12px;color:rgba(255,253,246,0.4);padding:2px 0;">· ${b}</div>`).join('')}
+          ` : ''}
+          ${entry.strategies?.some(s=>s.strategy) ? `
+            <div class="history-detail-label" style="margin-top:14px;">Strategies</div>
+            ${entry.strategies.filter(s=>s.strategy).map(s=>`<div style="font-size:12px;color:rgba(255,253,246,0.4);padding:2px 0;"><span style="color:rgba(162,140,117,0.5);">${s.focusArea||'—'}: </span>${s.strategy}</div>`).join('')}
+          ` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function toggleHistory(id) {
+  const body = document.getElementById('hbody_' + id);
+  if (body) body.classList.toggle('open');
+}
+
+function loadAssessment(e, id) {
+  e.stopPropagation();
+  const all = JSON.parse(localStorage.getItem('ae_team_assessments')||'[]');
+  const entry = all.find(a => a.id === id);
+  if (!entry) return;
+  savedAssessment = entry;
+
+  // Populate fields from saved data
+  if (entry.vision) {
+    if (entry.vision.q1) document.getElementById('v1').value = entry.vision.q1;
+    if (entry.vision.q2) document.getElementById('v2').value = entry.vision.q2;
+    if (entry.vision.q3) document.getElementById('v3').value = entry.vision.q3;
+    if (entry.vision.q4) document.getElementById('v4').value = entry.vision.q4;
+    if (entry.vision.bullets?.length) {
+      const list = document.getElementById('bulletsList');
+      list.innerHTML = '';
+      entry.vision.bullets.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'bullet-row';
+        div.innerHTML = `<span>·</span><input type="text" value="${b.replace(/"/g,'&quot;')}" /><button class="del-btn" onclick="removeBullet(this)" title="Remove">×</button>`;
+        list.appendChild(div);
+      });
+    }
+  }
+  if (entry.ratings) {
+    entry.ratings.forEach(r => {
+      if (r.rating) setRating(r.id, r.rating);
+      const noteEl = document.getElementById('note_' + r.id);
+      if (noteEl && r.notes) noteEl.value = r.notes;
+    });
+  }
+  if (entry.teamPulse) {
+    ['tp1','tp2','tp3','tp4','tp5'].forEach((id, i) => {
+      const keys = ['q1','q2','q3','q4','themes'];
+      const el = document.getElementById(id);
+      if (el && entry.teamPulse[keys[i]]) el.value = entry.teamPulse[keys[i]];
+    });
+  }
+
+  // Show output
+  buildOutput();
+  document.getElementById('wizardSection').style.display = 'none';
+  document.getElementById('outputSection').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteAssessment(e, id) {
+  e.stopPropagation();
+  let all = JSON.parse(localStorage.getItem('ae_team_assessments')||'[]');
+  all = all.filter(a => a.id !== id);
+  localStorage.setItem('ae_team_assessments', JSON.stringify(all));
+  renderHistory();
+}
+
+function startOver() {
+  document.getElementById('outputSection').classList.remove('visible');
+  document.getElementById('wizardSection').style.display = 'block';
+  savedAssessment = null;
+  goTo(1);
+  [2,3,4].forEach(n => {
+    document.getElementById('dot'+n).classList.remove('active','done');
+    document.getElementById('lbl'+n).classList.remove('active','done');
+  });
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+buildRatingUI();
+buildStrategyUI();
+renderHistory();
+</script>
+</body>
+</html>
