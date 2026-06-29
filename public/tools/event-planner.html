@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Planner — Aesthetic Executive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0004;
+      --sidebar: #060002;
+      --card: #100006;
+      --card-deep: #2f0410;
+      --gold: #a28c75;
+      --gold-dim: rgba(162,140,117,0.55);
+      --gold-faint: rgba(162,140,117,0.09);
+      --cream: #fffdf6;
+      --cream-60: rgba(255,253,246,0.6);
+      --cream-40: rgba(255,253,246,0.4);
+      --cream-25: rgba(255,253,246,0.25);
+      --border: rgba(162,140,117,0.11);
+      --border-gold: rgba(162,140,117,0.28);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Scrollbars ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(162,140,117,0.18); border-radius: 2px; }
+
+    /* ── Splash ── */
+    #splash {
+      position: fixed; inset: 0; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 200; transition: opacity 0.55s ease;
+    }
+    #splash.out { opacity: 0; pointer-events: none; }
+    .sp-eye {
+      font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 28px;
+    }
+    .sp-title {
+      font-family: 'Tenor Sans', serif; font-size: clamp(40px, 7vw, 72px);
+      font-weight: 400; color: var(--cream); text-align: center; line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .sp-sub {
+      font-size: 13px; color: var(--cream-40); text-align: center; max-width: 380px;
+      line-height: 1.7; margin-bottom: 52px;
+    }
+    .sp-btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 14px 38px;
+      background: var(--card-deep); border: 1px solid var(--border-gold);
+      color: var(--gold); font-family: 'Be Vietnam Pro', sans-serif; font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      border-radius: 7px; transition: all 0.2s;
+    }
+    .sp-btn:hover { background: rgba(47,4,16,0.85); border-color: var(--gold); }
+
+    /* ── App shell ── */
+    #app { display: none; height: 100vh; overflow: hidden; }
+    #app.on { display: flex; }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: 256px; min-width: 256px; height: 100vh;
+      background: var(--sidebar); border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .sb-logo {
+      padding: 18px 18px 14px; border-bottom: 1px solid var(--border);
+    }
+    .sb-logo-main {
+      font-family: 'Tenor Sans', serif; font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .sb-logo-sub {
+      font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(162,140,117,0.38); margin-top: 3px;
+    }
+    .sb-nav { padding: 10px 10px 0; }
+    .sb-nav-btn {
+      width: 100%; display: flex; align-items: center; gap: 9px; padding: 9px 11px;
+      background: none; border: none; color: var(--cream-40); font-size: 12px;
+      cursor: pointer; border-radius: 7px; text-align: left; transition: all 0.15s;
+      font-family: inherit;
+    }
+    .sb-nav-btn:hover { background: var(--gold-faint); color: var(--cream-60); }
+    .sb-nav-btn.active { background: rgba(162,140,117,0.11); color: var(--cream); }
+    .sb-nav-btn .ni { width: 17px; text-align: center; font-size: 13px; }
+    .sb-sect-label {
+      padding: 15px 14px 5px; font-size: 9px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(162,140,117,0.36);
+    }
+    .sb-events { flex: 1; overflow-y: auto; padding: 3px 10px 10px; }
+    .sb-ev-card {
+      padding: 9px 11px; border-radius: 7px; border: 1px solid transparent;
+      cursor: pointer; margin-bottom: 3px; transition: all 0.14s; position: relative;
+    }
+    .sb-ev-card:hover { background: var(--gold-faint); border-color: var(--border); }
+    .sb-ev-card.active { background: rgba(162,140,117,0.09); border-color: rgba(162,140,117,0.2); }
+    .sb-ev-name {
+      font-size: 12px; font-weight: 500; color: var(--cream);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px;
+      padding-right: 18px;
+    }
+    .sb-ev-date { font-size: 10px; color: var(--cream-40); }
+    .sb-ev-bar {
+      margin-top: 6px; height: 3px; border-radius: 2px;
+      background: rgba(162,140,117,0.08); overflow: hidden; display: flex; gap: 1px;
+    }
+    .sb-ev-bar-seg { height: 100%; border-radius: 1px; }
+    .sb-del-btn {
+      position: absolute; top: 7px; right: 7px; background: none; border: none;
+      color: rgba(162,140,117,0.25); cursor: pointer; font-size: 12px; padding: 2px 4px;
+      border-radius: 3px; display: none; transition: all 0.14s; line-height: 1;
+    }
+    .sb-ev-card:hover .sb-del-btn { display: block; }
+    .sb-del-btn:hover { color: #f87171; background: rgba(248,113,113,0.1); }
+    .sb-empty {
+      text-align: center; padding: 22px 10px; font-size: 11px;
+      color: rgba(162,140,117,0.3); line-height: 1.9;
+    }
+    .sb-footer { padding: 11px; border-top: 1px solid var(--border); }
+    .sb-create-btn {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px; background: var(--card-deep); border: 1px solid var(--border-gold);
+      color: var(--gold); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; border-radius: 7px; transition: all 0.18s; font-family: inherit;
+    }
+    .sb-create-btn:hover { background: rgba(47,4,16,0.85); border-color: var(--gold); }
+
+    /* ── Main area ── */
+    #main { flex: 1; overflow-y: auto; height: 100vh; }
+
+    /* ── Confirm overlay ── */
+    #confirm-overlay {
+      position: fixed; inset: 0; background: rgba(6,0,2,0.88); backdrop-filter: blur(5px);
+      display: none; align-items: center; justify-content: center; z-index: 300;
+    }
+    #confirm-overlay.show { display: flex; }
+    .confirm-card {
+      background: var(--card-deep); border: 1px solid var(--border-gold);
+      border-radius: 14px; padding: 34px; max-width: 360px; width: 90%; text-align: center;
+    }
+    .confirm-title {
+      font-family: 'Tenor Sans', serif; font-size: 22px; color: var(--cream); margin-bottom: 10px;
+    }
+    .confirm-sub { font-size: 12px; color: var(--cream-40); margin-bottom: 26px; line-height: 1.6; }
+    .confirm-btns { display: flex; gap: 10px; }
+    .confirm-cancel-btn, .confirm-del-btn {
+      flex: 1; padding: 10px; border-radius: 7px; font-family: inherit;
+      font-size: 12px; cursor: pointer; border: 1px solid; transition: all 0.18s;
+    }
+    .confirm-cancel-btn {
+      background: transparent; border-color: var(--border); color: var(--cream-40);
+    }
+    .confirm-cancel-btn:hover { border-color: var(--border-gold); color: var(--cream-60); }
+    .confirm-del-btn {
+      background: rgba(220,38,38,0.13); border-color: rgba(220,38,38,0.3); color: #f87171;
+    }
+    .confirm-del-btn:hover { background: rgba(220,38,38,0.22); }
+
+    /* ── Overview ── */
+    .ov-hero {
+      padding: 38px 44px 30px; border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(47,4,16,0.42) 0%, transparent 55%);
+    }
+    .ov-eye {
+      font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 12px;
+    }
+    .ov-title {
+      font-family: 'Tenor Sans', serif; font-size: 34px; color: var(--cream); margin-bottom: 8px;
+    }
+    .ov-sub { font-size: 12px; color: var(--cream-40); line-height: 1.7; max-width: 520px; }
+    .ov-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      padding: 20px 44px; border-bottom: 1px solid var(--border);
+    }
+    .ov-stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px 18px; text-align: center;
+    }
+    .ov-stat-num { font-family: 'Tenor Sans', serif; font-size: 26px; color: var(--gold); }
+    .ov-stat-label { font-size: 10px; color: var(--cream-40); margin-top: 3px; letter-spacing: 0.05em; }
+    .ov-phases { padding: 22px 44px 44px; }
+    .phase-block { margin-bottom: 30px; }
+    .phase-hdr { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .phase-tag {
+      display: inline-flex; align-items: center; padding: 3px 12px; border-radius: 20px;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0; border: 1px solid;
+    }
+    .phase-tag.p1 { background: rgba(162,140,117,0.12); color: var(--gold); border-color: rgba(162,140,117,0.22); }
+    .phase-tag.p2 { background: rgba(99,102,241,0.1); color: #a5b4fc; border-color: rgba(99,102,241,0.22); }
+    .phase-tag.p3 { background: rgba(20,184,166,0.1); color: #5eead4; border-color: rgba(20,184,166,0.22); }
+    .phase-name { font-family: 'Tenor Sans', serif; font-size: 20px; color: var(--cream); }
+    .phase-subtitle { font-size: 10px; color: var(--cream-40); }
+    .phase-line { flex: 1; height: 1px; background: var(--border); }
+    .sec-accordion {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; margin-bottom: 6px; overflow: hidden;
+    }
+    .sec-toggle {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 15px; background: none; border: none; cursor: pointer; text-align: left;
+      transition: background 0.13s; font-family: inherit;
+    }
+    .sec-toggle:hover { background: var(--gold-faint); }
+    .sec-toggle-l { display: flex; align-items: center; gap: 10px; }
+    .sec-num { font-family: 'Tenor Sans', serif; font-size: 15px; color: rgba(162,140,117,0.28); min-width: 22px; }
+    .sec-name { font-size: 13px; font-weight: 500; color: var(--cream); }
+    .sec-count {
+      font-size: 9px; color: var(--cream-40); background: rgba(162,140,117,0.07);
+      padding: 2px 7px; border-radius: 20px; border: 1px solid var(--border);
+    }
+    .sec-arrow { font-size: 10px; color: var(--gold-dim); transition: transform 0.2s; }
+    .sec-arrow.open { transform: rotate(180deg); }
+    .sec-items { padding: 0 14px 10px; display: none; }
+    .sec-items.open { display: block; }
+    .ov-item {
+      display: flex; align-items: flex-start; gap: 9px; padding: 6px 0;
+      border-bottom: 1px solid rgba(162,140,117,0.04);
+    }
+    .ov-item:last-child { border-bottom: none; }
+    .ov-dot {
+      width: 4px; height: 4px; border-radius: 50%; background: rgba(162,140,117,0.28);
+      flex-shrink: 0; margin-top: 7px;
+    }
+    .ov-item-text { font-size: 11.5px; color: var(--cream-40); line-height: 1.55; }
+    .ov-cta {
+      text-align: center; padding: 16px 0 4px;
+    }
+
+    /* ── Create / Edit Form ── */
+    .form-wrap { max-width: 560px; margin: 0 auto; padding: 50px 32px 60px; }
+    .form-eye { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 22px; }
+    .form-title { font-family: 'Tenor Sans', serif; font-size: 28px; color: var(--cream); margin-bottom: 30px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 7px;
+    }
+    .form-input, .form-ta {
+      width: 100%; background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 13px; font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 13px; color: var(--cream); outline: none; transition: border-color 0.18s;
+      color-scheme: dark;
+    }
+    .form-input:focus, .form-ta:focus { border-color: rgba(162,140,117,0.38); }
+    .form-input::placeholder, .form-ta::placeholder { color: rgba(255,253,246,0.18); }
+    .form-ta { resize: vertical; min-height: 90px; line-height: 1.65; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-err {
+      font-size: 10px; color: #f87171; margin-top: 5px; display: none;
+    }
+    .form-submit {
+      width: 100%; padding: 13px; background: var(--card-deep); border: 1px solid var(--border-gold);
+      color: var(--gold); font-family: 'Be Vietnam Pro', sans-serif; font-size: 11px;
+      letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; border-radius: 8px;
+      transition: all 0.18s; margin-top: 10px;
+    }
+    .form-submit:hover { background: rgba(47,4,16,0.88); border-color: var(--gold); }
+    .form-cancel-link {
+      display: block; text-align: center; margin-top: 12px; font-size: 11px;
+      color: var(--cream-40); cursor: pointer; padding: 7px; transition: color 0.15s;
+    }
+    .form-cancel-link:hover { color: var(--cream-60); }
+
+    /* ── Event Detail ── */
+    .ev-hero {
+      padding: 28px 44px 22px; border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(47,4,16,0.48) 0%, transparent 55%);
+    }
+    .ev-back {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim);
+      background: none; border: none; cursor: pointer; padding: 0;
+      margin-bottom: 14px; transition: color 0.14s; font-family: inherit;
+    }
+    .ev-back:hover { color: var(--gold); }
+    .ev-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .ev-title-wrap { flex: 1; min-width: 0; }
+    .ev-title-input {
+      font-family: 'Tenor Sans', serif; font-size: 30px; color: var(--cream); background: none;
+      border: none; outline: none; width: 100%; border-bottom: 1px solid transparent;
+      transition: border-color 0.18s; line-height: 1.15;
+    }
+    .ev-title-input:focus { border-bottom-color: rgba(162,140,117,0.28); }
+    .ev-edit-btn {
+      background: rgba(162,140,117,0.07); border: 1px solid rgba(162,140,117,0.14);
+      color: rgba(162,140,117,0.55); font-size: 10px; padding: 6px 13px; border-radius: 6px;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.08em; transition: all 0.15s;
+      white-space: nowrap; flex-shrink: 0; margin-top: 6px;
+    }
+    .ev-edit-btn:hover { color: var(--gold); border-color: rgba(162,140,117,0.28); }
+    .ev-meta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 12px; }
+    .ev-meta-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--cream-40); }
+    .ev-meta-icon { font-size: 13px; }
+    .ev-no-date {
+      font-size: 10px; color: rgba(162,140,117,0.32); font-style: italic; cursor: pointer;
+    }
+    .ev-no-date:hover { color: var(--gold-dim); }
+
+    /* Notes card */
+    .ev-notes-card {
+      margin: 14px 44px 0; background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; overflow: hidden;
+    }
+    .notes-toggle {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: none; border: none; cursor: pointer; font-family: inherit;
+    }
+    .notes-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim); }
+    .notes-arrow { font-size: 10px; color: var(--gold-dim); transition: transform 0.2s; }
+    .notes-arrow.open { transform: rotate(180deg); }
+    .notes-body { display: none; padding: 0 14px 12px; }
+    .notes-body.open { display: block; }
+    .notes-text { font-size: 12px; color: var(--cream-40); line-height: 1.75; white-space: pre-wrap; }
+
+    /* Progress */
+    .prog-wrap { padding: 16px 44px 0; }
+    .prog-bar {
+      height: 7px; border-radius: 4px; background: rgba(162,140,117,0.07);
+      overflow: hidden; display: flex; gap: 2px; margin-bottom: 11px;
+    }
+    .prog-seg { height: 100%; border-radius: 2px; transition: width 0.35s ease; }
+    .prog-seg.done { background: #22c55e; }
+    .prog-seg.pending { background: #f59e0b; }
+    .prog-seg.na { background: #4b5563; }
+    .prog-seg.todo { background: rgba(162,140,117,0.14); }
+    .prog-legend { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+    .leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .leg-dot.done { background: #22c55e; }
+    .leg-dot.pending { background: #f59e0b; }
+    .leg-dot.na { background: #4b5563; }
+    .leg-dot.todo { background: rgba(162,140,117,0.18); border: 1px solid rgba(162,140,117,0.3); }
+    .leg-lbl { color: var(--cream-40); }
+    .leg-cnt { color: var(--cream-60); font-weight: 500; margin-left: 2px; }
+
+    /* Checklist */
+    .cl-wrap { padding: 16px 44px 52px; }
+    .cl-phase { margin-bottom: 26px; }
+    .cl-phase-hdr {
+      display: flex; align-items: center; gap: 11px; margin-bottom: 11px; flex-wrap: wrap;
+    }
+    .cl-phase-name { font-family: 'Tenor Sans', serif; font-size: 17px; color: rgba(255,253,246,0.78); }
+    .cl-phase-sub { font-size: 10px; color: var(--cream-25); }
+    .cl-phase-line { flex: 1; height: 1px; background: rgba(162,140,117,0.07); }
+    .cl-section {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; margin-bottom: 5px; overflow: hidden;
+    }
+    .cl-sec-toggle {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 13px; background: none; border: none; cursor: pointer; text-align: left;
+      transition: background 0.13s; font-family: inherit;
+    }
+    .cl-sec-toggle:hover { background: rgba(162,140,117,0.035); }
+    .cl-sec-l { display: flex; align-items: center; gap: 9px; min-width: 0; }
+    .cl-sec-name { font-size: 12.5px; font-weight: 500; color: var(--cream); }
+    .cl-sec-r { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .cl-sec-cnt { font-size: 10px; color: var(--cream-40); }
+    .cl-badge {
+      font-size: 9px; padding: 2px 7px; border-radius: 10px; font-weight: 500;
+      letter-spacing: 0.05em; flex-shrink: 0;
+    }
+    .cl-badge.complete { color: #86efac; background: rgba(34,197,94,0.11); border: 1px solid rgba(34,197,94,0.2); }
+    .cl-badge.pending { color: #fcd34d; background: rgba(245,158,11,0.11); border: 1px solid rgba(245,158,11,0.2); }
+    .cl-items { display: none; border-top: 1px solid var(--border); }
+    .cl-items.open { display: block; }
+
+    /* Individual item */
+    .cl-item {
+      display: flex; align-items: stretch; border-bottom: 1px solid rgba(162,140,117,0.04);
+      transition: background 0.15s; min-height: 42px;
+    }
+    .cl-item:last-child { border-bottom: none; }
+    .cl-item.s-done { background: rgba(21,128,61,0.09); }
+    .cl-item.s-pending { background: rgba(180,83,9,0.1); }
+    .cl-item.s-na { background: rgba(75,85,99,0.1); }
+    .cl-status-btn {
+      flex-shrink: 0; width: 108px; padding: 10px 11px; border: none; background: none;
+      cursor: pointer; text-align: left; border-right: 1px solid rgba(162,140,117,0.04);
+      transition: opacity 0.14s; display: flex; align-items: center;
+    }
+    .cl-status-btn:hover { opacity: 0.75; }
+    .st-pill {
+      display: inline-flex; align-items: center; gap: 4px; padding: 3px 7px;
+      border-radius: 20px; font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em;
+      white-space: nowrap; border: 1px solid;
+    }
+    .st-pill.todo { background: rgba(162,140,117,0.07); color: rgba(255,253,246,0.28); border-color: rgba(162,140,117,0.1); }
+    .st-pill.done { background: rgba(34,197,94,0.13); color: #86efac; border-color: rgba(34,197,94,0.24); }
+    .st-pill.pending { background: rgba(245,158,11,0.13); color: #fcd34d; border-color: rgba(245,158,11,0.24); }
+    .st-pill.na { background: rgba(75,85,99,0.18); color: #9ca3af; border-color: rgba(75,85,99,0.28); }
+    .cl-content { flex: 1; padding: 10px 13px; min-width: 0; }
+    .cl-item-text {
+      font-size: 12px; line-height: 1.5; color: var(--cream-60); transition: all 0.15s;
+    }
+    .cl-item-text.s-done { color: rgba(255,253,246,0.3); text-decoration: line-through; text-decoration-color: rgba(255,253,246,0.15); }
+    .cl-item-text.s-pending { color: var(--cream-60); }
+    .cl-item-text.s-na { color: rgba(255,253,246,0.22); }
+    .cl-item-text.s-todo { color: var(--cream-60); }
+    .cl-note-wrap { margin-top: 7px; display: none; }
+    .cl-note-wrap.open { display: block; }
+    .cl-note-ta {
+      width: 100%; background: rgba(162,140,117,0.05); border: 1px solid rgba(162,140,117,0.1);
+      border-radius: 5px; padding: 7px 10px; font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 11px; color: var(--cream-40); outline: none; resize: none; min-height: 52px;
+      line-height: 1.55; transition: border-color 0.15s; color-scheme: dark;
+    }
+    .cl-note-ta:focus { border-color: rgba(162,140,117,0.28); }
+    .cl-note-ta::placeholder { color: rgba(255,253,246,0.13); }
+    .cl-note-saved { font-size: 9px; color: rgba(162,140,117,0.45); margin-top: 3px; }
+    .cl-actions { flex-shrink: 0; padding: 10px 9px; display: flex; align-items: flex-start; }
+    .cl-note-btn {
+      background: none; border: none; cursor: pointer; padding: 4px 5px; border-radius: 4px;
+      font-size: 12px; color: rgba(162,140,117,0.25); transition: all 0.14s;
+    }
+    .cl-note-btn:hover { color: var(--gold-dim); background: var(--gold-faint); }
+    .cl-note-btn.has-note { color: var(--gold-dim); }
+
+    /* Empty state */
+    .empty-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 70vh; text-align: center; padding: 40px;
+    }
+    .empty-icon { font-size: 44px; margin-bottom: 18px; opacity: 0.35; }
+    .empty-title { font-family: 'Tenor Sans', serif; font-size: 22px; color: var(--cream); margin-bottom: 7px; }
+    .empty-sub { font-size: 12px; color: var(--cream-40); line-height: 1.7; max-width: 280px; }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.65) sepia(0.8) saturate(0.4); cursor: pointer; opacity: 0.7;
+    }
+    @media (max-width: 700px) {
+      #sidebar { width: 200px; min-width: 200px; }
+      .ev-hero { padding: 20px 20px 16px; }
+      .ev-notes-card { margin: 12px 20px 0; }
+      .prog-wrap { padding: 14px 20px 0; }
+      .cl-wrap { padding: 14px 20px 40px; }
+      .ov-hero { padding: 24px 20px 20px; }
+      .ov-stats { padding: 16px 20px; }
+      .ov-phases { padding: 16px 20px 32px; }
+      .ev-title-input { font-size: 22px; }
+      .ev-top { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash -->
+<div id="splash">
+  <div class="sp-eye">Aesthetic Executive &middot; Marketing Tools</div>
+  <h1 class="sp-title">Event Planner</h1>
+  <p class="sp-sub">Plan, track, and execute your med spa events — from the first idea to post-event follow-up.</p>
+  <button class="sp-btn" onclick="startApp()">Get Started &rarr;</button>
+</div>
+
+<!-- Confirm delete -->
+<div id="confirm-overlay">
+  <div class="confirm-card">
+    <div class="confirm-title">Delete event?</div>
+    <div class="confirm-sub">This permanently removes the event and all checklist progress. It cannot be undone.</div>
+    <div class="confirm-btns">
+      <button class="confirm-cancel-btn" onclick="closeConfirm()">Cancel</button>
+      <button class="confirm-del-btn" onclick="confirmDelete()">Delete Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app">
+  <div id="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-main">Aesthetic Executive</div>
+      <div class="sb-logo-sub">Event Planner</div>
+    </div>
+    <div class="sb-nav">
+      <button class="sb-nav-btn active" id="nav-ov" onclick="showView('overview')">
+        <span class="ni">&#9776;</span> Checklist Overview
+      </button>
+    </div>
+    <div class="sb-sect-label">My Events</div>
+    <div class="sb-events" id="evList"></div>
+    <div class="sb-footer">
+      <button class="sb-create-btn" onclick="showView('create')">+ New Event</button>
+    </div>
+  </div>
+  <div id="main"></div>
+</div>
+
+<script>
+// ──────────────────────────────────────────────────────
+// CHECKLIST DATA
+// ──────────────────────────────────────────────────────
+const CL = [
+  {
+    id:'p1', tag:'p1', phase:'Phase 1', title:'Pre-Event Planning', sub:'4–6+ Weeks Out',
+    sections:[
+      { id:'p1s1', num:'01', title:'Event Foundation', items:[
+        {id:'p1s1i1',text:'Lock in date & time'},
+        {id:'p1s1i2',text:'Confirm provider + full staff availability'},
+        {id:'p1s1i3',text:'Set attendance goal (ex: 25–50 guests)'},
+        {id:'p1s1i4',text:'Define revenue goal (event + post-event)'},
+        {id:'p1s1i5',text:'Establish budget (food, decor, promos, giveaways)'},
+      ]},
+      { id:'p1s2', num:'02', title:'Event Strategy & Concept', items:[
+        {id:'p1s2i1',text:'Choose event type (educational, open house, or station-style)'},
+        {id:'p1s2i2',text:'Create event theme / name'},
+        {id:'p1s2i3',text:'Define featured services (ex: LHR, Morpheus8, Lumecca)'},
+        {id:'p1s2i4',text:'Build event-only offers (bundles + value-adds)'},
+        {id:'p1s2i5',text:'Determine VIP / exclusivity angle'},
+      ]},
+      { id:'p1s3', num:'03', title:'Marketing & Promotion Setup', items:[
+        {id:'p1s3i1',text:'Create Eventbrite event (or equivalent RSVP system)'},
+        {id:'p1s3i2',text:'Generate QR code for RSVP link'},
+        {id:'p1s3i3',text:'Design event flyer'},
+        {id:'p1s3i4',text:'Design social media graphics'},
+        {id:'p1s3i5',text:'Design in-office print invites'},
+        {id:'p1s3i6',text:'Add clear CTA: RSVP / Limited spots'},
+      ]},
+      { id:'p1s4', num:'04', title:'Promotion Timeline', items:[
+        {id:'p1s4i1',text:'4–6 weeks out: Send "You\'re Invited" email + text blast'},
+        {id:'p1s4i2',text:'4–6 weeks out: Post social media announcement'},
+        {id:'p1s4i3',text:'2–3 weeks out: Send "Limited Spots Available" push'},
+        {id:'p1s4i4',text:'2–3 days before: Send "Last Chance + Reminder" blast'},
+        {id:'p1s4i5',text:'Ongoing: Hand out invites to every patient'},
+        {id:'p1s4i6',text:'Ongoing: Front desk verbally invites every patient'},
+        {id:'p1s4i7',text:'Ongoing: Post consistently on social media'},
+      ]},
+      { id:'p1s5', num:'05', title:'Lead Capture System', items:[
+        {id:'p1s5i1',text:'Set up RSVP list (Eventbrite or equivalent)'},
+        {id:'p1s5i2',text:'Prepare printed sign-in sheet (name, phone, email)'},
+        {id:'p1s5i3',text:'Set up QR code for VIP list / giveaway entry'},
+        {id:'p1s5i4',text:'Set up QR code for referral program'},
+        {id:'p1s5i5',text:'Assign staff to check-in responsibility'},
+      ]},
+      { id:'p1s6', num:'06', title:'Event Experience Planning', items:[
+        {id:'p1s6i1',text:'Map out check-in area layout'},
+        {id:'p1s6i2',text:'Map out food & beverage area'},
+        {id:'p1s6i3',text:'Map out treatment / demo rooms'},
+        {id:'p1s6i4',text:'Map out checkout station'},
+        {id:'p1s6i5',text:'Map out raffle station'},
+        {id:'p1s6i6',text:'Plan event flow (critical for conversions)'},
+      ]},
+      { id:'p1s7', num:'07', title:'Collateral & Sales Tools', items:[
+        {id:'p1s7i1',text:'Print event pricing sheets'},
+        {id:'p1s7i2',text:'Print service brochures'},
+        {id:'p1s7i3',text:'Prepare before & after visuals'},
+        {id:'p1s7i4',text:'Print treatment menus'},
+        {id:'p1s7i5',text:'Print referral cards (event-enhanced version)'},
+        {id:'p1s7i6',text:'Print package breakdown sheets'},
+      ]},
+      { id:'p1s8', num:'08', title:'Technology & POS Prep', items:[
+        {id:'p1s8i1',text:'Build all event packages in POS / EMR'},
+        {id:'p1s8i2',text:'Train staff: how to check out packages'},
+        {id:'p1s8i3',text:'Train staff: how to apply promos'},
+        {id:'p1s8i4',text:'Set up iPads / laptops for checkout'},
+        {id:'p1s8i5',text:'Confirm payment processing is ready'},
+      ]},
+      { id:'p1s9', num:'09', title:'Staff Roles & Training', items:[
+        {id:'p1s9i1',text:'Assign greeter / check-in role'},
+        {id:'p1s9i2',text:'Assign floater / concierge role'},
+        {id:'p1s9i3',text:'Assign provider for consults'},
+        {id:'p1s9i4',text:'Assign checkout / closer role'},
+        {id:'p1s9i5',text:'Conduct pre-event team meeting'},
+        {id:'p1s9i6',text:'Train on talking points for all featured services'},
+        {id:'p1s9i7',text:'Train on guiding guests: consult → purchase'},
+      ]},
+      { id:'p1s10', num:'10', title:'Giveaways, Incentives & Engagement', items:[
+        {id:'p1s10i1',text:'Define raffle prizes'},
+        {id:'p1s10i2',text:'Prepare raffle tickets'},
+        {id:'p1s10i3',text:'Prepare entry boxes'},
+        {id:'p1s10i4',text:'Prepare raffle station signage'},
+        {id:'p1s10i5',text:'Set up bring-a-friend bonus entries'},
+        {id:'p1s10i6',text:'Prepare referral bonus cards (enhanced value)'},
+        {id:'p1s10i7',text:'Define VIP perks'},
+      ]},
+      { id:'p1s11', num:'11', title:'Vendors, Food & Atmosphere', items:[
+        {id:'p1s11i1',text:'Confirm food & beverage order'},
+        {id:'p1s11i2',text:'Order plates, cups, napkins, utensils'},
+        {id:'p1s11i3',text:'Coordinate vendors (if applicable)'},
+        {id:'p1s11i4',text:'Plan music'},
+        {id:'p1s11i5',text:'Plan lighting'},
+        {id:'p1s11i6',text:'Plan scent (huge for the guest experience)'},
+      ]},
+      { id:'p1s12', num:'12', title:'Decor & Branding', items:[
+        {id:'p1s12i1',text:'Order balloons / installations'},
+        {id:'p1s12i2',text:'Set up table linens and centerpieces'},
+        {id:'p1s12i3',text:'Prepare pricing signage'},
+        {id:'p1s12i4',text:'Prepare station signage'},
+        {id:'p1s12i5',text:'Prepare directional signage'},
+        {id:'p1s12i6',text:'Create photo moment / backdrop'},
+      ]},
+      { id:'p1s13', num:'13', title:'Presentation / Station Prep', items:[
+        {id:'p1s13i1',text:'Finalize presentation slides'},
+        {id:'p1s13i2',text:'Assign speaker(s)'},
+        {id:'p1s13i3',text:'Rehearse timing'},
+        {id:'p1s13i4',text:'Prep station materials (if station-style event)'},
+      ]},
+    ]
+  },
+  {
+    id:'p2', tag:'p2', phase:'Phase 2', title:'Day-Of Event', sub:'',
+    sections:[
+      { id:'p2s1', num:'01', title:'Setup', items:[
+        {id:'p2s1i1',text:'Pick up / receive food & beverage'},
+        {id:'p2s1i2',text:'Set up tables & decor'},
+        {id:'p2s1i3',text:'Set up all stations'},
+        {id:'p2s1i4',text:'Set up check-in & checkout areas'},
+        {id:'p2s1i5',text:'Place all signage'},
+        {id:'p2s1i6',text:'Test TVs / presentations'},
+        {id:'p2s1i7',text:'Test payment systems'},
+        {id:'p2s1i8',text:'Set up raffle station'},
+        {id:'p2s1i9',text:'Set up photo area'},
+      ]},
+      { id:'p2s2', num:'02', title:'Final Team Prep', items:[
+        {id:'p2s2i1',text:'Review staff roles with team'},
+        {id:'p2s2i2',text:'Confirm talking points'},
+        {id:'p2s2i3',text:'Align on sales goal + energy'},
+        {id:'p2s2i4',text:'Assign someone to capture content (photos/videos)'},
+      ]},
+      { id:'p2s3', num:'03', title:'Walkthrough', items:[
+        {id:'p2s3i1',text:'Complete full walkthrough of event flow'},
+        {id:'p2s3i2',text:'Confirm pens available at all stations'},
+        {id:'p2s3i3',text:'Confirm forms ready'},
+        {id:'p2s3i4',text:'Confirm QR codes visible and functional'},
+        {id:'p2s3i5',text:'Confirm pricing is clearly displayed'},
+      ]},
+      { id:'p2s4', num:'04', title:'During Event', items:[
+        {id:'p2s4i1',text:'Greet every guest warmly at check-in'},
+        {id:'p2s4i2',text:'Ensure every guest checks in'},
+        {id:'p2s4i3',text:'Ensure every guest is guided through the experience'},
+        {id:'p2s4i4',text:'Ensure every guest has a consult opportunity'},
+        {id:'p2s4i5',text:'Actively promote event offers'},
+        {id:'p2s4i6',text:'Encourage checkout before guests leave'},
+        {id:'p2s4i7',text:'Capture content (photos + videos)'},
+        {id:'p2s4i8',text:'Capture testimonials (if possible)'},
+      ]},
+    ]
+  },
+  {
+    id:'p3', tag:'p3', phase:'Phase 3', title:'Post-Event Follow-Up', sub:'',
+    sections:[
+      { id:'p3s1', num:'01', title:'Segment Your Audience', items:[
+        {id:'p3s1i1',text:'Identify RSVPs who did NOT attend'},
+        {id:'p3s1i2',text:'Identify attendees who did NOT purchase'},
+        {id:'p3s1i3',text:'Identify attendees who DID purchase'},
+      ]},
+      { id:'p3s2', num:'02', title:'Follow-Up Campaigns', items:[
+        {id:'p3s2i1',text:'No-shows: Send "We missed you" message'},
+        {id:'p3s2i2',text:'No-shows: Offer slightly reduced version of event promo'},
+        {id:'p3s2i3',text:'Attended, no purchase: Extend event pricing (deadline: end of week)'},
+        {id:'p3s2i4',text:'Attended, no purchase: Create urgency messaging'},
+        {id:'p3s2i5',text:'Purchased: Send thank-you message'},
+        {id:'p3s2i6',text:'Purchased: Reinforce excitement about their treatment'},
+        {id:'p3s2i7',text:'Purchased: Encourage booking their appointment'},
+      ]},
+      { id:'p3s3', num:'03', title:'Internal Tracking & Analysis', items:[
+        {id:'p3s3i1',text:'Track total revenue (event + post-event)'},
+        {id:'p3s3i2',text:'Track packages sold'},
+        {id:'p3s3i3',text:'Track most popular services'},
+        {id:'p3s3i4',text:'Compare RSVP vs. attendance rate'},
+        {id:'p3s3i5',text:'Calculate ROI (revenue vs. spend)'},
+      ]},
+      { id:'p3s4', num:'04', title:'Team Debrief', items:[
+        {id:'p3s4i1',text:'Document what worked well'},
+        {id:'p3s4i2',text:'Document what didn\'t work'},
+        {id:'p3s4i3',text:'Document what should change next time'},
+        {id:'p3s4i4',text:'Collect staff feedback'},
+      ]},
+      { id:'p3s5', num:'05', title:'Marketing Follow-Through', items:[
+        {id:'p3s5i1',text:'Post event recap on social media'},
+        {id:'p3s5i2',text:'Share photos / videos from the event'},
+        {id:'p3s5i3',text:'Continue promoting top-selling services'},
+      ]},
+    ]
+  }
+];
+
+let TOTAL = 0;
+CL.forEach(p => p.sections.forEach(s => TOTAL += s.items.length));
+let SECTION_COUNT = CL.reduce((a,p) => a + p.sections.length, 0);
+
+// ──────────────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────────────
+const SK = 'ae_evplanner_v2';
+let S = { view:'overview', evId:null, delId:null, events:{} };
+
+function loadS() {
+  try { const d = JSON.parse(localStorage.getItem(SK)||'{}'); S.events = d.events||{}; } catch(e){}
+}
+function saveS() {
+  try { localStorage.setItem(SK, JSON.stringify({events:S.events})); } catch(e){}
+}
+function uid() { return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function initItems() {
+  const r={};
+  CL.forEach(p=>p.sections.forEach(s=>s.items.forEach(it=>{r[it.id]={st:'todo',note:''}})));
+  return r;
+}
+function fmtDate(d) {
+  if(!d) return '';
+  const x=new Date(d+'T00:00:00');
+  return x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+}
+function fmtTime(t) {
+  if(!t) return '';
+  const [h,m]=t.split(':');
+  const hr=parseInt(h); const ap=hr>=12?'PM':'AM';
+  return `${hr%12||12}:${m} ${ap}`;
+}
+function prog(ev) {
+  let done=0,pend=0,na=0,todo=0;
+  Object.values(ev.items).forEach(i=>{
+    if(i.st==='done') done++;
+    else if(i.st==='pending') pend++;
+    else if(i.st==='na') na++;
+    else todo++;
+  });
+  const tot=Object.keys(ev.items).length;
+  return {done,pend,na,todo,tot};
+}
+const CYCLE = {todo:'done',done:'pending',pending:'na',na:'todo'};
+const LABELS = {todo:'To Do',done:'Done',pending:'Pending',na:'N/A'};
+const ICONS  = {todo:'○',done:'✓',pending:'⏳',na:'—'};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ──────────────────────────────────────────────────────
+// SPLASH
+// ──────────────────────────────────────────────────────
+function startApp() {
+  document.getElementById('splash').classList.add('out');
+  document.getElementById('app').classList.add('on');
+  renderAll();
+}
+
+// ──────────────────────────────────────────────────────
+// ROUTING
+// ──────────────────────────────────────────────────────
+function showView(view, id) {
+  S.view=view; S.evId=id||null; renderAll();
+}
+function renderAll() { renderSidebar(); renderMain(); }
+
+// ──────────────────────────────────────────────────────
+// SIDEBAR
+// ──────────────────────────────────────────────────────
+function renderSidebar() {
+  document.getElementById('nav-ov').classList.toggle('active', S.view==='overview');
+  const el=document.getElementById('evList');
+  const evs=Object.values(S.events).sort((a,b)=>(a.date||'zzz')>(b.date||'zzz')?1:-1);
+  if(!evs.length){el.innerHTML='<div class="sb-empty">No events yet.<br>Click + New Event to begin.</div>';return;}
+  el.innerHTML=evs.map(ev=>{
+    const p=prog(ev);
+    const dw=p.tot?(p.done/p.tot*100).toFixed(1):0;
+    const pw=p.tot?(p.pend/p.tot*100).toFixed(1):0;
+    const nw=p.tot?(p.na/p.tot*100).toFixed(1):0;
+    const tw=(100-dw-pw-nw).toFixed(1);
+    const active=S.evId===ev.id;
+    return `<div class="sb-ev-card${active?' active':''}" onclick="showView('event','${ev.id}')">
+      <div class="sb-ev-name">${esc(ev.title||'Untitled Event')}</div>
+      <div class="sb-ev-date">${ev.date?fmtDate(ev.date):'No date set'}${ev.time?' · '+fmtTime(ev.time):''}</div>
+      <div class="sb-ev-bar">
+        <div class="sb-ev-bar-seg" style="background:#22c55e;width:${dw}%"></div>
+        <div class="sb-ev-bar-seg" style="background:#f59e0b;width:${pw}%"></div>
+        <div class="sb-ev-bar-seg" style="background:#4b5563;width:${nw}%"></div>
+        <div class="sb-ev-bar-seg" style="background:rgba(162,140,117,0.14);width:${tw}%"></div>
+      </div>
+      <button class="sb-del-btn" onclick="promptDel('${ev.id}',event)" title="Delete event">&times;</button>
+    </div>`;
+  }).join('');
+}
+
+// ──────────────────────────────────────────────────────
+// MAIN
+// ──────────────────────────────────────────────────────
+function renderMain() {
+  const el=document.getElementById('main');
+  if(S.view==='overview') el.innerHTML=renderOverview();
+  else if(S.view==='create') el.innerHTML=renderForm(null);
+  else if(S.view==='edit') el.innerHTML=renderForm(S.evId);
+  else if(S.view==='event'&&S.evId&&S.events[S.evId]) el.innerHTML=renderEvent(S.evId);
+  else el.innerHTML=`<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">Select an event</div><div class="empty-sub">Choose an event from the sidebar or create a new one.</div></div>`;
+}
+
+// ──────────────────────────────────────────────────────
+// OVERVIEW
+// ──────────────────────────────────────────────────────
+function renderOverview() {
+  return `
+  <div class="ov-hero">
+    <div class="ov-eye">Aesthetic Executive &middot; Marketing</div>
+    <h1 class="ov-title">Med Spa Event Checklist</h1>
+    <p class="ov-sub">A complete pre-event to post-event guide. Create an event to start tracking your progress against this checklist.</p>
+  </div>
+  <div class="ov-stats">
+    <div class="ov-stat"><div class="ov-stat-num">3</div><div class="ov-stat-label">Phases</div></div>
+    <div class="ov-stat"><div class="ov-stat-num">${SECTION_COUNT}</div><div class="ov-stat-label">Sections</div></div>
+    <div class="ov-stat"><div class="ov-stat-num">${TOTAL}</div><div class="ov-stat-label">Checklist Items</div></div>
+  </div>
+  <div class="ov-phases">
+    ${CL.map(ph=>`
+      <div class="phase-block">
+        <div class="phase-hdr">
+          <span class="phase-tag ${ph.tag}">${ph.phase}</span>
+          <div><div class="phase-name">${ph.title}</div>${ph.sub?`<div class="phase-subtitle">${ph.sub}</div>`:''}</div>
+          <div class="phase-line"></div>
+        </div>
+        ${ph.sections.map(s=>`
+          <div class="sec-accordion">
+            <button class="sec-toggle" onclick="toggleAcc('ov-${s.id}')">
+              <div class="sec-toggle-l">
+                <span class="sec-num">${s.num}</span>
+                <span class="sec-name">${esc(s.title)}</span>
+                <span class="sec-count">${s.items.length} items</span>
+              </div>
+              <span class="sec-arrow" id="arr-ov-${s.id}">&#9660;</span>
+            </button>
+            <div class="sec-items" id="acc-ov-${s.id}">
+              ${s.items.map(it=>`<div class="ov-item"><div class="ov-dot"></div><div class="ov-item-text">${esc(it.text)}</div></div>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `).join('')}
+    <div class="ov-cta">
+      <button class="sb-create-btn" style="max-width:260px;margin:0 auto;" onclick="showView('create')">+ Create Your First Event</button>
+    </div>
+  </div>`;
+}
+
+function toggleAcc(id) {
+  const el=document.getElementById('acc-'+id);
+  const ar=document.getElementById('arr-'+id);
+  if(!el) return;
+  el.classList.toggle('open');
+  if(ar) ar.classList.toggle('open');
+}
+
+// ──────────────────────────────────────────────────────
+// CREATE / EDIT FORM
+// ──────────────────────────────────────────────────────
+function renderForm(editId) {
+  const ev=editId?S.events[editId]:null;
+  const isEdit=!!ev;
+  return `
+  <div class="form-wrap">
+    <div class="form-eye">Aesthetic Executive &middot; ${isEdit?'Edit Event':'New Event'}</div>
+    <h1 class="form-title">${isEdit?'Edit event details':'Create a new event'}</h1>
+    <div class="form-group">
+      <label class="form-label">Event Name *</label>
+      <input class="form-input" id="f-title" type="text" placeholder="Spring Glow Night, VIP Open House..." value="${ev?esc(ev.title):''}"/>
+      <div class="form-err" id="f-err">Please enter an event name.</div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input class="form-input" id="f-date" type="date" value="${ev?ev.date:''}"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Time</label>
+        <input class="form-input" id="f-time" type="time" value="${ev?ev.time:''}"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Event Notes</label>
+      <textarea class="form-ta" id="f-notes" placeholder="Venue, theme, goals, key contacts, special notes...">${ev?esc(ev.notes):''}</textarea>
+    </div>
+    <button class="form-submit" onclick="${isEdit?`saveEdit('${editId}')`:'createEvent()'}">${isEdit?'Save Changes':'Create Event & Open Checklist →'}</button>
+    <span class="form-cancel-link" onclick="${isEdit?`showView('event','${editId}')`:"showView('overview')"}">
+      ${isEdit?'← Back to event':'Cancel'}
+    </span>
+  </div>`;
+}
+
+function createEvent() {
+  const title=document.getElementById('f-title').value.trim();
+  if(!title){
+    document.getElementById('f-err').style.display='block';
+    document.getElementById('f-title').style.borderColor='rgba(248,113,113,0.45)';
+    document.getElementById('f-title').focus();
+    return;
+  }
+  const id=uid();
+  S.events[id]={
+    id, title,
+    date:document.getElementById('f-date').value,
+    time:document.getElementById('f-time').value,
+    notes:document.getElementById('f-notes').value.trim(),
+    created:Date.now(),
+    items:initItems()
+  };
+  saveS(); showView('event',id);
+}
+
+function saveEdit(evId) {
+  const ev=S.events[evId]; if(!ev) return;
+  const title=document.getElementById('f-title').value.trim();
+  if(!title){
+    document.getElementById('f-err').style.display='block';
+    document.getElementById('f-title').style.borderColor='rgba(248,113,113,0.45)';
+    return;
+  }
+  ev.title=title;
+  ev.date=document.getElementById('f-date').value;
+  ev.time=document.getElementById('f-time').value;
+  ev.notes=document.getElementById('f-notes').value.trim();
+  saveS(); showView('event',evId);
+}
+
+// ──────────────────────────────────────────────────────
+// EVENT DETAIL
+// ──────────────────────────────────────────────────────
+function renderEvent(evId) {
+  const ev=S.events[evId]; if(!ev) return '';
+  const p=prog(ev);
+  const tot=p.tot;
+  const dw=tot?(p.done/tot*100).toFixed(1):0;
+  const pw=tot?(p.pend/tot*100).toFixed(1):0;
+  const nw=tot?(p.na/tot*100).toFixed(1):0;
+  const tw=(100-parseFloat(dw)-parseFloat(pw)-parseFloat(nw)).toFixed(1);
+
+  return `
+  <div class="ev-hero">
+    <button class="ev-back" onclick="showView('overview')">&larr; All Events</button>
+    <div class="ev-top">
+      <div class="ev-title-wrap">
+        <input class="ev-title-input" id="etitle-${evId}" value="${esc(ev.title)}"
+          onblur="quickSave('${evId}','title',this.value)" placeholder="Event name..."/>
+      </div>
+      <button class="ev-edit-btn" onclick="showView('edit','${evId}')">Edit Details</button>
+    </div>
+    <div class="ev-meta">
+      ${ev.date?`<div class="ev-meta-item"><span class="ev-meta-icon">📅</span>${fmtDate(ev.date)}</div>`:''}
+      ${ev.time?`<div class="ev-meta-item"><span class="ev-meta-icon">🕐</span>${fmtTime(ev.time)}</div>`:''}
+      ${!ev.date&&!ev.time?`<span class="ev-no-date" onclick="showView('edit','${evId}')">No date set — click Edit Details to add one</span>`:''}
+    </div>
+  </div>
+
+  ${ev.notes?`
+  <div class="ev-notes-card">
+    <button class="notes-toggle" onclick="toggleAcc('evnotes-${evId}')">
+      <span class="notes-label">Event Notes</span>
+      <span class="notes-arrow open" id="arr-evnotes-${evId}">&#9650;</span>
+    </button>
+    <div class="notes-body open" id="acc-evnotes-${evId}">
+      <div class="notes-text">${esc(ev.notes)}</div>
+    </div>
+  </div>`:''}
+
+  <div class="prog-wrap">
+    <div class="prog-bar" id="progbar-${evId}">
+      <div class="prog-seg done" style="width:${dw}%"></div>
+      <div class="prog-seg pending" style="width:${pw}%"></div>
+      <div class="prog-seg na" style="width:${nw}%"></div>
+      <div class="prog-seg todo" style="width:${tw}%"></div>
+    </div>
+    <div class="prog-legend" id="progleg-${evId}">
+      <div class="leg-item"><div class="leg-dot done"></div><span class="leg-lbl">Done</span><span class="leg-cnt" id="lc-done-${evId}">${p.done}</span></div>
+      <div class="leg-item"><div class="leg-dot pending"></div><span class="leg-lbl">Pending</span><span class="leg-cnt" id="lc-pend-${evId}">${p.pend}</span></div>
+      <div class="leg-item"><div class="leg-dot todo"></div><span class="leg-lbl">To Do</span><span class="leg-cnt" id="lc-todo-${evId}">${p.todo}</span></div>
+      <div class="leg-item"><div class="leg-dot na"></div><span class="leg-lbl">N/A</span><span class="leg-cnt" id="lc-na-${evId}">${p.na}</span></div>
+    </div>
+  </div>
+
+  <div class="cl-wrap">
+    ${CL.map(ph=>`
+      <div class="cl-phase">
+        <div class="cl-phase-hdr">
+          <span class="phase-tag ${ph.tag}">${ph.phase}</span>
+          <span class="cl-phase-name">${ph.title}</span>
+          ${ph.sub?`<span class="cl-phase-sub">${ph.sub}</span>`:''}
+          <div class="cl-phase-line"></div>
+        </div>
+        ${ph.sections.map(s=>{
+          const sitems=s.items.map(it=>ev.items[it.id]||{st:'todo',note:''});
+          const sDone=sitems.filter(i=>i.st==='done').length;
+          const sPend=sitems.filter(i=>i.st==='pending').length;
+          const allDone=sDone===s.items.length;
+          const hasPend=sPend>0&&!allDone;
+          return `
+          <div class="cl-section" id="cls-${evId}-${s.id}">
+            <button class="cl-sec-toggle" onclick="toggleAcc('ev-${evId}-${s.id}')">
+              <div class="cl-sec-l">
+                <span class="sec-num">${s.num}</span>
+                <span class="cl-sec-name" style="${allDone?'color:rgba(255,253,246,0.32);text-decoration:line-through':''}">${esc(s.title)}</span>
+                ${allDone?'<span class="cl-badge complete">Complete</span>':''}
+                ${hasPend?'<span class="cl-badge pending">Pending items</span>':''}
+              </div>
+              <div class="cl-sec-r">
+                <span class="cl-sec-cnt" id="cnt-${evId}-${s.id}">${sDone}/${s.items.length}</span>
+                <span class="sec-arrow" id="arr-ev-${evId}-${s.id}">&#9660;</span>
+              </div>
+            </button>
+            <div class="cl-items" id="acc-ev-${evId}-${s.id}">
+              ${s.items.map(it=>{
+                const ist=ev.items[it.id]||{st:'todo',note:''};
+                const st=ist.st;
+                const hasNote=ist.note&&ist.note.trim();
+                return `
+                <div class="cl-item s-${st}" id="row-${evId}-${it.id}">
+                  <button class="cl-status-btn" onclick="cycleStatus('${evId}','${it.id}','${s.id}')" title="Click to change status">
+                    <span class="st-pill ${st}" id="pill-${evId}-${it.id}">${ICONS[st]} ${LABELS[st]}</span>
+                  </button>
+                  <div class="cl-content">
+                    <div class="cl-item-text s-${st}" id="txt-${evId}-${it.id}">${esc(it.text)}</div>
+                    <div class="cl-note-wrap${hasNote?' open':''}" id="nw-${evId}-${it.id}">
+                      <textarea class="cl-note-ta" placeholder="Add a note for this item..."
+                        onblur="saveNote('${evId}','${it.id}',this.value)">${hasNote?esc(ist.note):''}</textarea>
+                    </div>
+                    ${hasNote?`<div class="cl-note-saved">📝 Note</div>`:''}
+                  </div>
+                  <div class="cl-actions">
+                    <button class="cl-note-btn${hasNote?' has-note':''}" id="notebtn-${evId}-${it.id}"
+                      onclick="toggleNote('${evId}','${it.id}')" title="Toggle note">📝</button>
+                  </div>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+// ──────────────────────────────────────────────────────
+// INTERACTIONS
+// ──────────────────────────────────────────────────────
+function cycleStatus(evId, itId, secId) {
+  const ev=S.events[evId]; if(!ev) return;
+  const cur=ev.items[itId].st;
+  const next=CYCLE[cur];
+  ev.items[itId].st=next;
+  saveS();
+
+  // Update item row
+  const row=document.getElementById('row-'+evId+'-'+itId);
+  if(row){ row.className='cl-item s-'+next; }
+  const pill=document.getElementById('pill-'+evId+'-'+itId);
+  if(pill){ pill.className='st-pill '+next; pill.textContent=ICONS[next]+' '+LABELS[next]; }
+  const txt=document.getElementById('txt-'+evId+'-'+itId);
+  if(txt){ txt.className='cl-item-text s-'+next; }
+
+  // Update section header
+  const section=CL.flatMap(p=>p.sections).find(s=>s.id===secId);
+  if(section){
+    const sitems=section.items.map(it=>ev.items[it.id]||{st:'todo',note:''});
+    const sDone=sitems.filter(i=>i.st==='done').length;
+    const sPend=sitems.filter(i=>i.st==='pending').length;
+    const allDone=sDone===section.items.length;
+    const hasPend=sPend>0&&!allDone;
+    const cnt=document.getElementById('cnt-'+evId+'-'+secId);
+    if(cnt) cnt.textContent=`${sDone}/${section.items.length}`;
+    const toggle=document.querySelector(`#cls-${evId}-${secId} .cl-sec-toggle`);
+    if(toggle){
+      const nm=toggle.querySelector('.cl-sec-name');
+      if(nm){nm.style.color=allDone?'rgba(255,253,246,0.32)':'';nm.style.textDecoration=allDone?'line-through':'';}
+      toggle.querySelectorAll('.cl-badge').forEach(b=>b.remove());
+      const leftEl=toggle.querySelector('.cl-sec-l');
+      if(leftEl){
+        if(allDone){const b=document.createElement('span');b.className='cl-badge complete';b.textContent='Complete';leftEl.appendChild(b);}
+        else if(hasPend){const b=document.createElement('span');b.className='cl-badge pending';b.textContent='Pending items';leftEl.appendChild(b);}
+      }
+    }
+  }
+
+  // Update progress bar + legend
+  updateProgress(evId);
+  renderSidebar();
+}
+
+function updateProgress(evId) {
+  const ev=S.events[evId]; if(!ev) return;
+  const p=prog(ev); const tot=p.tot;
+  const dw=tot?(p.done/tot*100).toFixed(1):0;
+  const pw=tot?(p.pend/tot*100).toFixed(1):0;
+  const nw=tot?(p.na/tot*100).toFixed(1):0;
+  const tw=(100-parseFloat(dw)-parseFloat(pw)-parseFloat(nw)).toFixed(1);
+  const bar=document.getElementById('progbar-'+evId);
+  if(bar){
+    const segs=bar.querySelectorAll('.prog-seg');
+    if(segs[0]) segs[0].style.width=dw+'%';
+    if(segs[1]) segs[1].style.width=pw+'%';
+    if(segs[2]) segs[2].style.width=nw+'%';
+    if(segs[3]) segs[3].style.width=tw+'%';
+  }
+  const lcs=[
+    ['lc-done-'+evId, p.done],
+    ['lc-pend-'+evId, p.pend],
+    ['lc-todo-'+evId, p.todo],
+    ['lc-na-'+evId, p.na],
+  ];
+  lcs.forEach(([id,val])=>{const el=document.getElementById(id);if(el) el.textContent=val;});
+}
+
+function toggleNote(evId, itId) {
+  const wrap=document.getElementById('nw-'+evId+'-'+itId); if(!wrap) return;
+  wrap.classList.toggle('open');
+  if(wrap.classList.contains('open')){ const ta=wrap.querySelector('textarea'); if(ta) ta.focus(); }
+}
+
+function saveNote(evId, itId, val) {
+  const ev=S.events[evId]; if(!ev) return;
+  ev.items[itId].note=val;
+  saveS();
+  const btn=document.getElementById('notebtn-'+evId+'-'+itId);
+  if(btn) btn.classList.toggle('has-note',!!val.trim());
+  // Update/remove saved indicator
+  const content=document.querySelector(`#row-${evId}-${itId} .cl-content`);
+  if(content){
+    let ind=content.querySelector('.cl-note-saved');
+    if(val.trim()){
+      if(!ind){ind=document.createElement('div');ind.className='cl-note-saved';content.appendChild(ind);}
+      ind.textContent='📝 Note';
+    } else { if(ind) ind.remove(); }
+  }
+}
+
+function quickSave(evId, field, val) {
+  const ev=S.events[evId]; if(!ev) return;
+  ev[field]=val; saveS(); renderSidebar();
+}
+
+// ──────────────────────────────────────────────────────
+// DELETE
+// ──────────────────────────────────────────────────────
+function promptDel(evId, e) {
+  e.stopPropagation(); S.delId=evId;
+  document.getElementById('confirm-overlay').classList.add('show');
+}
+function closeConfirm() {
+  S.delId=null; document.getElementById('confirm-overlay').classList.remove('show');
+}
+function confirmDelete() {
+  const id=S.delId; if(!id) return;
+  delete S.events[id]; saveS(); closeConfirm();
+  if(S.evId===id) showView('overview'); else renderAll();
+}
+
+// ──────────────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────────────
+loadS();
+</script>
+</body>
+</html>
