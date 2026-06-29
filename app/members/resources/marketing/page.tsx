@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search } from "lucide-react";
+import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -222,6 +222,91 @@ export default function MarketingResourcesPage() {
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <Search size={12} style={{ color: "#a28c75" }} />
+                      <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Photography ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+              Before &amp; After Photography
+            </h2>
+            <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+          </div>
+
+          <div
+            className="rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}
+                  >
+                    <Camera size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{ color: "#c8b3a3", background: "rgba(200,179,163,0.08)", border: "1px solid rgba(200,179,163,0.2)" }}
+                  >
+                    Photography Guide
+                  </span>
+                </div>
+
+                <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
+                  How to capture photos that actually showcase your results.
+                </h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  Not just taking before-and-afters — taking them well. A complete protocol
+                  covering lighting, consistent angles, patient preparation, camera settings,
+                  image labeling, and HIPAA-compliant consent. Every variable locked down so
+                  the only thing that changes is the result.
+                </p>
+
+                <Link
+                  href="/members/resources/marketing/before-after-photos"
+                  className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#0c0004" }}
+                >
+                  <BookOpen size={12} />
+                  Read the Guide
+                </Link>
+              </div>
+
+              {/* Right — feature chips */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "Lighting Protocol", desc: "Natural light vs. ring light, why to avoid flash, and consistent setup instructions" },
+                  { label: "Angle Standards", desc: "The 5 angles to capture every time — front, profiles, and 45-degree views" },
+                  { label: "Patient Prep", desc: "No makeup, hair back, neutral clothing — what to require before every shoot" },
+                  { label: "Consent & Compliance", desc: "HIPAA-compliant photo consent, privacy, and secure storage requirements" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Camera size={12} style={{ color: "#a28c75" }} />
                       <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
                         {feat.label}
                       </span>
