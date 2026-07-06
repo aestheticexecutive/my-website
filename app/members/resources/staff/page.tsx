@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Users, Download, ExternalLink, Wand2, ClipboardList, Star, ChevronDown, Sparkles, Target, Heart, GraduationCap, Activity, FolderOpen, CalendarDays, Headphones, TrendingUp } from "lucide-react";
+import { ArrowLeft, Users, Download, ExternalLink, Wand2, ClipboardList, Star, ChevronDown, Sparkles, Target, Heart, GraduationCap, Activity, FolderOpen, CalendarDays, Headphones, TrendingUp, DollarSign } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -1199,6 +1199,77 @@ export default function StaffResourcesPage() {
             </div>
 
             {/* CTA */}
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg transition-all duration-200"
+                style={{
+                  background: "rgba(162,140,117,0.12)",
+                  border: "1px solid rgba(162,140,117,0.25)",
+                  color: "#a28c75",
+                }}
+              >
+                View Training
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        <Link
+          href="/members/resources/staff/patient-financing"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.12)",
+                border: "1px solid rgba(162,140,117,0.25)",
+              }}
+            >
+              <DollarSign size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Presenting Patient Financing
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.1)",
+                    border: "1px solid rgba(162,140,117,0.22)",
+                    color: "rgba(162,140,117,0.75)",
+                  }}
+                >
+                  Training
+                </span>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.06)",
+                    border: "1px solid rgba(162,140,117,0.15)",
+                    color: "rgba(162,140,117,0.6)",
+                  }}
+                >
+                  Sales Support
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                How to introduce financing options confidently — without it feeling like a pitch. Covers a 6-step talk track, word-for-word scripts, responses to every common patient question, and a customizable partner comparison table your team can fill in with your actual providers.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["6-step talk track", "Word-for-word scripts", "9 FAQ responses", "Customizable comparison"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="flex-shrink-0">
               <span
                 className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg transition-all duration-200"
