@@ -880,7 +880,7 @@ function renderForm(editId) {
       <label class="form-label">Event Notes</label>
       <textarea class="form-ta" id="f-notes" placeholder="Venue, theme, goals, key contacts, special notes...">${ev?esc(ev.notes):''}</textarea>
     </div>
-    <button class="form-submit" onclick="${isEdit?`saveEdit('${editId}')`:'createEvent()'}">${isEdit?'Save Changes':'Create Event & Open Checklist →'}</button>
+    <button type="button" class="form-submit" onclick="${isEdit?`saveEdit('${editId}')`:'createEvent()'}">${isEdit?'Save Changes':'Create Event & Open Checklist →'}</button>
     <span class="form-cancel-link" onclick="${isEdit?`showView('event','${editId}')`:"showView('overview')"}">
       ${isEdit?'← Back to event':'Cancel'}
     </span>
