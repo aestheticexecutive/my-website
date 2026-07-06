@@ -880,8 +880,8 @@ function renderForm(editId) {
       <label class="form-label">Event Notes</label>
       <textarea class="form-ta" id="f-notes" placeholder="Venue, theme, goals, key contacts, special notes...">${ev?esc(ev.notes):''}</textarea>
     </div>
-    <button type="button" class="form-submit" onclick="${isEdit?`saveEdit('${editId}')`:'createEvent()'}">${isEdit?'Save Changes':'Create Event & Open Checklist →'}</button>
-    <span class="form-cancel-link" onclick="${isEdit?`showView('event','${editId}')`:"showView('overview')"}">
+    <button type="button" class="form-submit" data-form-submit="${isEdit?`edit:${editId}`:'create'}">${isEdit?'Save Changes':'Create Event & Open Checklist →'}</button>
+    <span class="form-cancel-link" data-form-cancel="${isEdit?`edit:${editId}`:'create'}">
       ${isEdit?'← Back to event':'Cancel'}
     </span>
   </div>`;
@@ -1156,6 +1156,22 @@ function confirmDelete() {
 // INIT
 // ──────────────────────────────────────────────────────
 loadS();
+
+document.getElementById('main').addEventListener('click', function(e) {
+  const submitBtn = e.target.closest('[data-form-submit]');
+  if (submitBtn) {
+    const val = submitBtn.getAttribute('data-form-submit');
+    if (val === 'create') { createEvent(); }
+    else if (val.startsWith('edit:')) { saveEdit(val.slice(5)); }
+    return;
+  }
+  const cancelBtn = e.target.closest('[data-form-cancel]');
+  if (cancelBtn) {
+    const val = cancelBtn.getAttribute('data-form-cancel');
+    if (val === 'create') { showView('overview'); }
+    else if (val.startsWith('edit:')) { showView('event', val.slice(5)); }
+  }
+});
 </script>
 </body>
 </html>
