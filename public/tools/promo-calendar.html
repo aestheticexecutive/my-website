@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promotional Marketing Calendar — Aesthetic Executive</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0004;
+    --card: #1a000c;
+    --card2: #2f0410;
+    --gold: #a28c75;
+    --gold2: rgba(162,140,117,0.7);
+    --gold-dim: rgba(162,140,117,0.35);
+    --gold-faint: rgba(162,140,117,0.12);
+    --cream: #fffdf6;
+    --cream2: rgba(255,253,246,0.6);
+    --cream3: rgba(255,253,246,0.35);
+    --cream4: rgba(255,253,246,0.12);
+    --border: rgba(162,140,117,0.18);
+    --border-faint: rgba(162,140,117,0.1);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .top-bar {
+    background: linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .top-bar-left { display: flex; align-items: center; gap: 14px; }
+  .top-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--gold-faint); border: 1px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .top-title { font-size: 18px; font-weight: 300; color: var(--cream); letter-spacing: 0.01em; }
+  .top-sub { font-size: 11px; color: var(--gold2); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 1px; }
+
+  .year-nav {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .year-btn {
+    width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--gold-faint); color: var(--gold);
+    cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .year-btn:hover { background: rgba(162,140,117,0.22); }
+  .year-label { font-size: 20px; font-weight: 300; color: var(--cream); min-width: 56px; text-align: center; }
+
+  /* ── MAIN ── */
+  .main { padding: 24px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; align-items: center;
+  }
+  .legend-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold2); margin-right: 4px; }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--cream3); cursor: pointer; padding: 4px 10px; border-radius: 20px;
+    border: 1px solid transparent; transition: all 0.15s;
+  }
+  .legend-item:hover { border-color: var(--border); background: var(--gold-faint); }
+  .legend-item.active { border-color: var(--border); background: var(--gold-faint); color: var(--cream2); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── CALENDAR GRID ── */
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 1100px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 800px)  { .cal-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px)  { .cal-grid { grid-template-columns: 1fr; } }
+
+  .month-card {
+    border-radius: 12px;
+    border: 1px solid var(--border-faint);
+    background: linear-gradient(145deg, #180009 0%, #0c0004 100%);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    min-height: 180px;
+    transition: border-color 0.2s;
+  }
+  .month-card:hover { border-color: var(--border); }
+
+  .month-header {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid rgba(162,140,117,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .month-name { font-size: 13px; font-weight: 500; color: var(--cream); letter-spacing: 0.05em; }
+  .month-count {
+    font-size: 11px; color: var(--gold2);
+    background: var(--gold-faint); border: 1px solid var(--gold-dim);
+    border-radius: 10px; padding: 2px 8px; min-width: 24px; text-align: center;
+    display: none;
+  }
+  .month-count.visible { display: inline-block; }
+
+  .month-body { padding: 10px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+
+  .entry-pill {
+    border-radius: 6px; padding: 6px 9px;
+    cursor: pointer; transition: all 0.15s;
+    display: flex; align-items: flex-start; gap: 7px;
+    border: 1px solid transparent;
+  }
+  .entry-pill:hover { filter: brightness(1.1); border-color: rgba(255,255,255,0.08); }
+  .entry-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .entry-title { font-size: 12px; color: var(--cream2); font-weight: 500; word-break: break-word; }
+  .entry-type-tag { font-size: 10px; color: var(--cream3); letter-spacing: 0.05em; margin-top: 1px; }
+
+  .add-btn {
+    margin: 0 10px 10px;
+    width: calc(100% - 20px);
+    padding: 7px 12px;
+    border-radius: 7px;
+    border: 1px dashed rgba(162,140,117,0.2);
+    background: transparent;
+    color: rgba(162,140,117,0.4);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    transition: all 0.15s;
+  }
+  .add-btn:hover { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-faint); }
+
+  /* ── OVERLAY / MODAL ── */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    z-index: 100; display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  }
+  .overlay.open { opacity: 1; pointer-events: all; }
+  @media (min-width: 600px) { .overlay { align-items: center; } }
+
+  .modal {
+    background: #1a000c;
+    border: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+    width: 100%; max-width: 520px; max-height: 92vh;
+    display: flex; flex-direction: column;
+    transform: translateY(20px); transition: transform 0.25s;
+    overflow: hidden;
+  }
+  @media (min-width: 600px) { .modal { border-radius: 16px; } }
+  .overlay.open .modal { transform: translateY(0); }
+
+  .modal-header {
+    padding: 18px 20px 16px;
+    border-bottom: 1px solid rgba(162,140,117,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .modal-title { font-size: 15px; font-weight: 400; color: var(--cream); }
+  .modal-sub { font-size: 11px; color: var(--gold2); margin-top: 2px; }
+  .close-btn {
+    width: 30px; height: 30px; border-radius: 8px;
+    border: 1px solid var(--border-faint); background: transparent;
+    color: var(--cream3); cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .close-btn:hover { background: var(--gold-faint); color: var(--cream); }
+
+  .modal-body { padding: 20px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  .field-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold2); }
+
+  .field-input, .field-textarea, .field-select {
+    background: rgba(255,253,246,0.04);
+    border: 1px solid rgba(162,140,117,0.2);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 13px;
+    font-family: inherit;
+    padding: 10px 12px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+  .field-input:focus, .field-textarea:focus, .field-select:focus { border-color: var(--gold-dim); }
+  .field-textarea { min-height: 80px; resize: vertical; line-height: 1.5; }
+  .field-select option { background: #1a000c; color: var(--cream); }
+
+  .type-picker { display: flex; flex-wrap: wrap; gap: 6px; }
+  .type-btn {
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid var(--border-faint); background: transparent;
+    font-size: 12px; color: var(--cream3); cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    transition: all 0.15s;
+  }
+  .type-btn:hover { border-color: var(--border); color: var(--cream2); background: var(--gold-faint); }
+  .type-btn.selected { color: #0c0004; border-color: transparent; }
+
+  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metric-field { display: flex; flex-direction: column; gap: 5px; }
+  .metric-label { font-size: 11px; color: var(--cream3); }
+
+  .modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(162,140,117,0.1);
+    display: flex; gap: 10px; justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .btn-cancel {
+    padding: 9px 18px; border-radius: 8px;
+    border: 1px solid var(--border-faint); background: transparent;
+    color: var(--cream3); font-size: 12px; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn-cancel:hover { border-color: var(--border); color: var(--cream2); }
+  .btn-delete {
+    padding: 9px 18px; border-radius: 8px;
+    border: 1px solid rgba(200,80,80,0.25); background: transparent;
+    color: rgba(200,80,80,0.6); font-size: 12px; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.15s; font-family: inherit; margin-right: auto;
+  }
+  .btn-delete:hover { border-color: rgba(200,80,80,0.5); color: rgba(200,80,80,0.85); background: rgba(200,80,80,0.06); }
+  .btn-save {
+    padding: 9px 20px; border-radius: 8px;
+    background: var(--gold); border: none;
+    color: #0c0004; font-size: 12px; letter-spacing: 0.1em;
+    cursor: pointer; font-weight: 600; transition: all 0.15s; font-family: inherit;
+  }
+  .btn-save:hover { background: #b89e87; }
+
+  /* ── DETAIL VIEW ── */
+  .detail-section { margin-top: 6px; }
+  .detail-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(162,140,117,0.08); }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-key { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold2); width: 90px; flex-shrink: 0; padding-top: 1px; }
+  .detail-val { font-size: 13px; color: var(--cream2); line-height: 1.5; word-break: break-word; }
+  .detail-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .detail-metric-box {
+    border-radius: 8px; padding: 10px 12px;
+    background: var(--gold-faint); border: 1px solid var(--gold-dim);
+  }
+  .detail-metric-key { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold2); }
+  .detail-metric-val { font-size: 15px; font-weight: 500; color: var(--cream); margin-top: 2px; }
+
+  /* ── ENTRY TYPE COLORS ── */
+  .t-feature    { background: rgba(162,140,117,0.15); }
+  .t-campaign   { background: rgba(100,140,200,0.12); }
+  .t-event      { background: rgba(130,190,120,0.12); }
+  .t-email      { background: rgba(200,160,80,0.12); }
+  .t-social     { background: rgba(160,100,200,0.12); }
+  .t-other      { background: rgba(180,180,180,0.08); }
+
+  .dot-feature  { background: #a28c75; }
+  .dot-campaign { background: #6488c8; }
+  .dot-event    { background: #7db870; }
+  .dot-email    { background: #c8a050; }
+  .dot-social   { background: #a064c8; }
+  .dot-other    { background: #888; }
+
+  .sel-feature  { background: #a28c75; }
+  .sel-campaign { background: #6488c8; }
+  .sel-event    { background: #7db870; }
+  .sel-email    { background: #c8a050; }
+  .sel-social   { background: #a064c8; }
+  .sel-other    { background: #888; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-icon">📅</div>
+    <div>
+      <div class="top-title">Promotional Marketing Calendar</div>
+      <div class="top-sub">Aesthetic Executive · Member Tool</div>
+    </div>
+  </div>
+  <div class="year-nav">
+    <button class="year-btn" onclick="changeYear(-1)">‹</button>
+    <div class="year-label" id="yearLabel">2026</div>
+    <button class="year-btn" onclick="changeYear(1)">›</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- Legend / Filter -->
+  <div class="legend">
+    <span class="legend-label">Filter:</span>
+    <div class="legend-item active" data-type="all" onclick="toggleFilter('all')">
+      <span class="legend-dot" style="background:var(--gold)"></span> All
+    </div>
+    <div class="legend-item" data-type="Feature" onclick="toggleFilter('Feature')">
+      <span class="legend-dot dot-feature"></span> Feature
+    </div>
+    <div class="legend-item" data-type="Campaign" onclick="toggleFilter('Campaign')">
+      <span class="legend-dot dot-campaign"></span> Campaign
+    </div>
+    <div class="legend-item" data-type="Event" onclick="toggleFilter('Event')">
+      <span class="legend-dot dot-event"></span> Event
+    </div>
+    <div class="legend-item" data-type="Email" onclick="toggleFilter('Email')">
+      <span class="legend-dot dot-email"></span> Email
+    </div>
+    <div class="legend-item" data-type="Social" onclick="toggleFilter('Social')">
+      <span class="legend-dot dot-social"></span> Social
+    </div>
+    <div class="legend-item" data-type="Other" onclick="toggleFilter('Other')">
+      <span class="legend-dot dot-other"></span> Other
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="cal-grid" id="calGrid"></div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Add Entry</div>
+        <div class="modal-sub" id="modalSub"></div>
+      </div>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+
+    <!-- ADD / EDIT FORM -->
+    <div class="modal-body" id="formBody">
+      <div class="field-group">
+        <label class="field-label">Title</label>
+        <input class="field-input" id="f-title" type="text" placeholder="e.g. Morpheus8 Feature, Black Friday Campaign…" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Type</label>
+        <div class="type-picker" id="typePicker">
+          <button class="type-btn" data-type="Feature" onclick="selectType('Feature')">
+            <span class="legend-dot dot-feature"></span> Feature
+          </button>
+          <button class="type-btn" data-type="Campaign" onclick="selectType('Campaign')">
+            <span class="legend-dot dot-campaign"></span> Campaign
+          </button>
+          <button class="type-btn" data-type="Event" onclick="selectType('Event')">
+            <span class="legend-dot dot-event"></span> Event
+          </button>
+          <button class="type-btn" data-type="Email" onclick="selectType('Email')">
+            <span class="legend-dot dot-email"></span> Email
+          </button>
+          <button class="type-btn" data-type="Social" onclick="selectType('Social')">
+            <span class="legend-dot dot-social"></span> Social
+          </button>
+          <button class="type-btn" data-type="Other" onclick="selectType('Other')">
+            <span class="legend-dot dot-other"></span> Other
+          </button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Notes</label>
+        <textarea class="field-textarea" id="f-notes" placeholder="Strategy notes, key messaging, target audience, deadlines…"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Performance Metrics</label>
+        <div class="metrics-grid">
+          <div class="metric-field">
+            <span class="metric-label">Treatments Sold</span>
+            <input class="field-input" id="f-m1" type="text" placeholder="—" />
+          </div>
+          <div class="metric-field">
+            <span class="metric-label">Revenue Generated</span>
+            <input class="field-input" id="f-m2" type="text" placeholder="—" />
+          </div>
+          <div class="metric-field">
+            <span class="metric-label">Packages Sold</span>
+            <input class="field-input" id="f-m3" type="text" placeholder="—" />
+          </div>
+          <div class="metric-field">
+            <span class="metric-label">Rebooking Rate</span>
+            <input class="field-input" id="f-m4" type="text" placeholder="—" />
+          </div>
+          <div class="metric-field">
+            <span class="metric-label">Retail Attached</span>
+            <input class="field-input" id="f-m5" type="text" placeholder="—" />
+          </div>
+          <div class="metric-field">
+            <span class="metric-label">Consultation Conversions</span>
+            <input class="field-input" id="f-m6" type="text" placeholder="—" />
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Custom Metric / Note</label>
+        <input class="field-input" id="f-m7" type="text" placeholder="e.g. New patients: 12, Email opens: 34%…" />
+      </div>
+    </div>
+
+    <div class="modal-footer" id="formFooter">
+      <button class="btn-delete" id="deleteBtn" onclick="deleteEntry()" style="display:none">Delete</button>
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveEntry()">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const STORAGE_KEY = 'ae_promo_calendar_v1';
+const TYPE_COLORS = {
+  Feature:'#a28c75', Campaign:'#6488c8', Event:'#7db870',
+  Email:'#c8a050', Social:'#a064c8', Other:'#888'
+};
+
+let state = { year: new Date().getFullYear(), filter: 'all', data: {}, modal: null };
+
+function load() {
+  try { const raw = localStorage.getItem(STORAGE_KEY); if(raw) state.data = JSON.parse(raw); } catch(e) {}
+}
+function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data)); } catch(e) {} }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+function monthKey(y, m) { return `${y}-${String(m+1).padStart(2,'0')}`; }
+function getEntries(y, m) { return state.data[monthKey(y,m)] || []; }
+
+function render() {
+  document.getElementById('yearLabel').textContent = state.year;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  for(let m = 0; m < 12; m++) {
+    const entries = getEntries(state.year, m);
+    const filtered = state.filter === 'all' ? entries : entries.filter(e => e.type === state.filter);
+    const card = document.createElement('div');
+    card.className = 'month-card';
+    const cnt = filtered.length;
+    card.innerHTML = `
+      <div class="month-header">
+        <span class="month-name">${MONTHS[m]}</span>
+        <span class="month-count${cnt > 0 ? ' visible' : ''}">${cnt}</span>
+      </div>
+      <div class="month-body" id="mb-${m}">
+        ${filtered.map(e => `
+          <div class="entry-pill t-${e.type.toLowerCase()}" onclick="openDetail('${monthKey(state.year,m)}','${e.id}')">
+            <span class="entry-dot dot-${e.type.toLowerCase()}"></span>
+            <div>
+              <div class="entry-title">${escHtml(e.title)}</div>
+              <div class="entry-type-tag">${e.type}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <button class="add-btn" onclick="openAdd(${m})">+ Add</button>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── FILTER ──
+function toggleFilter(type) {
+  state.filter = type;
+  document.querySelectorAll('.legend-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.type === type);
+  });
+  render();
+}
+
+// ── YEAR ──
+function changeYear(dir) { state.year += dir; render(); }
+
+// ── MODAL ──
+let editingKey = null;
+let editingId = null;
+let selectedType = 'Feature';
+
+function openAdd(monthIdx) {
+  editingKey = monthKey(state.year, monthIdx);
+  editingId = null;
+  selectedType = 'Feature';
+  document.getElementById('modalTitle').textContent = 'Add Entry';
+  document.getElementById('modalSub').textContent = `${MONTHS[monthIdx]} ${state.year}`;
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-notes').value = '';
+  ['m1','m2','m3','m4','m5','m6','m7'].forEach(id => document.getElementById('f-'+id).value = '');
+  document.getElementById('deleteBtn').style.display = 'none';
+  refreshTypePicker();
+  showModal();
+}
+
+function openDetail(key, id) {
+  const entries = state.data[key] || [];
+  const entry = entries.find(e => e.id === id);
+  if(!entry) return;
+  editingKey = key;
+  editingId = id;
+  selectedType = entry.type || 'Feature';
+
+  const [yr, mo] = key.split('-');
+  document.getElementById('modalTitle').textContent = 'Edit Entry';
+  document.getElementById('modalSub').textContent = `${MONTHS[parseInt(mo)-1]} ${yr}`;
+
+  document.getElementById('f-title').value = entry.title || '';
+  document.getElementById('f-notes').value = entry.notes || '';
+  const m = entry.metrics || {};
+  document.getElementById('f-m1').value = m.treated || '';
+  document.getElementById('f-m2').value = m.revenue || '';
+  document.getElementById('f-m3').value = m.packages || '';
+  document.getElementById('f-m4').value = m.rebook || '';
+  document.getElementById('f-m5').value = m.retail || '';
+  document.getElementById('f-m6').value = m.consults || '';
+  document.getElementById('f-m7').value = m.custom || '';
+  document.getElementById('deleteBtn').style.display = 'block';
+  refreshTypePicker();
+  showModal();
+}
+
+function selectType(type) { selectedType = type; refreshTypePicker(); }
+
+function refreshTypePicker() {
+  document.querySelectorAll('#typePicker .type-btn').forEach(btn => {
+    const t = btn.dataset.type;
+    const isSel = t === selectedType;
+    btn.className = 'type-btn' + (isSel ? ' selected sel-' + t.toLowerCase() : '');
+  });
+}
+
+function saveEntry() {
+  const title = document.getElementById('f-title').value.trim();
+  if(!title) { document.getElementById('f-title').focus(); return; }
+  const entry = {
+    id: editingId || uid(),
+    type: selectedType,
+    title,
+    notes: document.getElementById('f-notes').value.trim(),
+    metrics: {
+      treated: document.getElementById('f-m1').value.trim(),
+      revenue: document.getElementById('f-m2').value.trim(),
+      packages: document.getElementById('f-m3').value.trim(),
+      rebook: document.getElementById('f-m4').value.trim(),
+      retail: document.getElementById('f-m5').value.trim(),
+      consults: document.getElementById('f-m6').value.trim(),
+      custom: document.getElementById('f-m7').value.trim(),
+    }
+  };
+  if(!state.data[editingKey]) state.data[editingKey] = [];
+  if(editingId) {
+    const idx = state.data[editingKey].findIndex(e => e.id === editingId);
+    if(idx !== -1) state.data[editingKey][idx] = entry;
+    else state.data[editingKey].push(entry);
+  } else {
+    state.data[editingKey].push(entry);
+  }
+  save();
+  closeModal();
+  render();
+}
+
+function deleteEntry() {
+  if(!editingKey || !editingId) return;
+  state.data[editingKey] = (state.data[editingKey] || []).filter(e => e.id !== editingId);
+  save();
+  closeModal();
+  render();
+}
+
+function showModal() {
+  document.getElementById('overlay').classList.add('open');
+  setTimeout(() => document.getElementById('f-title').focus(), 200);
+}
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+function handleOverlayClick(e) { if(e.target === document.getElementById('overlay')) closeModal(); }
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+// ── INIT ──
+load();
+render();
+</script>
+</body>
+</html>
