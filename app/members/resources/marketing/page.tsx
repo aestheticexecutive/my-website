@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare } from "lucide-react";
+import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare, Globe } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -138,6 +138,90 @@ export default function MarketingResourcesPage() {
             Social media strategy, paid advertising, content planning, brand
             positioning, and patient acquisition systems — built for aesthetic practices.
           </p>
+        </div>
+      </div>
+
+      {/* ── Landing Pages ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+              Treatment Landing Pages
+            </h2>
+            <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+          </div>
+
+          <div
+            className="rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}
+                  >
+                    <Globe size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{ color: "#c8b3a3", background: "rgba(200,179,163,0.08)", border: "1px solid rgba(200,179,163,0.2)" }}
+                  >
+                    SEO + Conversion Playbook
+                  </span>
+                </div>
+
+                <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
+                  Build treatment pages that rank in Google and turn visits into booked consultations.
+                </h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  A visual playbook covering page structure, SEO fundamentals, conversion architecture,
+                  and the metrics that tell you if it&apos;s working. Includes a page anatomy wireframe, Google
+                  SERP mockup, objection cards, form design, and a 15-point launch checklist.
+                </p>
+
+                <Link
+                  href="/members/resources/marketing/landing-pages"
+                  className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#0c0004" }}
+                >
+                  <BookOpen size={12} />
+                  Read the Playbook
+                </Link>
+              </div>
+
+              {/* Right — feature chips */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "Page Anatomy Diagram", desc: "Visual wireframe showing where every element lives — from hero to form — and why" },
+                  { label: "SEO Foundation", desc: "URL structure, title tags, heading hierarchy, E-E-A-T content depth, and local signals" },
+                  { label: "Conversion Architecture", desc: "Above-the-fold language, trust signals, objection cards, and form friction fixes" },
+                  { label: "Performance Benchmarks", desc: "6 metrics with targets — conversion rate, bounce rate, load speed, and more" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Globe size={12} style={{ color: "#a28c75" }} />
+                      <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
