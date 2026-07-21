@@ -16,7 +16,23 @@ const categories = [
   "Clinical",
 ];
 
-const templates = [
+const templates: {
+  title: string;
+  category: string;
+  description: string;
+  format: string;
+  updated: string;
+  href?: string;
+}[] = [
+  {
+    title: "Employee Social Media Policy",
+    category: "HR & Staffing",
+    description:
+      "Customizable social media policy for employees to review and sign. Covers professional representation, content ownership, HIPAA compliance, brand standards, and conduct expectations.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/templates/employee-social-media-policy.docx",
+  },
   {
     title: "Employee Offer Letter Template",
     category: "HR & Staffing",
@@ -200,10 +216,21 @@ export default function TemplatesPage() {
               <span className="text-xs text-warm-400">
                 Updated {template.updated}
               </span>
-              <button className="h-8 px-4 bg-warm-900 text-cream text-xs font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-1.5">
-                <Download size={13} />
-                Download
-              </button>
+              {template.href ? (
+                <a
+                  href={template.href}
+                  download
+                  className="h-8 px-4 bg-warm-900 text-cream text-xs font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-1.5"
+                >
+                  <Download size={13} />
+                  Download
+                </a>
+              ) : (
+                <button className="h-8 px-4 bg-warm-900 text-cream text-xs font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-1.5">
+                  <Download size={13} />
+                  Download
+                </button>
+              )}
             </div>
           </div>
         ))}
