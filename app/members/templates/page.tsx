@@ -25,6 +25,15 @@ const templates: {
   href?: string;
 }[] = [
   {
+    title: "Event RSVP Tracking Sheet",
+    category: "Marketing",
+    description:
+      "Track attendee RSVPs, contact information, and attendance for practice events, open houses, and treatment nights. Ready to use out of the box.",
+    format: "XLSX",
+    updated: "July 2025",
+    href: "/templates/event-rsvp-sheet.xlsx",
+  },
+  {
     title: "Employee Social Media Policy",
     category: "HR & Staffing",
     description:
