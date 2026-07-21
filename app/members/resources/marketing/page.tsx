@@ -921,6 +921,88 @@ export default function MarketingResourcesPage() {
         </div>
       </div>
 
+      {/* ── Google Ads ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+              Google Ads
+            </h2>
+            <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+          </div>
+
+          <div
+            className="rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}
+                  >
+                    <Search size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{ color: "#c8b3a3", background: "rgba(200,179,163,0.08)", border: "1px solid rgba(200,179,163,0.2)" }}
+                  >
+                    Paid Advertising Guide
+                  </span>
+                </div>
+
+                <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
+                  Capture patients who are already searching — and turn clicks into consultations.
+                </h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  How to build profitable Google Search campaigns — keyword tiers, negative keywords,
+                  branded campaign protection, Quality Score, landing page rules, 12 metrics to track,
+                  common mistakes, and when Google Ads may not be worth it for your market.
+                </p>
+
+                <Link
+                  href="/members/resources/marketing/google-ads"
+                  className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#0c0004" }}
+                >
+                  <BookOpen size={12} />
+                  Read the Guide
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "3-Tier Keyword Strategy", desc: "Treatment-specific, location-based, and concern-based — when to use each and what to expect" },
+                  { label: "Quality Score Explained", desc: "How Google scores your ads and why higher scores mean lower cost per click" },
+                  { label: "Negative Keywords", desc: "The search terms that waste budget every day — and how to block them immediately" },
+                  { label: "When Google Ads May Not Work", desc: "5 conditions that signal your market or practice isn't ready for paid search" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Search size={12} style={{ color: "#a28c75" }} />
+                      <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ── Photography ── */}
       <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
