@@ -274,6 +274,56 @@ export default function OperationsResourcesPage() {
             </div>
           </div>
         </Link>
+
+        <Link
+          href="/members/resources/operations/treatment-plan-builder"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+            >
+              <FileText size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Treatment Plan Builder
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{ background: "rgba(162,140,117,0.15)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Build a branded, print-ready treatment plan in minutes. Add up to 6 treatment blocks with sessions, pricing, concerns, and downtime — plus a home care product table and additional notes section. Fill it in for a specific patient or leave fields blank for a reusable template.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["Up to 6 treatment blocks", "Home care product table", "Custom branding & color", "Print / save as PDF"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)", color: "#a28c75" }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* ── Secret Shopping ── */}
