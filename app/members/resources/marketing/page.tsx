@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star } from "lucide-react";
+import { ArrowLeft, Megaphone, Download, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -306,6 +306,90 @@ export default function MarketingResourcesPage() {
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin size={12} style={{ color: "#a28c75" }} />
+                      <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Google Reviews ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+              Google Reviews
+            </h2>
+            <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+          </div>
+
+          <div
+            className="rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}
+                  >
+                    <MessageSquare size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{ color: "#c8b3a3", background: "rgba(200,179,163,0.08)", border: "1px solid rgba(200,179,163,0.2)" }}
+                  >
+                    Strategy Guide
+                  </span>
+                </div>
+
+                <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
+                  A practical system for collecting reviews consistently — without it ever feeling awkward.
+                </h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  Why Google reviews are one of your most powerful free marketing tools, how to identify
+                  the right patient to ask, a word-for-word conversation script, how to automate the process,
+                  and how to build a team culture that makes asking part of every checkout.
+                </p>
+
+                <Link
+                  href="/members/resources/marketing/google-reviews"
+                  className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#0c0004" }}
+                >
+                  <BookOpen size={12} />
+                  Read the Guide
+                </Link>
+              </div>
+
+              {/* Right — feature chips */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "The Ask Script", desc: "A 3-step word-for-word conversation that makes asking feel natural at checkout" },
+                  { label: "Who to Ask", desc: "How to read the signals that tell you a patient is ready to leave a glowing review" },
+                  { label: "Automation Flow", desc: "Post-appointment text routing: satisfied patients to Google, concerns to internal feedback" },
+                  { label: "Team & Culture", desc: "How to incentivize staff, track monthly goals, and make reviews part of your practice culture" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <MessageSquare size={12} style={{ color: "#a28c75" }} />
                       <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
                         {feat.label}
                       </span>
