@@ -15,6 +15,7 @@ import {
   Heart,
   Megaphone,
   Star,
+  Download,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -101,6 +102,24 @@ export default function CommunityPartnershipsPage() {
             gyms, wellness studios, boutique retailers, country clubs — to expand your reach,
             build community credibility, and generate qualified leads without paid advertising.
           </p>
+        </div>
+      </div>
+
+      {/* ── Download bar ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4 flex-wrap">
+          <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+            Want to share this guide with your team or a potential partner?
+          </p>
+          <a
+            href="/templates/community-partnerships.docx"
+            download
+            className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg transition-all duration-200 hover:opacity-90"
+            style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+          >
+            <Download size={13} />
+            Download as Word Doc
+          </a>
         </div>
       </div>
 
