@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText, ClipboardList } from "lucide-react";
+import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText, ClipboardList, Percent, ListChecks } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,12 +12,6 @@ const resources = [
     type: "Checklist",
     description:
       "End-to-end checklist covering every step from booking confirmation to chart creation, medical history review, and pre-treatment preparation.",
-  },
-  {
-    title: "Daily Opening & Closing Checklist",
-    type: "Checklist",
-    description:
-      "Comprehensive opening and closing procedures for front desk and treatment staff — including equipment checks, cash reconciliation, and scheduling prep.",
   },
   {
     title: "Appointment Scheduling Best Practices",
@@ -214,6 +208,68 @@ export default function OperationsResourcesPage() {
         </div>
       </div>
 
+      {/* ── Daily Operations Checklists ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-12">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            Daily Operations Checklists
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        <Link
+          href="/members/resources/operations/opening-closing-checklist"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+            >
+              <ListChecks size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Opening & Closing Checklist Builder
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{ background: "rgba(162,140,117,0.15)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Pre-loaded with common MedSpa opening and closing duties — toggle them on or off, edit the wording, add your own, and set how often each one needs to happen. Print a branded checklist with a checkbox, initials line, and date line for every task.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["28 pre-loaded duties", "Daily / weekly / monthly / custom", "Custom branding & color", "Print / save as PDF"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)", color: "#a28c75" }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+      </div>
+
       {/* ── Patient Intake Form ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 pb-12">
 
@@ -307,6 +363,68 @@ export default function OperationsResourcesPage() {
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
                 {["Up to 6 treatment blocks", "Home care product table", "Custom branding & color", "Print / save as PDF"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)", color: "#a28c75" }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      {/* ── Consultation Tracking ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-12">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            Consultation Tracking
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        <Link
+          href="/members/resources/operations/consultation-conversion-tracker"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+            >
+              <Percent size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Consultation Conversion Tracker
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{ background: "rgba(162,140,117,0.15)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Log consultations by provider and service type — how many purchased and how many didn't — then run reports for any date range to see conversion rates broken down by provider and by consult type, with a notes log to capture context behind the numbers.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["Log by provider & type", "Custom date-range reports", "Provider & type conversion rates", "Dated notes log"].map((feat) => (
                   <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
                     <span style={{ color: "#a28c75" }}>·</span> {feat}
                   </li>
