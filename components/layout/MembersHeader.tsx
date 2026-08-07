@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
+import { GlobalSearch } from "@/components/search/GlobalSearch";
 
 const navLinks = [
   { href: "/members/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -61,25 +62,26 @@ export function MembersHeader() {
           })}
         </nav>
 
-        {/* User button */}
-        <div className="hidden md:flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-xs text-warm-500 hover:text-warm-300 tracking-wide transition-colors"
+        {/* Search + user button + mobile toggle */}
+        <div className="flex items-center gap-1">
+          <GlobalSearch />
+          <div className="hidden md:flex items-center gap-4 ml-2">
+            <Link
+              href="/"
+              className="text-xs text-warm-500 hover:text-warm-300 tracking-wide transition-colors"
+            >
+              ← Public Site
+            </Link>
+            <UserButton />
+          </div>
+          <button
+            className="md:hidden text-warm-400 hover:text-cream p-1"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
-            ← Public Site
-          </Link>
-          <UserButton />
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-warm-400 hover:text-cream p-1"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       {/* Mobile menu */}
