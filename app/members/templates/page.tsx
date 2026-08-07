@@ -1,5 +1,4 @@
 import { Download, FileText, Search } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +12,6 @@ const categories = [
   "Legal & Compliance",
   "Operations",
   "Marketing",
-  "Clinical",
 ];
 
 const templates: {
@@ -55,20 +53,15 @@ export default function TemplatesPage() {
     <div className="max-w-7xl mx-auto px-6 py-10">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-start justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-xs text-warm-500 tracking-widest uppercase mb-2">
-              Member Library
-            </p>
-            <h1 className="font-display text-4xl font-light text-warm-900">
-              Business Templates
-            </h1>
-            <p className="text-warm-600 mt-1.5">
-              150+ ready-to-use templates built for aesthetic practices.
-            </p>
-          </div>
-          <Badge variant="gold">150+ Templates</Badge>
-        </div>
+        <p className="text-xs text-warm-500 tracking-widest uppercase mb-2">
+          Member Library
+        </p>
+        <h1 className="font-display text-4xl font-light text-warm-900">
+          Business Templates
+        </h1>
+        <p className="text-warm-600 mt-1.5">
+          Ready-to-use templates built for aesthetic practices.
+        </p>
       </div>
 
       {/* Search + filter bar */}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Megaphone, Settings, TrendingUp, Users, Activity, ArrowRight } from "lucide-react";
+import { Megaphone, Settings, TrendingUp, Users, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +13,6 @@ const sections = [
     label: "Marketing",
     description:
       "Social media strategy, paid advertising, content planning, brand positioning, and patient acquisition systems.",
-    count: 24,
     accent: "#a28c75",
   },
   {
@@ -22,7 +21,6 @@ const sections = [
     label: "Operations",
     description:
       "SOPs, workflow optimization, scheduling systems, vendor management, and day-to-day practice operations.",
-    count: 31,
     accent: "#a28c75",
   },
   {
@@ -31,7 +29,6 @@ const sections = [
     label: "Finance & Business Performance",
     description:
       "Revenue tracking, pricing strategy, profitability analysis, budgeting, and KPI dashboards.",
-    count: 18,
     accent: "#a28c75",
   },
   {
@@ -40,16 +37,6 @@ const sections = [
     label: "Staff",
     description:
       "Hiring, onboarding, performance management, compensation benchmarking, and team culture building.",
-    count: 22,
-    accent: "#a28c75",
-  },
-  {
-    href: "/members/resources/clinical",
-    icon: Activity,
-    label: "Clinical",
-    description:
-      "Treatment protocols, compliance, consent forms, scope of practice references, and clinical standards.",
-    count: 27,
     accent: "#a28c75",
   },
 ];
@@ -103,20 +90,18 @@ export default function ResourcesHubPage() {
 
       {/* Section cards */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
-        <div className="grid grid-cols-6 gap-5">
-          {sections.map((section, i) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {sections.map((section) => {
             const Icon = section.icon;
             return (
               <Link
                 key={section.href}
                 href={section.href}
-                className={`group relative flex flex-col justify-between rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer ${
-                  i < 3 ? "col-span-6 md:col-span-2" : "col-span-6 md:col-span-3"
-                }`}
+                className="group relative flex flex-col justify-between rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer"
                 style={{
                   background: "linear-gradient(145deg, #1a0009 0%, #0f0006 100%)",
                   borderColor: "rgba(162,140,117,0.15)",
-                  minHeight: i < 3 ? "320px" : "280px",
+                  minHeight: "300px",
                 }}
               >
                 {/* Hover glow */}
@@ -166,25 +151,11 @@ export default function ResourcesHubPage() {
 
                   {/* Description */}
                   <p
-                    className="text-sm leading-relaxed flex-1 mb-6"
+                    className="text-sm leading-relaxed flex-1"
                     style={{ color: "rgba(255,253,246,0.5)" }}
                   >
                     {section.description}
                   </p>
-
-                  {/* Footer: resource count */}
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="h-px flex-1"
-                      style={{ background: "rgba(162,140,117,0.15)" }}
-                    />
-                    <span
-                      className="text-xs tracking-[0.2em] uppercase"
-                      style={{ color: "rgba(162,140,117,0.6)" }}
-                    >
-                      {section.count} resources
-                    </span>
-                  </div>
                 </div>
               </Link>
             );

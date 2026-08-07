@@ -15,7 +15,7 @@ export type SearchEntry = {
 export const searchIndex: SearchEntry[] = [
   // ── Home ──────────────────────────────────────────────────────────────────
   { title: "Dashboard", description: "Your member home base — quick links to Templates, Webinars, and Resources plus recent activity.", category: "Home", type: "Page", href: "/members/dashboard" },
-  { title: "All Resources", description: "Browse every resource category — Marketing, Operations, Finance, Staff, and Clinical.", category: "Home", type: "Page", href: "/members/resources" },
+  { title: "All Resources", description: "Browse every resource category — Marketing, Operations, Finance, and Staff.", category: "Home", type: "Page", href: "/members/resources" },
 
   // ── Operations ────────────────────────────────────────────────────────────
   { title: "Consultation Conversion Tracker", description: "Log consultations by provider and service type, then run reports by date range to see conversion rates and track notes on what drove the numbers.", category: "Operations", type: "Tool", href: "/members/resources/operations/consultation-conversion-tracker" },
@@ -75,16 +75,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Employee File Guide", description: "The 6 required file categories, retention schedules, compliance traps, and a maintenance plan.", category: "Staff", type: "Guide", href: "/members/resources/staff/employee-files" },
   { title: "12-Week Leadership Development", description: "A self-paced curriculum built around 8 leadership books, TED talks, and podcasts with weekly reflections.", category: "Staff", type: "Course", href: "/members/resources/staff/leadership-course" },
   { title: "Employee Evaluation Forms", description: "Role-specific evaluation forms for Patient Care Coordinator, Med Spa Manager, and Provider/Injector, plus the review process.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-
-  // ── Clinical ──────────────────────────────────────────────────────────────
-  { title: "Neuromodulator Treatment Protocol Template", description: "Customizable protocol document for neurotoxin treatments — consultation criteria, dosing, and aftercare.", category: "Clinical", type: "Template", href: "/members/resources/clinical" },
-  { title: "Adverse Event Response SOP", description: "Step-by-step response protocols for vascular occlusion, infection, bruising, and product migration.", category: "Clinical", type: "Checklist", href: "/members/resources/clinical" },
-  { title: "Patient Consent Form Templates", description: "Legally reviewed consent templates for neurotoxins, fillers, laser treatments, peels, and microneedling.", category: "Clinical", type: "Template", href: "/members/resources/clinical" },
-  { title: "Scope of Practice Reference Guide", description: "State-by-state reference for RN, APRN, PA, and physician oversight requirements.", category: "Clinical", type: "Guide", href: "/members/resources/clinical" },
-  { title: "Pre & Post Care Instruction Templates", description: "Patient-facing pre and post care instruction sheets for 10 common treatments.", category: "Clinical", type: "Template", href: "/members/resources/clinical" },
-  { title: "Treatment Menu Optimization Guide", description: "How to structure your treatment menu for clarity, upsell potential, and patient comprehension.", category: "Clinical", type: "Guide", href: "/members/resources/clinical" },
-  { title: "Clinical Documentation Audit Checklist", description: "Quarterly audit checklist for charts, consents, treatment notes, and photography compliance.", category: "Clinical", type: "Checklist", href: "/members/resources/clinical" },
-  { title: "Continuing Education Tracker", description: "Spreadsheet for tracking CE credits, certifications, and training hours across your clinical team.", category: "Clinical", type: "Template", href: "/members/resources/clinical" },
 
   // ── Templates ─────────────────────────────────────────────────────────────
   { title: "Event RSVP Tracking Sheet", description: "Track attendee RSVPs, contact information, and attendance for practice events and treatment nights.", category: "Templates", type: "Template", href: "/templates/event-rsvp-sheet.xlsx" },

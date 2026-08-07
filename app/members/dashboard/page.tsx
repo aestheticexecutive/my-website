@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
-import { FileText, Video, BookOpen, ArrowRight, TrendingUp, Clock } from "lucide-react";
+import { FileText, Video, BookOpen, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,48 +13,18 @@ const quickLinks = [
     icon: FileText,
     title: "Templates",
     description: "Browse and download business templates",
-    count: "150+ templates",
   },
   {
     href: "/members/webinars",
     icon: Video,
     title: "Webinars",
     description: "Upcoming sessions and recorded library",
-    count: "80+ recordings",
   },
   {
     href: "/members/resources",
     icon: BookOpen,
     title: "Resources",
     description: "Guides, checklists, and articles",
-    count: "200+ resources",
-  },
-];
-
-const recentActivity = [
-  {
-    type: "template",
-    title: "Staff Performance Review Template",
-    date: "Added this week",
-    icon: FileText,
-  },
-  {
-    type: "webinar",
-    title: "Scaling to Multiple Locations: What No One Tells You",
-    date: "Live: June 12, 2:00 PM ET",
-    icon: Video,
-  },
-  {
-    type: "resource",
-    title: "2025 Aesthetic Industry Compensation Guide",
-    date: "Published May 2025",
-    icon: BookOpen,
-  },
-  {
-    type: "template",
-    title: "Monthly Financial KPI Dashboard",
-    date: "Added this week",
-    icon: FileText,
   },
 ];
 
@@ -99,75 +69,12 @@ export default async function DashboardPage() {
               <h2 className="font-display text-xl font-medium text-warm-900 mb-1">
                 {link.title}
               </h2>
-              <p className="text-sm text-warm-600 mb-3">{link.description}</p>
-              <span className="text-xs text-gold-600 font-medium tracking-wide">
-                {link.count}
-              </span>
+              <p className="text-sm text-warm-600">{link.description}</p>
             </Link>
           );
         })}
       </div>
 
-      {/* Stats + Recent activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Stats */}
-        <div className="lg:col-span-1 space-y-4">
-          <h2 className="font-display text-xl font-medium text-warm-900">
-            Your Library
-          </h2>
-          {[
-            { label: "Templates Available", value: "150+", icon: FileText },
-            { label: "Hours of Webinar Content", value: "120+", icon: TrendingUp },
-            { label: "Resources Published", value: "200+", icon: BookOpen },
-          ].map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={stat.label}
-                className="bg-white border border-warm-200 rounded-xl px-6 py-5 flex items-center gap-4"
-              >
-                <div className="w-9 h-9 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0">
-                  <Icon size={17} className="text-warm-600" />
-                </div>
-                <div>
-                  <p className="font-display text-2xl font-light text-warm-900">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-warm-500">{stat.label}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Recent activity */}
-        <div className="lg:col-span-2">
-          <h2 className="font-display text-xl font-medium text-warm-900 mb-4">
-            Recently Added
-          </h2>
-          <div className="bg-white border border-warm-200 rounded-xl divide-y divide-warm-100">
-            {recentActivity.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title} className="px-6 py-5 flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-gold-50 border border-gold-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon size={16} className="text-gold-600" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-warm-900 leading-snug">
-                      {item.title}
-                    </p>
-                    <div className="flex items-center gap-1.5 mt-1">
-                      <Clock size={12} className="text-warm-400" />
-                      <p className="text-xs text-warm-500">{item.date}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
