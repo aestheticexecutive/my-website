@@ -40,6 +40,78 @@ const templates: {
     updated: "July 2025",
     href: "/templates/employee-social-media-policy.docx",
   },
+  {
+    title: "Monthly & Annual P&L Template",
+    category: "Finance",
+    description:
+      "Four-tab Excel workbook built for aesthetic practices. All formulas pre-built — enter your numbers and it calculates gross margin, payroll %, net profit, and nine KPI metrics automatically.",
+    format: "XLSX",
+    updated: "July 2025",
+    href: "/downloads/ae-pl-template.xlsx",
+  },
+  {
+    title: "Treatment Profitability Template",
+    category: "Finance",
+    description:
+      "Three-tab Excel workbook pre-loaded with 15 common treatments. Formulas calculate profit and margin automatically, with conditional color coding and a monthly profit contribution tab.",
+    format: "XLSX",
+    updated: "July 2025",
+    href: "/downloads/ae-treatment-profitability.xlsx",
+  },
+  {
+    title: "Patient Care Coordinator Evaluation Form",
+    category: "HR & Staffing",
+    description:
+      "Role-specific performance evaluation covering service quality, communication, scheduling, patient experience, and administrative competencies.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/downloads/Patient-Care-Coordinator-Evaluation.docx",
+  },
+  {
+    title: "Med Spa Manager Evaluation Form",
+    category: "HR & Staffing",
+    description:
+      "Role-specific performance evaluation covering leadership, operations, revenue management, team development, and compliance competencies.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/downloads/Med-Spa-Manager-Evaluation.docx",
+  },
+  {
+    title: "Provider / Injector Evaluation Form",
+    category: "HR & Staffing",
+    description:
+      "Role-specific performance evaluation covering clinical skill, patient consultation, safety protocol, treatment outcomes, and professional development.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/downloads/Provider-Injector-Evaluation.docx",
+  },
+  {
+    title: "Strategic Community Partnerships Guide",
+    category: "Marketing",
+    description:
+      "The full Community Partnerships playbook as a shareable Word doc — cross-promotional relationship building with gyms, wellness studios, boutique retailers, and country clubs.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/templates/community-partnerships.docx",
+  },
+  {
+    title: "Patient Referral Program Guide",
+    category: "Marketing",
+    description:
+      "The full 12-step patient referral program playbook as a shareable Word doc — program structure, referral cards, team scripts, and seasonal promotions.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/templates/patient-referral-program.docx",
+  },
+  {
+    title: "Referral Partner Program Guide",
+    category: "Marketing",
+    description:
+      "The full Referral Partner Program playbook as a shareable Word doc — the Give $50/Get $50 model, outreach templates, and onboarding scripts.",
+    format: "DOCX",
+    updated: "July 2025",
+    href: "/templates/referral-partner-program.docx",
+  },
 ];
 
 const formatColors: Record<string, string> = {
