@@ -25,13 +25,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Secret Shopper Log", description: "Log every secret shop — own practice or competitor — across all 9 questionnaire sections with photo uploads and scoring.", category: "Operations", type: "Tool", href: "/tools/secret-shopper-log.html", external: true },
   { title: "Why Secret Shop?", description: "The strategy behind secret shopping — why to shop yourself and competitors, cadence, debriefing, and what to do with results.", category: "Operations", type: "Guide", href: "/members/resources/operations/secret-shopping" },
   { title: "Printable Secret Shopper Questionnaire", description: "All 9 sections with write-in lines and scoring boxes, formatted for print.", category: "Operations", type: "Print / PDF", href: "/tools/secret-shopper-questionnaire.html", external: true },
-  { title: "New Patient Intake SOP", description: "End-to-end checklist covering booking confirmation through chart creation, medical history, and pre-treatment prep.", category: "Operations", type: "Checklist", href: "/members/resources/operations" },
-  { title: "Appointment Scheduling Best Practices", description: "How to structure your schedule for maximum revenue per hour and protect time for high-value appointments.", category: "Operations", type: "Guide", href: "/members/resources/operations" },
-  { title: "Inventory Management System", description: "Spreadsheet system for tracking product inventory, reorder points, expiration dates, and cost of goods.", category: "Operations", type: "Template", href: "/members/resources/operations" },
-  { title: "Treatment Room Setup Standards", description: "Room-by-room setup standards for cleanliness, supply stocking, and equipment positioning.", category: "Operations", type: "Checklist", href: "/members/resources/operations" },
-  { title: "Patient Complaint Resolution SOP", description: "Step-by-step protocol for handling patient dissatisfaction from first contact to resolution documentation.", category: "Operations", type: "Guide", href: "/members/resources/operations" },
-  { title: "Vendor Contract Template", description: "Customizable contract template for product vendors, equipment suppliers, and service providers.", category: "Operations", type: "Template", href: "/members/resources/operations" },
-  { title: "Practice Operations Manual Outline", description: "A structured framework for building your practice's master operations manual.", category: "Operations", type: "Template", href: "/members/resources/operations" },
 
   // ── Marketing ─────────────────────────────────────────────────────────────
   { title: "Treatment Landing Pages", description: "SEO + conversion playbook for building treatment pages that rank in Google and turn visits into booked consultations.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/landing-pages" },
@@ -57,12 +50,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Why Your Brand Kit Matters", description: "Why an intentional brand matters and what goes into a complete brand kit before you start building yours.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/brand-kit" },
   { title: "Ideal Client Builder", description: "Build three detailed ideal client personas plus your brand personality, voice, and promise — export for agencies.", category: "Marketing", type: "Tool", href: "/tools/ideal-client-builder.html", external: true },
   { title: "Lead Conversion Playbook", description: "A step-by-step system for responding to, nurturing, and converting new patient inquiries into treatments.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/lead-conversion" },
-  { title: "Patient Acquisition Funnel Template", description: "Map your full patient journey from first touchpoint to booked appointment with channel attribution.", category: "Marketing", type: "Template", href: "/members/resources/marketing" },
-  { title: "Social Media Content Calendar", description: "90-day content planning spreadsheet with post types, caption prompts, and hashtag strategy.", category: "Marketing", type: "Template", href: "/members/resources/marketing" },
-  { title: "Email Campaign Sequences", description: "Five ready-to-use email sequences — welcome, follow-up, reactivation, seasonal, and referral request.", category: "Marketing", type: "Template", href: "/members/resources/marketing" },
-  { title: "Competitive Analysis Worksheet", description: "Structured framework for auditing competitors — pricing, services, online presence, and positioning.", category: "Marketing", type: "Tool", href: "/members/resources/marketing" },
-  { title: "Brand Voice & Messaging Guide", description: "How to define and document your practice's unique voice, tone, and key messages.", category: "Marketing", type: "Guide", href: "/members/resources/marketing" },
-  { title: "Review Generation SOP", description: "A repeatable system for timing review requests and responding to feedback professionally.", category: "Marketing", type: "Checklist", href: "/members/resources/marketing" },
 
   // ── Finance & Business Performance ───────────────────────────────────────
   { title: "Treatment Profitability Analyzer", description: "Enter price and direct costs per treatment to see net profit and margin, with 15 pre-loaded services.", category: "Finance", type: "Tool", href: "/members/resources/finance/treatment-profitability" },
@@ -71,10 +58,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "KPI Tracker", description: "Track all 16 key performance indicators month over month, tagged by team member, with benchmarks and trends.", category: "Finance", type: "Tool", href: "/members/resources/finance/kpi-tracker" },
   { title: "Med Spa P&L Guide", description: "What to track, how to categorize every dollar, and how to interpret the numbers for your practice.", category: "Finance", type: "Guide", href: "/members/resources/finance/pl-guide" },
   { title: "Monthly & Annual P&L Template", description: "Four-tab Excel workbook with pre-built formulas for gross margin, payroll %, net profit, and 9 KPI metrics.", category: "Finance", type: "Template", href: "/downloads/ae-pl-template.xlsx" },
-  { title: "Membership Program Pricing Model", description: "Calculate optimal membership tier pricing based on treatment costs and volume, with projected MRR.", category: "Finance", type: "Tool", href: "/members/resources/finance" },
-  { title: "Cash Flow Projection Worksheet", description: "13-week cash flow projection model to anticipate shortfalls and plan for payroll.", category: "Finance", type: "Tool", href: "/members/resources/finance" },
-  { title: "Pricing Strategy Playbook", description: "How to price your services with confidence — competitive positioning, value-based pricing, and bundling.", category: "Finance", type: "Guide", href: "/members/resources/finance" },
-  { title: "Expense Benchmarking Guide", description: "Industry benchmarks for every major expense category in an aesthetic practice.", category: "Finance", type: "Guide", href: "/members/resources/finance" },
 
   // ── Staff ─────────────────────────────────────────────────────────────────
   { title: "Job Post Generator", description: "Answer a few questions and get a complete, polished job post in seconds — covers 7 roles.", category: "Staff", type: "Tool", href: "/tools/job-post-generator.html", external: true },
@@ -92,14 +75,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Employee File Guide", description: "The 6 required file categories, retention schedules, compliance traps, and a maintenance plan.", category: "Staff", type: "Guide", href: "/members/resources/staff/employee-files" },
   { title: "12-Week Leadership Development", description: "A self-paced curriculum built around 8 leadership books, TED talks, and podcasts with weekly reflections.", category: "Staff", type: "Course", href: "/members/resources/staff/leadership-course" },
   { title: "Employee Evaluation Forms", description: "Role-specific evaluation forms for Patient Care Coordinator, Med Spa Manager, and Provider/Injector, plus the review process.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-  { title: "Job Description Templates", description: "Ready-to-use job descriptions for Injector/NP, Medical Aesthetician, Patient Care Coordinator, and more.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-  { title: "90-Day Onboarding Checklist", description: "Structured onboarding plan covering orientation, training milestones, and 30/60/90-day expectations.", category: "Staff", type: "Checklist", href: "/members/resources/staff" },
-  { title: "Performance Review Template", description: "Semi-annual performance review framework with goal-setting and competency ratings.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-  { title: "Staff Meeting Agenda Template", description: "A repeatable agenda structure for weekly and monthly team meetings.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-  { title: "Compensation Benchmarking Guide", description: "2025 salary and commission benchmarks for every role in an aesthetic practice.", category: "Staff", type: "Guide", href: "/members/resources/staff" },
-  { title: "Culture & Values Workshop Guide", description: "Step-by-step facilitation guide for running a team values workshop.", category: "Staff", type: "Guide", href: "/members/resources/staff" },
-  { title: "Corrective Action Documentation Template", description: "Professionally structured documentation for warnings and performance improvement plans.", category: "Staff", type: "Template", href: "/members/resources/staff" },
-  { title: "Retention Strategy Playbook", description: "Proven strategies for retaining top-performing aesthetic staff.", category: "Staff", type: "Guide", href: "/members/resources/staff" },
 
   // ── Clinical ──────────────────────────────────────────────────────────────
   { title: "Neuromodulator Treatment Protocol Template", description: "Customizable protocol document for neurotoxin treatments — consultation criteria, dosing, and aftercare.", category: "Clinical", type: "Template", href: "/members/resources/clinical" },
@@ -114,27 +89,4 @@ export const searchIndex: SearchEntry[] = [
   // ── Templates ─────────────────────────────────────────────────────────────
   { title: "Event RSVP Tracking Sheet", description: "Track attendee RSVPs, contact information, and attendance for practice events and treatment nights.", category: "Templates", type: "Template", href: "/templates/event-rsvp-sheet.xlsx" },
   { title: "Employee Social Media Policy", description: "Customizable social media policy covering professional representation, HIPAA, and brand standards.", category: "Templates", type: "Template", href: "/templates/employee-social-media-policy.docx" },
-  { title: "Employee Offer Letter Template", description: "Professionally formatted offer letter for clinical and administrative staff.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Staff Performance Review Form", description: "Structured 90-day and annual performance review template.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Monthly Financial KPI Dashboard", description: "Excel model tracking revenue per provider, average ticket value, and retail %.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Practice Startup Budget Model", description: "Comprehensive startup budget covering equipment, buildout, licensing, and staffing.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Patient Consent Form — Neurotoxin", description: "Legally reviewed consent form for neurotoxin treatments.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Patient Consent Form — Filler", description: "Comprehensive consent form for dermal filler treatments including vascular occlusion risk disclosure.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Service Menu & Price List", description: "Elegant, print-ready service menu template organized by treatment category.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "New Provider Onboarding Checklist", description: "30/60/90-day onboarding checklist for injectors and aesthetic providers.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Vendor Comparison Worksheet", description: "Side-by-side comparison tool for evaluating product and device vendors.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "Treatment Protocol: Skin Care Analysis", description: "Standardized patient skin analysis framework for new patient consultations.", category: "Templates", type: "Template", href: "/members/templates" },
-  { title: "HIPAA Privacy Policy Template", description: "Attorney-reviewed HIPAA-compliant privacy policy template for aesthetic practices.", category: "Templates", type: "Template", href: "/members/templates" },
-
-  // ── Webinars ──────────────────────────────────────────────────────────────
-  { title: "Scaling to Multiple Locations: What No One Tells You", description: "A candid conversation on the operational, financial, and cultural realities of opening a second location.", category: "Webinars", type: "Upcoming Webinar", href: "/members/webinars" },
-  { title: "Building Your Retail Revenue: From 0 to $8K/month", description: "The exact playbook for transforming your retail shelf into a meaningful revenue stream.", category: "Webinars", type: "Upcoming Webinar", href: "/members/webinars" },
-  { title: "Pricing Your Services for Profitability (Not Comparison)", description: "Recorded webinar with Alexandra Reed on pricing for profitability.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "The Legal Framework Every Aesthetic Practice Needs", description: "Recorded webinar with healthcare attorney Jordan Hayes.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "Hiring and Retaining Top Aesthetic Providers", description: "Recorded webinar with Priya Nair on hiring and retention.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "EMR Selection and Implementation for MedSpas", description: "Recorded webinar with Dr. Marcus Chen on choosing and implementing an EMR.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "Mastering the Patient Consultation to Close", description: "Recorded webinar with sales trainer Renée Abbot.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "Google Ads for Aesthetic Practices: A Practical Guide", description: "Recorded webinar with digital marketer Taylor Kim.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "Financial Health Check: Understanding Your Practice Numbers", description: "Recorded webinar with Alexandra Reed on reading your practice's financials.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
-  { title: "Building a Loyal Patient Base Through Membership Programs", description: "Recorded webinar with Priya Nair on membership program design.", category: "Webinars", type: "Recorded Webinar", href: "/members/webinars" },
 ];

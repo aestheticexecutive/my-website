@@ -8,23 +8,11 @@ export const metadata: Metadata = {
 
 const resources: { title: string; type: string; description: string; href?: string }[] = [
   {
-    title: "Monthly P&L Tracker",
-    type: "Template",
-    description:
-      "Pre-built profit and loss spreadsheet designed for aesthetic practices — with built-in formulas for revenue by service category, COGS, and net margin.",
-  },
-  {
     title: "Treatment Profitability Analyzer",
     type: "Tool",
     description:
       "Enter price and direct costs for each treatment to see net profit and margin. Includes conditional color-coding, a monthly profit contribution tab, and 15 pre-loaded services.",
     href: "/members/resources/finance/treatment-profitability",
-  },
-  {
-    title: "Membership Program Pricing Model",
-    type: "Tool",
-    description:
-      "Calculate optimal membership tier pricing based on treatment costs and volume — with projected MRR and break-even analysis built in.",
   },
   {
     title: "Annual Budget Template",
@@ -39,24 +27,6 @@ const resources: { title: string; type: string; description: string; href?: stri
     description:
       "Track all 16 key performance indicators for your practice — month over month, tagged by team member. Includes industry benchmarks, trend indicators, and a side-by-side compare view.",
     href: "/members/resources/finance/kpi-tracker",
-  },
-  {
-    title: "Cash Flow Projection Worksheet",
-    type: "Tool",
-    description:
-      "13-week cash flow projection model to help you anticipate shortfalls, plan for payroll, and make confident decisions about growth investments.",
-  },
-  {
-    title: "Pricing Strategy Playbook",
-    type: "Guide",
-    description:
-      "How to price your services with confidence — covering competitive positioning, value-based pricing, package bundling, and how to raise prices without losing patients.",
-  },
-  {
-    title: "Expense Benchmarking Guide",
-    type: "Guide",
-    description:
-      "Industry benchmarks for every major expense category in an aesthetic practice — so you know if you're spending too much or leaving margin on the table.",
   },
 ];
 
