@@ -28,6 +28,7 @@ interface ChecklistItem {
 interface ChecklistSection {
   id: string;
   label: string;
+  kind?: "standard" | "service";
   items: ChecklistItem[];
 }
 
@@ -130,7 +131,12 @@ const supportStaffPolicyLabels = [
 ];
 
 function servicesSection(): ChecklistSection {
-  return { id: uid(), label: "Services & Procedures Training", items: [] };
+  return {
+    id: uid(),
+    label: "Services & Procedures Training",
+    kind: "service",
+    items: itemsFrom(["Botox", "Filler", "Chemical Peel"]),
+  };
 }
 function employmentSection(): ChecklistSection {
   return { id: uid(), label: "Employment Policies", items: itemsFrom(employmentPolicyLabels) };
@@ -565,7 +571,9 @@ export default function OnboardingChecklistPage() {
 
                       <div className="py-1.5 px-3 space-y-0.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                         {section.items.length === 0 && (
-                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.2)" }}>No criteria yet.</p>
+                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.2)" }}>
+                            {section.kind === "service" ? "No services yet." : "No criteria yet."}
+                          </p>
                         )}
                         {section.items.map((item) => (
                           <div key={item.id} className="flex items-start gap-2 py-1.5 group">
@@ -585,7 +593,7 @@ export default function OnboardingChecklistPage() {
                         ))}
                         <button onClick={() => addItem(active.id, section.id)} className="flex items-center gap-1.5 text-xs mt-1.5 py-1 transition-opacity hover:opacity-80" style={{ color: "rgba(162,140,117,0.55)" }}>
                           <Plus size={11} />
-                          Add criteria
+                          {section.kind === "service" ? "Add service" : "Add criteria"}
                         </button>
                       </div>
                     </div>
@@ -634,50 +642,102 @@ export default function OnboardingChecklistPage() {
                       <div style={{ fontSize: "12pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", marginBottom: "8px" }}>
                         {section.label}
                       </div>
-                      <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-                        <colgroup>
-                          <col style={{ width: "34%" }} />
-                          <col style={{ width: "20%" }} />
-                          <col style={{ width: "8%" }} />
-                          <col style={{ width: "14%" }} />
-                          <col style={{ width: "12%" }} />
-                          <col style={{ width: "12%" }} />
-                        </colgroup>
-                        <thead>
-                          <tr>
-                            <th style={{ padding: "8px 8px 8px 0", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>CRITERIA</th>
-                            <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>TRAINED BY</th>
-                            <th style={{ padding: "8px 4px", textAlign: "center", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>DONE</th>
-                            <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>DATE</th>
-                            <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>N.H. INITIALS</th>
-                            <th style={{ padding: "8px 0 8px 6px", textAlign: "left", fontSize: "7pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>TRAINER INITIALS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {section.items.map((item, iIdx) => (
-                            <tr key={item.id} style={{ background: iIdx % 2 === 0 ? "transparent" : "#f9f7f5" }}>
-                              <td style={{ padding: "7px 8px 7px 0", borderBottom: "1px solid #eee", verticalAlign: "top" }}>
-                                <span style={{ fontSize: "9pt", lineHeight: 1.35, color: "#2a2a2a" }}>{item.label}</span>
-                              </td>
-                              <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
-                                <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
-                              </td>
-                              <td style={{ padding: "7px 4px", borderBottom: "1px solid #eee", verticalAlign: "top", textAlign: "center" }}>
-                                <span style={{ display: "inline-block", width: "12px", height: "12px", border: `1.5px solid ${active.accentColor}`, borderRadius: "2px", marginTop: "2px" }} />
-                              </td>
-                              <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
-                                <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
-                              </td>
-                              <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
-                                <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
-                              </td>
-                              <td style={{ padding: "7px 0 7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
-                                <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
-                              </td>
+                      {section.kind === "service" ? (
+                        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+                          <colgroup>
+                            <col style={{ width: "22%" }} />
+                            <col style={{ width: "17%" }} />
+                            <col style={{ width: "17%" }} />
+                            <col style={{ width: "14%" }} />
+                            <col style={{ width: "8%" }} />
+                            <col style={{ width: "11%" }} />
+                            <col style={{ width: "11%" }} />
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th style={{ padding: "8px 6px 8px 0", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>SERVICE / PROCEDURE</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "6.8pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.03em", borderBottom: `2px solid ${active.accentColor}` }}>CURRENT LEVEL<br />(New Hire)</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "6.8pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.03em", borderBottom: `2px solid ${active.accentColor}` }}>TARGET LEVEL<br />(Practice)</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>TARGET DATE</th>
+                              <th style={{ padding: "8px 4px", textAlign: "center", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>DONE</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "6.8pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.03em", borderBottom: `2px solid ${active.accentColor}` }}>N.H. INITIALS</th>
+                              <th style={{ padding: "8px 0 8px 6px", textAlign: "left", fontSize: "6.8pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.03em", borderBottom: `2px solid ${active.accentColor}` }}>TRAINER INITIALS</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {section.items.map((item, iIdx) => (
+                              <tr key={item.id} style={{ background: iIdx % 2 === 0 ? "transparent" : "#f9f7f5" }}>
+                                <td style={{ padding: "7px 6px 7px 0", borderBottom: "1px solid #eee", verticalAlign: "top" }}>
+                                  <span style={{ fontSize: "9pt", lineHeight: 1.35, color: "#2a2a2a" }}>{item.label}</span>
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 4px", borderBottom: "1px solid #eee", verticalAlign: "top", textAlign: "center" }}>
+                                  <span style={{ display: "inline-block", width: "12px", height: "12px", border: `1.5px solid ${active.accentColor}`, borderRadius: "2px", marginTop: "2px" }} />
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 0 7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+                          <colgroup>
+                            <col style={{ width: "34%" }} />
+                            <col style={{ width: "20%" }} />
+                            <col style={{ width: "8%" }} />
+                            <col style={{ width: "14%" }} />
+                            <col style={{ width: "12%" }} />
+                            <col style={{ width: "12%" }} />
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th style={{ padding: "8px 8px 8px 0", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>CRITERIA</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>TRAINED BY</th>
+                              <th style={{ padding: "8px 4px", textAlign: "center", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>DONE</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7.5pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.06em", borderBottom: `2px solid ${active.accentColor}` }}>DATE</th>
+                              <th style={{ padding: "8px 6px", textAlign: "left", fontSize: "7pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>N.H. INITIALS</th>
+                              <th style={{ padding: "8px 0 8px 6px", textAlign: "left", fontSize: "7pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: "#1a1a1a", letterSpacing: "0.04em", borderBottom: `2px solid ${active.accentColor}` }}>TRAINER INITIALS</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.items.map((item, iIdx) => (
+                              <tr key={item.id} style={{ background: iIdx % 2 === 0 ? "transparent" : "#f9f7f5" }}>
+                                <td style={{ padding: "7px 8px 7px 0", borderBottom: "1px solid #eee", verticalAlign: "top" }}>
+                                  <span style={{ fontSize: "9pt", lineHeight: 1.35, color: "#2a2a2a" }}>{item.label}</span>
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 4px", borderBottom: "1px solid #eee", verticalAlign: "top", textAlign: "center" }}>
+                                  <span style={{ display: "inline-block", width: "12px", height: "12px", border: `1.5px solid ${active.accentColor}`, borderRadius: "2px", marginTop: "2px" }} />
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                                <td style={{ padding: "7px 0 7px 6px", borderBottom: "1px solid #eee", verticalAlign: "bottom" }}>
+                                  <div style={{ borderBottom: "1px solid #999", height: "12px" }} />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      )}
                     </div>
                   );
                 })}
