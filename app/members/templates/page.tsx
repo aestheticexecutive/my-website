@@ -1,4 +1,5 @@
-import { Download, FileText, Search } from "lucide-react";
+import Link from "next/link";
+import { Download, FileText, Search, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -112,12 +113,22 @@ const templates: {
     updated: "July 2025",
     href: "/templates/referral-partner-program.docx",
   },
+  {
+    title: "Offer Letter Builder",
+    category: "HR & Staffing",
+    description:
+      "A complete employment offer letter with every standard section already written — fill in the details for a candidate, edit the final copy, then save as a PDF or copy it straight into an email.",
+    format: "Tool",
+    updated: "August 2026",
+    href: "/members/resources/staff/offer-letter",
+  },
 ];
 
 const formatColors: Record<string, string> = {
   DOCX: "bg-blue-50 text-blue-700 border-blue-100",
   XLSX: "bg-emerald-50 text-emerald-700 border-emerald-100",
   PDF: "bg-red-50 text-red-700 border-red-100",
+  Tool: "bg-gold-50 text-gold-700 border-gold-200",
 };
 
 export default function TemplatesPage() {
@@ -194,7 +205,15 @@ export default function TemplatesPage() {
               <span className="text-xs text-warm-400">
                 Updated {template.updated}
               </span>
-              {template.href ? (
+              {template.format === "Tool" && template.href ? (
+                <Link
+                  href={template.href}
+                  className="h-8 px-4 bg-warm-900 text-cream text-xs font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-1.5"
+                >
+                  <ExternalLink size={13} />
+                  Open Tool
+                </Link>
+              ) : template.href ? (
                 <a
                   href={template.href}
                   download
