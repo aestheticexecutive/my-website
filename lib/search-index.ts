@@ -61,6 +61,8 @@ export const searchIndex: SearchEntry[] = [
   { title: "Monthly & Annual P&L Template", description: "Four-tab Excel workbook with pre-built formulas for gross margin, payroll %, net profit, and 9 KPI metrics.", category: "Finance", type: "Template", href: "/downloads/ae-pl-template.xlsx" },
 
   // ── Staff ─────────────────────────────────────────────────────────────────
+  { title: "Meeting Notes", description: "Pre-loaded with the recommended staff meeting agenda — add, remove, or reorder sections, then log notes for every meeting under a name and date.", category: "Staff", type: "Tool", href: "/members/resources/staff/meeting-notes" },
+  { title: "Staff Meeting Agenda", description: "A six-part recurring team meeting structure — what to cover, why each part matters, and tips for running it well.", category: "Staff", type: "Guide", href: "/members/resources/staff/staff-meeting-agenda" },
   { title: "Job Post Generator", description: "Answer a few questions and get a complete, polished job post in seconds — covers 7 roles.", category: "Staff", type: "Tool", href: "/tools/job-post-generator.html", external: true },
   { title: "Interview Guide Generator", description: "Generate a three-stage interview guide built on the MBI framework — skill, attitude, and passion.", category: "Staff", type: "Tool", href: "/tools/interview-guide-generator.html", external: true },
   { title: "Core Values Generator", description: "AI distills your authentic core values from reflective questions about your team's best moments.", category: "Staff", type: "Tool", href: "/tools/core-values-generator.html", external: true },
