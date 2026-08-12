@@ -141,22 +141,61 @@ function relativeTime(iso: string): string {
 function formatNumber(n: number, unit: string): string {
   const rounded = Math.round(n * 100) / 100;
   if (unit === "$") return `$${rounded.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+  if (unit === "%") return `${rounded.toLocaleString("en-US", { maximumFractionDigits: 2 })}%`;
   return `${rounded.toLocaleString("en-US", { maximumFractionDigits: 2 })} ${unit}`;
 }
 
-function latestEntry(goal: Goal): ProgressEntry | null {
-  if (goal.entries.length === 0) return null;
-  return [...goal.entries].sort((a, b) => (a.date < b.date ? 1 : -1))[0];
+function isPercentGoal(goal: Goal): boolean {
+  return goal.unit.trim() === "%";
 }
 
+function sortedEntriesAsc(goal: Goal): ProgressEntry[] {
+  return [...goal.entries].sort((a, b) => (a.date < b.date ? -1 : 1));
+}
+
+function latestEntry(goal: Goal): ProgressEntry | null {
+  const sorted = sortedEntriesAsc(goal);
+  return sorted.length ? sorted[sorted.length - 1] : null;
+}
+
+// Cumulative goals ($ / units / patients): remaining = target - current,
+// pace needed per business day = remaining ÷ days left.
+//
+// Percentage goals (unit === "%"): the target is an AVERAGE the whole period
+// needs to hit, not a running total — logging 72% on day 7 of 20 doesn't mean
+// 8% is "remaining." Instead we back out how many business days have already
+// elapsed (the gap between the first log's "days remaining" and the latest
+// log's "days remaining"), then solve for the average still needed across the
+// days left so the whole-period average lands on target:
+//   requiredAvg = (target × totalDays − avgSoFar × daysElapsed) ÷ daysLeft
 function goalStats(goal: Goal) {
-  const latest = latestEntry(goal);
-  const current = latest?.currentValue ?? 0;
+  const businessDaysLeft = latestEntry(goal)?.businessDaysRemaining ?? null;
+
+  if (isPercentGoal(goal)) {
+    const sorted = sortedEntriesAsc(goal);
+    const first = sorted[0] ?? null;
+    const latest = sorted[sorted.length - 1] ?? null;
+    const avgSoFar = latest?.currentValue ?? 0;
+    const daysElapsed = first && latest && first.id !== latest.id
+      ? Math.max(0, first.businessDaysRemaining - latest.businessDaysRemaining)
+      : 0;
+    const totalDays = businessDaysLeft !== null ? daysElapsed + businessDaysLeft : null;
+    const requiredAvg =
+      businessDaysLeft && businessDaysLeft > 0 && totalDays
+        ? (goal.targetValue * totalDays - avgSoFar * daysElapsed) / businessDaysLeft
+        : null;
+    const onPaceOrAhead =
+      businessDaysLeft !== null && businessDaysLeft <= 0
+        ? avgSoFar >= goal.targetValue
+        : requiredAvg !== null && requiredAvg <= avgSoFar;
+    return { isPercent: true as const, current: avgSoFar, remaining: null, businessDaysLeft, daysElapsed, paceNeeded: requiredAvg, onPaceOrAhead };
+  }
+
+  const current = latestEntry(goal)?.currentValue ?? 0;
   const remaining = goal.targetValue - current;
-  const businessDaysLeft = latest?.businessDaysRemaining ?? null;
   const paceNeeded = businessDaysLeft && businessDaysLeft > 0 ? remaining / businessDaysLeft : null;
   const onPaceOrAhead = remaining <= 0;
-  return { current, remaining, businessDaysLeft, paceNeeded, onPaceOrAhead };
+  return { isPercent: false as const, current, remaining, businessDaysLeft, daysElapsed: null as number | null, paceNeeded, onPaceOrAhead };
 }
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -578,20 +617,36 @@ export default function GoalTrackerPage() {
                           {/* Computed stats */}
                           <div className="rounded-lg p-2.5 grid grid-cols-2 gap-x-2 gap-y-1.5" style={{ background: "rgba(162,140,117,0.06)" }}>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>Current</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Average So Far" : "Current"}</p>
                               <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatNumber(stats.current, goal.unit)}</p>
                             </div>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>Remaining</p>
-                              <p className="text-xs font-medium" style={{ color: stats.onPaceOrAhead ? "#7ecf7e" : "#fffdf6" }}>{stats.onPaceOrAhead ? "Goal met!" : formatNumber(stats.remaining, goal.unit)}</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Target Average" : "Remaining"}</p>
+                              {stats.isPercent ? (
+                                <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatNumber(goal.targetValue, goal.unit)}</p>
+                              ) : (
+                                <p className="text-xs font-medium" style={{ color: stats.onPaceOrAhead ? "#7ecf7e" : "#fffdf6" }}>{stats.onPaceOrAhead ? "Goal met!" : formatNumber(stats.remaining ?? 0, goal.unit)}</p>
+                              )}
                             </div>
                             <div>
                               <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>Business Days Left</p>
                               <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{stats.businessDaysLeft ?? "—"}</p>
                             </div>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>Pace Needed / Day</p>
-                              <p className="text-xs font-medium" style={{ color: "#e0b84a" }}>{stats.onPaceOrAhead ? "—" : stats.paceNeeded !== null ? formatNumber(stats.paceNeeded, goal.unit) : "Enter days left"}</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Avg Needed Going Forward" : "Pace Needed / Day"}</p>
+                              <p className="text-xs font-medium" style={{ color: stats.isPercent && stats.onPaceOrAhead ? "#7ecf7e" : "#e0b84a" }}>
+                                {stats.isPercent
+                                  ? stats.businessDaysLeft !== null && stats.businessDaysLeft <= 0
+                                    ? (stats.onPaceOrAhead ? "Goal met!" : "Period ended")
+                                    : stats.paceNeeded !== null
+                                    ? formatNumber(stats.paceNeeded, goal.unit)
+                                    : "Enter days left"
+                                  : stats.onPaceOrAhead
+                                  ? "—"
+                                  : stats.paceNeeded !== null
+                                  ? formatNumber(stats.paceNeeded, goal.unit)
+                                  : "Enter days left"}
+                              </p>
                             </div>
                           </div>
 
@@ -678,18 +733,34 @@ export default function GoalTrackerPage() {
                         <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "8px" }}>
                           <tbody>
                             <tr>
-                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>Target</td>
-                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>Current</td>
-                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>Remaining</td>
+                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>{stats.isPercent ? "Target Avg" : "Target"}</td>
+                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>{stats.isPercent ? "Avg So Far" : "Current"}</td>
+                              <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>{stats.isPercent ? "Biz Days Elapsed" : "Remaining"}</td>
                               <td style={{ padding: "4px 12px 4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>Biz Days Left</td>
-                              <td style={{ padding: "4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>Pace Needed / Day</td>
+                              <td style={{ padding: "4px 0", fontSize: "8pt", color: "#888", textTransform: "uppercase", letterSpacing: "0.05em" }}>{stats.isPercent ? "Avg Needed Going Forward" : "Pace Needed / Day"}</td>
                             </tr>
                             <tr>
                               <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt", fontWeight: "bold" }}>{formatNumber(goal.targetValue, goal.unit)}</td>
                               <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt" }}>{formatNumber(stats.current, goal.unit)}</td>
-                              <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt", color: stats.onPaceOrAhead ? "#2e7d32" : "#1a1a1a" }}>{stats.onPaceOrAhead ? "Met" : formatNumber(stats.remaining, goal.unit)}</td>
+                              {stats.isPercent ? (
+                                <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt" }}>{stats.daysElapsed ?? "—"}</td>
+                              ) : (
+                                <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt", color: stats.onPaceOrAhead ? "#2e7d32" : "#1a1a1a" }}>{stats.onPaceOrAhead ? "Met" : formatNumber(stats.remaining ?? 0, goal.unit)}</td>
+                              )}
                               <td style={{ padding: "2px 12px 2px 0", fontSize: "10pt" }}>{stats.businessDaysLeft ?? "—"}</td>
-                              <td style={{ padding: "2px 0", fontSize: "10pt", fontWeight: "bold", color: active.accentColor }}>{stats.onPaceOrAhead ? "—" : stats.paceNeeded !== null ? formatNumber(stats.paceNeeded, goal.unit) : "—"}</td>
+                              <td style={{ padding: "2px 0", fontSize: "10pt", fontWeight: "bold", color: stats.isPercent && stats.onPaceOrAhead ? "#2e7d32" : active.accentColor }}>
+                                {stats.isPercent
+                                  ? stats.businessDaysLeft !== null && stats.businessDaysLeft <= 0
+                                    ? (stats.onPaceOrAhead ? "Met" : "Period ended")
+                                    : stats.paceNeeded !== null
+                                    ? formatNumber(stats.paceNeeded, goal.unit)
+                                    : "—"
+                                  : stats.onPaceOrAhead
+                                  ? "—"
+                                  : stats.paceNeeded !== null
+                                  ? formatNumber(stats.paceNeeded, goal.unit)
+                                  : "—"}
+                              </td>
                             </tr>
                           </tbody>
                         </table>
