@@ -80,6 +80,8 @@ export const searchIndex: SearchEntry[] = [
   { title: "Employee File Guide", description: "The 6 required file categories, retention schedules, compliance traps, and a maintenance plan.", category: "Staff", type: "Guide", href: "/members/resources/staff/employee-files" },
   { title: "12-Week Leadership Development", description: "A self-paced curriculum built around 8 leadership books, TED talks, and podcasts with weekly reflections.", category: "Staff", type: "Course", href: "/members/resources/staff/leadership-course" },
   { title: "Employee Evaluation Forms", description: "Role-specific evaluation forms for Patient Care Coordinator, Med Spa Manager, and Provider/Injector, plus the review process.", category: "Staff", type: "Template", href: "/members/resources/staff" },
+  { title: "Employee Write-Up Form", description: "A structured write-up template with editable warning levels, violation categories, and disciplinary actions — save named records and print for sign-off.", category: "Staff", type: "Tool", href: "/members/resources/staff/employee-write-up-form" },
+  { title: "Documentation & Write-Up Guide", description: "Why documenting out-of-the-ordinary employee behavior matters, what's worth writing down, and how to do it well.", category: "Staff", type: "Guide", href: "/members/resources/staff/employee-write-up-guide" },
 
   // ── Templates ─────────────────────────────────────────────────────────────
   { title: "Event RSVP Tracking Sheet", description: "Track attendee RSVPs, contact information, and attendance for practice events and treatment nights.", category: "Templates", type: "Template", href: "/templates/event-rsvp-sheet.xlsx" },
