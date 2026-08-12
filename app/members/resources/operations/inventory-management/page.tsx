@@ -17,6 +17,7 @@ import {
   PackagePlus,
   Calendar,
   AlertTriangle,
+  Download,
 } from "lucide-react";
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -122,6 +123,25 @@ function fmtCurrency(n: number): string {
 
 function fmtUnits(n: number): string {
   return n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+}
+
+function csvEscape(val: string): string {
+  const s = String(val ?? "");
+  if (/[",\n]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
+  return s;
+}
+
+function downloadCSV(filename: string, rows: (string | number)[][]) {
+  const csv = rows.map((row) => row.map((cell) => csvEscape(String(cell))).join(",")).join("\r\n");
+  const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 function relativeTime(iso: string): string {
@@ -317,6 +337,38 @@ export default function InventoryManagementPage() {
   const sortedCounts = [...data.counts].sort((a, b) => (a.date < b.date ? 1 : -1));
   const sortedReceipts = [...data.receipts].sort((a, b) => (a.date < b.date ? 1 : -1));
 
+  // Distinct values already typed in, offered as suggestions for future items
+  const knownCategories = Array.from(new Set(data.items.map((it) => it.category.trim()).filter(Boolean))).sort();
+  const knownVendors = Array.from(new Set(data.items.map((it) => it.vendor.trim()).filter(Boolean))).sort();
+  const knownUnits = Array.from(new Set(data.items.map((it) => it.unit.trim()).filter(Boolean))).sort();
+
+  function exportReportCSV() {
+    const rows: (string | number)[][] = [
+      ["Inventory Report"],
+      ["Period", formatRangeLabel(rangeStart, rangeEnd)],
+      ["Generated", formatDateLabel(todayISO())],
+      [],
+      ["Current Inventory Value On-Site", fmtCurrency(totalValue)],
+      ["Units Utilized (Period)", fmtUnits(totalUsedUnits)],
+      ["Dollars Utilized (Period)", fmtCurrency(totalUsedDollars)],
+      [],
+      ["Item", "Category", "Vendor", "Unit", "Opening", "Received", "Closing", "Used (Units)", "Used ($)"],
+      ...utilizationRows.map((r) => [
+        r.item.name,
+        r.item.category,
+        r.item.vendor,
+        r.item.unit,
+        fmtUnits(r.opening),
+        fmtUnits(r.received),
+        fmtUnits(r.closing),
+        fmtUnits(r.usedUnits),
+        r.usedDollars.toFixed(2),
+      ]),
+    ];
+    const suffix = rangeStart || rangeEnd ? `${rangeStart || "start"}_to_${rangeEnd || "now"}` : "all-time";
+    downloadCSV(`inventory-report_${suffix}.csv`, rows);
+  }
+
   // Shared inline styles
   const inputStyle: React.CSSProperties = { background: "rgba(12,0,4,0.8)", borderColor: "rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" };
   const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" };
@@ -347,6 +399,11 @@ export default function InventoryManagementPage() {
 
   return (
     <div className="bg-[#0c0004] min-h-screen pb-24">
+      {/* Shared autocomplete suggestions for Category / Vendor / Unit — populated from items already entered */}
+      <datalist id="inv-categories">{knownCategories.map((c) => <option key={c} value={c} />)}</datalist>
+      <datalist id="inv-vendors">{knownVendors.map((v) => <option key={v} value={v} />)}</datalist>
+      <datalist id="inv-units">{knownUnits.map((u) => <option key={u} value={u} />)}</datalist>
+
       {/* Sticky sub-header */}
       <div className="sticky top-16 z-10 border-b" style={{ background: "rgba(10,0,3,0.96)", backdropFilter: "blur(16px)", borderColor: "rgba(162,140,117,0.12)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between gap-4">
@@ -466,11 +523,11 @@ export default function InventoryManagementPage() {
                               {item.name || <span className="italic" style={{ color: "rgba(255,253,246,0.25)" }}>Unnamed item</span>}
                             </span>
                           )}
-                          <input type="text" placeholder="—" value={item.category} onChange={(e) => updateItem(item.id, "category", e.target.value)}
+                          <input type="text" list="inv-categories" placeholder="—" value={item.category} onChange={(e) => updateItem(item.id, "category", e.target.value)}
                             className="text-xs px-2 py-1.5 rounded-lg border outline-none w-full" style={inputStyle} />
-                          <input type="text" placeholder="—" value={item.vendor} onChange={(e) => updateItem(item.id, "vendor", e.target.value)}
+                          <input type="text" list="inv-vendors" placeholder="—" value={item.vendor} onChange={(e) => updateItem(item.id, "vendor", e.target.value)}
                             className="text-xs px-2 py-1.5 rounded-lg border outline-none w-full" style={inputStyle} />
-                          <input type="text" placeholder="each" value={item.unit} onChange={(e) => updateItem(item.id, "unit", e.target.value)}
+                          <input type="text" list="inv-units" placeholder="each" value={item.unit} onChange={(e) => updateItem(item.id, "unit", e.target.value)}
                             className="text-xs px-2 py-1.5 rounded-lg border outline-none w-full" style={inputStyle} />
                           <div className="flex items-center gap-1">
                             <span className="text-xs flex-shrink-0" style={{ color: "rgba(255,253,246,0.3)" }}>$</span>
@@ -656,6 +713,13 @@ export default function InventoryManagementPage() {
         {/* ════════════ REPORTS VIEW ════════════ */}
         {view === "reports" && (
           <div>
+            <div className="flex justify-end mb-4">
+              <button onClick={exportReportCSV} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors"
+                style={{ background: "rgba(162,140,117,0.12)", borderColor: "rgba(162,140,117,0.3)", color: "#a28c75" }}>
+                <Download size={12} /> Export CSV
+              </button>
+            </div>
+
             {/* Current value */}
             <div className="rounded-xl border p-6 mb-8" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               <p className="text-xs tracking-[0.15em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.6)" }}>Current Inventory Value On-Site</p>
