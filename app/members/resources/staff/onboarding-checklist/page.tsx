@@ -452,8 +452,10 @@ export default function OnboardingChecklistPage() {
       <style>{`
         @media print {
           body * { visibility: hidden; }
+          .print-preview-pane { display: block !important; }
           #onboarding-print-preview, #onboarding-print-preview * { visibility: visible; }
           #onboarding-print-preview {
+            display: block !important;
             position: fixed;
             top: 0;
             left: 0;
@@ -610,7 +612,7 @@ export default function OnboardingChecklistPage() {
           </div>
 
           {/* Preview panel */}
-          <div className={`flex-1 overflow-y-auto ${activeTab === "preview" ? "flex" : "hidden"} md:flex flex-col`} style={{ background: "#e8e0d8" }}>
+          <div className={`print-preview-pane flex-1 overflow-y-auto ${activeTab === "preview" ? "flex" : "hidden"} md:flex flex-col`} style={{ background: "#e8e0d8" }}>
             <div className="flex items-center justify-between px-6 py-3 no-print" style={{ background: "rgba(0,0,0,0.12)", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
               <span className="text-xs" style={{ color: "rgba(0,0,0,0.4)" }}>Live Preview — this is how your checklist will print</span>
               <button onClick={handlePrint} className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded transition-all duration-150 hover:opacity-80" style={{ background: active.accentColor, color: "#fffdf6" }}>
@@ -639,9 +641,15 @@ export default function OnboardingChecklistPage() {
                   if (section.items.length === 0) return null;
                   return (
                     <div key={section.id} style={{ padding: secIdx === 0 ? "20px 36px 0" : "28px 36px 0" }}>
-                      <div style={{ fontSize: "12pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", marginBottom: "8px" }}>
+                      <div style={{ fontSize: "12pt", fontWeight: "bold", fontFamily: "Arial, sans-serif", color: active.accentColor, letterSpacing: "0.04em", marginBottom: section.kind === "service" ? "4px" : "8px" }}>
                         {section.label}
                       </div>
+                      {section.kind === "service" && (
+                        <div style={{ fontSize: "7.5pt", color: "#555", marginBottom: "10px", fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>
+                          <span style={{ fontWeight: "bold" }}>Scale of Understanding:</span>{" "}
+                          1 = No Understanding &nbsp;·&nbsp; 2 = Basic Understanding &nbsp;·&nbsp; 3 = Advanced Understanding &nbsp;·&nbsp; 4 = Able to Perform Basic Procedures &nbsp;·&nbsp; 5 = Able to Perform Advanced Procedures
+                        </div>
+                      )}
                       {section.kind === "service" ? (
                         <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
                           <colgroup>
