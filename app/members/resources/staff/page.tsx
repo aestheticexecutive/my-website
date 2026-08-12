@@ -231,6 +231,121 @@ export default function StaffResourcesPage() {
         </Link>
       </div>
 
+      {/* ── New Hire Onboarding ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            New Hire Onboarding
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        <Link
+          href="/members/resources/staff/onboarding-checklist"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+            >
+              <ClipboardList size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Onboarding Checklist Builder
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{ background: "rgba(162,140,117,0.15)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Start from a Provider or Support Staff onboarding template — pre-loaded with services training, systems &amp; policy criteria, and employment policies — then add or remove whatever fits your practice. Save as many named checklists as you need and print any of them as a clean, sign-off-ready document.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["Provider & Support Staff templates", "Add / remove criteria", "Save multiple named checklists", "Print / save as PDF"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)", color: "#a28c75" }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Guide card */}
+        <Link
+          href="/members/resources/staff/onboarding-guide"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{
+            background: "rgba(162,140,117,0.03)",
+            borderColor: "rgba(162,140,117,0.13)",
+          }}
+        >
+          <div className="p-7 flex flex-col md:flex-row md:items-center gap-5">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.1)",
+                border: "1px solid rgba(162,140,117,0.2)",
+              }}
+            >
+              <Wand2 size={18} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
+                  Onboarding Guide
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.1)",
+                    border: "1px solid rgba(162,140,117,0.22)",
+                    color: "rgba(162,140,117,0.75)",
+                  }}
+                >
+                  Guide
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                Why a signed-off onboarding checklist matters, the three parts every onboarding covers, and how to actually run it well with a new hire.
+              </p>
+            </div>
+            <span
+              className="flex-shrink-0 inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg"
+              style={{
+                background: "rgba(162,140,117,0.08)",
+                border: "1px solid rgba(162,140,117,0.2)",
+                color: "rgba(162,140,117,0.7)",
+              }}
+            >
+              Read Guide
+              <ExternalLink size={11} />
+            </span>
+          </div>
+        </Link>
+      </div>
+
       {/* ── Core Values ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
 
