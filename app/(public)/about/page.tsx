@@ -40,12 +40,12 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="bg-blush pt-16 pb-0 overflow-hidden">
+      <section className="bg-blush py-16 lg:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             {/* Left — text */}
-            <div className="py-16 lg:py-20">
+            <div>
               <p className="text-xs tracking-[0.3em] uppercase text-gold-600 mb-6">
                 Founder &amp; Consultant
               </p>
@@ -85,7 +85,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right — photo */}
-            <div className="flex items-end justify-center lg:justify-end">
+            <div className="flex items-center justify-center">
               <div
                 className="relative w-full max-w-sm lg:max-w-none"
                 style={{ maxWidth: "460px" }}
