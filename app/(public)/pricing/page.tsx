@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 import {
   CheckCircle2,
   ArrowRight,
@@ -252,9 +254,12 @@ export default function PricingPage() {
         <div className="max-w-5xl mx-auto px-8 md:px-16">
           <div className="text-center mb-12">
             <Eyebrow center>Annual membership</Eyebrow>
-            <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-normal text-[#fffdf6] leading-[1.05]">
-              Full Access Membership
-            </h2>
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-normal text-[#fffdf6] leading-[1.05]">
+                Full Access Membership
+              </h2>
+              <ComingSoonBadge />
+            </div>
           </div>
 
           <div className="border border-[#a28c75]/20 rounded-2xl overflow-hidden">
@@ -298,7 +303,7 @@ export default function PricingPage() {
                     Billed annually — $2,997/year
                   </p>
                   <p className="font-sans font-light text-[#a28c75] text-sm italic">
-                    Less than one lost patient visit.
+                    Founders pricing — locked in when you join the VIP list.
                   </p>
                 </div>
 
@@ -318,10 +323,13 @@ export default function PricingPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3">
-                    <button className="w-full h-12 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer">
-                      Join Aesthetic Executive
+                    <Link
+                      href="/waitlist"
+                      className="w-full h-12 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      Get on the VIP List
                       <ArrowRight size={13} />
-                    </button>
+                    </Link>
                     <button className="w-full h-12 border border-[#a28c75]/25 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.15em] uppercase hover:border-[#a28c75]/55 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer">
                       See what&apos;s inside
                     </button>
@@ -481,13 +489,16 @@ export default function PricingPage() {
             to work?
           </h2>
           <p className="font-sans font-light text-[#fffdf6]/45 text-lg leading-relaxed max-w-xs mx-auto mb-14">
-            Join the membership or start with a conversation.
+            Get on the VIP list or start with a conversation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="h-12 px-10 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer">
-              Join Aesthetic Executive
+            <Link
+              href="/waitlist"
+              className="h-12 px-10 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Get on the VIP List
               <ArrowRight size={13} />
-            </button>
+            </Link>
             <button className="h-12 px-10 border border-[#fffdf6]/15 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.2em] uppercase hover:border-[#fffdf6]/35 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer">
               Book a discovery call
             </button>

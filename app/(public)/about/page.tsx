@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 
 export const metadata: Metadata = {
   title: "About Kyla Evans | Aesthetic Executive",
@@ -69,10 +70,10 @@ export default function AboutPage() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/pricing"
+                  href="/waitlist"
                   className="h-12 px-7 bg-warm-900 text-cream text-sm font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-2"
                 >
-                  Start Your Membership
+                  Get on the VIP List
                   <ArrowRight size={15} />
                 </Link>
                 <Link
@@ -290,9 +291,12 @@ export default function AboutPage() {
 
             {/* Right — checklist */}
             <div className="bg-white rounded-2xl border border-warm-200 p-8 shadow-sm">
-              <p className="text-xs tracking-[0.2em] uppercase text-warm-400 mb-6">
-                Areas of focus
-              </p>
+              <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
+                <p className="text-xs tracking-[0.2em] uppercase text-warm-400">
+                  Areas of focus
+                </p>
+                <ComingSoonBadge theme="light" />
+              </div>
               <ul className="space-y-4">
                 {offers.map((item) => (
                   <li key={item} className="flex items-center gap-3">
@@ -306,10 +310,10 @@ export default function AboutPage() {
               </ul>
               <div className="mt-8 pt-6 border-t border-warm-100">
                 <Link
-                  href="/pricing"
+                  href="/waitlist"
                   className="w-full h-11 bg-warm-900 text-cream text-sm font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center justify-center gap-2"
                 >
-                  Explore Membership
+                  Get on the VIP List
                   <ArrowRight size={14} />
                 </Link>
               </div>
@@ -326,15 +330,15 @@ export default function AboutPage() {
             Ready to build a practice that runs like a business?
           </h2>
           <p className="text-warm-400 mb-8 max-w-lg mx-auto leading-relaxed">
-            Join aesthetic practice owners and managers who have the resources,
-            support, and frameworks to grow — without the guesswork.
+            Get on the VIP list for early access and exclusive founders
+            pricing when membership opens — or start with a conversation.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/pricing"
+              href="/waitlist"
               className="h-12 px-8 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center gap-2 shadow-lg"
             >
-              Start Your Membership
+              Get on the VIP List
               <ArrowRight size={15} />
             </Link>
             <Link
