@@ -146,7 +146,7 @@ export default function PricingPage() {
       {/* ── SLOGAN STRIP ─────────────────────────────────────── */}
       <div className="bg-[#2f0410] border-y border-[#a28c75]/15 py-4 px-6 text-center">
         <p className="font-display text-[#fffdf6]/50 text-base italic tracking-widest">
-          Where the business of beauty gets serious.
+          Where Aesthetics Meets Strategy
         </p>
       </div>
 
