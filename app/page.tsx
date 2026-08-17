@@ -10,6 +10,7 @@ import {
 import { PublicHeader } from "@/components/layout/PublicHeader";
 import { Footer } from "@/components/layout/Footer";
 import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
+import { DISCOVERY_CALL_URL } from "@/lib/constants";
 
 function Eyebrow({ children, center }: { children: React.ReactNode; center?: boolean }) {
   return (
@@ -113,12 +114,14 @@ export default function HomePage() {
                 Get on the VIP List
                 <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/pricing"
+              <a
+                href={DISCOVERY_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-12 px-8 border border-[#fffdf6]/20 text-[#fffdf6]/70 text-sm font-medium rounded tracking-wide hover:border-[#fffdf6]/40 hover:text-[#fffdf6] transition-colors inline-flex items-center"
               >
                 Book a Discovery Call
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -227,13 +230,15 @@ export default function HomePage() {
                 figure out whether membership, a project, a one-on-one call, or
                 a combination makes the most sense for you.
               </p>
-              <Link
-                href="/pricing"
+              <a
+                href={DISCOVERY_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-12 px-9 bg-[#a28c75] text-[#0c0004] text-sm font-medium rounded tracking-wide hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2"
               >
                 Book a Free Discovery Call
                 <ArrowRight size={15} />
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -321,12 +326,14 @@ export default function HomePage() {
                 Get on the VIP List
                 <ArrowRight size={15} />
               </Link>
-              <Link
-                href="/pricing"
+              <a
+                href={DISCOVERY_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-12 px-9 border border-[#fffdf6]/20 text-[#fffdf6]/70 text-sm font-medium rounded tracking-wide hover:border-[#fffdf6]/40 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center"
               >
                 Book a Discovery Call
-              </Link>
+              </a>
             </div>
           </div>
         </section>

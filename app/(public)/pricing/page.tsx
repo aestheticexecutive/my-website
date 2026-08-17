@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
+import { DISCOVERY_CALL_URL } from "@/lib/constants";
 import {
   CheckCircle2,
   ArrowRight,
@@ -227,10 +228,15 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <button className="w-full h-11 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer">
+              <a
+                href={DISCOVERY_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-11 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
                 Book a discovery call
                 <ArrowRight size={13} />
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -499,9 +505,14 @@ export default function PricingPage() {
               Get on the VIP List
               <ArrowRight size={13} />
             </Link>
-            <button className="h-12 px-10 border border-[#fffdf6]/15 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.2em] uppercase hover:border-[#fffdf6]/35 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer">
+            <a
+              href={DISCOVERY_CALL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-12 px-10 border border-[#fffdf6]/15 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.2em] uppercase hover:border-[#fffdf6]/35 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer"
+            >
               Book a discovery call
-            </button>
+            </a>
           </div>
         </div>
       </section>
