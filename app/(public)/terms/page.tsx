@@ -121,7 +121,7 @@ const sections = [
     id: "governing-law",
     title: "13. Governing Law",
     body: (
-      <p>These Terms are governed by the laws of the state in which Aesthetic Executive operates, without regard to conflict-of-law principles.</p>
+      <p>These Terms are governed by the laws of the State of Ohio, without regard to conflict-of-law principles.</p>
     ),
   },
   {
@@ -130,8 +130,8 @@ const sections = [
     body: (
       <p>
         Questions about these Terms? Reach us at{" "}
-        <a href="mailto:support@aestheticexecutive.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
-          support@aestheticexecutive.com
+        <a href="mailto:aestheticexecutivekyla@gmail.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
+          aestheticexecutivekyla@gmail.com
         </a>.
       </p>
     ),

@@ -120,8 +120,8 @@ const sections = [
     body: (
       <p>
         If you have questions about this Privacy Policy or how we handle your information, contact us at{" "}
-        <a href="mailto:privacy@aestheticexecutive.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
-          privacy@aestheticexecutive.com
+        <a href="mailto:aestheticexecutivekyla@gmail.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
+          aestheticexecutivekyla@gmail.com
         </a>.
       </p>
     ),

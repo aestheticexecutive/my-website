@@ -72,8 +72,8 @@ const sections = [
     body: (
       <p>
         If you have a question about a charge on your account, contact us at{" "}
-        <a href="mailto:billing@aestheticexecutive.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
-          billing@aestheticexecutive.com
+        <a href="mailto:aestheticexecutivekyla@gmail.com" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
+          aestheticexecutivekyla@gmail.com
         </a>
         . For the full terms governing your use of Aesthetic Executive, see our{" "}
         <Link href="/terms" className="text-gold-600 underline underline-offset-2 hover:text-gold-700">
