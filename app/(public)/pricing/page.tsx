@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
-import { DISCOVERY_CALL_URL } from "@/lib/constants";
+import { DISCOVERY_CALL_URL, ONE_ON_ONE_BOOKING_URL } from "@/lib/constants";
 import {
   CheckCircle2,
   ArrowRight,
@@ -389,9 +389,14 @@ export default function PricingPage() {
                   per 30 min
                 </span>
               </div>
-              <button className="w-full h-11 border border-[#a28c75]/20 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.2em] uppercase hover:border-[#a28c75]/50 hover:text-[#fffdf6] transition-colors cursor-pointer">
+              <a
+                href={ONE_ON_ONE_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-11 border border-[#a28c75]/20 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.2em] uppercase hover:border-[#a28c75]/50 hover:text-[#fffdf6] transition-colors cursor-pointer inline-flex items-center justify-center"
+              >
                 Book a session
-              </button>
+              </a>
             </div>
 
             {/* Member rate */}
@@ -415,9 +420,14 @@ export default function PricingPage() {
                   per 30 min
                 </span>
               </div>
-              <button className="w-full h-11 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors cursor-pointer">
+              <a
+                href={ONE_ON_ONE_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-11 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors cursor-pointer inline-flex items-center justify-center"
+              >
                 Book as a member
-              </button>
+              </a>
             </div>
           </div>
         </div>

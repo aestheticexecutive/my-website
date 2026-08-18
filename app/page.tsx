@@ -10,7 +10,7 @@ import {
 import { PublicHeader } from "@/components/layout/PublicHeader";
 import { Footer } from "@/components/layout/Footer";
 import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
-import { DISCOVERY_CALL_URL } from "@/lib/constants";
+import { DISCOVERY_CALL_URL, ONE_ON_ONE_BOOKING_URL } from "@/lib/constants";
 
 function Eyebrow({ children, center }: { children: React.ReactNode; center?: boolean }) {
   return (
@@ -72,7 +72,7 @@ const paths = [
       "Discounted rate for members",
     ],
     cta: "Book a session",
-    href: "/pricing",
+    href: ONE_ON_ONE_BOOKING_URL,
   },
 ];
 
@@ -200,13 +200,25 @@ export default function HomePage() {
                           </div>
                         ))}
                       </div>
-                      <Link
-                        href={path.href}
-                        className="mt-auto inline-flex items-center gap-2 text-xs font-sans font-medium tracking-[0.15em] uppercase text-[#a28c75] hover:text-[#c8b3a3] transition-colors"
-                      >
-                        {path.cta}
-                        <ArrowRight size={12} />
-                      </Link>
+                      {path.href.startsWith("http") ? (
+                        <a
+                          href={path.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-auto inline-flex items-center gap-2 text-xs font-sans font-medium tracking-[0.15em] uppercase text-[#a28c75] hover:text-[#c8b3a3] transition-colors"
+                        >
+                          {path.cta}
+                          <ArrowRight size={12} />
+                        </a>
+                      ) : (
+                        <Link
+                          href={path.href}
+                          className="mt-auto inline-flex items-center gap-2 text-xs font-sans font-medium tracking-[0.15em] uppercase text-[#a28c75] hover:text-[#c8b3a3] transition-colors"
+                        >
+                          {path.cta}
+                          <ArrowRight size={12} />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 );
