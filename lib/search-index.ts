@@ -53,6 +53,8 @@ export const searchIndex: SearchEntry[] = [
   { title: "Why Your Brand Kit Matters", description: "Why an intentional brand matters and what goes into a complete brand kit before you start building yours.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/brand-kit" },
   { title: "Ideal Client Builder", description: "Build three detailed ideal client personas plus your brand personality, voice, and promise — export for agencies.", category: "Marketing", type: "Tool", href: "/tools/ideal-client-builder.html", external: true },
   { title: "Lead Conversion Playbook", description: "A step-by-step system for responding to, nurturing, and converting new patient inquiries into treatments.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/lead-conversion" },
+  { title: "Membership + Rewards Audit Tool", description: "Audit your in-house membership and Allē, Aspire, Evolus & Reva rewards enrollment, assess promotion, and build an action and tracking plan.", category: "Marketing", type: "Tool", href: "/members/resources/marketing/membership-rewards-audit" },
+  { title: "Maximizing In-House Memberships + Rewards Programs Guide", description: "The 8-step process for auditing, promoting, and tracking your in-house membership and manufacturer rewards programs.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/membership-rewards-guide" },
 
   // ── Finance & Business Performance ───────────────────────────────────────
   { title: "Treatment Profitability Analyzer", description: "Enter price and direct costs per treatment to see net profit and margin, with 15 pre-loaded services.", category: "Finance", type: "Tool", href: "/members/resources/finance/treatment-profitability" },
