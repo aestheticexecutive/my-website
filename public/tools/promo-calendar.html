@@ -269,6 +269,9 @@
   .t-event      { background: rgba(130,190,120,0.12); }
   .t-email      { background: rgba(200,160,80,0.12); }
   .t-social     { background: rgba(160,100,200,0.12); }
+  .t-text       { background: rgba(92,176,168,0.12); }
+  .t-seo        { background: rgba(200,130,60,0.12); }
+  .t-community  { background: rgba(194,111,150,0.12); }
   .t-other      { background: rgba(180,180,180,0.08); }
 
   .dot-feature  { background: #a28c75; }
@@ -276,6 +279,9 @@
   .dot-event    { background: #7db870; }
   .dot-email    { background: #c8a050; }
   .dot-social   { background: #a064c8; }
+  .dot-text     { background: #5cb0a8; }
+  .dot-seo      { background: #c8823c; }
+  .dot-community{ background: #c26f96; }
   .dot-other    { background: #888; }
 
   .sel-feature  { background: #a28c75; }
@@ -283,6 +289,9 @@
   .sel-event    { background: #7db870; }
   .sel-email    { background: #c8a050; }
   .sel-social   { background: #a064c8; }
+  .sel-text     { background: #5cb0a8; }
+  .sel-seo      { background: #c8823c; }
+  .sel-community{ background: #c26f96; }
   .sel-other    { background: #888; }
 
   /* ── PRINT BUTTON ── */
@@ -351,6 +360,9 @@
     .pt-event    { background: #7db870; }
     .pt-email    { background: #c8a050; }
     .pt-social   { background: #a064c8; }
+    .pt-text     { background: #5cb0a8; }
+    .pt-seo      { background: #c8823c; }
+    .pt-community{ background: #c26f96; }
     .pt-other    { background: #888; }
   }
 </style>
@@ -398,6 +410,15 @@
     <div class="legend-item" data-type="Social" onclick="toggleFilter('Social')">
       <span class="legend-dot dot-social"></span> Social
     </div>
+    <div class="legend-item" data-type="Text" onclick="toggleFilter('Text')">
+      <span class="legend-dot dot-text"></span> Text
+    </div>
+    <div class="legend-item" data-type="SEO" onclick="toggleFilter('SEO')">
+      <span class="legend-dot dot-seo"></span> SEO
+    </div>
+    <div class="legend-item" data-type="Community" onclick="toggleFilter('Community')">
+      <span class="legend-dot dot-community"></span> Community
+    </div>
     <div class="legend-item" data-type="Other" onclick="toggleFilter('Other')">
       <span class="legend-dot dot-other"></span> Other
     </div>
@@ -442,6 +463,15 @@
           </button>
           <button class="type-btn" data-type="Social" onclick="selectType('Social')">
             <span class="legend-dot dot-social"></span> Social
+          </button>
+          <button class="type-btn" data-type="Text" onclick="selectType('Text')">
+            <span class="legend-dot dot-text"></span> Text
+          </button>
+          <button class="type-btn" data-type="SEO" onclick="selectType('SEO')">
+            <span class="legend-dot dot-seo"></span> SEO
+          </button>
+          <button class="type-btn" data-type="Community" onclick="selectType('Community')">
+            <span class="legend-dot dot-community"></span> Community
           </button>
           <button class="type-btn" data-type="Other" onclick="selectType('Other')">
             <span class="legend-dot dot-other"></span> Other
@@ -506,7 +536,8 @@ const MONTHS = ['January','February','March','April','May','June','July','August
 const STORAGE_KEY = 'ae_promo_calendar_v1';
 const TYPE_COLORS = {
   Feature:'#a28c75', Campaign:'#6488c8', Event:'#7db870',
-  Email:'#c8a050', Social:'#a064c8', Other:'#888'
+  Email:'#c8a050', Social:'#a064c8', Text:'#5cb0a8',
+  SEO:'#c8823c', Community:'#c26f96', Other:'#888'
 };
 
 let state = { year: new Date().getFullYear(), filter: 'all', data: {}, modal: null };
