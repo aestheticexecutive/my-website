@@ -284,6 +284,75 @@
   .sel-email    { background: #c8a050; }
   .sel-social   { background: #a064c8; }
   .sel-other    { background: #888; }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--gold-dim); background: var(--gold);
+    color: #0c0004; font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .print-btn:hover { background: #b89e87; }
+
+  /* ── PRINT DOCUMENT (screen: hidden; print: shown) ── */
+  #printDoc { display: none; }
+
+  @media print {
+    body * { visibility: hidden; }
+    #printDoc, #printDoc * { visibility: visible; }
+    #printDoc {
+      display: block !important;
+      position: absolute; top: 0; left: 0; width: 100%;
+      margin: 0; padding: 0;
+      background: #fff;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #1a1a1a;
+    }
+    .print-month { page-break-after: always; padding: 30px 40px 40px; }
+    .print-month:last-child { page-break-after: auto; }
+
+    .print-doc-header {
+      border-bottom: 4px solid #4a0018;
+      padding-bottom: 14px; margin-bottom: 22px;
+    }
+    .print-doc-title {
+      font-family: Arial, sans-serif; font-size: 12pt; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #a28c75; margin-bottom: 4px;
+    }
+    .print-month-name {
+      font-family: Arial, sans-serif; font-size: 26pt; font-weight: bold; color: #4a0018;
+    }
+    .print-month-meta {
+      font-family: Arial, sans-serif; font-size: 9pt; color: #666; margin-top: 4px;
+    }
+
+    .print-entry { page-break-inside: avoid; border: 1px solid #ddd; border-radius: 6px; padding: 12px 16px; margin-bottom: 12px; }
+    .print-entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+    .print-entry-title { font-size: 13pt; font-weight: bold; color: #1a1a1a; }
+    .print-entry-type {
+      font-family: Arial, sans-serif; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 2px 9px; border-radius: 10px; color: #fff; flex-shrink: 0; white-space: nowrap;
+    }
+    .print-entry-notes { font-size: 10.5pt; line-height: 1.55; color: #333; margin-bottom: 8px; white-space: pre-wrap; }
+    .print-metrics-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 16px;
+      border-top: 1px solid #eee; padding-top: 8px;
+    }
+    .print-metric { font-family: Arial, sans-serif; font-size: 8.5pt; }
+    .print-metric-full { grid-column: 1 / -1; }
+    .print-metric-label { color: #999; text-transform: uppercase; letter-spacing: 0.05em; font-size: 7.5pt; }
+    .print-metric-val { color: #1a1a1a; font-weight: 600; }
+
+    .print-empty { font-family: Arial, sans-serif; font-size: 10pt; color: #bbb; font-style: italic; padding: 6px 0; }
+
+    .pt-feature  { background: #a28c75; }
+    .pt-campaign { background: #6488c8; }
+    .pt-event    { background: #7db870; }
+    .pt-email    { background: #c8a050; }
+    .pt-social   { background: #a064c8; }
+    .pt-other    { background: #888; }
+  }
 </style>
 </head>
 <body>
@@ -301,6 +370,7 @@
     <button class="year-btn" onclick="changeYear(-1)">‹</button>
     <div class="year-label" id="yearLabel">2026</div>
     <button class="year-btn" onclick="changeYear(1)">›</button>
+    <button class="print-btn" onclick="printCalendar()">🖨️ Print</button>
   </div>
 </div>
 
@@ -427,6 +497,9 @@
     </div>
   </div>
 </div>
+
+<!-- PRINT-ONLY DOCUMENT -->
+<div id="printDoc"></div>
 
 <script>
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -595,6 +668,57 @@ function closeModal() { document.getElementById('overlay').classList.remove('ope
 function handleOverlayClick(e) { if(e.target === document.getElementById('overlay')) closeModal(); }
 
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+// ── PRINT ──
+const METRIC_LABELS = {
+  treated: 'Treatments Sold',
+  revenue: 'Revenue Generated',
+  packages: 'Packages Sold',
+  rebook: 'Rebooking Rate',
+  retail: 'Retail Attached',
+  consults: 'Consultation Conversions',
+  custom: 'Custom Metric'
+};
+const METRIC_ORDER = ['treated','revenue','packages','rebook','retail','consults','custom'];
+
+function buildPrintDoc() {
+  const doc = document.getElementById('printDoc');
+  let html = '';
+  for (let m = 0; m < 12; m++) {
+    const entries = getEntries(state.year, m);
+    html += `<div class="print-month">
+      <div class="print-doc-header">
+        <div class="print-doc-title">Promotional Marketing Calendar</div>
+        <div class="print-month-name">${MONTHS[m]}</div>
+        <div class="print-month-meta">${state.year} &middot; ${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} planned</div>
+      </div>`;
+    if (entries.length === 0) {
+      html += `<div class="print-empty">No entries planned for ${MONTHS[m]}.</div>`;
+    } else {
+      entries.forEach(e => {
+        const metricsHtml = METRIC_ORDER
+          .filter(k => e.metrics && e.metrics[k])
+          .map(k => `<div class="print-metric${k === 'custom' ? ' print-metric-full' : ''}"><div class="print-metric-label">${METRIC_LABELS[k]}</div><div class="print-metric-val">${escHtml(e.metrics[k])}</div></div>`)
+          .join('');
+        html += `<div class="print-entry">
+          <div class="print-entry-top">
+            <div class="print-entry-title">${escHtml(e.title)}</div>
+            <div class="print-entry-type pt-${e.type.toLowerCase()}">${e.type}</div>
+          </div>
+          ${e.notes ? `<div class="print-entry-notes">${escHtml(e.notes)}</div>` : ''}
+          ${metricsHtml ? `<div class="print-metrics-grid">${metricsHtml}</div>` : ''}
+        </div>`;
+      });
+    }
+    html += `</div>`;
+  }
+  doc.innerHTML = html;
+}
+
+function printCalendar() {
+  buildPrintDoc();
+  window.print();
+}
 
 // ── INIT ──
 load();
