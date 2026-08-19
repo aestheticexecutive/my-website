@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, TrendingUp, Download, ExternalLink, BarChart2, FileText, Calculator, Layers } from "lucide-react";
+import { ArrowLeft, TrendingUp, Download, ExternalLink, BarChart2, FileText, Calculator, Layers, Compass, ShieldCheck, Target } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -401,6 +401,135 @@ export default function FinanceResourcesPage() {
                   { icon: TrendingUp, label: "Monthly Tracker", desc: "Revenue entry, CSV expense import, budget vs. actual variance" },
                   { icon: BarChart2, label: "Annual Overview", desc: "Quarterly rollups, month-over-month chart, and annual totals" },
                   { icon: Layers, label: "KPI Scorecard", desc: "Financial health rating and expense % vs. industry benchmarks" },
+                ].map((feat) => {
+                  const Icon = feat.icon;
+                  return (
+                    <div
+                      key={feat.label}
+                      className="rounded-lg p-4"
+                      style={{
+                        background: "rgba(162,140,117,0.05)",
+                        border: "1px solid rgba(162,140,117,0.12)",
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon size={13} style={{ color: "#a28c75" }} />
+                        <span
+                          className="text-xs font-medium tracking-wide"
+                          style={{ color: "#fffdf6" }}
+                        >
+                          {feat.label}
+                        </span>
+                      </div>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                        {feat.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SWOT Analysis Featured Section ── */}
+      <div
+        className="border-b"
+        style={{ borderColor: "rgba(162,140,117,0.1)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2
+              className="font-display text-2xl font-light flex-shrink-0"
+              style={{ color: "#fffdf6" }}
+            >
+              SWOT Analysis
+            </h2>
+            <div
+              className="h-px flex-1"
+              style={{ background: "rgba(162,140,117,0.15)" }}
+            />
+          </div>
+
+          <div
+            className="group rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: "rgba(162,140,117,0.12)",
+                      border: "1px solid rgba(162,140,117,0.22)",
+                    }}
+                  >
+                    <Compass size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{
+                      color: "#b89e8a",
+                      background: "rgba(184,158,138,0.08)",
+                      border: "1px solid rgba(184,158,138,0.2)",
+                    }}
+                  >
+                    Interactive Tool
+                  </span>
+                </div>
+
+                <h3
+                  className="font-display text-2xl font-light mb-3 leading-snug"
+                  style={{ color: "#fffdf6" }}
+                >
+                  Know where you stand — every quarter, not just once.
+                </h3>
+                <p
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ color: "rgba(255,253,246,0.45)" }}
+                >
+                  Work through Strengths, Weaknesses, Opportunities, and Threats with guided
+                  prompts, star your top priorities, and build a 30-day action plan for each —
+                  then save it under this quarter&apos;s name to compare against the next one.
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/members/resources/finance/swot-analysis-guide"
+                    className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                    style={{ background: "#a28c75", color: "#0c0004" }}
+                  >
+                    <FileText size={13} />
+                    View Guide
+                  </Link>
+                  <Link
+                    href="/members/resources/finance/swot-analysis"
+                    className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-70"
+                    style={{
+                      background: "transparent",
+                      color: "#a28c75",
+                      border: "1px solid rgba(162,140,117,0.3)",
+                    }}
+                  >
+                    <ExternalLink size={13} />
+                    Open Tool
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — feature list */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { icon: ShieldCheck, label: "Guided Prompts", desc: "Built-in questions for each quadrant, straight from the source template" },
+                  { icon: Target, label: "Priority Flags", desc: "Star your top 2–3 items per quadrant to focus on what matters most" },
+                  { icon: Calculator, label: "30-Day Action Plan", desc: "One action step per priority item — for strengths, weaknesses, opportunities & threats" },
+                  { icon: Layers, label: "Quarter-over-Quarter", desc: "Save each quarter under its own name and look back on what changed" },
                 ].map((feat) => {
                   const Icon = feat.icon;
                   return (

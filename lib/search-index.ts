@@ -60,6 +60,8 @@ export const searchIndex: SearchEntry[] = [
   { title: "Budget Tracker Tool", description: "Open the interactive budget tracker directly — revenue entry, CSV expense import, and variance tracking.", category: "Finance", type: "Tool", href: "/tools/budget-tracker.html", external: true },
   { title: "KPI Tracker", description: "Track all 16 key performance indicators month over month, tagged by team member, with benchmarks and trends.", category: "Finance", type: "Tool", href: "/members/resources/finance/kpi-tracker" },
   { title: "Med Spa P&L Guide", description: "What to track, how to categorize every dollar, and how to interpret the numbers for your practice.", category: "Finance", type: "Guide", href: "/members/resources/finance/pl-guide" },
+  { title: "SWOT Analysis Tool", description: "Work through Strengths, Weaknesses, Opportunities, and Threats with guided prompts, star your priorities, and build a 30-day action plan. Save each quarter by name.", category: "Finance", type: "Tool", href: "/members/resources/finance/swot-analysis" },
+  { title: "SWOT Analysis Guide", description: "What a SWOT analysis is, why to run one every quarter, and how to turn it into a real 30-day action plan.", category: "Finance", type: "Guide", href: "/members/resources/finance/swot-analysis-guide" },
   { title: "Monthly & Annual P&L Template", description: "Four-tab Excel workbook with pre-built formulas for gross margin, payroll %, net profit, and 9 KPI metrics.", category: "Finance", type: "Template", href: "/downloads/ae-pl-template.xlsx" },
 
   // ── Staff ─────────────────────────────────────────────────────────────────
