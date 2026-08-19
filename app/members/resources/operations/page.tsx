@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText, ClipboardList, Percent, ListChecks, Package, Target, ShoppingBag } from "lucide-react";
+import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText, ClipboardList, Percent, ListChecks, Package, Target, ShoppingBag, Headset } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -462,6 +462,125 @@ export default function OperationsResourcesPage() {
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
                 The 7-step process for defining your best cross-sells, mapping the patient journey,
                 building the tools your team needs, and training them to use it with confidence.
+              </p>
+            </div>
+            <span
+              className="flex-shrink-0 inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg"
+              style={{
+                background: "rgba(162,140,117,0.08)",
+                border: "1px solid rgba(162,140,117,0.2)",
+                color: "rgba(162,140,117,0.7)",
+              }}
+            >
+              Read Guide
+              <ExternalLink size={11} />
+            </span>
+          </div>
+        </Link>
+      </div>
+
+      {/* ── Front Desk ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-12">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            Front Desk
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        <Link
+          href="/members/resources/operations/front-desk-tool"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+            >
+              <Headset size={24} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>
+                  Front Desk Power Tool
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{ background: "rgba(162,140,117,0.15)", border: "1px solid rgba(162,140,117,0.3)", color: "#a28c75" }}
+                >
+                  Interactive Tool
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                Audit current front desk responsibilities, define the power potential across revenue,
+                patient experience, efficiency, and marketing, mystery shop the experience, and build a
+                real training and reward plan — pre-loaded with the source template&apos;s example
+                contributions and training initiatives.
+              </p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                {["Power potential by area", "Mystery shop notes", "Pre-loaded training plan", "Recognition & reward ideas"].map((feat) => (
+                  <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                    <span style={{ color: "#a28c75" }}>·</span> {feat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)", color: "#a28c75" }}
+              >
+                Open Tool
+                <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Guide card */}
+        <Link
+          href="/members/resources/operations/front-desk-guide"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{
+            background: "rgba(162,140,117,0.03)",
+            borderColor: "rgba(162,140,117,0.13)",
+          }}
+        >
+          <div className="p-7 flex flex-col md:flex-row md:items-center gap-5">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.1)",
+                border: "1px solid rgba(162,140,117,0.2)",
+              }}
+            >
+              <Headset size={18} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
+                  Maximizing the Power of the Front Desk Guide
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.1)",
+                    border: "1px solid rgba(162,140,117,0.22)",
+                    color: "rgba(162,140,117,0.75)",
+                  }}
+                >
+                  Guide
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                The 7-step process for turning your front desk into a real driver of revenue,
+                retention, and reviews — from an honest audit through recognition and reward.
               </p>
             </div>
             <span
