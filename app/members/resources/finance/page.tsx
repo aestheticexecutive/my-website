@@ -691,6 +691,121 @@ export default function FinanceResourcesPage() {
         </div>
       </div>
 
+      {/* ── Competitive Pricing Analysis ── */}
+      <div
+        className="border-b"
+        style={{ borderColor: "rgba(162,140,117,0.1)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2
+              className="font-display text-2xl font-light flex-shrink-0"
+              style={{ color: "#fffdf6" }}
+            >
+              Competitive Pricing Analysis
+            </h2>
+            <div
+              className="h-px flex-1"
+              style={{ background: "rgba(162,140,117,0.15)" }}
+            />
+          </div>
+
+          <div
+            className="group rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: "rgba(162,140,117,0.12)",
+                      border: "1px solid rgba(162,140,117,0.22)",
+                    }}
+                  >
+                    <DollarSign size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{
+                      color: "#c8b3a3",
+                      background: "rgba(200,179,163,0.08)",
+                      border: "1px solid rgba(200,179,163,0.2)",
+                    }}
+                  >
+                    AI Tool
+                  </span>
+                </div>
+
+                <h3
+                  className="font-display text-2xl font-light mb-3 leading-snug"
+                  style={{ color: "#fffdf6" }}
+                >
+                  Know exactly where to price a treatment before you launch it.
+                </h3>
+                <p
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ color: "rgba(255,253,246,0.45)" }}
+                >
+                  Enter a treatment, your city and state, and where you want to sit against local
+                  competitors — below, at, or above market. Our AI reasons through typical regional
+                  pricing patterns and gives you a specific per-session price, with package pricing
+                  if you want it, and the logic behind the number.
+                </p>
+
+                <a
+                  href="/tools/pricing-analyzer.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#0c0004" }}
+                >
+                  <DollarSign size={12} />
+                  Open Pricing Analysis
+                </a>
+              </div>
+
+              {/* Right — feature list */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { label: "Choose Your Position", desc: "Below, at, or above market — the recommendation adapts to the position you pick" },
+                  { label: "Location-Aware", desc: "Factors in your city and state, not a flat national number" },
+                  { label: "Package Pricing", desc: "Optional 3- and 6-session package pricing alongside the per-session rate" },
+                  { label: "Honest About Limits", desc: "A directional estimate with a clear note to spot-check real local competitors" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{
+                      background: "rgba(162,140,117,0.05)",
+                      border: "1px solid rgba(162,140,117,0.12)",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <DollarSign size={13} style={{ color: "#a28c75" }} />
+                      <span
+                        className="text-xs font-medium tracking-wide"
+                        style={{ color: "#fffdf6" }}
+                      >
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Resource grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-14">
         <p
