@@ -130,7 +130,7 @@ export default function WaitlistPage() {
           </div>
         </div>
 
-        <div className="border border-[#a28c75]/20 rounded-2xl p-8 md:p-10 bg-[#130007]">
+        <div className="border-2 border-[#a28c75] rounded-2xl p-8 md:p-10 bg-[#130007] shadow-[0_0_60px_-15px_rgba(162,140,117,0.4)]">
           <ul className="space-y-3 mb-8">
             {perks.map((perk) => (
               <li key={perk} className="flex items-start gap-3">
