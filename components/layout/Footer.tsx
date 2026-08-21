@@ -1,5 +1,54 @@
 import Link from "next/link";
 
+function IconSvg({
+  size = 24,
+  className,
+  children,
+}: {
+  size?: number;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      {children}
+    </svg>
+  );
+}
+
+function InstagramIcon(props: { size?: number; className?: string }) {
+  return (
+    <IconSvg {...props}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </IconSvg>
+  );
+}
+
+function TikTokIcon(props: { size?: number; className?: string }) {
+  return (
+    <IconSvg {...props}>
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </IconSvg>
+  );
+}
+
+const socialLinks = [
+  { href: "https://www.instagram.com/aestheticexecutive/", label: "Instagram", Icon: InstagramIcon },
+  { href: "https://www.tiktok.com/@aestheticexecutive", label: "TikTok", Icon: TikTokIcon },
+];
+
 export function Footer() {
   return (
     <footer className="bg-warm-950 text-warm-400 mt-auto">
@@ -71,6 +120,20 @@ export function Footer() {
           <p className="text-xs text-warm-600">
             © {new Date().getFullYear()} Aesthetic Executive. All rights reserved.
           </p>
+          <div className="flex items-center gap-5 order-first sm:order-none">
+            {socialLinks.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-warm-500 hover:text-gold-400 transition-colors"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
+          </div>
           <p className="text-xs text-warm-600">
             Designed for aesthetic medicine professionals.
           </p>
