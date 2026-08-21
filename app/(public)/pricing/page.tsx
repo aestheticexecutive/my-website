@@ -19,6 +19,7 @@ import {
   TrendingUp,
   ClipboardCheck,
   Compass,
+  ChevronDown,
 } from "lucide-react";
 
 const discoveryChips = [
@@ -101,6 +102,7 @@ function Eyebrow({ children, center }: { children: React.ReactNode; center?: boo
 
 export default function PricingPage() {
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
+  const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
 
   function toggleChip(chip: string) {
     setSelectedChips((prev) =>
@@ -339,6 +341,7 @@ export default function PricingPage() {
                     </Link>
                     <a
                       href="#whats-included"
+                      onClick={() => setIsLibraryExpanded(true)}
                       className="w-full h-12 border border-[#a28c75]/25 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.15em] uppercase hover:border-[#a28c75]/55 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer"
                     >
                       See what&apos;s inside
@@ -367,7 +370,24 @@ export default function PricingPage() {
             </p>
           </div>
 
-          <MembershipLibraryList />
+          <button
+            type="button"
+            onClick={() => setIsLibraryExpanded((prev) => !prev)}
+            aria-expanded={isLibraryExpanded}
+            className="w-full h-14 px-6 border border-[#a28c75]/25 rounded-xl text-sm font-sans font-medium tracking-[0.1em] uppercase text-[#fffdf6]/70 hover:border-[#a28c75]/55 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+          >
+            {isLibraryExpanded ? "Hide the full library" : "View the full library"}
+            <ChevronDown
+              size={16}
+              className={`text-[#a28c75] transition-transform ${isLibraryExpanded ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {isLibraryExpanded && (
+            <div className="mt-10">
+              <MembershipLibraryList />
+            </div>
+          )}
         </div>
       </section>
 
