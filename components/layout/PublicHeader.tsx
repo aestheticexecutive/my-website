@@ -49,6 +49,12 @@ export function PublicHeader() {
 
         {/* Auth actions */}
         <div className="hidden md:flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="h-9 px-5 border border-warm-300 text-warm-700 text-sm rounded tracking-wide hover:border-warm-900 hover:text-warm-900 transition-colors inline-flex items-center"
+          >
+            Contact Us
+          </Link>
           <Show when="signed-out">
             <SignInButton>
               <button
@@ -102,6 +108,13 @@ export function PublicHeader() {
             </Link>
           ))}
           <div className="pt-2 border-t border-warm-200 flex flex-col gap-3">
+            <Link
+              href="/contact"
+              className="h-9 px-5 border border-warm-300 text-warm-700 text-sm rounded tracking-wide hover:border-warm-900 hover:text-warm-900 transition-colors inline-flex items-center justify-center"
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact Us
+            </Link>
             <Show when="signed-out">
               <SignInButton>
                 <button
