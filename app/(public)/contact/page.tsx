@@ -70,18 +70,6 @@ export default function ContactPage() {
   return (
     <div className="bg-[#170009] min-h-screen">
       <div className="max-w-2xl mx-auto px-6 pt-40 pb-28">
-        <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden mb-12">
-          <Image
-            src="/images/4dc7ee885d15af741500061f4a2149fd.jpg"
-            alt=""
-            fill
-            className="object-cover object-center"
-            quality={92}
-            sizes="(max-width: 768px) 100vw, 42rem"
-          />
-          <div className="absolute inset-0 bg-[#170009]/25" />
-        </div>
-
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#a28c75]/30 bg-[#a28c75]/10 mb-6">
             <Mail size={12} className="text-[#a28c75]" />
@@ -216,6 +204,18 @@ export default function ContactPage() {
               </button>
             </form>
           )}
+        </div>
+
+        <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden mt-12">
+          <Image
+            src="/images/4dc7ee885d15af741500061f4a2149fd.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            quality={92}
+            sizes="(max-width: 768px) 100vw, 42rem"
+          />
+          <div className="absolute inset-0 bg-[#170009]/25" />
         </div>
       </div>
     </div>
