@@ -357,7 +357,7 @@ export default function MembershipRewardsAuditPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/marketing" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -378,7 +378,7 @@ export default function MembershipRewardsAuditPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Marketing</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Membership + Rewards Audit Tool</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Audit your current in-house membership and rewards program numbers, assess your promotion
             efforts, and build a real action and tracking plan — pre-loaded with the source template&apos;s
             example opportunities and metrics.
@@ -386,12 +386,12 @@ export default function MembershipRewardsAuditPage() {
 
           {/* New audit */}
           <button onClick={createAudit} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Award size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Audit</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Starts pre-loaded with example opportunities and tracking metrics — edit or delete anything.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Starts pre-loaded with example opportunities and tracking metrics — edit or delete anything.</p>
               </div>
             </div>
           </button>
@@ -403,20 +403,20 @@ export default function MembershipRewardsAuditPage() {
           </div>
 
           {sortedAudits.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No audits saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No audits saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
               {sortedAudits.map((a) => (
                 <div key={a.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                     <Award size={17} style={{ color: "#a28c75" }} />
                   </div>
                   <div className="flex-1 min-w-0 cursor-pointer" onClick={() => openAudit(a.id)}>
                     <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{a.name}</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                       {a.opportunities.length} opportunities · {a.tracking.length} metrics tracked · Created {formatDateShort(a.createdAt)}
                     </p>
                   </div>
@@ -461,7 +461,7 @@ export default function MembershipRewardsAuditPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -470,7 +470,7 @@ export default function MembershipRewardsAuditPage() {
               My Audits
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -508,25 +508,25 @@ export default function MembershipRewardsAuditPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Audit details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Audit Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date Completed</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date Completed</label>
                       <input type="date" value={active.dateCompleted} onChange={(e) => updateField(active.id, "dateCompleted", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Completed By</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Completed By</label>
                       <input type="text" value={active.completedBy} onChange={(e) => updateField(active.id, "completedBy", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                     </div>
@@ -549,42 +549,42 @@ export default function MembershipRewardsAuditPage() {
               {/* Step 1: Audit */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 1 · Audit Current Usage</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Your current numbers, honestly.
                 </p>
                 <div className="grid grid-cols-2 gap-2 mb-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>In-House Members</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>In-House Members</label>
                     <input type="text" value={active.inHouseMembers} onChange={(e) => updateField(active.id, "inHouseMembers", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>% of Patient Base</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>% of Patient Base</label>
                     <input type="text" value={active.pctOfPatientBase} onChange={(e) => updateField(active.id, "pctOfPatientBase", e.target.value)}
                       placeholder="%" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Allē Patients</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Allē Patients</label>
                     <input type="text" value={active.allePatients} onChange={(e) => updateField(active.id, "allePatients", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Aspire Patients</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Aspire Patients</label>
                     <input type="text" value={active.aspirePatients} onChange={(e) => updateField(active.id, "aspirePatients", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Evolus Patients</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Evolus Patients</label>
                     <input type="text" value={active.evolusPatients} onChange={(e) => updateField(active.id, "evolusPatients", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Reva Patients</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Reva Patients</label>
                     <input type="text" value={active.revaPatients} onChange={(e) => updateField(active.id, "revaPatients", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                 </div>
-                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Where should these numbers be?</label>
+                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Where should these numbers be?</label>
                 <textarea rows={2} value={active.targetGoals} onChange={(e) => updateField(active.id, "targetGoals", e.target.value)}
                   className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
               </section>
@@ -592,7 +592,7 @@ export default function MembershipRewardsAuditPage() {
               {/* Step 2: Value Proposition */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 2 · Value Proposition</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Key benefits and why patients should want each program.
                 </p>
                 <div className="rounded-xl overflow-hidden mb-3" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
@@ -601,11 +601,11 @@ export default function MembershipRewardsAuditPage() {
                   </div>
                   <div className="p-3 space-y-1" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.membershipBenefits.length === 0 && (
-                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.2)" }}>e.g. monthly savings, included services, exclusive offers</p>
+                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.28)" }}>e.g. monthly savings, included services, exclusive offers</p>
                     )}
                     {active.membershipBenefits.map((it) => (
                       <div key={it.id} className="flex items-start gap-2 py-1 group">
-                        <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{it.text}</span>
+                        <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{it.text}</span>
                         <button onClick={() => deleteBullet(active.id, "membershipBenefits", it.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                           <Trash2 size={11} />
                         </button>
@@ -621,7 +621,7 @@ export default function MembershipRewardsAuditPage() {
                     </div>
                   </div>
                 </div>
-                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Why patients should want it</label>
+                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Why patients should want it</label>
                 <textarea rows={2} value={active.membershipWhy} onChange={(e) => updateField(active.id, "membershipWhy", e.target.value)}
                   className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none mb-3" style={inputStyle} />
 
@@ -631,11 +631,11 @@ export default function MembershipRewardsAuditPage() {
                   </div>
                   <div className="p-3 space-y-1" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.rewardsBenefits.length === 0 && (
-                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.2)" }}>e.g. points for discounts, free products, double points promos</p>
+                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.28)" }}>e.g. points for discounts, free products, double points promos</p>
                     )}
                     {active.rewardsBenefits.map((it) => (
                       <div key={it.id} className="flex items-start gap-2 py-1 group">
-                        <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{it.text}</span>
+                        <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{it.text}</span>
                         <button onClick={() => deleteBullet(active.id, "rewardsBenefits", it.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                           <Trash2 size={11} />
                         </button>
@@ -656,7 +656,7 @@ export default function MembershipRewardsAuditPage() {
               {/* Step 3: Promotion assessment */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 3 · Promotion Assessment</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   How are these programs currently promoted?
                 </p>
                 <div className="rounded-xl overflow-hidden mb-3" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
@@ -665,19 +665,19 @@ export default function MembershipRewardsAuditPage() {
                       <label key={c} className="flex items-center gap-2.5 cursor-pointer">
                         <input type="checkbox" checked={active.promotionChannels[c]} onChange={() => toggleChannel(active.id, c)}
                           className="w-3.5 h-3.5 accent-[#a28c75]" />
-                        <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{promotionChannelLabels[c]}</span>
+                        <span className="text-xs" style={{ color: "rgba(255,253,246,0.75)" }}>{promotionChannelLabels[c]}</span>
                       </label>
                     ))}
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>What&apos;s working</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What&apos;s working</label>
                     <textarea rows={2} value={active.whatsWorking} onChange={(e) => updateField(active.id, "whatsWorking", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>What&apos;s missing / inconsistent</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What&apos;s missing / inconsistent</label>
                     <textarea rows={2} value={active.whatsMissing} onChange={(e) => updateField(active.id, "whatsMissing", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
@@ -687,13 +687,13 @@ export default function MembershipRewardsAuditPage() {
               {/* Step 4: Opportunities */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 4 · Brainstorm Opportunities</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Pre-loaded with example rows — edit, delete, or add your own.
                 </p>
                 <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                   <div className="p-3 space-y-2.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.opportunities.length === 0 && (
-                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No opportunities yet.</p>
+                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No opportunities yet.</p>
                     )}
                     {active.opportunities.map((row) => (
                       <div key={row.id} className="space-y-1.5 pb-2.5 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
@@ -721,13 +721,13 @@ export default function MembershipRewardsAuditPage() {
               {/* Step 5: Tracking plan */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 5 · Tracking Plan</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   What you&apos;ll monitor, how, and how often.
                 </p>
                 <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                   <div className="p-3 space-y-2.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.tracking.length === 0 && (
-                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No metrics yet.</p>
+                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No metrics yet.</p>
                     )}
                     {active.tracking.map((row) => (
                       <div key={row.id} className="space-y-1.5 pb-2.5 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
@@ -759,12 +759,12 @@ export default function MembershipRewardsAuditPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 6 · Train &amp; Incentivize</p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>How will you train the team?</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How will you train the team?</label>
                     <textarea rows={2} value={active.trainingPlan} onChange={(e) => updateField(active.id, "trainingPlan", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>How will you recognize / reward staff?</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How will you recognize / reward staff?</label>
                     <textarea rows={2} value={active.incentivePlan} onChange={(e) => updateField(active.id, "incentivePlan", e.target.value)}
                       placeholder="e.g. bonus for X new members per month, shout-outs for top promoters"
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none placeholder:opacity-30" style={inputStyle} />
@@ -777,22 +777,22 @@ export default function MembershipRewardsAuditPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 7 · Build Into Marketing</p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Email campaigns</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Email campaigns</label>
                     <input type="text" value={active.emailCampaigns} onChange={(e) => updateField(active.id, "emailCampaigns", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Social media posts</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Social media posts</label>
                     <input type="text" value={active.socialPosts} onChange={(e) => updateField(active.id, "socialPosts", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Website updates</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Website updates</label>
                     <input type="text" value={active.websiteUpdates} onChange={(e) => updateField(active.id, "websiteUpdates", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>In-office promos</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>In-office promos</label>
                     <input type="text" value={active.inOfficePromos} onChange={(e) => updateField(active.id, "inOfficePromos", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                   </div>
@@ -804,12 +804,12 @@ export default function MembershipRewardsAuditPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 8 · Review &amp; Improve</p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Next review date</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Next review date</label>
                     <input type="date" value={active.nextReviewDate} onChange={(e) => updateField(active.id, "nextReviewDate", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>What will you evaluate?</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What will you evaluate?</label>
                     <textarea rows={2} value={active.evaluationNotes} onChange={(e) => updateField(active.id, "evaluationNotes", e.target.value)}
                       placeholder="e.g. sign-ups, usage rates, revenue impact"
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none placeholder:opacity-30" style={inputStyle} />

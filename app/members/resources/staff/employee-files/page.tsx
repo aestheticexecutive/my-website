@@ -241,7 +241,7 @@ const maintenanceBlocks = [
 
 export default function EmployeeFileGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       <style>{`
         details.file-accordion > summary { list-style: none; }
         details.file-accordion > summary::-webkit-details-marker { display: none; }
@@ -298,7 +298,7 @@ export default function EmployeeFileGuidePage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Everything your practice must keep in an employee file — organized by
             category, compliant by design, with clear rules on what must be separated,
@@ -335,7 +335,7 @@ export default function EmployeeFileGuidePage() {
               >
                 Why This Matters
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Employee files are your legal paper trail. In the event of a wrongful
                 termination claim, wage dispute, ADA complaint, or Department of Labor
                 audit, disorganized or incomplete files can cost your practice significantly
@@ -374,7 +374,7 @@ export default function EmployeeFileGuidePage() {
                   className="cursor-pointer select-none"
                   style={{
                     background:
-                      "linear-gradient(135deg, #1a000c 0%, #0c0004 100%)",
+                      "linear-gradient(135deg, #1a000c 0%, #170009 100%)",
                   }}
                 >
                   <div className="px-7 py-5 flex items-center gap-5">
@@ -434,7 +434,7 @@ export default function EmployeeFileGuidePage() {
                 <div
                   style={{
                     background:
-                      "linear-gradient(180deg, #110006 0%, #0c0004 100%)",
+                      "linear-gradient(180deg, #110006 0%, #170009 100%)",
                     borderTop: "1px solid rgba(162,140,117,0.1)",
                   }}
                 >
@@ -466,7 +466,7 @@ export default function EmployeeFileGuidePage() {
                         <li
                           key={doc}
                           className="flex items-start gap-3 text-sm"
-                          style={{ color: "rgba(255,253,246,0.65)" }}
+                          style={{ color: "rgba(255,253,246,0.75)" }}
                         >
                           <span
                             className="flex-shrink-0 w-1 h-1 rounded-full mt-2"
@@ -511,7 +511,7 @@ export default function EmployeeFileGuidePage() {
           </div>
           <p
             className="text-sm mb-8"
-            style={{ color: "rgba(255,253,246,0.4)" }}
+            style={{ color: "rgba(255,253,246,0.5)" }}
           >
             These three categories must be physically or digitally separated from the
             general personnel file. Co-mingling them is a compliance violation.
@@ -551,7 +551,7 @@ export default function EmployeeFileGuidePage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,253,246,0.5)" }}
+                  style={{ color: "rgba(255,253,246,0.6)" }}
                 >
                   All medical documents — FMLA forms, doctor&apos;s notes, ADA
                   accommodations, vaccine records, workers&apos; comp — must be in a
@@ -602,7 +602,7 @@ export default function EmployeeFileGuidePage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,253,246,0.5)" }}
+                  style={{ color: "rgba(255,253,246,0.6)" }}
                 >
                   Form I-9 (Employment Eligibility Verification) should be kept in
                   its own separate binder — not inside individual personnel folders.
@@ -653,7 +653,7 @@ export default function EmployeeFileGuidePage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,253,246,0.5)" }}
+                  style={{ color: "rgba(255,253,246,0.6)" }}
                 >
                   Harassment, discrimination, or hostile workplace investigation
                   records should be secured separately from the general file —
@@ -743,7 +743,7 @@ export default function EmployeeFileGuidePage() {
                     </span>
                     <span
                       className="text-sm leading-relaxed"
-                      style={{ color: "rgba(255,253,246,0.5)" }}
+                      style={{ color: "rgba(255,253,246,0.6)" }}
                     >
                       {detail}
                     </span>
@@ -804,7 +804,7 @@ export default function EmployeeFileGuidePage() {
                     </span>
                     <span
                       className="text-sm leading-relaxed"
-                      style={{ color: "rgba(255,253,246,0.5)" }}
+                      style={{ color: "rgba(255,253,246,0.6)" }}
                     >
                       {detail}
                     </span>
@@ -831,7 +831,7 @@ export default function EmployeeFileGuidePage() {
           </div>
           <p
             className="text-sm mb-8"
-            style={{ color: "rgba(255,253,246,0.4)" }}
+            style={{ color: "rgba(255,253,246,0.5)" }}
           >
             These mistakes come up repeatedly in aesthetic practices — each carries
             real legal and regulatory risk.
@@ -884,7 +884,7 @@ export default function EmployeeFileGuidePage() {
                   </span>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "rgba(255,253,246,0.7)" }}
+                    style={{ color: "rgba(255,253,246,0.78)" }}
                   >
                     {item.trap}
                   </p>
@@ -905,7 +905,7 @@ export default function EmployeeFileGuidePage() {
                   </span>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "rgba(255,253,246,0.55)" }}
+                    style={{ color: "rgba(255,253,246,0.65)" }}
                   >
                     {item.fix}
                   </p>
@@ -931,7 +931,7 @@ export default function EmployeeFileGuidePage() {
           </div>
           <p
             className="text-sm mb-8"
-            style={{ color: "rgba(255,253,246,0.4)" }}
+            style={{ color: "rgba(255,253,246,0.5)" }}
           >
             How long to keep each file category after an employee separates.
           </p>
@@ -963,7 +963,7 @@ export default function EmployeeFileGuidePage() {
                 </span>
                 <span
                   className="text-sm leading-relaxed flex-1"
-                  style={{ color: "rgba(255,253,246,0.5)" }}
+                  style={{ color: "rgba(255,253,246,0.6)" }}
                 >
                   {item.period}
                 </span>
@@ -981,7 +981,7 @@ export default function EmployeeFileGuidePage() {
             ))}
           </div>
 
-          <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.28)" }}>
+          <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.35)" }}>
             Some states have retention requirements that exceed federal minimums.
             Verify with a licensed employment attorney for your specific state.
           </p>
@@ -1023,7 +1023,7 @@ export default function EmployeeFileGuidePage() {
                     <li
                       key={item}
                       className="flex items-start gap-2.5 text-sm"
-                      style={{ color: "rgba(255,253,246,0.6)" }}
+                      style={{ color: "rgba(255,253,246,0.7)" }}
                     >
                       <span
                         className="flex-shrink-0 mt-2 w-1 h-1 rounded-full"
@@ -1048,9 +1048,9 @@ export default function EmployeeFileGuidePage() {
         >
           <p
             className="text-xs leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.3)" }}
+            style={{ color: "rgba(255,253,246,0.4)" }}
           >
-            <strong style={{ color: "rgba(255,253,246,0.45)" }}>
+            <strong style={{ color: "rgba(255,253,246,0.55)" }}>
               Disclaimer:
             </strong>{" "}
             This guide is intended as general educational content and does not

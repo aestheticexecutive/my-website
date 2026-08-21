@@ -206,7 +206,7 @@ const avoidPhrases = [
 
 export default function EscalatedCustomerServicePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -265,7 +265,7 @@ export default function EscalatedCustomerServicePage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             In-person and phone training for front-of-house staff — how to de-escalate concerns,
             navigate refund requests, follow the chain of command, and resolve issues using the
@@ -281,14 +281,14 @@ export default function EscalatedCustomerServicePage() {
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
             <p className="font-display text-2xl font-light mb-3" style={{ color: "#fffdf6" }}>
               Every escalated client is an opportunity — if you handle it correctly.
             </p>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               When a patient raises a concern, how your team responds will determine whether
               that patient becomes a loyal advocate or a negative review. This training gives
               you the language, framework, and judgment to turn difficult moments into trust-building ones.
@@ -308,7 +308,7 @@ export default function EscalatedCustomerServicePage() {
           <h2 className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>
             Three Types of Client Concerns
           </h2>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Almost every concern you encounter will fall into one of these categories.
             Identifying which type you&apos;re dealing with helps you route it correctly.
           </p>
@@ -318,7 +318,7 @@ export default function EscalatedCustomerServicePage() {
               <div
                 key={type.label}
                 className="rounded-xl border overflow-hidden"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: type.border }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: type.border }}
               >
                 <div
                   className="px-5 py-3.5 border-b"
@@ -333,7 +333,7 @@ export default function EscalatedCustomerServicePage() {
                     {type.items.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <span className="flex-shrink-0 mt-1" style={{ color: type.color }}>·</span>
-                        <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.5)" }}>{item}</span>
+                        <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -353,10 +353,10 @@ export default function EscalatedCustomerServicePage() {
           >
             <AlertCircle size={16} style={{ color: "rgba(162,140,117,0.7)", flexShrink: 0, marginTop: 2 }} />
             <div>
-              <p className="text-sm font-medium mb-1" style={{ color: "rgba(255,253,246,0.75)" }}>
+              <p className="text-sm font-medium mb-1" style={{ color: "rgba(255,253,246,0.82)" }}>
                 Most escalations end with two demands:
               </p>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
                 <span style={{ color: "#fffdf6" }}>&ldquo;I want to talk to a manager.&rdquo;</span>
                 {" "}and{" "}
                 <span style={{ color: "#fffdf6" }}>&ldquo;I want a refund.&rdquo;</span>
@@ -378,7 +378,7 @@ export default function EscalatedCustomerServicePage() {
           <h2 className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>
             Ask Questions Before You Escalate
           </h2>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             When a patient says &ldquo;I want to talk to a manager&rdquo; or &ldquo;I want a refund&rdquo; —
             don&apos;t immediately transfer. Gather context first. You may be able to resolve it yourself,
             or route it to the right person more effectively.
@@ -390,12 +390,12 @@ export default function EscalatedCustomerServicePage() {
                 key={phrase}
                 className="rounded-xl border px-5 py-4 flex items-start gap-3"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
                 <Phone size={13} style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0, marginTop: 3 }} />
-                <p className="text-sm leading-relaxed italic" style={{ color: "rgba(255,253,246,0.65)" }}>
+                <p className="text-sm leading-relaxed italic" style={{ color: "rgba(255,253,246,0.75)" }}>
                   {phrase}
                 </p>
               </div>
@@ -421,7 +421,7 @@ export default function EscalatedCustomerServicePage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.13)",
               }}
             >
@@ -444,7 +444,7 @@ export default function EscalatedCustomerServicePage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle size={13} style={{ color: "rgba(162,140,117,0.6)", flexShrink: 0, marginTop: 2 }} />
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.5)" }}>{item}</span>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -455,7 +455,7 @@ export default function EscalatedCustomerServicePage() {
               <div
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -467,7 +467,7 @@ export default function EscalatedCustomerServicePage() {
                   style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.12)" }}
                 >
                   <p className="text-sm font-medium mb-1" style={{ color: "#a28c75" }}>Medical Contraindications Only</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     Must be accompanied by medical documentation from a physician for verification.
                     If the practice is unable to provide the service for medical reasons, a refund may be considered.
                   </p>
@@ -478,7 +478,7 @@ export default function EscalatedCustomerServicePage() {
                   </p>
                   <div
                     className="rounded-lg px-4 py-3 italic"
-                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.55)", fontSize: 13 }}
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.65)", fontSize: 13 }}
                   >
                     &ldquo;Sorry, the only refunds we can approve are medical contraindications.&rdquo;
                   </div>
@@ -499,7 +499,7 @@ export default function EscalatedCustomerServicePage() {
                   <p className="text-sm font-medium mb-1" style={{ color: "rgba(239,68,68,0.85)" }}>
                     Never tell a patient what our exceptions are.
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     Do not proactively share refund exception criteria with patients. Some people will attempt to fabricate or exaggerate circumstances to qualify. Always gather information before disclosing policy details.
                   </p>
                 </div>
@@ -536,7 +536,7 @@ export default function EscalatedCustomerServicePage() {
               >
                 <p className="font-display text-base font-light" style={{ color: "#fffdf6" }}>General &amp; Outside Factors</p>
               </div>
-              <div className="p-5" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}>
+              <div className="p-5" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}>
                 <div className="space-y-3">
                   {[
                     { label: "You (FOH Staff)", desc: "Gather details, attempt to resolve" },
@@ -555,7 +555,7 @@ export default function EscalatedCustomerServicePage() {
                       </div>
                       <div className="pb-1">
                         <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{step.label}</p>
-                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{step.desc}</p>
+                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{step.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -577,7 +577,7 @@ export default function EscalatedCustomerServicePage() {
               >
                 <p className="font-display text-base font-light" style={{ color: "#fffdf6" }}>Treatment Concerns</p>
               </div>
-              <div className="p-5" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}>
+              <div className="p-5" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}>
                 <div className="space-y-3">
                   {[
                     { label: "Provider Who Completed the Service", desc: "First point of contact for clinical concerns" },
@@ -595,7 +595,7 @@ export default function EscalatedCustomerServicePage() {
                       </div>
                       <div className="pb-1">
                         <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{step.label}</p>
-                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{step.desc}</p>
+                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{step.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -613,7 +613,7 @@ export default function EscalatedCustomerServicePage() {
                   <p className="text-xs font-medium mb-1" style={{ color: "rgba(239,68,68,0.8)" }}>
                     Stay completely neutral on treatment concerns.
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     Do NOT confirm, reassure, or react emotionally to treatment-related issues if you are not a licensed medical provider. Saying &ldquo;that&apos;s not supposed to happen&rdquo; can induce panic, make the provider&apos;s job harder, and create liability.
                   </p>
                 </div>
@@ -625,12 +625,12 @@ export default function EscalatedCustomerServicePage() {
           <div
             className="rounded-xl border px-5 py-4 flex items-start gap-3"
             style={{
-              background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.13)",
             }}
           >
             <Phone size={13} style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0, marginTop: 3 }} />
-            <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               &ldquo;No problem — I&apos;m not qualified to answer these questions, but I&apos;d love to have your provider review these concerns. Would you like an in-person visit or a phone call?&rdquo;
             </p>
           </div>
@@ -651,7 +651,7 @@ export default function EscalatedCustomerServicePage() {
                   }}
                 >
                   <span style={{ color: "rgba(239,68,68,0.6)", fontSize: 14 }}>✕</span>
-                  <span className="text-sm italic" style={{ color: "rgba(255,253,246,0.5)" }}>{phrase}</span>
+                  <span className="text-sm italic" style={{ color: "rgba(255,253,246,0.6)" }}>{phrase}</span>
                 </div>
               ))}
             </div>
@@ -670,7 +670,7 @@ export default function EscalatedCustomerServicePage() {
           <h2 className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>
             The 7-Step LEAP FWD Method
           </h2>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Use this framework on every escalated interaction — in person or on the phone.
             Work through each step in order.
           </p>
@@ -699,7 +699,7 @@ export default function EscalatedCustomerServicePage() {
                 <div
                   className="flex items-center gap-4 px-6 py-4 border-b"
                   style={{
-                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.13)",
                   }}
                 >
@@ -716,16 +716,16 @@ export default function EscalatedCustomerServicePage() {
                     <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>
                       {step.label}
                     </h3>
-                    <span className="text-sm hidden md:block" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <span className="text-sm hidden md:block" style={{ color: "rgba(255,253,246,0.45)" }}>
                       — {step.tagline}
                     </span>
                   </div>
                 </div>
                 <div
                   className="px-6 py-5"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
                 >
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
                     {step.body}
                   </p>
                   <div className="flex flex-col md:flex-row gap-3">
@@ -738,7 +738,7 @@ export default function EscalatedCustomerServicePage() {
                       }}
                     >
                       <Phone size={12} style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0, marginTop: 3 }} />
-                      <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                      <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                         {step.script}
                       </p>
                     </div>
@@ -778,7 +778,7 @@ export default function EscalatedCustomerServicePage() {
           <h2 className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>
             What Can You Offer?
           </h2>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             The resolution depends on the type and severity of the issue. Use this as your guide.
             When in doubt, partner with your manager before making any commitments.
           </p>
@@ -793,7 +793,7 @@ export default function EscalatedCustomerServicePage() {
                 <div
                   className="flex items-center justify-between gap-4 px-5 py-4 border-b"
                   style={{
-                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.13)",
                   }}
                 >
@@ -820,13 +820,13 @@ export default function EscalatedCustomerServicePage() {
                 </div>
                 <div
                   className="px-5 py-5 grid grid-cols-1 md:grid-cols-2 gap-4"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
                 >
                   <div>
                     <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.5)" }}>
                       Examples
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                       {tier.examples}
                     </p>
                   </div>
@@ -834,7 +834,7 @@ export default function EscalatedCustomerServicePage() {
                     <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.5)" }}>
                       What to Offer
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
                       {tier.offer}
                     </p>
                   </div>
@@ -856,7 +856,7 @@ export default function EscalatedCustomerServicePage() {
           <h2 className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>
             LEAP FWD in Action
           </h2>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Scenario: A patient calls upset because their appointment was canceled last-minute. They took time off work to come in.
           </p>
 
@@ -873,7 +873,7 @@ export default function EscalatedCustomerServicePage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-1.5" style={{ color: "rgba(239,68,68,0.55)" }}>
                 Patient Says
               </p>
-              <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+              <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
                 &ldquo;I&apos;m really frustrated. I took time off work for this appointment, only to be told it was canceled. I have a very busy schedule and it&apos;s hard for me to get in.&rdquo;
               </p>
             </div>
@@ -883,7 +883,7 @@ export default function EscalatedCustomerServicePage() {
           <div
             className="rounded-xl border p-6"
             style={{
-              background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.14)",
             }}
           >
@@ -899,7 +899,7 @@ export default function EscalatedCustomerServicePage() {
               ].map((item) => (
                 <div key={item.step}>
                   <p className="text-xs font-medium mb-1.5" style={{ color: "#a28c75" }}>{item.step}</p>
-                  <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
                     &ldquo;{item.text}&rdquo;
                   </p>
                 </div>
@@ -921,7 +921,7 @@ export default function EscalatedCustomerServicePage() {
               <p className="text-xs tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>
                 D — Document (System Note)
               </p>
-              <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+              <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                 &ldquo;Patient appointment canceled due to provider illness. Patient offered next-day appointment + $50 credit and complimentary facial for the issues. Patient accepted resolution.&rdquo;
               </p>
             </div>
@@ -954,7 +954,7 @@ export default function EscalatedCustomerServicePage() {
               </h3>
             </div>
             <div
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
             >
               {leapSteps.map((step, i) => (
                 <div
@@ -971,10 +971,10 @@ export default function EscalatedCustomerServicePage() {
                     {step.letter}
                   </div>
                   <div className="flex-1">
-                    <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.75)" }}>
+                    <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.82)" }}>
                       {step.label}
                     </span>
-                    <span className="text-sm ml-2" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <span className="text-sm ml-2" style={{ color: "rgba(255,253,246,0.45)" }}>
                       — {step.tagline}
                     </span>
                   </div>
@@ -990,7 +990,7 @@ export default function EscalatedCustomerServicePage() {
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1011,7 +1011,7 @@ export default function EscalatedCustomerServicePage() {
               </div>
             </div>
 
-            <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
               Think of a client concern from one of the three categories — or use a real situation
               you&apos;ve encountered recently. Write out or practice out loud how you would handle it
               using the LEAP FWD framework.
@@ -1035,9 +1035,9 @@ export default function EscalatedCustomerServicePage() {
                     <span className="text-xs font-light" style={{ color: "rgba(162,140,117,0.5)" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.75)" }}>{step.label}</p>
+                    <p className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.82)" }}>{step.label}</p>
                   </div>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{step.detail}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{step.detail}</p>
                 </div>
               ))}
             </div>

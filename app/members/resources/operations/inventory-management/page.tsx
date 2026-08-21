@@ -371,7 +371,7 @@ export default function InventoryManagementPage() {
 
   // Shared inline styles
   const inputStyle: React.CSSProperties = { background: "rgba(12,0,4,0.8)", borderColor: "rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" };
-  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" };
+  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #170009 100%)" };
 
   const presetOptions: { id: Preset; label: string }[] = [
     { id: "thisMonth", label: "This Month" },
@@ -398,7 +398,7 @@ export default function InventoryManagementPage() {
   };
 
   return (
-    <div className="bg-[#0c0004] min-h-screen pb-24">
+    <div className="bg-[#170009] min-h-screen pb-24">
       {/* Shared autocomplete suggestions for Category / Vendor / Unit — populated from items already entered */}
       <datalist id="inv-categories">{knownCategories.map((c) => <option key={c} value={c} />)}</datalist>
       <datalist id="inv-vendors">{knownVendors.map((v) => <option key={v} value={v} />)}</datalist>
@@ -412,7 +412,7 @@ export default function InventoryManagementPage() {
               <ArrowLeft size={12} /> Operations
             </Link>
             <span style={{ color: "rgba(162,140,117,0.25)" }}>/</span>
-            <span style={{ color: "rgba(255,253,246,0.7)" }}>Inventory Management System</span>
+            <span style={{ color: "rgba(255,253,246,0.78)" }}>Inventory Management System</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-end">
@@ -446,7 +446,7 @@ export default function InventoryManagementPage() {
         <div className="mb-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Operations</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Inventory Management System</h1>
-          <p className="text-sm max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
             Track product inventory by category, vendor, and cost. Log physical counts and incoming stock, watch your on-site dollar value in real time, and see par-level alerts the moment supply runs low.
           </p>
 
@@ -474,7 +474,7 @@ export default function InventoryManagementPage() {
         {view === "items" && (
           <div>
             <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                 {data.items.length} item{data.items.length === 1 ? "" : "s"} tracked · Yellow = at par level · Red = below par level
               </p>
               <button onClick={addItem} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"
@@ -486,7 +486,7 @@ export default function InventoryManagementPage() {
             <div className="rounded-xl border overflow-hidden" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               {data.items.length === 0 ? (
                 <div className="px-6 py-10">
-                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.2)" }}>
+                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>
                     No items yet. Click &quot;Add Item&quot; to start building your inventory catalog.
                   </p>
                 </div>
@@ -520,7 +520,7 @@ export default function InventoryManagementPage() {
                               className="text-sm bg-transparent outline-none border-b" style={{ color: "#fffdf6", borderColor: "rgba(162,140,117,0.4)" }} />
                           ) : (
                             <span className="text-sm cursor-text truncate" style={{ color: "#fffdf6" }} onClick={() => setEditingField(`${item.id}:name`)}>
-                              {item.name || <span className="italic" style={{ color: "rgba(255,253,246,0.25)" }}>Unnamed item</span>}
+                              {item.name || <span className="italic" style={{ color: "rgba(255,253,246,0.32)" }}>Unnamed item</span>}
                             </span>
                           )}
                           <input type="text" list="inv-categories" placeholder="—" value={item.category} onChange={(e) => updateItem(item.id, "category", e.target.value)}
@@ -530,16 +530,16 @@ export default function InventoryManagementPage() {
                           <input type="text" list="inv-units" placeholder="each" value={item.unit} onChange={(e) => updateItem(item.id, "unit", e.target.value)}
                             className="text-xs px-2 py-1.5 rounded-lg border outline-none w-full" style={inputStyle} />
                           <div className="flex items-center gap-1">
-                            <span className="text-xs flex-shrink-0" style={{ color: "rgba(255,253,246,0.3)" }}>$</span>
+                            <span className="text-xs flex-shrink-0" style={{ color: "rgba(255,253,246,0.4)" }}>$</span>
                             <input type="number" min={0} step="0.01" placeholder="0.00" value={item.cost} onChange={(e) => updateItem(item.id, "cost", e.target.value)}
                               className="text-xs text-right px-2 py-1.5 rounded-lg border outline-none w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" style={inputStyle} />
                           </div>
                           <input type="number" min={0} step="1" placeholder="—" value={item.parLevel} onChange={(e) => updateItem(item.id, "parLevel", e.target.value)}
                             className="text-xs text-right px-2 py-1.5 rounded-lg border outline-none w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" style={inputStyle} />
                           <span className="text-sm text-right font-medium" style={{ color: colors.text !== statusColors.ok.text && colors.text !== statusColors.none.text ? colors.text : "#fffdf6" }}>
-                            {fmtUnits(oh)} <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.3)" }}>{item.unit}</span>
+                            {fmtUnits(oh)} <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.4)" }}>{item.unit}</span>
                           </span>
-                          <span className="text-sm text-right" style={{ color: "rgba(255,253,246,0.55)" }}>{fmtCurrency(value)}</span>
+                          <span className="text-sm text-right" style={{ color: "rgba(255,253,246,0.65)" }}>{fmtCurrency(value)}</span>
                           <button onClick={() => deleteItem(item.id)} className="opacity-40 hover:opacity-80 transition-opacity flex justify-center" style={{ color: "#e07878" }}>
                             <Trash2 size={13} />
                           </button>
@@ -558,7 +558,7 @@ export default function InventoryManagementPage() {
           <div className="space-y-10">
             {data.items.length === 0 ? (
               <div className="rounded-xl border p-10 text-center" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
-                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.4)" }}>Add items to your catalog before logging counts or receiving stock.</p>
+                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>Add items to your catalog before logging counts or receiving stock.</p>
                 <button onClick={() => setView("items")} className="text-xs px-4 py-2 rounded-lg border" style={{ background: "rgba(162,140,117,0.12)", borderColor: "rgba(162,140,117,0.3)", color: "#a28c75" }}>
                   Go to Items
                 </button>
@@ -572,7 +572,7 @@ export default function InventoryManagementPage() {
                       <ClipboardCheck size={14} style={{ color: "#a28c75" }} />
                       <div>
                         <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Record a Count</h2>
-                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>Enter the counted quantity for every item as of a date — this becomes the new on-hand baseline.</p>
+                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Enter the counted quantity for every item as of a date — this becomes the new on-hand baseline.</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -591,8 +591,8 @@ export default function InventoryManagementPage() {
                     <div className="divide-y" style={{ borderColor: "rgba(162,140,117,0.06)" }}>
                       {data.items.map((item) => (
                         <div key={item.id} className="grid gap-3 px-6 py-3 items-center" style={{ gridTemplateColumns: "1fr 100px 140px", minWidth: "480px" }}>
-                          <span className="text-sm" style={{ color: "#fffdf6" }}>{item.name} <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>({item.unit})</span></span>
-                          <span className="text-xs text-right" style={{ color: "rgba(255,253,246,0.4)" }}>{fmtUnits(currentOnHand(item.id, data.counts, data.receipts))}</span>
+                          <span className="text-sm" style={{ color: "#fffdf6" }}>{item.name} <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>({item.unit})</span></span>
+                          <span className="text-xs text-right" style={{ color: "rgba(255,253,246,0.5)" }}>{fmtUnits(currentOnHand(item.id, data.counts, data.receipts))}</span>
                           <input type="number" min={0} step="1" placeholder="—" value={countDraft[item.id] ?? ""}
                             onChange={(e) => setCountDraft((prev) => ({ ...prev, [item.id]: e.target.value }))}
                             className="text-xs text-right px-3 py-2 rounded-lg border outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" style={inputStyle} />
@@ -625,7 +625,7 @@ export default function InventoryManagementPage() {
                               <button onClick={() => setExpandedCountId(expanded ? null : c.id)} className="flex items-center gap-2 text-left">
                                 {expanded ? <ChevronDown size={13} style={{ color: "rgba(162,140,117,0.5)" }} /> : <ChevronRight size={13} style={{ color: "rgba(162,140,117,0.5)" }} />}
                                 <span className="text-sm font-medium" style={{ color: "#a28c75" }}>{formatDateLabel(c.date)}</span>
-                                <span className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>{itemsCounted.length} item{itemsCounted.length === 1 ? "" : "s"} counted</span>
+                                <span className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>{itemsCounted.length} item{itemsCounted.length === 1 ? "" : "s"} counted</span>
                               </button>
                               <button onClick={() => deleteCount(c.id)} className="opacity-40 hover:opacity-80 transition-opacity" style={{ color: "#e07878" }}>
                                 <Trash2 size={13} />
@@ -637,7 +637,7 @@ export default function InventoryManagementPage() {
                                   const item = data.items.find((it) => it.id === itemId);
                                   return (
                                     <div key={itemId} className="text-xs px-3 py-2 rounded-lg" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}>
-                                      <span style={{ color: "rgba(255,253,246,0.6)" }}>{item?.name ?? "Deleted item"}</span>
+                                      <span style={{ color: "rgba(255,253,246,0.7)" }}>{item?.name ?? "Deleted item"}</span>
                                       <span className="float-right font-medium" style={{ color: "#fffdf6" }}>{qty}</span>
                                     </div>
                                   );
@@ -658,7 +658,7 @@ export default function InventoryManagementPage() {
                       <PackagePlus size={14} style={{ color: "#a28c75" }} />
                       <div>
                         <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Receive Stock</h2>
-                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>Log new stock as it arrives from orders — it's added to on-hand immediately.</p>
+                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Log new stock as it arrives from orders — it's added to on-hand immediately.</p>
                       </div>
                     </div>
                     <button onClick={addReceipt} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"
@@ -669,7 +669,7 @@ export default function InventoryManagementPage() {
 
                   {sortedReceipts.length === 0 ? (
                     <div className="px-6 py-8">
-                      <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.2)" }}>No stock received yet.</p>
+                      <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>No stock received yet.</p>
                     </div>
                   ) : (
                     <div className="overflow-x-auto">
@@ -724,14 +724,14 @@ export default function InventoryManagementPage() {
             <div className="rounded-xl border p-6 mb-8" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               <p className="text-xs tracking-[0.15em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.6)" }}>Current Inventory Value On-Site</p>
               <p className="font-display text-4xl font-light" style={{ color: "#fffdf6" }}>{fmtCurrency(totalValue)}</p>
-              <p className="text-xs mt-2" style={{ color: "rgba(255,253,246,0.3)" }}>Live — based on current on-hand quantity × cost across {data.items.length} item{data.items.length === 1 ? "" : "s"}.</p>
+              <p className="text-xs mt-2" style={{ color: "rgba(255,253,246,0.4)" }}>Live — based on current on-hand quantity × cost across {data.items.length} item{data.items.length === 1 ? "" : "s"}.</p>
             </div>
 
             {/* Date range filter */}
             <div className="rounded-xl border p-5 mb-8" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               <div className="flex items-center gap-2 mb-4">
                 <Calendar size={13} style={{ color: "#a28c75" }} />
-                <span className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Utilization Period</span>
+                <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Utilization Period</span>
               </div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 {presetOptions.map((p) => (
@@ -747,18 +747,18 @@ export default function InventoryManagementPage() {
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>From</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>From</span>
                   <input type="date" value={rangeStart} onChange={(e) => { setRangeStart(e.target.value); setPreset("custom"); }}
                     className="text-xs px-3 py-2 rounded-lg border outline-none" style={inputStyle} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>To</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>To</span>
                   <input type="date" value={rangeEnd} onChange={(e) => { setRangeEnd(e.target.value); setPreset("custom"); }}
                     className="text-xs px-3 py-2 rounded-lg border outline-none" style={inputStyle} />
                 </div>
                 <span className="text-xs ml-auto" style={{ color: "rgba(162,140,117,0.5)" }}>{formatRangeLabel(rangeStart, rangeEnd)}</span>
               </div>
-              <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.25)" }}>
+              <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.32)" }}>
                 Usage is revealed by physical counts — log a count at the end of this period for the most accurate numbers.
               </p>
             </div>
@@ -782,7 +782,7 @@ export default function InventoryManagementPage() {
                 <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
               </div>
               {utilizationRows.length === 0 ? (
-                <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No usage or receipts recorded for this period.</p>
+                <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No usage or receipts recorded for this period.</p>
               ) : (
                 <div className="rounded-xl border overflow-hidden overflow-x-auto" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="grid text-xs tracking-[0.1em] uppercase px-5 py-3"
@@ -797,9 +797,9 @@ export default function InventoryManagementPage() {
                   {utilizationRows.map((r, i) => (
                     <div key={r.item.id} className="grid items-center px-5 py-3.5" style={{ gridTemplateColumns: "1fr 110px 110px 110px 110px 120px", background: i % 2 === 0 ? "rgba(20,0,8,0.5)" : "rgba(12,0,4,0.5)", minWidth: "700px", borderTop: i > 0 ? "1px solid rgba(162,140,117,0.05)" : undefined }}>
                       <p className="text-sm" style={{ color: "#fffdf6" }}>{r.item.name}</p>
-                      <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.5)" }}>{fmtUnits(r.opening)}</p>
+                      <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.6)" }}>{fmtUnits(r.opening)}</p>
                       <p className="text-sm text-right" style={{ color: "#7ecf7e" }}>+{fmtUnits(r.received)}</p>
-                      <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.5)" }}>{fmtUnits(r.closing)}</p>
+                      <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.6)" }}>{fmtUnits(r.closing)}</p>
                       <p className="text-sm text-right font-medium" style={{ color: "#fffdf6" }}>{fmtUnits(r.usedUnits)}</p>
                       <p className="text-sm text-right font-medium" style={{ color: "#a28c75" }}>{fmtCurrency(r.usedDollars)}</p>
                     </div>

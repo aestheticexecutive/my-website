@@ -148,7 +148,7 @@ const gutCheckQuestions = [
 
 export default function EmbedValuesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div
         className="relative overflow-hidden border-b"
@@ -197,7 +197,7 @@ export default function EmbedValuesPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Defining your values and mission is step one. Making them real — in how you hire, how you meet, how you recognize people, and how you treat patients — is where culture actually gets built.
           </p>
@@ -209,7 +209,7 @@ export default function EmbedValuesPage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -227,7 +227,7 @@ export default function EmbedValuesPage() {
               >
                 Before you build new systems, check the foundation
               </h2>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Bring your team together and read your mission statement and core values aloud. Then run through these questions — not to judge, but to create honest shared awareness of where you are right now.
               </p>
               <div className="flex flex-col gap-3">
@@ -239,7 +239,7 @@ export default function EmbedValuesPage() {
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                       {q}
                     </p>
                   </div>
@@ -256,7 +256,7 @@ export default function EmbedValuesPage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.45)" }}>
                 Tip
               </p>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Run this gut-check as a team every 3–6 months. Honest answers about where you&apos;re falling short are more valuable than polished answers about where you&apos;re thriving.
               </p>
             </div>
@@ -281,7 +281,7 @@ export default function EmbedValuesPage() {
         >
           Where values come to life
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           You don&apos;t need to implement all of this at once. Pick one or two areas that feel most urgent, start there, and build from a foundation that actually works.
         </p>
 
@@ -293,7 +293,7 @@ export default function EmbedValuesPage() {
                 key={area.title}
                 className="rounded-xl border p-7 flex flex-col gap-5"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.12)",
                 }}
               >
@@ -333,7 +333,7 @@ export default function EmbedValuesPage() {
                     <li
                       key={i}
                       className="flex items-start gap-3 text-sm leading-relaxed"
-                      style={{ color: "rgba(255,253,246,0.45)" }}
+                      style={{ color: "rgba(255,253,246,0.55)" }}
                     >
                       <span
                         className="flex-shrink-0 mt-2 w-1 h-1 rounded-full"
@@ -366,7 +366,7 @@ export default function EmbedValuesPage() {
         >
           Rituals &amp; rhythms
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           One-time workshops don&apos;t build culture. Repeated, intentional rituals do. These are lightweight enough to sustain but meaningful enough to matter.
         </p>
 
@@ -376,7 +376,7 @@ export default function EmbedValuesPage() {
               key={ritual.name}
               className="rounded-xl border p-6 flex flex-col gap-4"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.12)",
               }}
             >
@@ -398,7 +398,7 @@ export default function EmbedValuesPage() {
                   {ritual.cadence}
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 {ritual.description}
               </p>
             </div>
@@ -438,7 +438,7 @@ export default function EmbedValuesPage() {
             >
               Commit to a culture check-in
             </h3>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
               Culture drifts without maintenance. Choose a cadence — every quarter or twice a year — and protect that time to revisit this work as a team.
             </p>
             <div className="flex flex-col gap-2">
@@ -453,7 +453,7 @@ export default function EmbedValuesPage() {
                     className="flex-shrink-0 mt-0.5"
                     style={{ color: "rgba(162,140,117,0.45)" }}
                   />
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     {q}
                   </p>
                 </div>
@@ -469,7 +469,7 @@ export default function EmbedValuesPage() {
             }}
           >
             <Calendar size={20} className="mx-auto mb-3" style={{ color: "#a28c75" }} />
-            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
               Block time on the calendar now. It won&apos;t happen otherwise.
             </p>
           </div>

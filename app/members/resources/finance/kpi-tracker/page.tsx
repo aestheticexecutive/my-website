@@ -281,12 +281,12 @@ export default function KpiTrackerPage() {
 
   // Shared inline styles
   const inputStyle: React.CSSProperties = { background: "rgba(12,0,4,0.8)", borderColor: "rgba(162,140,117,0.2)", color: "#fffdf6" };
-  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" };
+  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #170009 100%)" };
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
   return (
-    <div className="bg-[#0c0004] min-h-screen pb-24">
+    <div className="bg-[#170009] min-h-screen pb-24">
 
       {/* Sticky sub-header */}
       <div className="sticky top-16 z-10 border-b" style={{ background: "rgba(10,0,3,0.96)", backdropFilter: "blur(16px)", borderColor: "rgba(162,140,117,0.12)" }}>
@@ -296,7 +296,7 @@ export default function KpiTrackerPage() {
               <ArrowLeft size={12} /> Finance
             </Link>
             <span style={{ color: "rgba(162,140,117,0.25)" }}>/</span>
-            <span style={{ color: "rgba(255,253,246,0.7)" }}>KPI Tracker</span>
+            <span style={{ color: "rgba(255,253,246,0.78)" }}>KPI Tracker</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-end">
@@ -342,7 +342,7 @@ export default function KpiTrackerPage() {
         <div className="mb-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Finance & Business Performance</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>KPI Tracker</h1>
-          <p className="text-sm max-w-xl leading-relaxed mb-8" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-xl leading-relaxed mb-8" style={{ color: "rgba(255,253,246,0.5)" }}>
             Track each KPI by individual team member or team — add multiple entries per metric to compare performance across your practice.
           </p>
 
@@ -358,7 +358,7 @@ export default function KpiTrackerPage() {
                 <div className="flex-1">
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="font-display text-3xl font-light" style={{ color: filled > 0 ? "#fffdf6" : "rgba(255,253,246,0.3)" }}>{filled}</span>
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.3)" }}>/ {total} KPIs tracked for</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>/ {total} KPIs tracked for</span>
                     <span className="text-sm font-medium" style={{ color: "rgba(162,140,117,0.8)" }}>{formatMonthLabel(selectedMonth)}</span>
                   </div>
                   {/* Progress bar */}
@@ -368,7 +368,7 @@ export default function KpiTrackerPage() {
                   </div>
                 </div>
                 {filled === 0 ? (
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.25)" }}>No data entered yet — scroll down to start</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.32)" }}>No data entered yet — scroll down to start</p>
                 ) : filled === total ? (
                   <span className="flex items-center gap-1.5 text-xs font-medium" style={{ color: "#7ecf7e" }}>
                     <CheckCircle2 size={14} /> All KPIs tracked
@@ -387,12 +387,12 @@ export default function KpiTrackerPage() {
             <Users size={14} style={{ color: "#a28c75" }} />
             <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Team Members & Teams</h2>
           </div>
-          <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.35)" }}>
+          <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
             Add names or team labels here, then tag them against each KPI entry below.
           </p>
           <div className="flex flex-wrap gap-2 mb-4">
             {data.teams.length === 0 && (
-              <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No team members added yet.</span>
+              <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No team members added yet.</span>
             )}
             {data.teams.map((t) => (
               <span key={t} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
@@ -465,7 +465,7 @@ export default function KpiTrackerPage() {
                             </span>
                           ) : (
                             <span className="text-xs px-2.5 py-1 rounded-full flex-shrink-0"
-                              style={{ background: "rgba(255,253,246,0.04)", color: "rgba(255,253,246,0.2)", border: "1px solid rgba(255,253,246,0.06)" }}>
+                              style={{ background: "rgba(255,253,246,0.04)", color: "rgba(255,253,246,0.28)", border: "1px solid rgba(255,253,246,0.06)" }}>
                               No data
                             </span>
                           )}
@@ -475,7 +475,7 @@ export default function KpiTrackerPage() {
                         <div className="divide-y" style={{ borderColor: "rgba(162,140,117,0.06)" }}>
                           {entries.length === 0 && (
                             <div className="px-5 py-4">
-                              <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>
+                              <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>
                                 No entries yet. Add one below — you can track this KPI separately for each team member or team.
                               </p>
                             </div>
@@ -500,12 +500,12 @@ export default function KpiTrackerPage() {
 
                                   {/* Value */}
                                   <div className="flex items-center gap-1.5 flex-shrink-0">
-                                    {kpi.prefix && <span className="text-sm" style={{ color: "rgba(255,253,246,0.3)" }}>{kpi.prefix}</span>}
+                                    {kpi.prefix && <span className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>{kpi.prefix}</span>}
                                     <input type="number" step="any" placeholder="—" value={entry.value}
                                       onChange={(e) => updateEntry(kpi.id, entry.id, "value", e.target.value)}
                                       className="w-28 text-sm text-right px-3 py-2 rounded-lg border outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                       style={inputStyle} />
-                                    {kpi.suffix && <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>{kpi.suffix}</span>}
+                                    {kpi.suffix && <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{kpi.suffix}</span>}
                                   </div>
 
                                   {/* Team tag */}
@@ -531,7 +531,7 @@ export default function KpiTrackerPage() {
                                         {change.label}
                                       </span>
                                     ) : (
-                                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.15)" }}>
+                                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.22)" }}>
                                         {prevEntries.length > 0 ? "Enter value" : "No prior data"}
                                       </span>
                                     )}
@@ -569,7 +569,7 @@ export default function KpiTrackerPage() {
                             style={{ color: "rgba(162,140,117,0.55)" }}>
                             <Plus size={13} />
                             Add {entries.length > 0 ? "another entry" : "entry"}
-                            {entries.length === 0 && <span style={{ color: "rgba(255,253,246,0.2)" }}>— track per team member or team</span>}
+                            {entries.length === 0 && <span style={{ color: "rgba(255,253,246,0.28)" }}>— track per team member or team</span>}
                           </button>
                         </div>
                       </div>
@@ -586,7 +586,7 @@ export default function KpiTrackerPage() {
           <div>
             {/* Month pickers */}
             <div className="flex flex-wrap items-center gap-3 mb-10 p-5 rounded-xl border" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
-              <span className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Comparing</span>
+              <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Comparing</span>
               <div className="relative">
                 <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}
                   className="appearance-none text-xs px-3 py-2 pr-7 rounded-lg border cursor-pointer font-medium"
@@ -595,7 +595,7 @@ export default function KpiTrackerPage() {
                 </select>
                 <ChevronDown size={11} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "rgba(162,140,117,0.5)" }} />
               </div>
-              <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>vs.</span>
+              <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>vs.</span>
               <div className="relative">
                 <select value={compareMonth} onChange={(e) => setCompareMonth(e.target.value)}
                   className="appearance-none text-xs px-3 py-2 pr-7 rounded-lg border cursor-pointer" style={inputStyle}>
@@ -603,7 +603,7 @@ export default function KpiTrackerPage() {
                 </select>
                 <ChevronDown size={11} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "rgba(162,140,117,0.5)" }} />
               </div>
-              <span className="text-xs ml-auto hidden sm:block" style={{ color: "rgba(255,253,246,0.2)" }}>
+              <span className="text-xs ml-auto hidden sm:block" style={{ color: "rgba(255,253,246,0.28)" }}>
                 Entries matched by team tag · Green = improvement · Red = decline
               </span>
             </div>
@@ -651,7 +651,7 @@ export default function KpiTrackerPage() {
                             style={{ gridTemplateColumns: "1fr 90px 120px 120px 90px", background: ki % 2 === 0 ? "rgba(20,0,8,0.5)" : "rgba(12,0,4,0.5)", minWidth: "520px" }}>
                             <p className="text-sm" style={{ color: "#fffdf6" }}>{kpi.name}</p>
                             <span /><span /><span />
-                            <span className="text-xs text-center" style={{ color: "rgba(255,253,246,0.18)" }}>—</span>
+                            <span className="text-xs text-center" style={{ color: "rgba(255,253,246,0.25)" }}>—</span>
                           </div>
                         );
                       }
@@ -690,7 +690,7 @@ export default function KpiTrackerPage() {
                                 {tag}
                               </span>
                             ) : (
-                              <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>Untagged</span>
+                              <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>Untagged</span>
                             )}
                           </div>
 
@@ -716,7 +716,7 @@ export default function KpiTrackerPage() {
                                 {change.label}
                               </span>
                             ) : (
-                              <span className="text-xs" style={{ color: "rgba(255,253,246,0.18)" }}>—</span>
+                              <span className="text-xs" style={{ color: "rgba(255,253,246,0.25)" }}>—</span>
                             )}
                           </div>
                         </div>

@@ -330,7 +330,7 @@ export default function SwotAnalysisPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/finance" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -351,18 +351,18 @@ export default function SwotAnalysisPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Finance &amp; Business Performance</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>SWOT Analysis Tool</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Work through your Strengths, Weaknesses, Opportunities, and Threats, flag your top priorities, and build a 30-day action plan — then print it or save it under this quarter&apos;s name to compare against next quarter.
           </p>
 
           {/* New analysis */}
           <button onClick={createAnalysis} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Compass size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New SWOT Analysis</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Starts fresh for {currentQuarterLabel()} — rename it however fits your practice.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Starts fresh for {currentQuarterLabel()} — rename it however fits your practice.</p>
               </div>
             </div>
           </button>
@@ -374,14 +374,14 @@ export default function SwotAnalysisPage() {
           </div>
 
           {sortedAnalyses.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No SWOT analyses saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No SWOT analyses saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
               {sortedAnalyses.map((a) => (
                 <div key={a.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                     <Compass size={17} style={{ color: "#a28c75" }} />
                   </div>
@@ -392,7 +392,7 @@ export default function SwotAnalysisPage() {
                         {a.quarter}
                       </span>
                     </div>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                       {a.focus.trim() ? `${a.focus} · ` : ""}{itemCount(a)} items · Created {formatDateShort(a.createdAt)}
                     </p>
                   </div>
@@ -437,7 +437,7 @@ export default function SwotAnalysisPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -446,7 +446,7 @@ export default function SwotAnalysisPage() {
               My Analyses
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -484,36 +484,36 @@ export default function SwotAnalysisPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Analysis details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Analysis Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Focus of This SWOT</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Focus of This SWOT</label>
                     <input type="text" value={active.focus} onChange={(e) => updateField(active.id, "focus", e.target.value)} placeholder="e.g. Entire practice, a location, a service line, a new initiative"
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Quarter</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Quarter</label>
                       <input type="text" value={active.quarter} onChange={(e) => updateField(active.id, "quarter", e.target.value)} placeholder="e.g. Q1 2026"
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date Completed</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date Completed</label>
                       <input type="date" value={active.dateCompleted} onChange={(e) => updateField(active.id, "dateCompleted", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Completed By</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Completed By</label>
                     <input type="text" value={active.completedBy} onChange={(e) => updateField(active.id, "completedBy", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
@@ -539,23 +539,23 @@ export default function SwotAnalysisPage() {
                 return (
                   <section key={quadrant}>
                     <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>{meta.label}</p>
-                    <p className="text-[10px] italic mb-2" style={{ color: "rgba(255,253,246,0.3)" }}>{meta.tag}</p>
+                    <p className="text-[10px] italic mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>{meta.tag}</p>
                     <ul className="mb-2 space-y-0.5">
                       {meta.questions.map((q) => (
-                        <li key={q} className="text-[11px] leading-relaxed" style={{ color: "rgba(255,253,246,0.3)" }}>· {q}</li>
+                        <li key={q} className="text-[11px] leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>· {q}</li>
                       ))}
                     </ul>
                     <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                       <div className="py-1.5 px-3 space-y-0.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                         {items.length === 0 && (
-                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.2)" }}>No {meta.label.toLowerCase()} listed yet.</p>
+                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.28)" }}>No {meta.label.toLowerCase()} listed yet.</p>
                         )}
                         {items.map((it) => (
                           <div key={it.id} className="flex items-start gap-2 py-1.5 group">
                             <button onClick={() => toggleItemPriority(active.id, quadrant, it.id)} className="flex-shrink-0 mt-0.5 transition-opacity hover:opacity-80" title="Mark as top priority">
                               <Star size={13} fill={it.priority ? "#e0b84a" : "none"} style={{ color: it.priority ? "#e0b84a" : "rgba(162,140,117,0.4)" }} />
                             </button>
-                            <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{it.text}</span>
+                            <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{it.text}</span>
                             <button onClick={() => deleteItem(active.id, quadrant, it.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                               <Trash2 size={11} />
                             </button>
@@ -579,7 +579,7 @@ export default function SwotAnalysisPage() {
               {/* Action plan */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Action Plan</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Star your top 2–3 items in each quadrant above, then write one action to take on each in the next 30 days.
                 </p>
                 <div className="space-y-4">
@@ -593,7 +593,7 @@ export default function SwotAnalysisPage() {
                         </div>
                         <div className="p-3 space-y-2.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                           {rows.length === 0 && (
-                            <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No actions yet.</p>
+                            <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No actions yet.</p>
                           )}
                           {rows.map((row) => (
                             <div key={row.id} className="space-y-1.5 pb-2.5 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>

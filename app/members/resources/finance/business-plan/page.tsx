@@ -307,7 +307,7 @@ export default function BusinessPlanPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/finance" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -328,19 +328,19 @@ export default function BusinessPlanPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Finance &amp; Business Performance</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Business Plan Tool</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Build your vision, revenue milestones, goals, staffing forecast, and market-risk plan across your
             1, 5, and 10-year horizons — then print it or save it to revisit on its own review cadence.
           </p>
 
           {/* New plan */}
           <button onClick={createPlan} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Milestone size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Business Plan</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Starts fresh, pre-loaded with the standard review cadence — rename it however fits your practice.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Starts fresh, pre-loaded with the standard review cadence — rename it however fits your practice.</p>
               </div>
             </div>
           </button>
@@ -352,8 +352,8 @@ export default function BusinessPlanPage() {
           </div>
 
           {sortedPlans.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No business plans saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No business plans saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -361,13 +361,13 @@ export default function BusinessPlanPage() {
                 const { filled, total } = filledCount(p);
                 return (
                   <div key={p.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                    style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                    style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                       <Milestone size={17} style={{ color: "#a28c75" }} />
                     </div>
                     <div className="flex-1 min-w-0 cursor-pointer" onClick={() => openPlan(p.id)}>
                       <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{p.name}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                         {filled}/{total} fields completed · Created {formatDateShort(p.createdAt)}
                       </p>
                     </div>
@@ -413,7 +413,7 @@ export default function BusinessPlanPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -422,7 +422,7 @@ export default function BusinessPlanPage() {
               My Plans
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -460,25 +460,25 @@ export default function BusinessPlanPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Plan details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Plan Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date Completed</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date Completed</label>
                       <input type="date" value={active.dateCompleted} onChange={(e) => updateField(active.id, "dateCompleted", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Completed By</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Completed By</label>
                       <input type="text" value={active.completedBy} onChange={(e) => updateField(active.id, "completedBy", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                     </div>
@@ -501,13 +501,13 @@ export default function BusinessPlanPage() {
               {/* Step 1: Vision */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 1 · Vision</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Where do you want your practice to be at each horizon?
                 </p>
                 <div className="space-y-3">
                   {horizonOrder.map((h) => (
                     <div key={h}>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>{horizonMeta[h].label} Vision</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>{horizonMeta[h].label} Vision</label>
                       <textarea rows={2} value={active.vision[h]} onChange={(e) => updateVision(active.id, h, e.target.value)}
                         placeholder="Describe your practice at this horizon..."
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none resize-none placeholder:opacity-30" style={inputStyle} />
@@ -519,7 +519,7 @@ export default function BusinessPlanPage() {
               {/* Step 2: Revenue & Profit Milestones */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 2 · Revenue &amp; Profit Milestones</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Estimate target revenue and profit (or margin %) at each stage.
                 </p>
                 <div className="space-y-3">
@@ -530,12 +530,12 @@ export default function BusinessPlanPage() {
                       </div>
                       <div className="p-3 grid grid-cols-2 gap-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                         <div>
-                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Revenue</label>
+                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Revenue</label>
                           <input type="text" value={active.revenue[h].revenue} onChange={(e) => updateRevenue(active.id, h, "revenue", e.target.value)}
                             placeholder="$" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                         </div>
                         <div>
-                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Profit / Margin</label>
+                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Profit / Margin</label>
                           <input type="text" value={active.revenue[h].profit} onChange={(e) => updateRevenue(active.id, h, "profit", e.target.value)}
                             placeholder="$ or %" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                         </div>
@@ -548,7 +548,7 @@ export default function BusinessPlanPage() {
               {/* Step 3: Goals & Actions */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 3 · Goals &amp; Actions</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   One major goal per horizon, broken into 3 short-term action steps.
                 </p>
                 <div className="space-y-3">
@@ -573,7 +573,7 @@ export default function BusinessPlanPage() {
               {/* Step 4: Staffing & Space */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 4 · Staffing &amp; Space</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   What team and physical footprint does each horizon require?
                 </p>
                 <div className="space-y-3">
@@ -584,12 +584,12 @@ export default function BusinessPlanPage() {
                       </div>
                       <div className="p-3 space-y-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                         <div>
-                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Staffing Needs</label>
+                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Staffing Needs</label>
                           <input type="text" value={active.staffing[h].staffing} onChange={(e) => updateStaffing(active.id, h, "staffing", e.target.value)}
                             className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                         </div>
                         <div>
-                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Space / Facility Needs</label>
+                          <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Space / Facility Needs</label>
                           <input type="text" value={active.staffing[h].space} onChange={(e) => updateStaffing(active.id, h, "space", e.target.value)}
                             className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                         </div>
@@ -602,7 +602,7 @@ export default function BusinessPlanPage() {
               {/* Step 5: Market Shifts & Seasonality */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 5 · Market Shifts &amp; Seasonality</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   How could each factor impact you at each stage, and what&apos;s your plan?
                 </p>
                 <div className="space-y-3">
@@ -614,7 +614,7 @@ export default function BusinessPlanPage() {
                       <div className="p-3 grid grid-cols-3 gap-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                         {horizonOrder.map((h) => (
                           <div key={h}>
-                            <label className="text-[9px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>{horizonMeta[h].sub}</label>
+                            <label className="text-[9px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>{horizonMeta[h].sub}</label>
                             <input type="text" value={active.marketImpacts[f][h]} onChange={(e) => updateMarketImpact(active.id, f, h, e.target.value)}
                               className="w-full text-xs rounded px-1.5 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                           </div>
@@ -628,13 +628,13 @@ export default function BusinessPlanPage() {
               {/* Step 6: Review & Adjust */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 6 · Review &amp; Adjust</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Schedule a review of your plan.
                 </p>
                 <div className="space-y-2">
                   {horizonOrder.map((h) => (
                     <div key={h} className="flex items-center gap-2">
-                      <label className="text-xs flex-shrink-0 w-20" style={{ color: "rgba(255,253,246,0.4)" }}>{horizonMeta[h].label}</label>
+                      <label className="text-xs flex-shrink-0 w-20" style={{ color: "rgba(255,253,246,0.5)" }}>{horizonMeta[h].label}</label>
                       <input type="text" value={active.review[h]} onChange={(e) => updateReview(active.id, h, e.target.value)}
                         className="flex-1 text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                     </div>

@@ -83,7 +83,7 @@ const tips = [
 
 export default function DowntimeRevenueGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -115,7 +115,7 @@ export default function DowntimeRevenueGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             100 Ways to Turn Downtime Into Revenue
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A slow afternoon doesn&apos;t have to be wasted time. This is a working list of
             concrete, specific actions across seven areas of your practice — each one
             capable of driving a booking, a review, or a returning patient — sorted so
@@ -129,7 +129,7 @@ export default function DowntimeRevenueGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -139,7 +139,7 @@ export default function DowntimeRevenueGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Idle time is the cheapest growth you're not using
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             An open hour on the schedule costs you nothing extra — no ad spend, no added
             payroll, no new overhead. What it costs is opportunity, if it just passes by.
             The practices that consistently outgrow their competitors aren&apos;t working
@@ -161,7 +161,7 @@ export default function DowntimeRevenueGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Seven areas, 100 specific actions
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           What each area actually does for your practice, and the best way to approach it
           when you sit down to use it.
         </p>
@@ -173,7 +173,7 @@ export default function DowntimeRevenueGuidePage() {
               <div
                 key={cat.title}
                 className="rounded-xl border p-6 flex flex-col gap-3"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -184,10 +184,10 @@ export default function DowntimeRevenueGuidePage() {
                   </div>
                   <h3 className="font-display text-lg font-light leading-snug" style={{ color: "#fffdf6" }}>{cat.title}</h3>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{cat.body}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{cat.body}</p>
                 <div className="pt-2 border-t" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
                   <p className="text-[10px] uppercase tracking-wide mb-1.5" style={{ color: "rgba(162,140,117,0.55)" }}>Best way to approach it</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{cat.approach}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{cat.approach}</p>
                 </div>
               </div>
             );
@@ -212,10 +212,10 @@ export default function DowntimeRevenueGuidePage() {
             <div
               key={tip.title}
               className="rounded-xl border p-6"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
             >
               <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
             </div>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function DowntimeRevenueGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Open the Downtime Revenue Tracker
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 All 100 actions, organized into the seven areas above. Your team can log
                 completions with a date and a note, and mark the same action done again
                 the next time it's worth repeating.

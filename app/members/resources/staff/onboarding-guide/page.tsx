@@ -61,7 +61,7 @@ const tips = [
 
 export default function OnboardingGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -93,7 +93,7 @@ export default function OnboardingGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Onboarding Guide
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How a new hire's first few weeks go has an outsized effect on whether they stay, how fast they
             become genuinely useful, and how consistent they are with the rest of your team. A structured,
             signed-off checklist is what turns "we showed them around" into a real onboarding process.
@@ -106,7 +106,7 @@ export default function OnboardingGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -116,7 +116,7 @@ export default function OnboardingGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Three things a real onboarding process does at once
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             A checklist someone actually signs off on — item by item, with a date and initials — does more
             than just cover a list of topics. It protects the practice with a documented record, it gives the
             new hire a clear map of what &quot;fully trained&quot; looks like instead of a vague sense they
@@ -137,7 +137,7 @@ export default function OnboardingGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Culture, systems, and skill — in that order
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Every role's onboarding checklist breaks down the same way, whether the new hire is a provider or
           support staff.
         </p>
@@ -149,7 +149,7 @@ export default function OnboardingGuidePage() {
               <div
                 key={p.title}
                 className="rounded-xl border p-7 flex flex-col gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -158,7 +158,7 @@ export default function OnboardingGuidePage() {
                   <Icon size={16} style={{ color: "#a28c75" }} />
                 </div>
                 <h3 className="font-display text-lg font-light leading-snug" style={{ color: "#fffdf6" }}>{p.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{p.why}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{p.why}</p>
               </div>
             );
           })}
@@ -184,7 +184,7 @@ export default function OnboardingGuidePage() {
             <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
               Providers and support staff need the same structure, different content
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               A provider&apos;s onboarding needs to cover imaging systems, lab and PRP process, and the consult
               and follow-up flow. A patient care coordinator&apos;s needs to cover the scheduling tool,
               memberships, billing, and check-in — the front-of-house side of the practice. Both share the
@@ -207,7 +207,7 @@ export default function OnboardingGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Running it well
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           The checklist is the framework. These habits are what make it a real process instead of a form that gets filled in from memory on the last day.
         </p>
 
@@ -218,7 +218,7 @@ export default function OnboardingGuidePage() {
               <div
                 key={tip.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -228,7 +228,7 @@ export default function OnboardingGuidePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
                 </div>
               </div>
             );
@@ -257,7 +257,7 @@ export default function OnboardingGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Build, save, and print an onboarding checklist for your next hire
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Start from a Provider or Support Staff template, add or remove whatever fits your practice, and
                 save it under its own name. Keep as many onboarding checklists as you need and print any of
                 them as a clean, sign-off-ready document.

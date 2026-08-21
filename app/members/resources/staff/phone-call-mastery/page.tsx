@@ -137,7 +137,7 @@ const steps = [
 
 export default function PhoneCallMasteryPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -161,7 +161,7 @@ export default function PhoneCallMasteryPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Phone Call Mastery
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
             Before a patient ever sits in a consultation chair, they&apos;ve already formed an opinion about
             your practice — based entirely on how that phone call felt. This training covers every
             moment of the call, word-for-word.
@@ -183,7 +183,7 @@ export default function PhoneCallMasteryPage() {
             <p className="font-display text-xl font-light leading-relaxed mb-2" style={{ color: "#fffdf6" }}>
               The front desk isn&apos;t administrative support. It&apos;s the first — and most important — sales conversation your practice has.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               Every unanswered call, generic greeting, or rushed conversation is a lost patient. Every warm, confident, well-guided call is a patient who already trusts you before they walk through the door.
             </p>
           </div>
@@ -196,7 +196,7 @@ export default function PhoneCallMasteryPage() {
               <div key={item.label} className="rounded-xl p-5" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <span className="text-2xl mb-3 block">{item.icon}</span>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -213,14 +213,14 @@ export default function PhoneCallMasteryPage() {
                   <span className="font-display text-3xl font-light flex-shrink-0 w-12 text-right" style={{ color: step.color, opacity: 0.5 }}>{step.num}</span>
                   <div>
                     <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{step.label}</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{step.summary}</p>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>{step.summary}</p>
                   </div>
                 </div>
 
                 {/* Body */}
                 <div className="px-6 py-5" style={{ background: "rgba(0,0,0,0.2)" }}>
                   {step.body && (
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{step.body}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{step.body}</p>
                   )}
 
                   {/* Discovery questions */}
@@ -231,7 +231,7 @@ export default function PhoneCallMasteryPage() {
                           <span className="text-xs font-medium flex-shrink-0 w-4" style={{ color: step.color }}>{q.num}</span>
                           <div>
                             <p className="text-sm italic" style={{ color: "#fffdf6" }}>&ldquo;{q.q}&rdquo;</p>
-                            <p className="text-xs mt-1" style={{ color: "rgba(255,253,246,0.4)" }}>{q.note}</p>
+                            <p className="text-xs mt-1" style={{ color: "rgba(255,253,246,0.5)" }}>{q.note}</p>
                           </div>
                         </div>
                       ))}
@@ -240,7 +240,7 @@ export default function PhoneCallMasteryPage() {
 
                   {step.why && (
                     <div className="mt-4 rounded-lg px-4 py-3" style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.14)" }}>
-                      <p className="text-xs leading-relaxed italic" style={{ color: "rgba(255,253,246,0.55)" }}>&ldquo;{step.why}&rdquo;</p>
+                      <p className="text-xs leading-relaxed italic" style={{ color: "rgba(255,253,246,0.65)" }}>&ldquo;{step.why}&rdquo;</p>
                     </div>
                   )}
 
@@ -263,7 +263,7 @@ export default function PhoneCallMasteryPage() {
         {/* ── QUICK REFERENCE ── */}
         <div className="rounded-2xl p-8" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.25)" }}>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>Quick Reference — The Full Call Flow</h2>
-          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.4)" }}>Keep this visible at the front desk until the flow is second nature.</p>
+          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.5)" }}>Keep this visible at the front desk until the flow is second nature.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               "Answer fast and track every call",
@@ -279,7 +279,7 @@ export default function PhoneCallMasteryPage() {
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3 rounded-lg px-4 py-3" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.14)" }}>
                 <span className="text-xs font-medium w-5 flex-shrink-0 text-center" style={{ color: "#a28c75" }}>{i + 1}</span>
-                <p className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
+                <p className="text-sm" style={{ color: "rgba(255,253,246,0.82)" }}>{item}</p>
               </div>
             ))}
           </div>
@@ -304,7 +304,7 @@ export default function PhoneCallMasteryPage() {
                     <span className="text-xs font-medium w-5 flex-shrink-0 text-center mt-0.5" style={{ color: "#a28c75" }}>{s.step}</span>
                     <div>
                       <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{s.label}</p>
-                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>{s.desc}</p>
+                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -318,7 +318,7 @@ export default function PhoneCallMasteryPage() {
             {/* Keep specifics open-ended */}
             <div className="rounded-2xl p-6" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.18)" }}>
               <p className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Keep specifics open-ended</p>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.6)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.7)" }}>
                 Questions like &ldquo;how many treatments&rdquo; or &ldquo;what&apos;s the downtime&rdquo; should never get a hard, universal answer. Every patient starts from a different baseline — closing off expectations on the phone limits what the provider can recommend.
               </p>
               <div className="space-y-3">
@@ -342,7 +342,7 @@ export default function PhoneCallMasteryPage() {
         {/* ── BETWEEN CALL AND CONSULT ── */}
         <div>
           <SectionLabel label="Between the Call and the Consult" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Two small moments that set your practice noticeably apart before the patient ever walks in.
           </p>
 
@@ -351,10 +351,10 @@ export default function PhoneCallMasteryPage() {
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.2)" }}>
               <div className="px-6 py-4" style={{ background: "rgba(162,140,117,0.07)", borderBottom: "1px solid rgba(162,140,117,0.14)" }}>
                 <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>The Personalized Confirmation Call</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>Sets a noticeably higher bar than automated text confirmations</p>
+                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>Sets a noticeably higher bar than automated text confirmations</p>
               </div>
               <div className="px-6 py-5" style={{ background: "rgba(0,0,0,0.2)" }}>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.75)" }}>
                   Make a personal call for every new patient&apos;s first consultation. Confirm the day and time, give parking and direction details, and close with the critical question below. If a live call isn&apos;t possible, ask the critical question at the time of booking instead.
                 </p>
                 <ScriptBlock>
@@ -370,10 +370,10 @@ export default function PhoneCallMasteryPage() {
                   <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>The Critical Question</p>
                   <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(162,140,117,0.15)", color: "#a28c75" }}>Most important moment</span>
                 </div>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>This is what makes the confirmation call worth the effort</p>
+                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>This is what makes the confirmation call worth the effort</p>
               </div>
               <div className="px-6 py-5" style={{ background: "rgba(0,0,0,0.2)" }}>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.75)" }}>
                   Ask what they&apos;d like to spend additional time on during their consultation. This surfaces the one make-or-break concern — risk and safety worries, a past bad experience elsewhere, or financing questions. Document whatever surfaces so the provider walks in already prepared.
                 </p>
                 <div className="space-y-2">
@@ -393,10 +393,10 @@ export default function PhoneCallMasteryPage() {
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.2)" }}>
               <div className="px-6 py-4" style={{ background: "rgba(162,140,117,0.07)", borderBottom: "1px solid rgba(162,140,117,0.14)" }}>
                 <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>The Provider Introduction Text</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>A second trust-building touchpoint before the patient ever walks in</p>
+                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>A second trust-building touchpoint before the patient ever walks in</p>
               </div>
               <div className="px-6 py-5" style={{ background: "rgba(0,0,0,0.2)" }}>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.75)" }}>
                   Send a text &ldquo;from&rdquo; the treating provider between booking and the visit. Include their first name, the provider&apos;s name, a brief credentialing statement, and one genuine personal line so the provider comes across as human, not clinical. Attach a headshot whenever your system supports it.
                 </p>
                 <div className="space-y-2">
@@ -425,7 +425,7 @@ export default function PhoneCallMasteryPage() {
             <div>
               <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.6)" }}>Up next · Part 2 of 2</p>
               <h3 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>In-Office Sales Mastery</h3>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,253,246,0.5)" }}>Arrival experience, cross-selling scripts for 4 treatments, and the confidence & trust foundation.</p>
+              <p className="text-sm mt-1" style={{ color: "rgba(255,253,246,0.6)" }}>Arrival experience, cross-selling scripts for 4 treatments, and the confidence & trust foundation.</p>
             </div>
             <ArrowRight size={24} style={{ color: "#a28c75", flexShrink: 0 }} />
           </div>

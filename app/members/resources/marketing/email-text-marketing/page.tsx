@@ -21,7 +21,7 @@ function SectionLabel({ label }: { label: string }) {
 
 export default function EmailTextMarketingPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -54,7 +54,7 @@ export default function EmailTextMarketingPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Email & Text Marketing
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Two of the highest-ROI channels available to your practice — and the most underused.
             Email and text marketing should increase patient retention, reactivate lapsed patients,
             and book more appointments. The goal isn&apos;t to send more messages. It&apos;s to send
@@ -87,7 +87,7 @@ export default function EmailTextMarketingPage() {
               >
                 <div className="text-2xl mb-3">{item.icon}</div>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -96,7 +96,7 @@ export default function EmailTextMarketingPage() {
         {/* ── EMAIL VS TEXT ── */}
         <div>
           <SectionLabel label="Email vs. Text — When to Use Each" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             These channels aren&apos;t competing — they&apos;re complementary. Use them for different purposes
             based on what the message needs to accomplish.
           </p>
@@ -114,7 +114,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium" style={{ color: "#c8a050" }}>Email</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>Depth, education, visuals</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Depth, education, visuals</p>
                 </div>
               </div>
               <div className="space-y-2.5">
@@ -130,7 +130,7 @@ export default function EmailTextMarketingPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="text-xs flex-shrink-0 mt-0.5" style={{ color: "#c8a050" }}>✓</span>
-                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -153,7 +153,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium" style={{ color: "#7aabcf" }}>Text / SMS</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>Urgency, action, immediacy</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Urgency, action, immediacy</p>
                 </div>
               </div>
               <div className="space-y-2.5">
@@ -168,7 +168,7 @@ export default function EmailTextMarketingPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="text-xs flex-shrink-0 mt-0.5" style={{ color: "#7aabcf" }}>✓</span>
-                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -195,7 +195,7 @@ export default function EmailTextMarketingPage() {
               </div>
               <div className="flex items-end gap-3 mb-5">
                 <div className="text-6xl font-light leading-none" style={{ color: "#c8a050" }}>2–4</div>
-                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>campaigns / month</div>
+                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>campaigns / month</div>
               </div>
               <div className="flex gap-2 mb-5">
                 {[...Array(4)].map((_, i) => (
@@ -212,7 +212,7 @@ export default function EmailTextMarketingPage() {
                   </div>
                 ))}
               </div>
-              <div className="space-y-2 text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <div className="space-y-2 text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>
                 <p>· Week 1: Monthly feature or treatment spotlight</p>
                 <p>· Week 2: Educational content or blog post</p>
                 <p>· Week 3: Before & after or social proof</p>
@@ -228,7 +228,7 @@ export default function EmailTextMarketingPage() {
               </div>
               <div className="flex items-end gap-3 mb-5">
                 <div className="text-6xl font-light leading-none" style={{ color: "#7aabcf" }}>2–6</div>
-                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>campaigns / month</div>
+                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>campaigns / month</div>
               </div>
               <div className="flex gap-1.5 mb-5">
                 {[...Array(6)].map((_, i) => (
@@ -245,7 +245,7 @@ export default function EmailTextMarketingPage() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Only send texts when the message is genuinely relevant and time-sensitive.
                 More texts ≠ more bookings — irrelevant messages lead to opt-outs.
               </p>
@@ -256,7 +256,7 @@ export default function EmailTextMarketingPage() {
         {/* ── EVERYONE VS SEGMENTS ── */}
         <div>
           <SectionLabel label="Who to Send To" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Not every message belongs to your entire list. Knowing when to broadcast vs. when to target
             is the difference between a 2% open rate and a 40% one.
           </p>
@@ -270,7 +270,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>Full Database</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>When it applies to everyone</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>When it applies to everyone</p>
                 </div>
               </div>
               <div className="space-y-2.5">
@@ -284,7 +284,7 @@ export default function EmailTextMarketingPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: "#a28c75" }} />
-                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</p>
+                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -298,7 +298,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>Targeted Segments</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>When relevance is everything</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>When relevance is everything</p>
                 </div>
               </div>
               <div className="space-y-2.5">
@@ -313,7 +313,7 @@ export default function EmailTextMarketingPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: "#a28c75" }} />
-                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</p>
+                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -340,7 +340,7 @@ export default function EmailTextMarketingPage() {
               >
                 <p className="text-xs font-medium mb-3" style={{ color: "rgba(162,140,117,0.5)" }}>{item.num}</p>
                 <p className="text-sm font-medium mb-2" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -366,7 +366,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -376,7 +376,7 @@ export default function EmailTextMarketingPage() {
         {/* ── 15 AUTOMATED CAMPAIGNS ── */}
         <div>
           <SectionLabel label="15 Automated Campaigns Every Practice Should Have" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Set these up once. They run in the background 24/7, nurturing and reactivating patients without
             any manual effort from your team.
           </p>
@@ -409,7 +409,7 @@ export default function EmailTextMarketingPage() {
                   <span className="text-xs font-medium" style={{ color: "rgba(162,140,117,0.45)" }}>{item.num}</span>
                 </div>
                 <p className="text-xs font-medium mb-1.5 leading-snug" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -444,7 +444,7 @@ export default function EmailTextMarketingPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -472,7 +472,7 @@ export default function EmailTextMarketingPage() {
               >
                 <span className="text-2xl mb-3">{item.icon}</span>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.note}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.note}</p>
               </div>
             ))}
           </div>
@@ -498,7 +498,7 @@ export default function EmailTextMarketingPage() {
                 >
                   <div className="text-center">
                     <div className="text-4xl font-light mb-1" style={{ color: "#a28c75" }}>80%</div>
-                    <div className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Education</div>
+                    <div className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>Education</div>
                   </div>
                 </div>
                 <div
@@ -507,12 +507,12 @@ export default function EmailTextMarketingPage() {
                 >
                   <div className="text-center">
                     <span className="text-xl font-light" style={{ color: "#c8a050" }}>20%</span>
-                    <span className="text-xs ml-2" style={{ color: "rgba(255,253,246,0.4)" }}>Promotion</span>
+                    <span className="text-xs ml-2" style={{ color: "rgba(255,253,246,0.5)" }}>Promotion</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-xs leading-relaxed text-center" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs leading-relaxed text-center" style={{ color: "rgba(255,253,246,0.5)" }}>
                 80% of your messages should educate, entertain, or add value. Only 20% should directly promote.
               </p>
             </div>
@@ -521,7 +521,7 @@ export default function EmailTextMarketingPage() {
             <div className="flex-1 space-y-4">
               <div className="rounded-xl p-5" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.18)" }}>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>80% — Educate and build trust</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Treatment explanations, before & afters, patient stories, skincare tips, blog content,
                   provider introductions, FAQ answers. This content builds the relationship that makes
                   the 20% more effective.
@@ -529,7 +529,7 @@ export default function EmailTextMarketingPage() {
               </div>
               <div className="rounded-xl p-5" style={{ background: "rgba(200,160,80,0.07)", border: "1px solid rgba(200,160,80,0.18)" }}>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>20% — Promote and convert</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Monthly feature campaigns, limited availability, event promotions, VIP offers,
                   last-minute openings. Because you&apos;ve been providing value, patients actually
                   look forward to these — instead of tuning them out.
@@ -537,7 +537,7 @@ export default function EmailTextMarketingPage() {
               </div>
               <div className="rounded-xl p-5" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>Repurpose everything</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Every email can become a blog post, a social caption, a Google Business Profile update,
                   a short-form video script, and a sales talking point. Write once, distribute everywhere.
                 </p>
@@ -552,7 +552,7 @@ export default function EmailTextMarketingPage() {
           <p className="font-display text-xl font-light leading-relaxed" style={{ color: "#fffdf6" }}>
             Successful email and text marketing is built on five things: relevance, consistency, segmentation, automation, and measurement.
           </p>
-          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.7)" }}>
             Every campaign should educate, build trust, and encourage one clear action. The practices that treat their patient list as an asset — and communicate with it consistently — outperform those that rely exclusively on paid acquisition every single time.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">

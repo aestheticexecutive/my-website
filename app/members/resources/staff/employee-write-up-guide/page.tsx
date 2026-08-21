@@ -77,7 +77,7 @@ const tips = [
 
 export default function EmployeeWriteUpGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -109,7 +109,7 @@ export default function EmployeeWriteUpGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Documentation &amp; Write-Up Guide
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             The behaviors that eventually lead to disciplinary action almost never come out of nowhere —
             they show up as small, out-of-the-ordinary moments first. Documenting them when they happen,
             not months later, is what protects your practice and gives every employee a fair, consistent
@@ -123,7 +123,7 @@ export default function EmployeeWriteUpGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -133,7 +133,7 @@ export default function EmployeeWriteUpGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             If it isn&apos;t written down, it didn&apos;t happen
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             It&apos;s tempting to let a small issue slide with a quiet word in the hallway — but undocumented
             conversations disappear. When behavior repeats, or eventually requires termination, an
             undocumented history leaves your practice exposed and leaves the employee blindsided by a
@@ -154,7 +154,7 @@ export default function EmployeeWriteUpGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Four things a real write-up does at once
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           A single form does more work than it looks like — for the practice, and for the employee.
         </p>
 
@@ -165,7 +165,7 @@ export default function EmployeeWriteUpGuidePage() {
               <div
                 key={p.title}
                 className="rounded-xl border p-7 flex flex-col gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -174,7 +174,7 @@ export default function EmployeeWriteUpGuidePage() {
                   <Icon size={16} style={{ color: "#a28c75" }} />
                 </div>
                 <h3 className="font-display text-lg font-light leading-snug" style={{ color: "#fffdf6" }}>{p.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{p.why}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{p.why}</p>
               </div>
             );
           })}
@@ -200,14 +200,14 @@ export default function EmployeeWriteUpGuidePage() {
             <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
               If it made you pause, it&apos;s worth writing down
             </h3>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
               Not everything needs formal discipline — but anything that&apos;s out of the ordinary, or that
               could lead to disciplinary action if it repeats, is worth a note while it&apos;s fresh. Common
               categories include:
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
               {whatToDocument.map((item) => (
-                <li key={item} className="text-sm flex items-start gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
+                <li key={item} className="text-sm flex items-start gap-2" style={{ color: "rgba(255,253,246,0.65)" }}>
                   <span style={{ color: "#a28c75", flexShrink: 0 }}>·</span> {item}
                 </li>
               ))}
@@ -227,7 +227,7 @@ export default function EmployeeWriteUpGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Documenting it well
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           The form is the framework. These habits are what make it hold up if it&apos;s ever needed.
         </p>
 
@@ -238,7 +238,7 @@ export default function EmployeeWriteUpGuidePage() {
               <div
                 key={tip.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -248,7 +248,7 @@ export default function EmployeeWriteUpGuidePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
                 </div>
               </div>
             );
@@ -277,7 +277,7 @@ export default function EmployeeWriteUpGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Fill out and save a write-up for your next incident
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Customize the warning levels, violation categories, and disciplinary actions to match your
                 practice, fill in the details, and save it under the employee&apos;s name and the date. Print
                 any of them as a clean, sign-off-ready document for the file.

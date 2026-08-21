@@ -97,7 +97,7 @@ const runningWellTips = [
 
 export default function GoalSettingGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -129,7 +129,7 @@ export default function GoalSettingGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Goal Setting Guide
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A $60,000 monthly revenue goal is too big to actually manage — nobody notices they&apos;re
             behind until it&apos;s week four and too late to fix it. The practices that consistently hit
             their numbers are the ones that break big goals down into something small enough to check
@@ -143,7 +143,7 @@ export default function GoalSettingGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -153,7 +153,7 @@ export default function GoalSettingGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Big goals hide problems. Small goals surface them.
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             A single yearly or monthly number is easy to set and easy to lose track of — there&apos;s no
             natural moment where you&apos;re forced to check in against it, so a slow stretch can run for
             weeks before anyone notices. Breaking that number down into a weekly, then daily, target
@@ -175,7 +175,7 @@ export default function GoalSettingGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Yearly → monthly → weekly → daily
         </h2>
-        <p className="text-sm mb-8 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-8 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Every big goal should cascade down until it lands on a number small enough that one person can
           look at it and immediately know whether today was a good day or not.
         </p>
@@ -192,10 +192,10 @@ export default function GoalSettingGuidePage() {
               { period: "Today's Check-In", value: "On pace or not?", note: "The only question that matters day to day" },
             ].map((step, idx) => (
               <div key={step.period} className="relative">
-                <div className="rounded-xl border p-5 h-full" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                <div className="rounded-xl border p-5 h-full" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <p className="text-xs tracking-[0.15em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.6)" }}>{step.period}</p>
                   <p className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>{step.value}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{step.note}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{step.note}</p>
                 </div>
                 {idx < 3 && (
                   <div className="hidden sm:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 items-center justify-center w-6 h-6" style={{ color: "rgba(162,140,117,0.4)" }}>
@@ -205,7 +205,7 @@ export default function GoalSettingGuidePage() {
               </div>
             ))}
           </div>
-          <p className="text-sm leading-relaxed mt-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mt-6" style={{ color: "rgba(255,253,246,0.6)" }}>
             Nobody can act on &quot;$60,000 for the month&quot; on a random Tuesday. Everybody can act on
             &quot;we need $2,800 more today.&quot; The Goal Tracker tool below does this math for you
             automatically, recalculating the pace you need for every remaining business day as progress
@@ -225,7 +225,7 @@ export default function GoalSettingGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Goals worth setting in an aesthetic or wellness practice
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Not every category applies to every role — a front desk goal set and a provider goal set should
           look different. Pick a handful that map to what each person actually controls.
         </p>
@@ -237,7 +237,7 @@ export default function GoalSettingGuidePage() {
               <div
                 key={cat.title}
                 className="rounded-xl border p-7"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div
@@ -250,7 +250,7 @@ export default function GoalSettingGuidePage() {
                 </div>
                 <ul className="space-y-1.5">
                   {cat.examples.map((ex) => (
-                    <li key={ex} className="text-sm flex items-start gap-2" style={{ color: "rgba(255,253,246,0.5)" }}>
+                    <li key={ex} className="text-sm flex items-start gap-2" style={{ color: "rgba(255,253,246,0.6)" }}>
                       <span style={{ color: "#a28c75", flexShrink: 0 }}>·</span> {ex}
                     </li>
                   ))}
@@ -272,7 +272,7 @@ export default function GoalSettingGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Running it well
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           The breakdown is the framework. These habits are what make it actually change behavior.
         </p>
 
@@ -283,7 +283,7 @@ export default function GoalSettingGuidePage() {
               <div
                 key={tip.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -293,7 +293,7 @@ export default function GoalSettingGuidePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
                 </div>
               </div>
             );
@@ -322,7 +322,7 @@ export default function GoalSettingGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Set this month&apos;s goals and track pace as you go
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Set a target for the period, log progress and business days remaining as they come in, and
                 see exactly what you need to hit per day to stay on track. Print a worksheet for the team
                 to fill in by hand, then log it back in — and save the whole stack under a name and date

@@ -218,7 +218,7 @@ const successMetrics = [
 
 export default function GoogleBusinessProfilePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -267,7 +267,7 @@ export default function GoogleBusinessProfilePage() {
           </h1>
           <p
             className="text-base leading-relaxed max-w-2xl mb-6"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             A complete standard operating procedure for building, maintaining, and growing your Google Business Profile — the single most powerful free marketing tool available to your practice.
           </p>
@@ -312,7 +312,7 @@ export default function GoogleBusinessProfilePage() {
             <p className="text-lg font-light leading-snug mb-2" style={{ color: "#fffdf6" }}>
               Become one of the top three businesses in Google&apos;s Local Map Pack for your services.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
               An optimized GBP improves your local search rankings, increases website traffic, generates direct phone calls, and drives appointment bookings — at zero cost.
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function GoogleBusinessProfilePage() {
                 {setupChecklist.map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.5)", fontSize: "10px" }}>□</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -349,7 +349,7 @@ export default function GoogleBusinessProfilePage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.55)" }}>
                 Choose the Right Categories
               </p>
-              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.3)" }}>
+              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.4)" }}>
                 Your primary category carries significant ranking weight.
               </p>
               <div className="space-y-2">
@@ -376,7 +376,7 @@ export default function GoogleBusinessProfilePage() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.25)" }}>
+              <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.32)" }}>
                 Only select categories that truly represent your practice. Avoid irrelevant categories just to rank higher.
               </p>
             </div>
@@ -392,23 +392,23 @@ export default function GoogleBusinessProfilePage() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <p className="text-xs font-medium mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+                <p className="text-xs font-medium mb-3" style={{ color: "rgba(255,253,246,0.7)" }}>
                   Description structure
                 </p>
                 <div className="space-y-2">
                   {["Who you are", "What you specialize in", "Where you're located", "What makes you unique", "Call-to-action"].map((item, i) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="text-xs font-light" style={{ color: "rgba(162,140,117,0.45)", width: "16px" }}>{i + 1}</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.25)" }}>
+                <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.32)" }}>
                   Avoid keyword stuffing. Use natural language that incorporates terms patients actually search.
                 </p>
               </div>
               <div>
-                <p className="text-xs font-medium mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+                <p className="text-xs font-medium mb-3" style={{ color: "rgba(255,253,246,0.7)" }}>
                   Incorporate these keywords naturally
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -457,12 +457,12 @@ export default function GoogleBusinessProfilePage() {
                   {serviceSplitExample.createIndividual.map((s) => (
                     <div key={s} className="flex items-center gap-2">
                       <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "9px" }}>·</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{s}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{s}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
                 Do the same for: {serviceSplitExample.doSameFor.join(", ")}
               </p>
             </div>
@@ -479,14 +479,14 @@ export default function GoogleBusinessProfilePage() {
                 {["Who it's for", "Benefits", "Common concerns addressed", "Treatment areas", "Keywords naturally incorporated"].map((item) => (
                   <div key={item} className="flex items-center gap-2 mb-1.5">
                     <span style={{ color: "#a28c75", fontSize: "10px" }}>→</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </div>
                 ))}
                 <div
                   className="mt-4 rounded-lg p-3 border-l-2"
                   style={{ background: "rgba(162,140,117,0.04)", borderLeftColor: "rgba(162,140,117,0.3)" }}
                 >
-                  <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     &quot;Morpheus8 is an advanced RF microneedling treatment that improves skin laxity, acne scars, wrinkles, fine lines, enlarged pores, and overall skin texture with minimal downtime.&quot;
                   </p>
                 </div>
@@ -504,11 +504,11 @@ export default function GoogleBusinessProfilePage() {
                   {["Skin Care Lines", "Memberships", "Treatment Packages", "Gift Cards", "Popular Procedures"].map((p) => (
                     <div key={p} className="flex items-center gap-2">
                       <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px" }}>·</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{p}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{p}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Include an image, description, optional price, and a CTA on each product.
                 </p>
               </div>
@@ -525,7 +525,7 @@ export default function GoogleBusinessProfilePage() {
                   {faqExamples.map((q) => (
                     <div key={q} className="flex items-start gap-2">
                       <span style={{ color: "rgba(162,140,117,0.5)", fontSize: "10px", marginTop: "2px" }}>?</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{q}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{q}</span>
                     </div>
                   ))}
                 </div>
@@ -557,7 +557,7 @@ export default function GoogleBusinessProfilePage() {
                 {photoTypes.map((p) => (
                   <div key={p} className="flex items-start gap-2">
                     <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px", marginTop: "4px" }}>·</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{p}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{p}</span>
                   </div>
                 ))}
               </div>
@@ -565,7 +565,7 @@ export default function GoogleBusinessProfilePage() {
                 className="mt-4 rounded-lg p-3"
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                   <span style={{ color: "#a28c75" }}>Pro tip:</span> Name files descriptively before uploading — e.g. <span style={{ color: "rgba(162,140,117,0.7)" }}>morpheus8-face-columbus-oh.jpg</span> not IMG_1234.jpg.
                 </p>
               </div>
@@ -585,14 +585,14 @@ export default function GoogleBusinessProfilePage() {
                   15–60 seconds
                 </span>
               </div>
-              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Short videos consistently outperform static images on GBP.
               </p>
               <div className="space-y-1.5">
                 {videoIdeas.map((v) => (
                   <div key={v} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px" }}>·</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{v}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{v}</span>
                   </div>
                 ))}
               </div>
@@ -623,7 +623,7 @@ export default function GoogleBusinessProfilePage() {
                         {p.type}
                       </span>
                     </div>
-                    <p className="text-xs pl-1" style={{ color: "rgba(255,253,246,0.4)" }}>{p.example}</p>
+                    <p className="text-xs pl-1" style={{ color: "rgba(255,253,246,0.5)" }}>{p.example}</p>
                   </div>
                 ))}
               </div>
@@ -646,7 +646,7 @@ export default function GoogleBusinessProfilePage() {
                   <span style={{ color: "#a28c75", fontSize: "11px", marginTop: "2px" }}>✓</span>
                   <div>
                     <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{p.item}</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>{p.why}</p>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{p.why}</p>
                   </div>
                 </div>
               ))}
@@ -691,7 +691,7 @@ export default function GoogleBusinessProfilePage() {
                 {reviewMethods.map((m) => (
                   <div key={m} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px" }}>·</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{m}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{m}</span>
                   </div>
                 ))}
               </div>
@@ -705,7 +705,7 @@ export default function GoogleBusinessProfilePage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.55)" }}>
                 Responding to Reviews
               </p>
-              <p className="text-xs mb-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mb-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Respond to <strong style={{ color: "#fffdf6" }}>every</strong> review — positive, neutral, and negative. Never use identical copy-paste responses.
               </p>
               {[
@@ -720,14 +720,14 @@ export default function GoogleBusinessProfilePage() {
                   >
                     {r.type}
                   </span>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>{r.guidance}</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{r.guidance}</p>
                 </div>
               ))}
               <div
                 className="mt-4 rounded-lg px-4 py-3 border-l-2"
                 style={{ background: "rgba(162,140,117,0.04)", borderLeftColor: "rgba(162,140,117,0.3)" }}
               >
-                <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   &quot;We&apos;re so glad you loved your Morpheus8 treatment. Thank you for trusting our team.&quot;
                 </p>
               </div>
@@ -748,14 +748,14 @@ export default function GoogleBusinessProfilePage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>
                 NAP Consistency
               </p>
-              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Name · Address · Phone — must be <em>exactly</em> identical everywhere.
               </p>
               <div className="space-y-1.5">
                 {napPlatforms.map((p) => (
                   <div key={p} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "9px" }}>·</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{p}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{p}</span>
                   </div>
                 ))}
               </div>
@@ -781,11 +781,11 @@ export default function GoogleBusinessProfilePage() {
                 {["Holidays", "Weather closures", "Special events", "Temporary changes"].map((h) => (
                   <div key={h} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "9px" }}>·</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{h}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{h}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
                 Outdated hours erode patient trust and can trigger negative reviews before a patient even walks in.
               </p>
             </div>
@@ -798,13 +798,13 @@ export default function GoogleBusinessProfilePage() {
               <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>
                 Booking Links & UTM Tracking
               </p>
-              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Add direct links for:
               </p>
               {["Consultations", "Online booking", "Membership info", "Contact page"].map((l) => (
                 <div key={l} className="flex items-center gap-2 mb-1.5">
                   <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "9px" }}>·</span>
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{l}</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{l}</span>
                 </div>
               ))}
               <div
@@ -812,7 +812,7 @@ export default function GoogleBusinessProfilePage() {
                 style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>Add UTM parameters</p>
-                <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                   Tag your website URL, appointment link, and offer links so Google Analytics shows exactly how much traffic your GBP drives.
                 </p>
               </div>
@@ -848,7 +848,7 @@ export default function GoogleBusinessProfilePage() {
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px" }}>□</span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -872,7 +872,7 @@ export default function GoogleBusinessProfilePage() {
                     </div>
                   ))}
                 </div>
-                <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.28)" }}>
+                <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.35)" }}>
                   Only use locations you actually serve.
                 </p>
               </div>
@@ -885,14 +885,14 @@ export default function GoogleBusinessProfilePage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>
                   Build Local Authority
                 </p>
-                <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.35)" }}>
+                <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.45)" }}>
                   Earn backlinks and mentions from local organizations:
                 </p>
                 <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                   {authorityBacklinks.map((b) => (
                     <div key={b} className="flex items-center gap-1.5">
                       <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "9px" }}>·</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{b}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{b}</span>
                     </div>
                   ))}
                 </div>
@@ -913,11 +913,11 @@ export default function GoogleBusinessProfilePage() {
           <div
             className="rounded-2xl border p-7 md:p-8"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
-            <p className="text-xs mb-6" style={{ color: "rgba(255,253,246,0.35)" }}>
+            <p className="text-xs mb-6" style={{ color: "rgba(255,253,246,0.45)" }}>
               Run through this every month without exception. Consistency is what separates top-ranked practices from everyone else.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
@@ -929,7 +929,7 @@ export default function GoogleBusinessProfilePage() {
                   >
                     <span style={{ color: "rgba(162,140,117,0.4)", fontSize: "8px" }}>□</span>
                   </span>
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -958,7 +958,7 @@ export default function GoogleBusinessProfilePage() {
                 <p className="text-sm font-medium mb-2" style={{ color: "#fffdf6" }}>
                   {tip.tip}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {tip.detail}
                 </p>
               </div>
@@ -980,7 +980,7 @@ export default function GoogleBusinessProfilePage() {
               {mistakes.map((m) => (
                 <div key={m} className="flex items-start gap-2.5">
                   <span style={{ color: "rgba(248,113,113,0.55)", fontSize: "11px", marginTop: "1px", flexShrink: 0 }}>✕</span>
-                  <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.5)" }}>{m}</span>
+                  <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.6)" }}>{m}</span>
                 </div>
               ))}
             </div>
@@ -994,14 +994,14 @@ export default function GoogleBusinessProfilePage() {
             <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.55)" }}>
               Success Metrics
             </p>
-            <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.35)" }}>
+            <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.45)" }}>
               A well-optimized profile shows measurable improvement in all of these. Review your GBP Insights monthly.
             </p>
             <div className="space-y-2.5">
               {successMetrics.map((m) => (
                 <div key={m} className="flex items-center gap-2.5">
                   <span style={{ color: "#a28c75", fontSize: "11px" }}>↑</span>
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{m}</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.7)" }}>{m}</span>
                 </div>
               ))}
             </div>
@@ -1029,7 +1029,7 @@ function SectionHeader({ num, title, sub }: { num: string; title: string; sub: s
           </h2>
           <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)", minWidth: "40px" }} />
         </div>
-        <p className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>{sub}</p>
+        <p className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>{sub}</p>
       </div>
     </div>
   );

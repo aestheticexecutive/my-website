@@ -415,7 +415,7 @@ export default function DeviceRoiTrackerPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/finance" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -436,7 +436,7 @@ export default function DeviceRoiTrackerPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Finance &amp; Business Performance</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Device ROI Tracker</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Track what each device actually costs — purchase or financing, plus ongoing warranty,
             servicing, and parts — against the revenue it generates. See your real ROI, your
             break-even progress, and whether you&apos;re on pace to hit your payoff goal.
@@ -444,12 +444,12 @@ export default function DeviceRoiTrackerPage() {
 
           {/* New device */}
           <button onClick={createDevice} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Gauge size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Device</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Track purchase cost, ongoing costs, revenue, and payoff pace for one device.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Track purchase cost, ongoing costs, revenue, and payoff pace for one device.</p>
               </div>
             </div>
           </button>
@@ -461,8 +461,8 @@ export default function DeviceRoiTrackerPage() {
           </div>
 
           {sortedDevices.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No devices tracked yet — add one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No devices tracked yet — add one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -470,7 +470,7 @@ export default function DeviceRoiTrackerPage() {
                 const stats = computeStats(d);
                 return (
                   <div key={d.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                    style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                    style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                       <Gauge size={17} style={{ color: "#a28c75" }} />
                     </div>
@@ -483,7 +483,7 @@ export default function DeviceRoiTrackerPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                         {stats.totalInvested > 0 ? `${formatMoney(stats.totalRevenue)} of ${formatMoney(stats.totalInvested)} invested` : "No cost entered yet"} · Purchased {formatDateShort(d.purchaseDate)}
                       </p>
                     </div>
@@ -531,7 +531,7 @@ export default function DeviceRoiTrackerPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -540,7 +540,7 @@ export default function DeviceRoiTrackerPage() {
               My Devices
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -578,19 +578,19 @@ export default function DeviceRoiTrackerPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Device details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Device Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Device Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Device Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       placeholder="e.g. Laser Device #1" className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Purchase Date</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Purchase Date</label>
                     <input type="date" value={active.purchaseDate} onChange={(e) => updateField(active.id, "purchaseDate", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                   </div>
@@ -612,7 +612,7 @@ export default function DeviceRoiTrackerPage() {
               {/* Purchase & Financing */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Purchase &amp; Financing</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Choose how the device was paid for so we can calculate the full cost, interest included.
                 </p>
                 <div className="flex gap-1.5 mb-3">
@@ -631,27 +631,27 @@ export default function DeviceRoiTrackerPage() {
 
                 {active.paymentType === "full" ? (
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Full Payment Amount</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Full Payment Amount</label>
                     <input type="text" value={active.fullPaymentAmount} onChange={(e) => updateField(active.id, "fullPaymentAmount", e.target.value)}
                       placeholder="$" className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-[10px] leading-relaxed" style={{ color: "rgba(255,253,246,0.3)" }}>Leave down payment at $0 if you're financing the entire cost with monthly payments only.</p>
+                    <p className="text-[10px] leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Leave down payment at $0 if you're financing the entire cost with monthly payments only.</p>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Down Payment</label>
+                        <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Down Payment</label>
                         <input type="text" value={active.downPayment} onChange={(e) => updateField(active.id, "downPayment", e.target.value)}
                           placeholder="$0" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                       </div>
                       <div>
-                        <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Monthly Payment</label>
+                        <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Monthly Payment</label>
                         <input type="text" value={active.monthlyPayment} onChange={(e) => updateField(active.id, "monthlyPayment", e.target.value)}
                           placeholder="$" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                       </div>
                     </div>
                     <div>
-                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Term (months)</label>
+                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Term (months)</label>
                       <input type="text" value={active.termMonths} onChange={(e) => updateField(active.id, "termMonths", e.target.value)}
                         placeholder="e.g. 36" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                     </div>
@@ -666,13 +666,13 @@ export default function DeviceRoiTrackerPage() {
               {/* Ongoing costs */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Ongoing Costs</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Warranties, servicing, and replacement parts — logged as they happen.
                 </p>
                 <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                   <div className="p-3 space-y-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.costs.length === 0 && (
-                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.2)" }}>No costs logged yet.</p>
+                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.28)" }}>No costs logged yet.</p>
                     )}
                     {[...active.costs].sort((a, b) => (a.date < b.date ? 1 : -1)).map((c) => (
                       <div key={c.id} className="flex items-start gap-2 group py-1 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
@@ -680,9 +680,9 @@ export default function DeviceRoiTrackerPage() {
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatMoney(parseMoney(c.amount))}</span>
                             <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: "rgba(162,140,117,0.1)", color: "rgba(162,140,117,0.7)" }}>{CATEGORY_LABELS[c.category]}</span>
-                            <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.3)" }}>{formatDateShort(c.date)}</span>
+                            <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.4)" }}>{formatDateShort(c.date)}</span>
                           </div>
-                          {c.note && <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>{c.note}</p>}
+                          {c.note && <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>{c.note}</p>}
                         </div>
                         <button onClick={() => deleteCost(active.id, c.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                           <Trash2 size={11} />
@@ -718,7 +718,7 @@ export default function DeviceRoiTrackerPage() {
               {/* Revenue log */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Revenue From This Device</p>
-                <p className="text-[11px] leading-relaxed mb-2" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Log revenue as it comes in — monthly, quarterly, or annually.
                 </p>
                 <div className="flex gap-1.5 mb-3">
@@ -737,16 +737,16 @@ export default function DeviceRoiTrackerPage() {
                 <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                   <div className="p-3 space-y-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.revenues.length === 0 && (
-                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.2)" }}>No revenue logged yet.</p>
+                      <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.28)" }}>No revenue logged yet.</p>
                     )}
                     {[...active.revenues].sort((a, b) => (a.date < b.date ? 1 : -1)).map((r) => (
                       <div key={r.id} className="flex items-start gap-2 group py-1 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatMoney(parseMoney(r.amount))}</span>
-                            <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.3)" }}>{formatDateShort(r.date)}</span>
+                            <span className="text-[10px]" style={{ color: "rgba(255,253,246,0.4)" }}>{formatDateShort(r.date)}</span>
                           </div>
-                          {r.note && <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>{r.note}</p>}
+                          {r.note && <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>{r.note}</p>}
                         </div>
                         <button onClick={() => deleteRevenue(active.id, r.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                           <Trash2 size={11} />
@@ -776,17 +776,17 @@ export default function DeviceRoiTrackerPage() {
               {/* Goals */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Payoff &amp; ROI Goals</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Set a target payoff date and, optionally, a target ROI to track your pace against.
                 </p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Target Payoff Date</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Target Payoff Date</label>
                     <input type="date" value={active.payoffGoalDate} onChange={(e) => updateField(active.id, "payoffGoalDate", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Target ROI % (optional, beyond break-even)</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Target ROI % (optional, beyond break-even)</label>
                     <input type="text" value={active.roiGoalPercent} onChange={(e) => updateField(active.id, "roiGoalPercent", e.target.value)}
                       placeholder="e.g. 50" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>

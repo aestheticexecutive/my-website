@@ -84,7 +84,7 @@ const runningTips = [
 
 export default function StaffMeetingAgendaPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -116,7 +116,7 @@ export default function StaffMeetingAgendaPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Staff Meeting Agenda
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A simple, repeatable six-part agenda for your recurring team meeting — built to surface real
             information, keep everyone pointed at the same goals, and get the whole team on the same page
             without the meeting sprawling into an hour and a half.
@@ -129,7 +129,7 @@ export default function StaffMeetingAgendaPage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -139,7 +139,7 @@ export default function StaffMeetingAgendaPage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             One agenda, four jobs done at once
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             A good recurring team meeting has to do more than just fill the calendar. This structure is built
             to do four things every single time: build genuine connection (Icebreaker), create honest
             accountability (Wins &amp; Challenges, Goal Tracking), protect operational consistency (Updates
@@ -161,7 +161,7 @@ export default function StaffMeetingAgendaPage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           What to cover, and why it matters
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Run through these in order. Each one earns its spot on the agenda for a specific reason — together
           they make sure nothing important falls through the cracks between meetings.
         </p>
@@ -173,7 +173,7 @@ export default function StaffMeetingAgendaPage() {
               <div
                 key={item.title}
                 className="rounded-xl border p-7 flex flex-col gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div className="flex items-start gap-4">
                   <span className="font-display text-2xl font-light flex-shrink-0" style={{ color: "rgba(162,140,117,0.3)" }}>
@@ -197,7 +197,7 @@ export default function StaffMeetingAgendaPage() {
                   </div>
                 </div>
                 <div style={{ height: "1px", background: "rgba(162,140,117,0.08)" }} />
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {item.why}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function StaffMeetingAgendaPage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Running it well
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           The agenda is the easy part. These four habits are what make the meeting actually worth everyone's time.
         </p>
 
@@ -228,7 +228,7 @@ export default function StaffMeetingAgendaPage() {
               <div
                 key={tip.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -238,7 +238,7 @@ export default function StaffMeetingAgendaPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
                 </div>
               </div>
             );
@@ -267,7 +267,7 @@ export default function StaffMeetingAgendaPage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Run this agenda and keep every meeting's notes in one place
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 The Meeting Notes tool comes pre-loaded with these six sections — customize them to fit your
                 team, then log notes for every meeting with a name and date so you can always look back and
                 prepare for what&apos;s next.

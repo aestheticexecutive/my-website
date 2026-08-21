@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function OperationsResourcesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -55,7 +55,7 @@ export default function OperationsResourcesPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             SOPs, workflow optimization, scheduling systems, vendor management,
             and day-to-day practice operations — built to run a tight ship.
@@ -78,7 +78,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/opening-closing-checklist"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -101,7 +101,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Pre-loaded with common MedSpa opening and closing duties — toggle them on or off, edit the wording, add your own, and set how often each one needs to happen. Print a branded checklist with a checkbox, initials line, and date line for every task.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -140,7 +140,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/inventory-management"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -163,7 +163,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Track products by category, vendor, unit, and cost. Log physical counts and incoming stock, see your on-site dollar value update live, and get red/yellow highlights the moment an item hits or drops below its par level.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -202,7 +202,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/intake-form-builder"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -225,7 +225,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Build a branded patient intake form in minutes. Enter your practice name, choose your accent color, toggle or edit the 34 pre-loaded concern questions across 4 sections, add your own items, and print or save as a PDF — ready to hand to patients on day one.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -252,7 +252,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/treatment-plan-builder"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -275,7 +275,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Build a branded, print-ready treatment plan in minutes. Add up to 6 treatment blocks with sessions, pricing, concerns, and downtime — plus a home care product table and additional notes section. Fill it in for a specific patient or leave fields blank for a reusable template.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -314,7 +314,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/consultation-conversion-tracker"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -337,7 +337,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Log consultations by provider and service type — how many purchased and how many didn't — then run reports for any date range to see conversion rates broken down by provider and by consult type, with a notes log to capture context behind the numbers.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -376,7 +376,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/cross-selling-tool"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -399,7 +399,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Brainstorm your top cross-selling combos, audit current performance, map cross-sell
                 moments across the patient journey, and build a training and tracking plan — pre-loaded
                 with the source template&apos;s example journey stages, training topics, and metrics.
@@ -459,7 +459,7 @@ export default function OperationsResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 The 7-step process for defining your best cross-sells, mapping the patient journey,
                 building the tools your team needs, and training them to use it with confidence.
               </p>
@@ -494,7 +494,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/front-desk-tool"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -517,7 +517,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Audit current front desk responsibilities, define the power potential across revenue,
                 patient experience, efficiency, and marketing, mystery shop the experience, and build a
                 real training and reward plan — pre-loaded with the source template&apos;s example
@@ -578,7 +578,7 @@ export default function OperationsResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 The 7-step process for turning your front desk into a real driver of revenue,
                 retention, and reviews — from an honest audit through recognition and reward.
               </p>
@@ -613,7 +613,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/downtime-revenue-tracker"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -636,7 +636,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 100 revenue-driving actions across 7 areas — content, patient win-back, new
                 patient pipeline, promotions, consultation readiness, reputation, and team
                 systems. Log a completion with a date and a note, and mark the same action
@@ -697,7 +697,7 @@ export default function OperationsResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 What each of the 7 areas actually does for your practice, and the best way
                 to approach it — from content and win-back calls through team readiness.
               </p>
@@ -732,7 +732,7 @@ export default function OperationsResourcesPage() {
           href="/members/resources/operations/goal-tracker"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -755,7 +755,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Set a target for the period, log progress and business days remaining as they come in, and see exactly how far off pace you are and what you need per business day to still hit it. Print a fill-in worksheet for the team, then log their numbers back in.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -813,7 +813,7 @@ export default function OperationsResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 Suggested goals worth setting across revenue, acquisition, retention, and provider productivity, plus why breaking a big goal into weekly and daily pace is what actually keeps a team on track.
               </p>
             </div>
@@ -850,7 +850,7 @@ export default function OperationsResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mb-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -883,7 +883,7 @@ export default function OperationsResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Log every secret shop in one place — own practice or competitor. Fill in all 9
                 sections of the questionnaire, upload photos of forms or signage, add notes, and
                 track your overall score across every visit. Your full competitive intelligence library,
@@ -953,7 +953,7 @@ export default function OperationsResourcesPage() {
                     Guide
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                   The strategy behind secret shopping — why to shop yourself, why to shop
                   competitors, cadence, how to debrief findings, and what to do with the results.
                 </p>
@@ -1009,7 +1009,7 @@ export default function OperationsResourcesPage() {
                     Print / PDF
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                   All 9 sections with write-in lines and scoring boxes — formatted for print.
                   Take it on a shop, fill it in by hand, then log your answers and photos digitally.
                 </p>

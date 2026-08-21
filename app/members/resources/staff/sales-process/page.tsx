@@ -47,7 +47,7 @@ const stages = [
 
 export default function SalesProcessPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -96,7 +96,7 @@ export default function SalesProcessPage() {
           </h1>
           <p
             className="text-base leading-relaxed max-w-2xl mb-8"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             A complete conversion playbook covering every stage of the patient journey — from the
             first inquiry to a closed treatment plan. Scripts, objection handling, and follow-up
@@ -142,7 +142,7 @@ export default function SalesProcessPage() {
               >
                 {stat.num}
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 {stat.label}
               </p>
             </div>
@@ -170,7 +170,7 @@ export default function SalesProcessPage() {
                 key={stage.num}
                 className="rounded-xl border p-6 flex gap-5"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.1)",
                 }}
               >
@@ -190,7 +190,7 @@ export default function SalesProcessPage() {
                   >
                     {stage.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                     {stage.body}
                   </p>
                 </div>
@@ -231,7 +231,7 @@ export default function SalesProcessPage() {
                 style={{
                   background: "rgba(162,140,117,0.07)",
                   border: "1px solid rgba(162,140,117,0.15)",
-                  color: "rgba(255,253,246,0.5)",
+                  color: "rgba(255,253,246,0.6)",
                 }}
               >
                 <span style={{ color: "#a28c75" }}>·</span>
@@ -245,7 +245,7 @@ export default function SalesProcessPage() {
         <div
           className="rounded-2xl border p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -256,7 +256,7 @@ export default function SalesProcessPage() {
             >
               Ready to train your team?
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
               The interactive training tracks your progress through all 6 stages. Mark each
               section complete as you go, or use it as a reference during team coaching sessions.
             </p>

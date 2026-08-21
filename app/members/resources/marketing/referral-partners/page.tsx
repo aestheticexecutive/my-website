@@ -62,7 +62,7 @@ const onboardingSteps = [
 
 export default function ReferralPartnersPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -107,7 +107,7 @@ export default function ReferralPartnersPage() {
           >
             Referral Partner Program
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How to build and run a structured referral program with individual service providers
             in your community — using a simple, trackable, high-converting Give $50 / Get $50 model.
           </p>
@@ -117,7 +117,7 @@ export default function ReferralPartnersPage() {
       {/* ── Download bar ── */}
       <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4 flex-wrap">
-          <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
             Want to share this program with your team or a potential partner?
           </p>
           <a
@@ -147,7 +147,7 @@ export default function ReferralPartnersPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-base leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-base leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.7)" }}>
             One of the most effective and low-cost ways to grow a med spa is by building relationships
             with local service providers who already serve your ideal clientele. Unlike advertising,
             referrals from trusted relationships convert at a significantly higher rate — and cost far less.
@@ -175,7 +175,7 @@ export default function ReferralPartnersPage() {
                 key={card.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.14)",
                 }}
               >
@@ -188,7 +188,7 @@ export default function ReferralPartnersPage() {
                 <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                   {card.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {card.body}
                 </p>
               </div>
@@ -209,7 +209,7 @@ export default function ReferralPartnersPage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-8"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -219,7 +219,7 @@ export default function ReferralPartnersPage() {
                 The &ldquo;Give $50, Get $50&rdquo; Model
               </h2>
             </div>
-            <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.65)" }}>
               This is the recommended structure — simple enough to explain in 60 seconds, compelling enough for partners to actually use it.
             </p>
 
@@ -246,7 +246,7 @@ export default function ReferralPartnersPage() {
                     {col.items.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.6)" }} />
-                        <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>
+                        <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>
                           {item}
                         </span>
                       </li>
@@ -290,7 +290,7 @@ export default function ReferralPartnersPage() {
                     <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                       {card.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                       {card.body}
                     </p>
                   </div>
@@ -309,7 +309,7 @@ export default function ReferralPartnersPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             The best partners are businesses that have a similar clientele, are relationship-driven,
             and have loyal clients who trust their recommendations. Think: individual service providers
             who see the same people regularly.
@@ -328,7 +328,7 @@ export default function ReferralPartnersPage() {
                 <p className="font-display text-sm font-light mb-1" style={{ color: "#fffdf6" }}>
                   {p.label}
                 </p>
-                <p className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.35)" }}>
+                <p className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.45)" }}>
                   {p.note}
                 </p>
               </div>
@@ -343,7 +343,7 @@ export default function ReferralPartnersPage() {
               borderLeft: "3px solid rgba(162,140,117,0.4)",
             }}
           >
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
               <span style={{ color: "#a28c75" }}>Start with warm connections.</span>{" "}
               Your hairstylist, your realtor, your existing patients, vendors you already use.
               Warm relationships convert significantly better than cold outreach — and they feel
@@ -361,7 +361,7 @@ export default function ReferralPartnersPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Recommended outreach order: Instagram DM → Email → Phone call → In-person visit.
             Lead with the channel that feels most natural for the relationship.
           </p>
@@ -387,14 +387,14 @@ export default function ReferralPartnersPage() {
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div
                   className="rounded-lg p-5 font-mono text-sm leading-loose"
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -430,7 +430,7 @@ Looking forward to connecting!`}
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <p className="text-xs mb-3" style={{ color: "rgba(162,140,117,0.65)" }}>
                   Subject line options: &ldquo;Local Partnership Opportunity&rdquo; · &ldquo;Referral Partnership Opportunity&rdquo; · &ldquo;Let&apos;s Cross-Promote Our Businesses&rdquo;
@@ -440,7 +440,7 @@ Looking forward to connecting!`}
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -492,7 +492,7 @@ ABC Med Spa
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div className="space-y-5">
                   {[
@@ -541,7 +541,7 @@ ABC Med Spa
                         <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>
                           {step.title}
                         </p>
-                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                           {step.body}
                         </p>
                         {step.example && (
@@ -573,7 +573,7 @@ ABC Med Spa
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             The onboarding visit is the most important step. People refer businesses they trust and
             personally enjoy — and you can&apos;t build that through a text chain alone.
           </p>
@@ -584,7 +584,7 @@ ABC Med Spa
                 key={step.num}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -599,7 +599,7 @@ ABC Med Spa
                     <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                       {step.body}
                     </p>
                   </div>
@@ -618,7 +618,7 @@ ABC Med Spa
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Strong partnerships require consistency. The goal is to stay on their radar, keep cards
             stocked, and make them feel genuinely valued — not just like a card distributor.
           </p>
@@ -644,14 +644,14 @@ ABC Med Spa
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div
                   className="rounded-lg p-5 font-mono text-sm leading-loose"
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -683,14 +683,14 @@ Also wanted to say thank you again for partnering with us — we truly appreciat
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div
                   className="rounded-lg p-5 font-mono text-sm leading-loose"
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -712,7 +712,7 @@ We've added your referral credit to your account 😊`}
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Once the referral relationship is established, these partnerships can go much further.
           </p>
 
@@ -746,7 +746,7 @@ We've added your referral credit to your account 😊`}
                   {col.items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
                       <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
-                      <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>
                         {item}
                       </span>
                     </li>
@@ -762,7 +762,7 @@ We've added your referral credit to your account 😊`}
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -772,7 +772,7 @@ We've added your referral credit to your account 😊`}
             <p className="font-display text-2xl font-light mb-4 leading-snug" style={{ color: "#fffdf6" }}>
               The practices that grow fastest become deeply integrated in their local communities.
             </p>
-            <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               Focus less on &ldquo;selling&rdquo; the program — and more on building genuine,
               mutually beneficial relationships. When done correctly, your partner network
               becomes one of the most powerful and sustainable referral sources in your practice.

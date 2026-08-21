@@ -43,7 +43,7 @@ const sections = [
 
 export default function ResourcesHubPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div className="relative overflow-hidden">
         <div
@@ -74,7 +74,7 @@ export default function ResourcesHubPage() {
           </h1>
           <p
             className="text-base md:text-lg max-w-xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.55)" }}
+            style={{ color: "rgba(255,253,246,0.65)" }}
           >
             Premium guides, templates, and tools — organized by the areas that
             matter most to your practice.
@@ -152,7 +152,7 @@ export default function ResourcesHubPage() {
                   {/* Description */}
                   <p
                     className="text-sm leading-relaxed flex-1"
-                    style={{ color: "rgba(255,253,246,0.5)" }}
+                    style={{ color: "rgba(255,253,246,0.6)" }}
                   >
                     {section.description}
                   </p>

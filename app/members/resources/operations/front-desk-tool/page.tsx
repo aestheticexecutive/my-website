@@ -295,11 +295,11 @@ export default function FrontDeskToolPage() {
       <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
         <div className="p-3 space-y-1" style={{ background: "rgba(0,0,0,0.15)" }}>
           {items.length === 0 && hint && (
-            <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.2)" }}>{hint}</p>
+            <p className="text-xs italic py-1" style={{ color: "rgba(255,253,246,0.28)" }}>{hint}</p>
           )}
           {items.map((it) => (
             <div key={it.id} className="flex items-start gap-2 py-1 group">
-              <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{it.text}</span>
+              <span className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{it.text}</span>
               <button onClick={() => deleteBullet(planId, field, it.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" style={{ color: "rgba(162,140,117,0.4)" }}>
                 <Trash2 size={11} />
               </button>
@@ -322,7 +322,7 @@ export default function FrontDeskToolPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/operations" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -343,7 +343,7 @@ export default function FrontDeskToolPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Operations</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Front Desk Power Tool</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Audit current front desk responsibilities, define the power potential across revenue,
             experience, efficiency, and marketing, mystery shop the experience, and build a real
             training and reward plan — pre-loaded with the source template&apos;s example
@@ -352,12 +352,12 @@ export default function FrontDeskToolPage() {
 
           {/* New plan */}
           <button onClick={createPlan} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Headset size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Front Desk Plan</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Starts pre-loaded with example power-area contributions and training initiatives — edit or delete anything.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Starts pre-loaded with example power-area contributions and training initiatives — edit or delete anything.</p>
               </div>
             </div>
           </button>
@@ -369,20 +369,20 @@ export default function FrontDeskToolPage() {
           </div>
 
           {sortedPlans.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No front desk plans saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No front desk plans saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
               {sortedPlans.map((p) => (
                 <div key={p.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                     <Headset size={17} style={{ color: "#a28c75" }} />
                   </div>
                   <div className="flex-1 min-w-0 cursor-pointer" onClick={() => openPlan(p.id)}>
                     <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{p.name}</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                       {p.responsibilities.length} responsibilities · {p.training.length} training initiatives · Created {formatDateShort(p.createdAt)}
                     </p>
                   </div>
@@ -427,7 +427,7 @@ export default function FrontDeskToolPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -436,7 +436,7 @@ export default function FrontDeskToolPage() {
               My Plans
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -474,25 +474,25 @@ export default function FrontDeskToolPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Plan details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Plan Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date Completed</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date Completed</label>
                       <input type="date" value={active.dateCompleted} onChange={(e) => updateField(active.id, "dateCompleted", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Completed By</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Completed By</label>
                       <input type="text" value={active.completedBy} onChange={(e) => updateField(active.id, "completedBy", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={inputStyle} />
                     </div>
@@ -515,18 +515,18 @@ export default function FrontDeskToolPage() {
               {/* Step 1: Audit */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 1 · Audit Current Roles + Impact</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   e.g. greeting & check-in, upselling add-ons or retail, booking future appointments, handling payments, managing scheduling gaps
                 </p>
                 {renderBulletSection(active.id, "responsibilities", "Add a responsibility...", "No responsibilities added yet.")}
                 <div className="space-y-2 mt-3">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Strengths</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Strengths</label>
                     <textarea rows={2} value={active.strengths} onChange={(e) => updateField(active.id, "strengths", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Opportunities</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Opportunities</label>
                     <textarea rows={2} value={active.opportunities} onChange={(e) => updateField(active.id, "opportunities", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
@@ -536,7 +536,7 @@ export default function FrontDeskToolPage() {
               {/* Step 2: Power potential */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 2 · Front Desk Power Potential</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Pre-loaded with example contributions per area — edit and flag where the current gap is.
                 </p>
                 <div className="space-y-2.5">
@@ -549,12 +549,12 @@ export default function FrontDeskToolPage() {
                         </div>
                         <div className="p-3 space-y-2" style={{ background: "rgba(0,0,0,0.15)" }}>
                           <div>
-                            <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>How front desk could contribute</label>
+                            <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How front desk could contribute</label>
                             <input type="text" value={entry.contribution} onChange={(e) => updatePowerArea(active.id, area, "contribution", e.target.value)}
                               className="w-full text-xs rounded px-2 py-1.5 outline-none" style={inputStyle} />
                           </div>
                           <div>
-                            <label className="text-[10px] mb-1.5 block" style={{ color: "rgba(255,253,246,0.35)" }}>Current gap?</label>
+                            <label className="text-[10px] mb-1.5 block" style={{ color: "rgba(255,253,246,0.45)" }}>Current gap?</label>
                             <div className="flex gap-1.5">
                               {(["Yes", "No"] as const).map((opt) => (
                                 <button key={opt} onClick={() => updatePowerArea(active.id, area, "gap", entry.gap === opt ? "" : opt)}
@@ -581,10 +581,10 @@ export default function FrontDeskToolPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 3 · Mystery Shop the Experience</p>
                 <ul className="mb-2 space-y-0.5">
                   {["How welcoming is the greeting?", "How well do they explain services or guide booking?", "Are upsells offered naturally?", "Is follow-up clear?"].map((q) => (
-                    <li key={q} className="text-[11px] leading-relaxed" style={{ color: "rgba(255,253,246,0.3)" }}>· {q}</li>
+                    <li key={q} className="text-[11px] leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>· {q}</li>
                   ))}
                 </ul>
-                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Key insights</label>
+                <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Key insights</label>
                 <textarea rows={3} value={active.mysteryShopInsights} onChange={(e) => updateField(active.id, "mysteryShopInsights", e.target.value)}
                   className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
               </section>
@@ -592,7 +592,7 @@ export default function FrontDeskToolPage() {
               {/* Step 4: Goals */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 4 · Set Clear Front Desk Goals</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   e.g. upsell rate X%, rebooking rate X%, X reviews collected per month, X% inquiry-to-consult conversion
                 </p>
                 {renderBulletSection(active.id, "goals", "Add a goal...", "No goals added yet.")}
@@ -601,13 +601,13 @@ export default function FrontDeskToolPage() {
               {/* Step 5: Training plan */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 5 · Empowerment &amp; Training Plan</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Pre-loaded with the 4 example initiatives — edit, delete, or add your own.
                 </p>
                 <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.14)" }}>
                   <div className="p-3 space-y-2.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                     {active.training.length === 0 && (
-                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No initiatives yet.</p>
+                      <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No initiatives yet.</p>
                     )}
                     {active.training.map((row) => (
                       <div key={row.id} className="space-y-1.5 pb-2.5 border-b last:border-b-0" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
@@ -639,17 +639,17 @@ export default function FrontDeskToolPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 6 · Tracking + Feedback System</p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>What you'll track</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What you'll track</label>
                     <input type="text" value={active.whatToTrack} onChange={(e) => updateField(active.id, "whatToTrack", e.target.value)}
                       placeholder="e.g. rebooking %, upsell revenue, reviews" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>How often you'll review</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How often you'll review</label>
                     <input type="text" value={active.reviewCadence} onChange={(e) => updateField(active.id, "reviewCadence", e.target.value)}
                       placeholder="e.g. weekly huddles, monthly 1:1s" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>How you'll celebrate wins + coach gaps</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How you'll celebrate wins + coach gaps</label>
                     <textarea rows={2} value={active.celebratePlan} onChange={(e) => updateField(active.id, "celebratePlan", e.target.value)}
                       placeholder="e.g. incentives, positive feedback" className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none placeholder:opacity-30" style={inputStyle} />
                   </div>
@@ -659,7 +659,7 @@ export default function FrontDeskToolPage() {
               {/* Step 7: Recognize + reward */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 7 · Recognize + Reward</p>
-                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-[11px] leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                   e.g. monthly bonus for hitting upsell targets, shout-out in team meetings, gift card or spa service reward
                 </p>
                 {renderBulletSection(active.id, "rewardIdeas", "Add an idea...", "No reward ideas added yet.")}

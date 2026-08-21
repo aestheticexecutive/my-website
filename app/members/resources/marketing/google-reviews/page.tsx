@@ -116,7 +116,7 @@ const trackingMetrics = [
 
 export default function GoogleReviewsPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -154,7 +154,7 @@ export default function GoogleReviewsPage() {
           >
             Google Reviews
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Why Google reviews are one of the most powerful free marketing tools you have,
             and a practical system for collecting them consistently — without it ever feeling awkward.
           </p>
@@ -174,7 +174,7 @@ export default function GoogleReviewsPage() {
           <h2 className="font-display text-xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Why Google Reviews Matter
           </h2>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.7)" }}>
             Google reviews are one of the most powerful — and free — marketing tools available to your practice.
             They influence whether potential patients choose your business, and they play a direct role in how
             Google ranks you in local search results. Practices with a higher volume of recent, high-quality reviews
@@ -196,11 +196,11 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.12)" }}
               >
                 <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.6)" }}>
             Generating Google reviews should be an ongoing initiative — not something you focus on only occasionally.
           </p>
         </div>
@@ -208,11 +208,11 @@ export default function GoogleReviewsPage() {
         {/* The #1 rule */}
         <div>
           <SectionHeader number="1" title='The #1 Rule: Just Ask' />
-          <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
             The biggest reason practices don&apos;t receive more reviews? They simply don&apos;t ask.
             Most happy patients are willing to leave a review — they just need to be prompted.
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
             The confidence of the person asking makes a tremendous difference. Asking for a review should
             feel like a natural part of every checkout process — not something awkward or optional.
           </p>
@@ -221,7 +221,7 @@ export default function GoogleReviewsPage() {
         {/* Ask the right patient */}
         <div>
           <SectionHeader number="2" title="Ask the Right Patient" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             Not every patient should be asked. Focus on the ones who are already telling you they&apos;re happy.
             If someone had concerns or wasn&apos;t completely satisfied, focus on resolving their experience
             instead of requesting a review.
@@ -234,7 +234,7 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <Star size={11} style={{ color: "#a28c75", flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{sign}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{sign}</span>
               </div>
             ))}
           </div>
@@ -243,7 +243,7 @@ export default function GoogleReviewsPage() {
         {/* The conversation */}
         <div>
           <SectionHeader number="3" title="The Perfect Google Review Conversation" />
-          <p className="text-sm leading-relaxed mb-7" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-7" style={{ color: "rgba(255,253,246,0.65)" }}>
             This three-step flow works because each step builds natural momentum toward the ask.
           </p>
           <div className="space-y-4">
@@ -267,11 +267,11 @@ export default function GoogleReviewsPage() {
                 </div>
                 <p
                   className="text-sm italic leading-relaxed mb-3 pl-4"
-                  style={{ color: "rgba(255,253,246,0.75)", borderLeft: "2px solid rgba(162,140,117,0.3)" }}
+                  style={{ color: "rgba(255,253,246,0.82)", borderLeft: "2px solid rgba(162,140,117,0.3)" }}
                 >
                   {s.script}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                   {s.note}
                 </p>
               </div>
@@ -282,7 +282,7 @@ export default function GoogleReviewsPage() {
         {/* Give them time */}
         <div>
           <SectionHeader number="4" title="Give Them Time to Complete It" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             One of the biggest mistakes practices make is asking for a review and immediately moving on
             with checkout. Allow a minute or two for the patient to actually write it. While they&apos;re writing,
             keep yourself busy with something non-intrusive:
@@ -294,19 +294,19 @@ export default function GoogleReviewsPage() {
                 className="rounded-lg px-5 py-4"
                 style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
-                <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{line}</p>
+                <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{line}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
-            When they finish: <span className="italic" style={{ color: "rgba(255,253,246,0.65)" }}>&ldquo;Perfect! Thank you so much — I really appreciate it.&rdquo;</span>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+            When they finish: <span className="italic" style={{ color: "rgba(255,253,246,0.75)" }}>&ldquo;Perfect! Thank you so much — I really appreciate it.&rdquo;</span>
           </p>
         </div>
 
         {/* Make it easy */}
         <div>
           <SectionHeader number="5" title="Make It Easy" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             The easier it is to leave a review, the more reviews you&apos;ll receive. Never make patients search
             for where to leave a review. Have a Google Review QR code everywhere a patient might be:
           </p>
@@ -318,7 +318,7 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <span className="text-base" style={{ color: "#a28c75" }}>·</span>
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{loc}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{loc}</span>
               </div>
             ))}
           </div>
@@ -327,7 +327,7 @@ export default function GoogleReviewsPage() {
         {/* Never incentivize */}
         <div>
           <SectionHeader number="6" title="Never Incentivize Before the Review" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             Google may ask reviewers whether they were offered something in exchange for their review.
             Offering incentives before a review is posted violates Google&apos;s policies and can put your
             listing at risk. Never offer discounts, free products, service credits, gift cards, or giveaway
@@ -341,20 +341,20 @@ export default function GoogleReviewsPage() {
             <p className="text-sm font-medium mb-3" style={{ color: "#fffdf6" }}>
               Reward them <em>after</em> — not before
             </p>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
               If someone takes the time to leave a thoughtful review, it&apos;s perfectly appropriate to thank
               them afterward. These gestures should always happen after the review has been submitted.
             </p>
             <ul className="space-y-2 mb-5">
               {["Send a thank-you text", "Give them a skincare sample at their next appointment", "Personally thank them when they return"].map((item) => (
-                <li key={item} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.6)" }}>
+                <li key={item} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.7)" }}>
                   <span style={{ color: "#a28c75" }}>·</span> {item}
                 </li>
               ))}
             </ul>
             <div
               className="rounded-lg p-4 text-sm italic leading-relaxed"
-              style={{ background: "rgba(255,253,246,0.03)", border: "1px solid rgba(162,140,117,0.12)", color: "rgba(255,253,246,0.55)" }}
+              style={{ background: "rgba(255,253,246,0.03)", border: "1px solid rgba(162,140,117,0.12)", color: "rgba(255,253,246,0.65)" }}
             >
               &ldquo;Thank you so much for taking the time to leave us a Google review! We truly appreciate your kind words.
               Reviews like yours help other patients learn about the experience they can expect with us, and we&apos;re so
@@ -366,7 +366,7 @@ export default function GoogleReviewsPage() {
         {/* Incentivize your team */}
         <div>
           <SectionHeader number="7" title="Incentivize Your Team — Not Your Patients" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             One of the best ways to consistently increase Google reviews is to motivate your staff.
             The habit of asking should become part of every checkout — and the team should feel celebrated
             for making it happen.
@@ -379,7 +379,7 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <Star size={11} style={{ color: "#a28c75", flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</span>
               </div>
             ))}
           </div>
@@ -388,7 +388,7 @@ export default function GoogleReviewsPage() {
         {/* Automate */}
         <div>
           <SectionHeader number="8" title="Automate the Process" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             A review request shouldn&apos;t rely solely on your staff remembering to ask. Use automation
             whenever possible — an automated text sent shortly after the appointment is one of the most
             effective tools in your review strategy.
@@ -408,7 +408,7 @@ export default function GoogleReviewsPage() {
                 className="rounded-lg p-4"
                 style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.12)" }}
               >
-                <p className="text-sm mb-2" style={{ color: "rgba(255,253,246,0.7)" }}>
+                <p className="text-sm mb-2" style={{ color: "rgba(255,253,246,0.78)" }}>
                   Post-appointment text asks about their experience:
                 </p>
                 <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>
@@ -423,7 +423,7 @@ export default function GoogleReviewsPage() {
                   <p className="text-xs font-medium mb-2" style={{ color: "rgba(100,200,120,0.8)" }}>
                     Positive response →
                   </p>
-                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
                     Direct patient to your Google Review page to share publicly.
                   </p>
                 </div>
@@ -434,7 +434,7 @@ export default function GoogleReviewsPage() {
                   <p className="text-xs font-medium mb-2" style={{ color: "rgba(200,100,100,0.7)" }}>
                     Negative response →
                   </p>
-                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
                     Send to an internal feedback form so your team can resolve the issue privately.
                   </p>
                 </div>
@@ -446,7 +446,7 @@ export default function GoogleReviewsPage() {
         {/* Showcase reviews */}
         <div>
           <SectionHeader number="9" title="Showcase Your Reviews" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             Your reviews shouldn&apos;t just live on Google. Repurpose them everywhere. Showing real patient
             experiences builds credibility and reminds others to leave reviews too.
           </p>
@@ -458,7 +458,7 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <span style={{ color: "#a28c75" }}>·</span>
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{channel}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{channel}</span>
               </div>
             ))}
           </div>
@@ -467,7 +467,7 @@ export default function GoogleReviewsPage() {
         {/* Culture */}
         <div>
           <SectionHeader number="10" title="Create a Culture Around Reviews" />
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
             Google reviews should become part of your practice culture, not just something your front
             desk does occasionally. Talk about them in every team meeting and keep the whole team aware
             of where you stand.
@@ -480,11 +480,11 @@ export default function GoogleReviewsPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <Star size={11} style={{ color: "#a28c75", flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{metric}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{metric}</span>
               </div>
             ))}
           </div>
-          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.55)" }}>
             When everyone understands the importance of reviews, asking becomes a natural part of every patient interaction.
           </p>
         </div>
@@ -500,7 +500,7 @@ export default function GoogleReviewsPage() {
           <h2 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
             Google Review Success Checklist
           </h2>
-          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
             Run through this checklist to make sure your review system is fully in place.
           </p>
           <div className="space-y-3">
@@ -515,7 +515,7 @@ export default function GoogleReviewsPage() {
                 >
                   <span className="text-xs" style={{ color: "#a28c75" }}>✓</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
           </div>
@@ -529,7 +529,7 @@ export default function GoogleReviewsPage() {
           <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>
             Remember
           </p>
-          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
+          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>
             The most successful practices don&apos;t have dramatically happier patients — they simply have a
             better system for asking. Every positive patient experience is an opportunity to build your
             online reputation. Make asking for a Google review a consistent part of your checkout process,

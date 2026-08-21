@@ -45,7 +45,7 @@ const emptyForm: WaitlistForm = {
 };
 
 const inputClasses =
-  "w-full h-11 px-4 bg-[#0c0004] border border-[#a28c75]/25 rounded-lg text-sm text-[#fffdf6] outline-none focus:border-[#a28c75]/60 transition-colors";
+  "w-full h-11 px-4 bg-[#170009] border border-[#a28c75]/25 rounded-lg text-sm text-[#fffdf6] outline-none focus:border-[#a28c75]/60 transition-colors";
 const labelClasses =
   "block text-xs font-sans font-medium tracking-[0.1em] uppercase text-[#fffdf6]/40 mb-2";
 
@@ -82,7 +82,7 @@ export default function WaitlistPage() {
   }
 
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       <div className="max-w-2xl mx-auto px-6 pt-40 pb-28">
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#a28c75]/30 bg-[#a28c75]/10 mb-6">

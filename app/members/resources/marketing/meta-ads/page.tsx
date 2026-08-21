@@ -21,7 +21,7 @@ function SectionLabel({ label }: { label: string }) {
 
 export default function MetaAdsPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -46,7 +46,7 @@ export default function MetaAdsPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Meta Ads Best Practices
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Facebook and Instagram advertising for aesthetic practices — how to stop the scroll,
             generate qualified leads, and turn ad spend into profitable, long-term patients.
           </p>
@@ -93,7 +93,7 @@ export default function MetaAdsPage() {
                   <div className="h-24 rounded-lg mb-2 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(47,4,16,0.8), rgba(162,140,117,0.15))" }}>
                     <div className="text-center">
                       <div className="text-xs font-medium mb-1" style={{ color: "#a28c75" }}>✨ Morpheus8</div>
-                      <div className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Limited spots this month</div>
+                      <div className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>Limited spots this month</div>
                     </div>
                   </div>
                   <div className="h-7 rounded flex items-center justify-center text-xs font-medium" style={{ background: "rgba(162,140,117,0.2)", color: "#fffdf6" }}>
@@ -120,7 +120,7 @@ export default function MetaAdsPage() {
                   Facebook and Instagram are <span style={{ color: "#a28c75" }}>interruption-based</span> platforms.
                   People are not actively searching for treatments — they are scrolling.
                 </p>
-                <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Your ad must immediately capture attention, clearly communicate what is being offered,
                   and give viewers a compelling reason to stop scrolling and take action. Unlike search ads,
                   you are creating demand — not capturing it.
@@ -135,7 +135,7 @@ export default function MetaAdsPage() {
                   <span className="text-xl flex-shrink-0">{item.icon}</span>
                   <div>
                     <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -153,7 +153,7 @@ export default function MetaAdsPage() {
               <p className="text-xs tracking-[0.15em] uppercase mb-5" style={{ color: "rgba(162,140,117,0.6)" }}>Recommended starting budget</p>
               <div className="flex items-end gap-3 mb-6">
                 <div className="text-6xl font-light leading-none" style={{ color: "#a28c75" }}>$50</div>
-                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>/ day minimum</div>
+                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>/ day minimum</div>
               </div>
               <div className="space-y-3">
                 {[
@@ -164,13 +164,13 @@ export default function MetaAdsPage() {
                   <div key={row.range} className="flex items-center gap-3 rounded-lg px-4 py-3" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.14)" }}>
                     <div className="flex-shrink-0">
                       <p className="text-sm font-medium" style={{ color: "#a28c75" }}>{row.range}</p>
-                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{row.label}</p>
+                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{row.label}</p>
                     </div>
-                    <p className="text-xs ml-auto text-right" style={{ color: "rgba(255,253,246,0.45)", maxWidth: 160 }}>{row.note}</p>
+                    <p className="text-xs ml-auto text-right" style={{ color: "rgba(255,253,246,0.55)", maxWidth: 160 }}>{row.note}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-xs mt-5 leading-relaxed" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mt-5 leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Only increase budget after proving the campaign is profitable — not before.
               </p>
             </div>
@@ -189,7 +189,7 @@ export default function MetaAdsPage() {
                     <span className="text-lg flex-shrink-0">{item.icon}</span>
                     <div>
                       <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.note}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.note}</p>
                     </div>
                   </div>
                 ))}
@@ -201,7 +201,7 @@ export default function MetaAdsPage() {
         {/* ── BEST TREATMENTS TO ADVERTISE ── */}
         <div>
           <SectionLabel label="Best Treatments to Advertise" />
-          <p className="text-sm leading-relaxed mb-7 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-7 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Lead with treatments patients already recognize — or offers that lower the barrier to entry.
             Don&apos;t run your primary acquisition campaign on a treatment your market isn&apos;t yet familiar with.
           </p>
@@ -219,7 +219,7 @@ export default function MetaAdsPage() {
               <div key={item.label} className="rounded-xl p-4" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <span className="text-2xl mb-2 block">{item.icon}</span>
                 <p className="text-xs font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{item.note}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.note}</p>
               </div>
             ))}
           </div>
@@ -244,7 +244,7 @@ export default function MetaAdsPage() {
                     <span className="text-xs flex-shrink-0 mt-0.5" style={{ color: "#7db870" }}>✓</span>
                     <div>
                       <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                      <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -266,7 +266,7 @@ export default function MetaAdsPage() {
                     <span className="text-xs flex-shrink-0 mt-0.5" style={{ color: "rgba(200,100,100,0.7)" }}>✗</span>
                     <div>
                       <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                      <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -289,7 +289,7 @@ export default function MetaAdsPage() {
               <div key={item.num} className="rounded-xl p-5" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <p className="text-xs font-medium mb-2" style={{ color: "rgba(162,140,117,0.5)" }}>{item.num}</p>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -319,7 +319,7 @@ export default function MetaAdsPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="flex-shrink-0 mt-0.5" style={{ color: "#a28c75" }}>·</span>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -347,7 +347,7 @@ export default function MetaAdsPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="flex-shrink-0 mt-0.5" style={{ color: "#7aabcf" }}>·</span>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -361,7 +361,7 @@ export default function MetaAdsPage() {
         {/* ── LANDING PAGE ── */}
         <div className="rounded-2xl p-7" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.22)" }}>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>Landing Page Rules</h2>
-          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.4)" }}>Never send paid traffic to your homepage. Every ad needs a dedicated landing page.</p>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>Never send paid traffic to your homepage. Every ad needs a dedicated landing page.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { icon: "🎯", label: "One treatment, one page", desc: "Create a dedicated page for the advertised treatment — not your general services page or homepage." },
@@ -375,7 +375,7 @@ export default function MetaAdsPage() {
                 <span className="text-lg flex-shrink-0">{item.icon}</span>
                 <div>
                   <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -395,7 +395,7 @@ export default function MetaAdsPage() {
                     <span className="text-base">🅰️</span>
                     <div>
                       <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>Version A</p>
-                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>Original</p>
+                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Original</p>
                     </div>
                   </div>
                   <div className="text-center text-xs" style={{ color: "rgba(162,140,117,0.4)" }}>run both</div>
@@ -403,13 +403,13 @@ export default function MetaAdsPage() {
                     <span className="text-base">🅱️</span>
                     <div>
                       <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>Version B</p>
-                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>One change</p>
+                      <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>One change</p>
                     </div>
                   </div>
                   <div className="text-center text-xs" style={{ color: "rgba(162,140,117,0.4)" }}>collect data</div>
                   <div className="rounded-lg p-3" style={{ background: "rgba(120,180,120,0.08)", border: "1px solid rgba(120,180,120,0.2)" }}>
                     <p className="text-xs font-medium" style={{ color: "#7db870" }}>✓ Keep winner</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>Test next variable</p>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>Test next variable</p>
                   </div>
                 </div>
               </div>
@@ -429,7 +429,7 @@ export default function MetaAdsPage() {
                   </div>
                   <div>
                     <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -454,12 +454,12 @@ export default function MetaAdsPage() {
               <div key={item.label} className="rounded-xl p-5" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <span className="text-2xl mb-3 block">{item.icon}</span>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.note}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.note}</p>
               </div>
             ))}
           </div>
           <div className="mt-4 rounded-xl px-5 py-4" style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.14)" }}>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               <span style={{ color: "#a28c75" }}>Think beyond immediate ROI.</span> A campaign attracting loyal, repeat patients may outperform
               one with a higher initial return but lower lifetime value. Track both.
             </p>
@@ -482,7 +482,7 @@ export default function MetaAdsPage() {
                 <span className="text-lg flex-shrink-0" style={{ color: "rgba(200,100,100,0.6)" }}>✗</span>
                 <div>
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -492,7 +492,7 @@ export default function MetaAdsPage() {
         {/* ── LAUNCH CHECKLIST ── */}
         <div className="rounded-2xl p-8" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.25)" }}>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>Meta Ads Launch Checklist</h2>
-          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.4)" }}>Run through this before activating any new campaign.</p>
+          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.5)" }}>Run through this before activating any new campaign.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
             {[
               "Choose one treatment to advertise",
@@ -509,12 +509,12 @@ export default function MetaAdsPage() {
                 <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style={{ border: "1px solid rgba(162,140,117,0.35)", background: "rgba(162,140,117,0.08)" }}>
                   <span className="text-xs" style={{ color: "#a28c75" }}>✓</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
           </div>
           <div className="mt-6 rounded-xl px-5 py-4" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.15)" }}>
-            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               <span style={{ color: "#a28c75" }}>Free resource:</span> Meta Blueprint offers free advertising courses covering campaign setup, optimization, and reporting.
               Certification is optional — the free training is genuinely useful.
             </p>
@@ -527,7 +527,7 @@ export default function MetaAdsPage() {
           <p className="font-display text-xl font-light leading-relaxed" style={{ color: "#fffdf6" }}>
             Successful Meta advertising isn&apos;t about generating the cheapest leads — it&apos;s about generating profitable patients.
           </p>
-          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.7)" }}>
             Pair compelling creative with a strong offer, a dedicated landing page, consistent follow-up, and
             disciplined measurement. The practices that approach Meta ads with patience and a testing mindset
             consistently outperform those that chase volume without structure.

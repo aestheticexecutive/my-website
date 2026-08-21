@@ -52,7 +52,7 @@ const categoryColors: Record<string, { color: string; bg: string; border: string
 
 export default function CommunityPartnershipsPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -97,7 +97,7 @@ export default function CommunityPartnershipsPage() {
           >
             Strategic Community Partnerships
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How to build cross-promotional relationships with larger local businesses —
             gyms, wellness studios, boutique retailers, country clubs — to expand your reach,
             build community credibility, and generate qualified leads without paid advertising.
@@ -108,7 +108,7 @@ export default function CommunityPartnershipsPage() {
       {/* ── Download bar ── */}
       <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4 flex-wrap">
-          <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
             Want to share this guide with your team or a potential partner?
           </p>
           <a
@@ -137,7 +137,7 @@ export default function CommunityPartnershipsPage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-8"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -147,7 +147,7 @@ export default function CommunityPartnershipsPage() {
             <p className="font-display text-2xl md:text-3xl font-light mb-4 leading-snug" style={{ color: "#fffdf6" }}>
               &ldquo;Community collaboration marketing.&rdquo;
             </p>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               This is not a &ldquo;track every referral&rdquo; partnership. It&apos;s less about referral credits
               and more about getting in front of new audiences, building local credibility, and
               becoming integrated into your market through genuine mutual support.
@@ -176,7 +176,7 @@ export default function CommunityPartnershipsPage() {
                 key={card.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -189,7 +189,7 @@ export default function CommunityPartnershipsPage() {
                 <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                   {card.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {card.body}
                 </p>
               </div>
@@ -206,7 +206,7 @@ export default function CommunityPartnershipsPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             The best partnerships happen when both businesses serve similar clientele but offer
             non-competing services. Look for businesses that have strong foot traffic, established
             communities, and engaged memberships or client bases.
@@ -224,7 +224,7 @@ export default function CommunityPartnershipsPage() {
                     borderColor: "rgba(162,140,117,0.11)",
                   }}
                 >
-                  <p className="text-sm leading-snug mb-1.5" style={{ color: "rgba(255,253,246,0.7)" }}>
+                  <p className="text-sm leading-snug mb-1.5" style={{ color: "rgba(255,253,246,0.78)" }}>
                     {b.label}
                   </p>
                   <span
@@ -250,7 +250,7 @@ export default function CommunityPartnershipsPage() {
               borderLeft: "3px solid rgba(162,140,117,0.4)",
             }}
           >
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
               <span style={{ color: "#a28c75" }}>Finding partners:</span>{" "}
               Search Instagram, Facebook, TikTok, and Google for local businesses. Attend Chamber of Commerce events,
               local networking events, charity events, and community wellness events. Your existing patients are also
@@ -268,7 +268,7 @@ export default function CommunityPartnershipsPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             The strongest partnerships are interactive and ongoing — not a one-time flyer drop.
           </p>
 
@@ -278,7 +278,7 @@ export default function CommunityPartnershipsPage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.14)",
               }}
             >
@@ -306,7 +306,7 @@ export default function CommunityPartnershipsPage() {
                   </p>
                   <ul className="space-y-1.5">
                     {["Marketing materials", "Referral cards", "Product samples", "Before-and-after photos", "Event flyers"].map(item => (
-                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                         <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span> {item}
                       </li>
                     ))}
@@ -318,7 +318,7 @@ export default function CommunityPartnershipsPage() {
                   </p>
                   <ul className="space-y-1.5">
                     {["Spin-to-Win wheel", "Giveaway entries", "Interactive games", "QR code signups", "Treatment quizzes"].map(item => (
-                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                         <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span> {item}
                       </li>
                     ))}
@@ -331,7 +331,7 @@ export default function CommunityPartnershipsPage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.14)",
               }}
             >
@@ -359,7 +359,7 @@ export default function CommunityPartnershipsPage() {
                   </p>
                   <ul className="space-y-1.5">
                     {['"Local Business Spotlight"', '"Small Business of the Week"', "Instagram story features", "Collaborative reels", "Joint giveaways"].map(item => (
-                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                         <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span> {item}
                       </li>
                     ))}
@@ -371,7 +371,7 @@ export default function CommunityPartnershipsPage() {
                   </p>
                   <ul className="space-y-1.5">
                     {["Credibility by association", "Social proof from real businesses", "Organic reach expansion", "Community identity", "Joint audience growth"].map(item => (
-                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                         <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span> {item}
                       </li>
                     ))}
@@ -401,7 +401,7 @@ export default function CommunityPartnershipsPage() {
                 <h3 className="font-display text-lg font-light mb-1" style={{ color: "#fffdf6" }}>
                   Include Each Other in Patient Materials
                 </h3>
-                <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
                   One of the easiest and most effective collaboration methods — zero extra work after setup.
                 </p>
               </div>
@@ -422,7 +422,7 @@ export default function CommunityPartnershipsPage() {
                   ].map(item => (
                     <li key={item} className="flex items-start gap-2.5">
                       <CheckCircle size={12} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)" }} />
-                      <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.45)" }}>{item}</span>
+                      <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -442,7 +442,7 @@ export default function CommunityPartnershipsPage() {
                   ].map(item => (
                     <li key={item} className="flex items-start gap-2.5">
                       <CheckCircle size={12} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)" }} />
-                      <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.45)" }}>{item}</span>
+                      <span className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -463,7 +463,7 @@ export default function CommunityPartnershipsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
                 At pop-up events and lobby setups, always collect contact information. The goal is
                 to build your lead database and nurture prospects into booked appointments.
               </p>
@@ -471,7 +471,7 @@ export default function CommunityPartnershipsPage() {
               <div
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.14)",
                 }}
               >
@@ -482,7 +482,7 @@ export default function CommunityPartnershipsPage() {
                   {["Name", "Phone number", "Email address"].map(item => (
                     <li key={item} className="flex items-center gap-2.5">
                       <CheckCircle size={13} style={{ color: "rgba(162,140,117,0.5)" }} />
-                      <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                      <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -493,7 +493,7 @@ export default function CommunityPartnershipsPage() {
                   {["Build your lead database", "Continue nurturing leads via text/email", "Convert them into booked patients later"].map(item => (
                     <li key={item} className="flex items-start gap-2.5">
                       <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
-                      <span className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>{item}</span>
+                      <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -501,7 +501,7 @@ export default function CommunityPartnershipsPage() {
             </div>
 
             <div>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
                 For this type of partnership, the recommended promotional offer is a simple{" "}
                 <span style={{ color: "#a28c75" }}>&ldquo;$50 Gift Card Toward Your First Service.&rdquo;</span>{" "}
                 No referral tracking required — just exposure, visibility, and lead generation.
@@ -530,7 +530,7 @@ export default function CommunityPartnershipsPage() {
                   ].map(item => (
                     <div key={item} className="flex items-center gap-2">
                       <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>{item}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -548,7 +548,7 @@ export default function CommunityPartnershipsPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Recommended outreach order: Instagram DM → Email → Phone call → In-person introduction.
             The approach is conversational and collaborative — focus on mutual opportunity, not a sales pitch.
           </p>
@@ -574,14 +574,14 @@ export default function CommunityPartnershipsPage() {
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div
                   className="rounded-lg p-5 font-mono text-sm leading-loose"
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -617,7 +617,7 @@ Looking forward to connecting!`}
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <p className="text-xs mb-3" style={{ color: "rgba(162,140,117,0.65)" }}>
                   Subject line options: &ldquo;Local Collaboration Opportunity&rdquo; · &ldquo;Community Partnership Inquiry&rdquo; · &ldquo;Let&apos;s Collaborate Locally&rdquo;
@@ -627,7 +627,7 @@ Looking forward to connecting!`}
                   style={{
                     background: "rgba(255,253,246,0.03)",
                     border: "1px solid rgba(255,253,246,0.07)",
-                    color: "rgba(255,253,246,0.6)",
+                    color: "rgba(255,253,246,0.7)",
                     whiteSpace: "pre-wrap",
                   }}
                 >
@@ -679,7 +679,7 @@ ABC Med Spa
               </div>
               <div
                 className="p-6"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
               >
                 <div className="space-y-5">
                   {[
@@ -725,7 +725,7 @@ ABC Med Spa
                         <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>
                           {step.title}
                         </p>
-                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                           {step.body}
                         </p>
                         {step.example && (
@@ -758,7 +758,7 @@ ABC Med Spa
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             The strongest partnerships are ongoing, not one-time collaborations. Consistency is what
             separates a meaningful business relationship from a single event that goes nowhere.
           </p>
@@ -785,7 +785,7 @@ ABC Med Spa
                 key={card.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -798,7 +798,7 @@ ABC Med Spa
                 <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                   {card.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {card.body}
                 </p>
               </div>
@@ -824,14 +824,14 @@ ABC Med Spa
             </div>
             <div
               className="p-6"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
             >
               <div
                 className="rounded-lg p-5 font-mono text-sm leading-loose"
                 style={{
                   background: "rgba(255,253,246,0.03)",
                   border: "1px solid rgba(255,253,246,0.07)",
-                  color: "rgba(255,253,246,0.6)",
+                  color: "rgba(255,253,246,0.7)",
                   whiteSpace: "pre-wrap",
                 }}
               >
@@ -850,7 +850,7 @@ Also happy to bring by more promotional materials anytime if needed.`}
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -860,7 +860,7 @@ Also happy to bring by more promotional materials anytime if needed.`}
             <p className="font-display text-2xl font-light mb-4 leading-snug" style={{ color: "#fffdf6" }}>
               The most successful med spas become deeply integrated into their local communities.
             </p>
-            <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               Focus less on &ldquo;selling&rdquo; and more on creating value, supporting local businesses,
               building relationships, and showing up consistently. Over time, these partnerships become
               one of the most powerful and sustainable marketing channels for your practice.
@@ -875,7 +875,7 @@ Also happy to bring by more promotional materials anytime if needed.`}
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <CheckCircle size={12} style={{ color: "rgba(162,140,117,0.6)" }} />
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{item}</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
                 </div>
               ))}
             </div>

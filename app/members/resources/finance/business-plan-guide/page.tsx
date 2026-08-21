@@ -88,7 +88,7 @@ const tips = [
 
 export default function BusinessPlanGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -120,7 +120,7 @@ export default function BusinessPlanGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             1, 5, and 10-Year Business Plan Guide
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Most practices plan a quarter, or a year, ahead — and stop there. This is the
             planning most owners skip: a clear vision, real milestones, and a concrete action
             plan for where your practice is headed at 1, 5, and 10 years out.
@@ -133,7 +133,7 @@ export default function BusinessPlanGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -143,7 +143,7 @@ export default function BusinessPlanGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Why plan past this year
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Most med spa owners run their business one budget cycle at a time — which means
             most decisions get made in reaction to what already happened, not in service of
             where the practice is actually headed. A 1, 5, and 10-year plan forces you to
@@ -165,7 +165,7 @@ export default function BusinessPlanGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Three horizons, three different jobs
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Each horizon answers a different question — near-term execution, mid-term growth,
           and long-term direction.
         </p>
@@ -175,13 +175,13 @@ export default function BusinessPlanGuidePage() {
             <div
               key={h.title}
               className="rounded-xl border p-7 flex flex-col gap-3"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
             >
               <div>
                 <h3 className="font-display text-lg font-light leading-snug" style={{ color: "#fffdf6" }}>{h.title}</h3>
                 <p className="text-[11px] uppercase tracking-wide" style={{ color: "rgba(162,140,117,0.6)" }}>{h.tag}</p>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{h.body}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{h.body}</p>
             </div>
           ))}
         </div>
@@ -198,7 +198,7 @@ export default function BusinessPlanGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           How to actually build one
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Six steps, start to finish — from a blank vision to a scheduled review.
         </p>
 
@@ -209,7 +209,7 @@ export default function BusinessPlanGuidePage() {
               <div
                 key={step.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -219,7 +219,7 @@ export default function BusinessPlanGuidePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{step.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{step.body}</p>
                 </div>
               </div>
             );
@@ -244,10 +244,10 @@ export default function BusinessPlanGuidePage() {
             <div
               key={tip.title}
               className="rounded-xl border p-6"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
             >
               <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
             </div>
           ))}
         </div>
@@ -274,7 +274,7 @@ export default function BusinessPlanGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Build your 1, 5, and 10-year plan
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Work through your vision, revenue milestones, goals, staffing needs, and market
                 risks across all three horizons — then print it or save it to revisit on its
                 own review cadence.

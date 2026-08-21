@@ -24,7 +24,7 @@ function SectionLabel({ label }: { label: string }) {
 
 export default function LeadConversionPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div
@@ -78,7 +78,7 @@ export default function LeadConversionPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed mb-10"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             A step-by-step guide for responding to, nurturing, and converting new patient
             inquiries into consultations and treatments.
@@ -116,7 +116,7 @@ export default function LeadConversionPage() {
           style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.16)" }}
         >
           <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>The goal</p>
-          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>
+          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.82)" }}>
             Respond quickly, build trust, educate the patient, and focus on{" "}
             <span style={{ color: "#fffdf6", fontWeight: 500 }}>booking the consultation</span> — not selling
             the treatment over the phone.
@@ -188,14 +188,14 @@ export default function LeadConversionPage() {
                   {phase.items.map((item) => (
                     <div key={item} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: phase.color }} />
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>
                         {item}
                       </p>
                     </div>
                   ))}
                 </div>
                 <div className="px-5 pb-5">
-                  <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.35)" }}>
+                  <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
                     {phase.note}
                   </p>
                 </div>
@@ -239,7 +239,7 @@ export default function LeadConversionPage() {
                 <p className="text-sm font-medium mb-2" style={{ color: "#fffdf6" }}>
                   {item.headline}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {item.body}
                 </p>
               </div>
@@ -252,7 +252,7 @@ export default function LeadConversionPage() {
           <SectionLabel label="Initial Text Message" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Your first text sets the tone for the entire relationship. It should feel personal,
                 not automated — even when it is. Include all of these elements.
               </p>
@@ -279,7 +279,7 @@ export default function LeadConversionPage() {
                     >
                       {i + 1}
                     </span>
-                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
+                    <p className="text-sm" style={{ color: "rgba(255,253,246,0.78)" }}>
                       {item}
                     </p>
                   </div>
@@ -298,7 +298,7 @@ export default function LeadConversionPage() {
                 </p>
                 <div
                   className="rounded-xl p-4 text-sm leading-relaxed"
-                  style={{ background: "rgba(0,0,0,0.2)", border: "1px solid rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.75)" }}
+                  style={{ background: "rgba(0,0,0,0.2)", border: "1px solid rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.82)" }}
                 >
                   <p>
                     Hi <span style={{ color: "#a28c75" }}>[Patient Name]</span>! This is{" "}
@@ -323,7 +323,7 @@ export default function LeadConversionPage() {
                 </div>
                 <p
                   className="text-xs mt-3 italic"
-                  style={{ color: "rgba(255,253,246,0.3)" }}
+                  style={{ color: "rgba(255,253,246,0.4)" }}
                 >
                   Personalize every field — never send a template that reads like one.
                 </p>
@@ -335,7 +335,7 @@ export default function LeadConversionPage() {
         {/* ── PHONE CALL FRAMEWORK ── */}
         <div>
           <SectionLabel label="Phone Call Framework" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             This 10-step flow works whether you reach them live or leave a voicemail.
             The goal is rapport first, appointment second.
           </p>
@@ -367,7 +367,7 @@ export default function LeadConversionPage() {
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>
                     {item.step}
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     {item.detail}
                   </p>
                 </div>
@@ -409,7 +409,7 @@ export default function LeadConversionPage() {
                     <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>
                       {item.tip}
                     </p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                       {item.why}
                     </p>
                   </div>
@@ -444,10 +444,10 @@ export default function LeadConversionPage() {
                     className="rounded-lg px-4 py-3"
                     style={{ background: "rgba(200,80,80,0.04)", border: "1px solid rgba(200,80,80,0.1)" }}
                   >
-                    <p className="text-sm font-medium mb-1" style={{ color: "rgba(255,253,246,0.85)" }}>
+                    <p className="text-sm font-medium mb-1" style={{ color: "rgba(255,253,246,0.9)" }}>
                       {item.mistake}
                     </p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {item.why}
                     </p>
                   </div>
@@ -488,7 +488,7 @@ export default function LeadConversionPage() {
                 className="rounded-2xl p-5"
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.14)" }}
               >
-                <p className="text-sm italic mb-2" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm italic mb-2" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {item.objection}
                 </p>
                 <div className="flex items-center gap-2 mb-2">
@@ -497,7 +497,7 @@ export default function LeadConversionPage() {
                     {item.response}
                   </p>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {item.detail}
                 </p>
               </div>
@@ -508,7 +508,7 @@ export default function LeadConversionPage() {
         {/* ── CONVERSION FUNNEL ── */}
         <div>
           <SectionLabel label="Track Your Metrics" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Every inquiry should move through this funnel. Tracking each stage tells you exactly
             where leads are falling off — and where to focus your effort.
           </p>
@@ -559,7 +559,7 @@ export default function LeadConversionPage() {
         {/* ── POST-CONSULT FOLLOW-UP ── */}
         <div>
           <SectionLabel label="Follow-Up After the Consultation" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Not every patient books at the consultation. That doesn&apos;t mean the lead is lost.
             A structured nurture sequence keeps them moving toward a decision.
           </p>
@@ -609,7 +609,7 @@ export default function LeadConversionPage() {
                   {phase.items.map((item) => (
                     <div key={item} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: phase.color }} />
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>
                         {item}
                       </p>
                     </div>
@@ -622,7 +622,7 @@ export default function LeadConversionPage() {
             className="rounded-xl px-5 py-4"
             style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
           >
-            <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>
               <span style={{ color: "#a28c75" }}>Nurture content to use:</span>{" "}
               Educational emails · Patient testimonials · FAQs · Financing information · Value-added promotions
             </p>
@@ -632,7 +632,7 @@ export default function LeadConversionPage() {
         {/* ── PSYCHOLOGY ── */}
         <div>
           <SectionLabel label="The Psychology of High-Converting Outreach" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Tactics only work when they come from the right mindset. These six principles are the
             foundation every effective lead conversion conversation is built on.
           </p>
@@ -683,7 +683,7 @@ export default function LeadConversionPage() {
                 <p className="text-sm font-medium mb-2" style={{ color: "#fffdf6" }}>
                   {item.principle}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {item.body}
                 </p>
               </div>
@@ -713,7 +713,7 @@ export default function LeadConversionPage() {
           </h3>
           <p
             className="text-sm leading-relaxed mb-6 max-w-2xl"
-            style={{ color: "rgba(255,253,246,0.55)" }}
+            style={{ color: "rgba(255,253,246,0.65)" }}
           >
             Consistent, timely, and consultative outreach creates higher conversion rates and
             ensures your marketing spend translates into booked consultations and loyal patients.

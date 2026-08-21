@@ -343,7 +343,7 @@ export default function OnboardingChecklistPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/staff" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -364,29 +364,29 @@ export default function OnboardingChecklistPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Staff</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Onboarding Checklist Builder</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Start from a Provider or Support Staff template, customize the criteria, and save as many named onboarding checklists as you need. Every checklist prints as a clean, sign-off-ready document.
           </p>
 
           {/* New checklist */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
             <button onClick={() => createChecklist("Provider")} className="rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
               <Stethoscope size={20} style={{ color: "#a28c75" }} className="mb-3" />
               <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>New Provider Checklist</p>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Pre-loaded with services, clinical systems, and employment policy criteria.</p>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Pre-loaded with services, clinical systems, and employment policy criteria.</p>
             </button>
             <button onClick={() => createChecklist("Support Staff")} className="rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
               <Headphones size={20} style={{ color: "#a28c75" }} className="mb-3" />
               <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>New Support Staff Checklist</p>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Pre-loaded with front-of-house systems and employment policy criteria.</p>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Pre-loaded with front-of-house systems and employment policy criteria.</p>
             </button>
             <button onClick={() => createChecklist("Custom")} className="rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40"
               style={{ background: "rgba(162,140,117,0.03)", borderColor: "rgba(162,140,117,0.13)" }}>
               <FilePlus2 size={20} style={{ color: "#a28c75" }} className="mb-3" />
               <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>New Blank Checklist</p>
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Start from scratch and build your own sections and criteria.</p>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Start from scratch and build your own sections and criteria.</p>
             </button>
           </div>
 
@@ -397,8 +397,8 @@ export default function OnboardingChecklistPage() {
           </div>
 
           {sortedChecklists.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No checklists saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No checklists saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -406,7 +406,7 @@ export default function OnboardingChecklistPage() {
                 const RoleIcon = roleBadgeIcon[c.role];
                 return (
                   <div key={c.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                    style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                    style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}
@@ -420,7 +420,7 @@ export default function OnboardingChecklistPage() {
                           {c.role}
                         </span>
                       </div>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                         {c.newHireName.trim() ? `${c.newHireName} · ` : ""}{c.sections.length} section{c.sections.length === 1 ? "" : "s"} · {itemCount(c)} criteria · Created {formatDate(c.createdAt)}
                       </p>
                     </div>
@@ -466,7 +466,7 @@ export default function OnboardingChecklistPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -475,7 +475,7 @@ export default function OnboardingChecklistPage() {
               My Checklists
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -513,19 +513,19 @@ export default function OnboardingChecklistPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "420px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "420px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Checklist details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Checklist Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Checklist Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Checklist Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateChecklist(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>New Hire Name <span style={{ color: "rgba(255,253,246,0.25)" }}>(optional)</span></label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>New Hire Name <span style={{ color: "rgba(255,253,246,0.32)" }}>(optional)</span></label>
                     <input type="text" value={active.newHireName} onChange={(e) => updateChecklist(active.id, "newHireName", e.target.value)} placeholder="e.g. Jamie Rivera"
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
@@ -543,10 +543,10 @@ export default function OnboardingChecklistPage() {
                   ))}
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>Custom:</label>
+                  <label className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Custom:</label>
                   <input type="color" value={active.accentColor} onChange={(e) => updateChecklist(active.id, "accentColor", e.target.value)}
                     className="w-10 h-8 rounded cursor-pointer" style={{ border: "1px solid rgba(162,140,117,0.2)", background: "transparent", padding: "2px" }} />
-                  <span className="text-xs font-mono" style={{ color: "rgba(255,253,246,0.35)" }}>{active.accentColor}</span>
+                  <span className="text-xs font-mono" style={{ color: "rgba(255,253,246,0.45)" }}>{active.accentColor}</span>
                 </div>
               </section>
 
@@ -573,7 +573,7 @@ export default function OnboardingChecklistPage() {
 
                       <div className="py-1.5 px-3 space-y-0.5" style={{ background: "rgba(0,0,0,0.15)" }}>
                         {section.items.length === 0 && (
-                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.2)" }}>
+                          <p className="text-xs italic py-1.5" style={{ color: "rgba(255,253,246,0.28)" }}>
                             {section.kind === "service" ? "No services yet." : "No criteria yet."}
                           </p>
                         )}
@@ -584,7 +584,7 @@ export default function OnboardingChecklistPage() {
                                 onBlur={() => setEditingField(null)} onKeyDown={(e) => e.key === "Enter" && setEditingField(null)}
                                 className="flex-1 text-xs bg-transparent outline-none border-b" style={{ color: "#fffdf6", borderColor: "rgba(162,140,117,0.4)" }} />
                             ) : (
-                              <span className="flex-1 text-xs leading-relaxed cursor-text" style={{ color: "rgba(255,253,246,0.65)" }} onClick={() => setEditingField(`item:${item.id}`)}>
+                              <span className="flex-1 text-xs leading-relaxed cursor-text" style={{ color: "rgba(255,253,246,0.75)" }} onClick={() => setEditingField(`item:${item.id}`)}>
                                 {item.label}
                               </span>
                             )}

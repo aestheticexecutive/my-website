@@ -136,7 +136,7 @@ const principles = [
 
 export default function PatientFinancingPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -185,7 +185,7 @@ export default function PatientFinancingPage() {
           </h1>
           <p
             className="text-base leading-relaxed max-w-2xl mb-6"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             A step-by-step training guide for confidently introducing financing options to patients — including a 6-step talk track, word-for-word scripts, FAQ responses, and a customizable partner comparison.
           </p>
@@ -223,10 +223,10 @@ export default function PatientFinancingPage() {
           >
             Before You Share This With Your Team
           </p>
-          <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.65)" }}>
+          <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.75)" }}>
             This training guide uses placeholder names like <span style={{ color: "#a28c75" }}>[Partner 1]</span> and <span style={{ color: "#a28c75" }}>[your preferred partner]</span> anywhere the specific financing company matters. Before sharing with your staff, replace those with your practice&apos;s actual financing partners and update the comparison table below with your real terms.
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
             The talk tracks, FAQ responses, and core principles apply universally — only the partner-specific details need to be tailored.
           </p>
         </div>
@@ -242,7 +242,7 @@ export default function PatientFinancingPage() {
             </h2>
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
-          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.5)" }}>
             Staff need to know each partner&apos;s key terms cold — not read from a brochure. Build your own version of this table using your practice&apos;s actual financing partners.
           </p>
 
@@ -275,10 +275,10 @@ export default function PatientFinancingPage() {
                     }}
                   >
                     <td className="px-5 py-4 align-top">
-                      <div className="font-medium text-xs" style={{ color: "rgba(255,253,246,0.75)" }}>
+                      <div className="font-medium text-xs" style={{ color: "rgba(255,253,246,0.82)" }}>
                         {row.label}
                       </div>
-                      <div className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.28)" }}>
+                      <div className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
                         {row.tip}
                       </div>
                     </td>
@@ -305,7 +305,7 @@ export default function PatientFinancingPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.25)" }}>
+          <p className="text-xs mt-3" style={{ color: "rgba(255,253,246,0.32)" }}>
             Print or post this table in a staff-only area once completed — staff should be able to answer basic partner questions without checking their phone.
           </p>
         </div>
@@ -321,7 +321,7 @@ export default function PatientFinancingPage() {
             </h2>
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
-          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.5)" }}>
             Follow these steps in order. Each one builds on the last. The goal isn&apos;t to read these word-for-word — it&apos;s to internalize the structure so it flows naturally.
           </p>
 
@@ -331,7 +331,7 @@ export default function PatientFinancingPage() {
                 key={step.num}
                 className="rounded-2xl border overflow-hidden"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -368,7 +368,7 @@ export default function PatientFinancingPage() {
                           borderLeftColor: "rgba(162,140,117,0.3)",
                         }}
                       >
-                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
+                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>
                           {script}
                         </p>
                       </div>
@@ -400,7 +400,7 @@ export default function PatientFinancingPage() {
                     }}
                   >
                     <span className="text-xs flex-shrink-0" style={{ color: "#a28c75", marginTop: "1px" }}>→</span>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {step.tip}
                     </p>
                   </div>
@@ -421,7 +421,7 @@ export default function PatientFinancingPage() {
             </h2>
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
-          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.5)" }}>
             These are the questions patients ask most. Know these responses well enough to say them without reading.
           </p>
 
@@ -453,7 +453,7 @@ export default function PatientFinancingPage() {
                     >
                       You:
                     </span>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
                       {faq.a}
                     </p>
                   </div>
@@ -492,7 +492,7 @@ export default function PatientFinancingPage() {
                 >
                   {p.title}
                 </h4>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {p.body}
                 </p>
               </div>

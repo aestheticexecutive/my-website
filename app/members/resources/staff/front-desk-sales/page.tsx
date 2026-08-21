@@ -73,7 +73,7 @@ const deviceScripts = [
 
 export default function FrontDeskSalesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -97,7 +97,7 @@ export default function FrontDeskSalesPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             In-Office Sales Mastery
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
             The phone call gets them through the door. What happens in the first three minutes
             in-person determines whether they book one treatment — or leave with a full plan.
             This training covers the arrival experience, cross-selling, and the confidence
@@ -124,7 +124,7 @@ export default function FrontDeskSalesPage() {
               <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>Before They Walk In</p>
             </div>
             <div className="px-6 py-5" style={{ background: "rgba(0,0,0,0.2)" }}>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.65)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.75)" }}>
                 Review the appointment notes before the patient arrives. Know their name, what prompted their call, any specific concerns they flagged, and the critical question answer collected during the confirmation call. Every front desk team member in at the time should know the patient&apos;s name.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -138,7 +138,7 @@ export default function FrontDeskSalesPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2.5 rounded-lg px-3.5 py-2.5" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: "#a28c75" }} />
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }} dangerouslySetInnerHTML={{ __html: item }} />
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }} dangerouslySetInnerHTML={{ __html: item }} />
                   </div>
                 ))}
               </div>
@@ -158,7 +158,7 @@ export default function FrontDeskSalesPage() {
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(162,140,117,0.12)", color: "#a28c75", border: "1px solid rgba(162,140,117,0.2)" }}>New Patient</span>
                   </div>
-                  <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+                  <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
                     Make them feel like you&apos;ve been looking forward to their visit — because you have.
                   </p>
                   <div className="space-y-2">
@@ -173,9 +173,9 @@ export default function FrontDeskSalesPage() {
                 {/* Established */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(47,4,16,0.6)", color: "rgba(255,253,246,0.6)", border: "1px solid rgba(162,140,117,0.15)" }}>Established Patient</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(47,4,16,0.6)", color: "rgba(255,253,246,0.7)", border: "1px solid rgba(162,140,117,0.15)" }}>Established Patient</span>
                   </div>
-                  <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+                  <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
                     Reference something personal from a past visit — it signals genuine attention.
                   </p>
                   <div className="space-y-2">
@@ -195,7 +195,7 @@ export default function FrontDeskSalesPage() {
         {/* ── CROSS-SELLING FRAMEWORK ── */}
         <div>
           <SectionLabel label="The Cross-Selling Framework" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Cross-selling isn&apos;t pitching. It&apos;s giving patients the information they didn&apos;t know they needed. Use this three-step framework for every treatment mention.
           </p>
 
@@ -226,7 +226,7 @@ export default function FrontDeskSalesPage() {
                   {item.step}
                 </div>
                 <p className="text-sm font-medium mb-2" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 <p className="text-xs italic" style={{ color: "rgba(162,140,117,0.75)" }}>{item.note}</p>
               </div>
             ))}
@@ -243,7 +243,7 @@ export default function FrontDeskSalesPage() {
               ].map((t) => (
                 <div key={t.timing} className="rounded-lg px-4 py-3" style={{ background: "rgba(0,0,0,0.15)", border: "1px solid rgba(162,140,117,0.1)" }}>
                   <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>{t.timing}</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>{t.desc}</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>{t.desc}</p>
                 </div>
               ))}
             </div>
@@ -253,7 +253,7 @@ export default function FrontDeskSalesPage() {
         {/* ── DEVICE SCRIPTS ── */}
         <div>
           <SectionLabel label="Treatment Scripts" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Word-for-word scripts for four core devices. Each follows the same Introduce → Respond → Close structure. Practice until the wording sounds natural — not memorized.
           </p>
 
@@ -264,7 +264,7 @@ export default function FrontDeskSalesPage() {
                 <div className="px-6 py-4 flex items-center gap-4" style={{ background: device.bg, borderBottom: `1px solid ${device.border}` }}>
                   <div>
                     <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{device.name}</p>
-                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{device.tagline}</p>
+                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{device.tagline}</p>
                   </div>
                 </div>
 
@@ -299,7 +299,7 @@ export default function FrontDeskSalesPage() {
         {/* ── CONFIDENCE & TRUST ── */}
         <div>
           <SectionLabel label="Confidence & Trust" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Scripts only work when they come from a place of real knowledge and genuine care. These are the two foundations behind every conversation in this training.
           </p>
 
@@ -308,7 +308,7 @@ export default function FrontDeskSalesPage() {
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.2)" }}>
               <div className="px-6 py-4" style={{ background: "rgba(162,140,117,0.07)", borderBottom: "1px solid rgba(162,140,117,0.14)" }}>
                 <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>Building Confidence</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>You can&apos;t sell what you don&apos;t believe in</p>
+                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>You can&apos;t sell what you don&apos;t believe in</p>
               </div>
               <div className="px-6 py-5 space-y-3" style={{ background: "rgba(0,0,0,0.2)" }}>
                 {[
@@ -327,7 +327,7 @@ export default function FrontDeskSalesPage() {
                 ].map((item) => (
                   <div key={item.label} className="rounded-xl px-4 py-3" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                     <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -337,7 +337,7 @@ export default function FrontDeskSalesPage() {
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.2)" }}>
               <div className="px-6 py-4" style={{ background: "rgba(162,140,117,0.07)", borderBottom: "1px solid rgba(162,140,117,0.14)" }}>
                 <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>Building Trust</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>Patients don&apos;t buy treatments — they buy the people behind them</p>
+                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.5)" }}>Patients don&apos;t buy treatments — they buy the people behind them</p>
               </div>
               <div className="px-6 py-5 space-y-3" style={{ background: "rgba(0,0,0,0.2)" }}>
                 {[
@@ -356,7 +356,7 @@ export default function FrontDeskSalesPage() {
                 ].map((item) => (
                   <div key={item.label} className="rounded-xl px-4 py-3" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                     <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -370,7 +370,7 @@ export default function FrontDeskSalesPage() {
           <h3 className="font-display text-2xl font-light mb-4 leading-snug" style={{ color: "#fffdf6" }}>
             Patients should leave feeling seen — not sold to.
           </h3>
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             The most effective front desk team members never feel like salespeople. They feel like advocates — people who genuinely want their patients to get the best outcomes, who know the treatments well enough to connect them with the right option, and who care enough to make the experience personal from the first ring of the phone to the final goodbye at checkout.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -393,7 +393,7 @@ export default function FrontDeskSalesPage() {
             <div>
               <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Part 1 of 2</p>
               <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Phone Call Mastery</h3>
-              <p className="text-sm mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>The 10-step call framework, treatment question handling, and pre-visit prep.</p>
+              <p className="text-sm mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>The 10-step call framework, treatment question handling, and pre-visit prep.</p>
             </div>
           </div>
         </Link>

@@ -206,14 +206,14 @@ function CheckGroupEditor({
             <div key={item.id} className="flex items-center gap-2 py-1.5 group">
               <button onClick={() => onToggle(item.id)} className="flex-shrink-0 flex items-center justify-center transition-opacity hover:opacity-80"
                 style={{ width: 14, height: 14, borderRadius: 3, border: "1.5px solid #a28c75", background: item.checked ? "#a28c75" : "transparent" }}>
-                {item.checked && <Check size={10} style={{ color: "#0c0004" }} />}
+                {item.checked && <Check size={10} style={{ color: "#170009" }} />}
               </button>
               {editingField === `item:${item.id}` ? (
                 <input autoFocus type="text" value={item.label} onChange={(e) => onUpdateLabel(item.id, e.target.value)}
                   onBlur={() => setEditingField(null)} onKeyDown={(e) => e.key === "Enter" && setEditingField(null)}
                   className="flex-1 text-xs bg-transparent outline-none border-b" style={{ color: "#fffdf6", borderColor: "rgba(162,140,117,0.4)" }} />
               ) : (
-                <span className="flex-1 text-xs leading-relaxed cursor-text" style={{ color: "rgba(255,253,246,0.65)" }} onClick={() => setEditingField(`item:${item.id}`)}>
+                <span className="flex-1 text-xs leading-relaxed cursor-text" style={{ color: "rgba(255,253,246,0.75)" }} onClick={() => setEditingField(`item:${item.id}`)}>
                   {item.label}
                 </span>
               )}
@@ -228,7 +228,7 @@ function CheckGroupEditor({
           </button>
         </div>
         <div className="px-3 py-2.5" style={{ borderTop: "1px solid rgba(162,140,117,0.1)" }}>
-          <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.35)" }}>{otherLabel}</label>
+          <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.45)" }}>{otherLabel}</label>
           <input type="text" value={otherValue} onChange={(e) => onOtherChange(e.target.value)} placeholder="Specify if applicable..."
             className="w-full text-xs rounded-lg px-2.5 py-2 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
         </div>
@@ -386,7 +386,7 @@ export default function EmployeeWriteUpFormPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/staff" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -407,18 +407,18 @@ export default function EmployeeWriteUpFormPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Staff</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Employee Write-Up Form</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             A structured, editable write-up template — customize the warning levels, violation categories, and disciplinary actions to fit your practice, fill it out, and save every incident as a named, dated record you can print for signature.
           </p>
 
           {/* New write-up */}
           <button onClick={createWriteUp} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <FileWarning size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Employee Write-Up</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Start from the standard template — editable violation and disciplinary action options.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Start from the standard template — editable violation and disciplinary action options.</p>
               </div>
             </div>
           </button>
@@ -430,14 +430,14 @@ export default function EmployeeWriteUpFormPage() {
           </div>
 
           {sortedWriteUps.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No write-ups saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No write-ups saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
               {sortedWriteUps.map((w) => (
                 <div key={w.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                     <FileWarning size={17} style={{ color: "#a28c75" }} />
                   </div>
@@ -448,7 +448,7 @@ export default function EmployeeWriteUpFormPage() {
                         {warningBadge(w)}
                       </span>
                     </div>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                       {w.employeeName.trim() ? `${w.employeeName} · ` : ""}{formatDateInput(w.formDate) || "No date set"} · Created {formatDate(w.createdAt)}
                     </p>
                   </div>
@@ -493,7 +493,7 @@ export default function EmployeeWriteUpFormPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -502,7 +502,7 @@ export default function EmployeeWriteUpFormPage() {
               My Write-Ups
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -540,24 +540,24 @@ export default function EmployeeWriteUpFormPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "440px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "440px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Record details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Record Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Record Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Record Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Employee Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Employee Name</label>
                     <input type="text" value={active.employeeName} onChange={(e) => updateField(active.id, "employeeName", e.target.value)} placeholder="e.g. Jamie Rivera"
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date</label>
                     <input type="date" value={active.formDate} onChange={(e) => updateField(active.id, "formDate", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>
@@ -575,10 +575,10 @@ export default function EmployeeWriteUpFormPage() {
                   ))}
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>Custom:</label>
+                  <label className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Custom:</label>
                   <input type="color" value={active.accentColor} onChange={(e) => updateField(active.id, "accentColor", e.target.value)}
                     className="w-10 h-8 rounded cursor-pointer" style={{ border: "1px solid rgba(162,140,117,0.2)", background: "transparent", padding: "2px" }} />
-                  <span className="text-xs font-mono" style={{ color: "rgba(255,253,246,0.35)" }}>{active.accentColor}</span>
+                  <span className="text-xs font-mono" style={{ color: "rgba(255,253,246,0.45)" }}>{active.accentColor}</span>
                 </div>
               </section>
 
@@ -602,12 +602,12 @@ export default function EmployeeWriteUpFormPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Prior Discipline</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Previous Discipline Meeting Date <span style={{ color: "rgba(255,253,246,0.25)" }}>(optional)</span></label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Previous Discipline Meeting Date <span style={{ color: "rgba(255,253,246,0.32)" }}>(optional)</span></label>
                     <input type="date" value={active.previousDisciplineDate} onChange={(e) => updateField(active.id, "previousDisciplineDate", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>This warning is the ___ time on this issue</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>This warning is the ___ time on this issue</label>
                     <input type="text" value={active.warningCount} onChange={(e) => updateField(active.id, "warningCount", e.target.value)} placeholder="e.g. 2nd"
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
@@ -641,12 +641,12 @@ export default function EmployeeWriteUpFormPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Violation Statement</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date of Violation</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date of Violation</label>
                     <input type="date" value={active.dateOfViolation} onChange={(e) => updateField(active.id, "dateOfViolation", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Describe what happened — be specific and factual <span style={{ color: "rgba(255,253,246,0.25)" }}>(attach supporting docs separately)</span></label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Describe what happened — be specific and factual <span style={{ color: "rgba(255,253,246,0.32)" }}>(attach supporting docs separately)</span></label>
                     <textarea value={active.violationStatement} onChange={(e) => updateField(active.id, "violationStatement", e.target.value)} rows={5} placeholder="What happened, when, and who was involved..."
                       className="w-full text-xs rounded-lg px-3 py-2.5 outline-none resize-none leading-relaxed placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
@@ -658,18 +658,18 @@ export default function EmployeeWriteUpFormPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Supervisor Issuing Action</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Name</label>
                     <input type="text" value={active.supervisorName} onChange={(e) => updateField(active.id, "supervisorName", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date</label>
                       <input type="date" value={active.supervisorDate} onChange={(e) => updateField(active.id, "supervisorDate", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Position</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Position</label>
                       <input type="text" value={active.supervisorPosition} onChange={(e) => updateField(active.id, "supervisorPosition", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                     </div>
@@ -699,7 +699,7 @@ export default function EmployeeWriteUpFormPage() {
                   <textarea value={active.correctiveActions} onChange={(e) => updateField(active.id, "correctiveActions", e.target.value)} rows={4} placeholder="Corrective actions and timeframe..."
                     className="w-full text-xs rounded-lg px-3 py-2.5 outline-none resize-none leading-relaxed placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Follow-Up Meeting Date</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Follow-Up Meeting Date</label>
                     <input type="date" value={active.followUpDate} onChange={(e) => updateField(active.id, "followUpDate", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>
@@ -713,18 +713,18 @@ export default function EmployeeWriteUpFormPage() {
                   <div className="flex items-center gap-2.5">
                     <button onClick={() => updateField(active.id, "rectifyDaysChecked", !active.rectifyDaysChecked)} className="flex-shrink-0 flex items-center justify-center transition-opacity hover:opacity-80"
                       style={{ width: 14, height: 14, borderRadius: 3, border: "1.5px solid #a28c75", background: active.rectifyDaysChecked ? "#a28c75" : "transparent" }}>
-                      {active.rectifyDaysChecked && <Check size={10} style={{ color: "#0c0004" }} />}
+                      {active.rectifyDaysChecked && <Check size={10} style={{ color: "#170009" }} />}
                     </button>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>I understand I have</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>I understand I have</span>
                     <input type="text" value={active.rectifyDays} onChange={(e) => updateField(active.id, "rectifyDays", e.target.value)} placeholder="__" style={{ width: "44px", background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} className="text-xs rounded px-2 py-1 outline-none text-center" />
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>days to rectify</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>days to rectify</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <button onClick={() => updateField(active.id, "rectifyImmediateChecked", !active.rectifyImmediateChecked)} className="flex-shrink-0 flex items-center justify-center transition-opacity hover:opacity-80"
                       style={{ width: 14, height: 14, borderRadius: 3, border: "1.5px solid #a28c75", background: active.rectifyImmediateChecked ? "#a28c75" : "transparent" }}>
-                      {active.rectifyImmediateChecked && <Check size={10} style={{ color: "#0c0004" }} />}
+                      {active.rectifyImmediateChecked && <Check size={10} style={{ color: "#170009" }} />}
                     </button>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Action must be taken immediately</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>Action must be taken immediately</span>
                   </div>
                 </div>
               </section>
@@ -734,19 +734,19 @@ export default function EmployeeWriteUpFormPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Signatures</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Employee Signature Date</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Employee Signature Date</label>
                     <input type="date" value={active.employeeSignDate} onChange={(e) => updateField(active.id, "employeeSignDate", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>
                   <div className="flex items-center gap-2.5">
                     <button onClick={() => updateField(active.id, "employeeRefused", !active.employeeRefused)} className="flex-shrink-0 flex items-center justify-center transition-opacity hover:opacity-80"
                       style={{ width: 14, height: 14, borderRadius: 3, border: "1.5px solid #a28c75", background: active.employeeRefused ? "#a28c75" : "transparent" }}>
-                      {active.employeeRefused && <Check size={10} style={{ color: "#0c0004" }} />}
+                      {active.employeeRefused && <Check size={10} style={{ color: "#170009" }} />}
                     </button>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Employee refused to sign this form</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>Employee refused to sign this form</span>
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Supervisor Signature Date</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Supervisor Signature Date</label>
                     <input type="date" value={active.supervisorSignDate2} onChange={(e) => updateField(active.id, "supervisorSignDate2", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                   </div>

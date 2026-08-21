@@ -247,7 +247,7 @@ const checklist = [
 
 export default function BeforeAfterPhotosPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -296,7 +296,7 @@ export default function BeforeAfterPhotosPage() {
           </h1>
           <p
             className="text-base leading-relaxed max-w-2xl"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             How to capture photos that actually showcase your results — not just take them.
             Consistent lighting, angles, patient prep, and compliance guidance all in one place.
@@ -319,10 +319,10 @@ export default function BeforeAfterPhotosPage() {
           </div>
           <p
             className="text-sm leading-relaxed mb-8 max-w-2xl"
-            style={{ color: "rgba(255,253,246,0.42)" }}
+            style={{ color: "rgba(255,253,246,0.52)" }}
           >
             Anyone can take a before-and-after photo. The practices that stand out are the ones
-            that take them <em style={{ color: "rgba(255,253,246,0.65)" }}>well</em> — consistently,
+            that take them <em style={{ color: "rgba(255,253,246,0.75)" }}>well</em> — consistently,
             professionally, and with intention.
           </p>
 
@@ -332,7 +332,7 @@ export default function BeforeAfterPhotosPage() {
                 key={item.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.1)",
                 }}
               >
@@ -342,7 +342,7 @@ export default function BeforeAfterPhotosPage() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                   {item.body}
                 </p>
               </div>
@@ -361,7 +361,7 @@ export default function BeforeAfterPhotosPage() {
         >
           <p
             className="font-display text-lg font-light italic leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.85)" }}
+            style={{ color: "rgba(255,253,246,0.9)" }}
           >
             "The best before-and-after photo isn't the one where the result looks the most
             dramatic — it's the one where every variable except the result is identical. That's
@@ -396,7 +396,7 @@ export default function BeforeAfterPhotosPage() {
                       {cat.title}
                     </h2>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     {cat.intro}
                   </p>
                 </div>
@@ -428,7 +428,7 @@ export default function BeforeAfterPhotosPage() {
                     </div>
                     <p
                       className="text-sm leading-relaxed pl-6"
-                      style={{ color: "rgba(255,253,246,0.42)" }}
+                      style={{ color: "rgba(255,253,246,0.52)" }}
                     >
                       {tip.detail}
                     </p>
@@ -457,7 +457,7 @@ export default function BeforeAfterPhotosPage() {
           </div>
           <p
             className="text-sm leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.42)" }}
+            style={{ color: "rgba(255,253,246,0.52)" }}
           >
             Run through this before every patient photo session — before and after.
           </p>
@@ -465,7 +465,7 @@ export default function BeforeAfterPhotosPage() {
           <div
             className="rounded-2xl border p-7 md:p-8"
             style={{
-              background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.15)",
             }}
           >
@@ -484,7 +484,7 @@ export default function BeforeAfterPhotosPage() {
                   </span>
                   <span
                     className="text-sm leading-snug"
-                    style={{ color: "rgba(255,253,246,0.55)" }}
+                    style={{ color: "rgba(255,253,246,0.65)" }}
                   >
                     {item}
                   </span>

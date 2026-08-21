@@ -21,7 +21,7 @@ function SectionLabel({ label }: { label: string }) {
 
 export default function BlogStrategyPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -54,7 +54,7 @@ export default function BlogStrategyPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Blog Strategy
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How to turn your website into a patient-generating machine. Consistent,
             well-structured blog content is one of the easiest ways to improve Google rankings,
             increase traffic, and attract patients who are actively searching for your treatments.
@@ -95,7 +95,7 @@ export default function BlogStrategyPage() {
               >
                 <div className="text-2xl mb-3">{item.icon}</div>
                 <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ export default function BlogStrategyPage() {
             className="mt-4 rounded-xl px-5 py-4"
             style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.15)" }}
           >
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               <span style={{ color: "#a28c75" }}>Google favors websites that are consistently updated</span> with helpful, relevant content.
               A practice that publishes regularly outranks one that doesn&apos;t — even when they offer identical treatments.
             </p>
@@ -125,7 +125,7 @@ export default function BlogStrategyPage() {
                 {/* Minimum */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>Minimum</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>Minimum</span>
                     <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>2 posts / month</span>
                   </div>
                   <div className="flex gap-2">
@@ -148,7 +148,7 @@ export default function BlogStrategyPage() {
                 {/* Ideal */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>Ideal</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>Ideal</span>
                     <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>4 posts / month</span>
                   </div>
                   <div className="flex gap-2">
@@ -168,7 +168,7 @@ export default function BlogStrategyPage() {
                   </div>
                 </div>
               </div>
-              <p className="text-xs mt-5 leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mt-5 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Consistency matters more than volume. A steady 2 posts/month for a year beats
                 a burst of 10 posts followed by silence.
               </p>
@@ -183,10 +183,10 @@ export default function BlogStrategyPage() {
               <div className="flex items-end gap-3 mb-5">
                 <div className="text-6xl font-light leading-none" style={{ color: "#a28c75" }}>800</div>
                 <div className="pb-1">
-                  <div className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>to</div>
+                  <div className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>to</div>
                   <div className="text-3xl font-light" style={{ color: "#fffdf6" }}>1,500</div>
                 </div>
-                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>words</div>
+                <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>words</div>
               </div>
               <div className="space-y-2">
                 {[
@@ -207,7 +207,7 @@ export default function BlogStrategyPage() {
                     </span>
                     <div>
                       <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{row.label}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{row.note}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>{row.note}</p>
                     </div>
                   </div>
                 ))}
@@ -303,7 +303,7 @@ export default function BlogStrategyPage() {
                 <p className="text-sm font-medium mb-3" style={{ color: "#fffdf6" }}>{cat.category}</p>
                 <ul className="space-y-1.5 mb-4">
                   {cat.examples.map((ex) => (
-                    <li key={ex} className="text-xs flex items-start gap-1.5" style={{ color: "rgba(255,253,246,0.55)" }}>
+                    <li key={ex} className="text-xs flex items-start gap-1.5" style={{ color: "rgba(255,253,246,0.65)" }}>
                       <span className="flex-shrink-0 mt-0.5" style={{ color: cat.accent }}>·</span>
                       {ex}
                     </li>
@@ -323,7 +323,7 @@ export default function BlogStrategyPage() {
         {/* ── BLOG ANATOMY ── */}
         <div>
           <SectionLabel label="The Anatomy of a High-Performing Blog Post" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Every blog post should follow this structure — both for reader experience and for Google&apos;s ability to understand and rank the content.
           </p>
 
@@ -427,7 +427,7 @@ export default function BlogStrategyPage() {
                   <span className="text-sm font-medium flex-shrink-0 w-6 text-center" style={{ color: z.color }}>{z.num}</span>
                   <div>
                     <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{z.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{z.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{z.desc}</p>
                   </div>
                 </div>
               ))}
@@ -453,7 +453,7 @@ export default function BlogStrategyPage() {
                 <span className="text-xl flex-shrink-0">{item.icon}</span>
                 <div>
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -463,7 +463,7 @@ export default function BlogStrategyPage() {
         {/* ── CHECKLIST ── */}
         <div className="rounded-2xl p-8" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.25)" }}>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>Every Blog Post Should Include</h2>
-          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.4)" }}>Run through this before hitting publish.</p>
+          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.5)" }}>Run through this before hitting publish.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
             {[
               "Primary keyword in title and first paragraph",
@@ -483,7 +483,7 @@ export default function BlogStrategyPage() {
                 <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style={{ border: "1px solid rgba(162,140,117,0.35)", background: "rgba(162,140,117,0.08)" }}>
                   <span className="text-xs" style={{ color: "#a28c75" }}>✓</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
           </div>
@@ -492,7 +492,7 @@ export default function BlogStrategyPage() {
         {/* ── REPURPOSING ── */}
         <div>
           <SectionLabel label="One Blog Post, Eight Content Pieces" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Don&apos;t let a blog post live only on your website. Every post you publish should immediately fuel your other channels.
           </p>
 
@@ -527,7 +527,7 @@ export default function BlogStrategyPage() {
                 >
                   <div className="text-lg mb-2">{item.icon}</div>
                   <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{item.note}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.note}</p>
                 </div>
               ))}
             </div>
@@ -537,7 +537,7 @@ export default function BlogStrategyPage() {
         {/* ── CONTENT CLUSTERS ── */}
         <div>
           <SectionLabel label="Bonus Strategy: Content Clusters" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Instead of publishing random one-off posts, build clusters of related content around your core treatments.
             This signals topical authority to Google — making your entire site rank better, not just individual pages.
           </p>
@@ -552,7 +552,7 @@ export default function BlogStrategyPage() {
                 <span className="text-base">🏛️</span>
                 <div>
                   <p className="text-xs font-medium" style={{ color: "#a28c75" }}>Pillar Page (Treatment Page)</p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>/morpheus8 — the main treatment page</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.7)" }}>/morpheus8 — the main treatment page</p>
                 </div>
               </div>
 
@@ -568,7 +568,7 @@ export default function BlogStrategyPage() {
                 ].map((post) => (
                   <div key={post} className="rounded-lg px-3 py-2.5 flex items-center gap-2.5" style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.12)" }}>
                     <span className="text-xs" style={{ color: "#a28c75" }}>📝</span>
-                    <p className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>{post}</p>
+                    <p className="text-xs leading-snug" style={{ color: "rgba(255,253,246,0.75)" }}>{post}</p>
                   </div>
                 ))}
               </div>
@@ -588,7 +588,7 @@ export default function BlogStrategyPage() {
                     <span className="text-base flex-shrink-0">{item.icon}</span>
                     <div>
                       <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -603,7 +603,7 @@ export default function BlogStrategyPage() {
           <p className="font-display text-xl font-light leading-relaxed" style={{ color: "#fffdf6" }}>
             Treat every blog post as a 24/7 salesperson.
           </p>
-          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.7)" }}>
             Consistent, high-quality educational content improves search visibility, builds trust, and generates
             qualified consultation requests long after it&apos;s published. The practice that publishes 50 well-structured
             posts over the next year will have a marketing asset that compounds in value — and outranks the one

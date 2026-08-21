@@ -80,7 +80,7 @@ export default function HomePage() {
   return (
     <>
       <PublicHeader />
-      <main className="flex-1 pt-16 bg-[#0c0004]">
+      <main className="flex-1 pt-16 bg-[#170009]">
 
         {/* ── Hero ── */}
         <section className="relative min-h-[85vh] flex items-end overflow-hidden">
@@ -93,7 +93,7 @@ export default function HomePage() {
             quality={92}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0004] via-[#0c0004]/75 to-[#0c0004]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#170009] via-[#170009]/75 to-[#170009]/35" />
 
           <div className="relative w-full max-w-6xl mx-auto px-6 md:px-16 pb-20 pt-48">
             <Eyebrow>Aesthetic Executive</Eyebrow>
@@ -136,7 +136,7 @@ export default function HomePage() {
             quality={92}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[#0c0004]/25" />
+          <div className="absolute inset-0 bg-[#170009]/25" />
         </div>
 
         {/* ── Three ways to work with us ── */}
@@ -172,8 +172,8 @@ export default function HomePage() {
                         quality={90}
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-[#0c0004]/25" />
-                      <div className="absolute top-4 left-4 w-9 h-9 rounded-lg bg-[#0c0004]/70 backdrop-blur-sm border border-[#a28c75]/25 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#170009]/25" />
+                      <div className="absolute top-4 left-4 w-9 h-9 rounded-lg bg-[#170009]/70 backdrop-blur-sm border border-[#a28c75]/25 flex items-center justify-center">
                         <Icon size={16} className="text-[#a28c75]" />
                       </div>
                     </div>
@@ -307,7 +307,7 @@ export default function HomePage() {
             quality={92}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[#0c0004]/15" />
+          <div className="absolute inset-0 bg-[#170009]/15" />
         </div>
 
         {/* ── Closing CTA ── */}
@@ -320,7 +320,7 @@ export default function HomePage() {
             quality={92}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[#0c0004]/80" />
+          <div className="absolute inset-0 bg-[#170009]/80" />
 
           <div className="relative max-w-3xl mx-auto px-6 md:px-16 text-center">
             <Eyebrow center>Get started</Eyebrow>

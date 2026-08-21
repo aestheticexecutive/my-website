@@ -137,7 +137,7 @@ export function GlobalSearch() {
             onClick={(e) => e.stopPropagation()}
             className="w-full max-w-xl rounded-2xl border overflow-hidden"
             style={{
-              background: "linear-gradient(145deg, #1a000c 0%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #1a000c 0%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.25)",
               boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
             }}
@@ -163,11 +163,11 @@ export function GlobalSearch() {
             {/* Results */}
             <div className="max-h-[60vh] overflow-y-auto">
               {query.trim() === "" ? (
-                <p className="px-5 py-8 text-center text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="px-5 py-8 text-center text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
                   Start typing to search across Resources, Templates, and Webinars.
                 </p>
               ) : results.length === 0 ? (
-                <p className="px-5 py-8 text-center text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="px-5 py-8 text-center text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
                   No results for &ldquo;{query}&rdquo;.
                 </p>
               ) : (
@@ -187,7 +187,7 @@ export function GlobalSearch() {
                             </span>
                             {entry.external && <ExternalLink size={11} style={{ color: "rgba(162,140,117,0.6)" }} />}
                           </div>
-                          <p className="text-xs leading-snug line-clamp-1" style={{ color: "rgba(255,253,246,0.4)" }}>
+                          <p className="text-xs leading-snug line-clamp-1" style={{ color: "rgba(255,253,246,0.5)" }}>
                             {entry.description}
                           </p>
                         </div>

@@ -21,7 +21,7 @@ function SectionLabel({ label }: { label: string }) {
 
 export default function GoogleAdsPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -46,7 +46,7 @@ export default function GoogleAdsPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Google Ads Best Practices
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How to build profitable Google Search campaigns for aesthetic practices — high-intent
             keywords, dedicated landing pages, Quality Score, conversion tracking, and the metrics
             that actually tell you if it&apos;s working.
@@ -59,7 +59,7 @@ export default function GoogleAdsPage() {
         {/* ── GOOGLE VS META ── */}
         <div>
           <SectionLabel label="Google Ads vs. Meta Ads" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             These two channels work fundamentally differently. Understanding the distinction is the
             foundation of every good paid media decision.
           </p>
@@ -80,7 +80,7 @@ export default function GoogleAdsPage() {
               <div className="p-5" style={{ background: "rgba(0,0,0,0.2)" }}>
                 <div className="rounded-lg px-4 py-3 flex items-center gap-3 mb-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <span className="text-sm" style={{ color: "rgba(162,140,117,0.5)" }}>🔍</span>
-                  <span className="text-sm italic" style={{ color: "rgba(255,253,246,0.6)" }}>Botox near me</span>
+                  <span className="text-sm italic" style={{ color: "rgba(255,253,246,0.7)" }}>Botox near me</span>
                 </div>
                 <div className="space-y-2 mb-4">
                   {/* Sponsored result */}
@@ -89,11 +89,11 @@ export default function GoogleAdsPage() {
                       <span className="text-xs px-1.5 py-0.5 rounded-sm font-medium" style={{ background: "rgba(120,180,120,0.15)", color: "#7db870" }}>Sponsored</span>
                     </div>
                     <p className="text-xs font-medium" style={{ color: "#7db870" }}>Your Practice — Botox Treatments</p>
-                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>yourpractice.com/botox</p>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>Natural results from board-certified injectors. Book today.</p>
+                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>yourpractice.com/botox</p>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.65)" }}>Natural results from board-certified injectors. Book today.</p>
                   </div>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   The patient is <span style={{ color: "#7db870" }}>already searching</span>. They want Botox.
                   Your ad puts you in front of them at the exact moment of intent.
                 </p>
@@ -114,14 +114,14 @@ export default function GoogleAdsPage() {
               <div className="p-5" style={{ background: "rgba(0,0,0,0.2)" }}>
                 <div className="rounded-lg p-3 mb-4" style={{ background: "rgba(100,160,220,0.06)", border: "1px solid rgba(100,160,220,0.15)" }}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Your Practice · Sponsored</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>Your Practice · Sponsored</span>
                   </div>
                   <div className="h-12 rounded mb-2 flex items-center justify-center" style={{ background: "rgba(100,160,220,0.08)" }}>
                     <span className="text-xs" style={{ color: "#7aabcf" }}>✨ Morpheus8 — Tighten & smooth your skin</span>
                   </div>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Reach patients who weren&apos;t searching — yet.</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Reach patients who weren&apos;t searching — yet.</p>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   The patient <span style={{ color: "#7aabcf" }}>wasn&apos;t thinking about it</span>. Your ad
                   interrupts their scroll and creates a want they didn&apos;t have 30 seconds ago.
                 </p>
@@ -130,7 +130,7 @@ export default function GoogleAdsPage() {
           </div>
 
           <div className="mt-4 rounded-xl px-5 py-4" style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.15)" }}>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               <span style={{ color: "#a28c75" }}>Google traffic is higher intent but often more competitive.</span> A patient searching
               &ldquo;Morpheus8 Columbus&rdquo; is ready to book. That moment of intent is what you&apos;re
               paying for — and what makes Google Ads worth the higher cost per click.
@@ -141,7 +141,7 @@ export default function GoogleAdsPage() {
         {/* ── BEST TREATMENTS TO ADVERTISE ── */}
         <div>
           <SectionLabel label="Best Treatments to Advertise" />
-          <p className="text-sm leading-relaxed mb-7 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-7 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Focus your Google Ads budget on treatments with established search volume. If patients aren&apos;t
             searching for it by name, there&apos;s no demand to capture.
           </p>
@@ -162,7 +162,7 @@ export default function GoogleAdsPage() {
             ].map((item) => (
               <div key={item.label} className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <span className="text-lg flex-shrink-0">{item.icon}</span>
-                <p className="text-xs font-medium leading-snug" style={{ color: "rgba(255,253,246,0.75)" }}>{item.label}</p>
+                <p className="text-xs font-medium leading-snug" style={{ color: "rgba(255,253,246,0.82)" }}>{item.label}</p>
               </div>
             ))}
           </div>
@@ -176,7 +176,7 @@ export default function GoogleAdsPage() {
         {/* ── KEYWORD STRATEGY ── */}
         <div>
           <SectionLabel label="Keyword Strategy" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Not all keywords are equal. A tiered approach targets the highest-intent searches first,
             then expands as budget and performance allow.
           </p>
@@ -227,14 +227,14 @@ export default function GoogleAdsPage() {
                 </div>
                 <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-3 gap-5" style={{ background: "rgba(0,0,0,0.2)" }}>
                   <div className="md:col-span-1">
-                    <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>{t.description}</p>
+                    <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.7)" }}>{t.description}</p>
                     <div className="rounded-lg px-3 py-2 text-xs" style={{ background: "rgba(0,0,0,0.2)", color: t.color }}>{t.note}</div>
                   </div>
                   <div className="md:col-span-2">
                     <p className="text-xs mb-2 tracking-wide" style={{ color: "rgba(162,140,117,0.5)" }}>EXAMPLES</p>
                     <div className="flex flex-wrap gap-2">
                       {t.examples.map((ex) => (
-                        <span key={ex} className="inline-flex text-xs px-3 py-1.5 rounded-lg font-mono" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", color: "rgba(255,253,246,0.65)" }}>
+                        <span key={ex} className="inline-flex text-xs px-3 py-1.5 rounded-lg font-mono" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", color: "rgba(255,253,246,0.75)" }}>
                           {ex}
                         </span>
                       ))}
@@ -255,7 +255,7 @@ export default function GoogleAdsPage() {
               <span className="text-2xl">🛡️</span>
               <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Protect Your Brand</h3>
             </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
               Always run a campaign targeting your own practice name. If you don&apos;t, a competitor can — and
               they&apos;ll show up above your organic result when someone searches for you specifically.
             </p>
@@ -270,7 +270,7 @@ export default function GoogleAdsPage() {
                   <span className="text-xs flex-shrink-0 mt-0.5" style={{ color: "#a28c75" }}>✓</span>
                   <div>
                     <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>{item.label} — </span>
-                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</span>
                   </div>
                 </div>
               ))}
@@ -283,7 +283,7 @@ export default function GoogleAdsPage() {
               <span className="text-2xl">🚫</span>
               <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Negative Keywords</h3>
             </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
               Negative keywords prevent your ads from showing for searches that will never convert —
               saving budget and keeping your cost per lead low.
             </p>
@@ -295,7 +295,7 @@ export default function GoogleAdsPage() {
                 </span>
               ))}
             </div>
-            <p className="text-xs mt-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+            <p className="text-xs mt-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
               Review your Search Terms report weekly to find new irrelevant queries and add them as negatives.
             </p>
           </div>
@@ -304,7 +304,7 @@ export default function GoogleAdsPage() {
         {/* ── QUALITY SCORE ── */}
         <div>
           <SectionLabel label="Quality Score" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
             Google rates the relevance of your ads on a 1–10 scale. A higher Quality Score means lower
             cost per click and better ad placement — rewarding practices that align everything tightly.
           </p>
@@ -319,7 +319,7 @@ export default function GoogleAdsPage() {
                 <div className="flex-1 w-full rounded-2xl p-5 text-center" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)" }}>
                   <span className="text-3xl block mb-3">{item.icon}</span>
                   <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                 </div>
                 {item.arrow && (
                   <div className="flex-shrink-0 text-2xl md:rotate-0 rotate-90" style={{ color: "rgba(162,140,117,0.4)" }}>→</div>
@@ -339,7 +339,7 @@ export default function GoogleAdsPage() {
                   <p className="text-2xl font-light" style={{ color: row.color }}>{row.score}</p>
                   <p className="text-xs font-medium" style={{ color: row.color }}>{row.label}</p>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{row.note}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{row.note}</p>
               </div>
             ))}
           </div>
@@ -348,7 +348,7 @@ export default function GoogleAdsPage() {
         {/* ── SEO + GOOGLE ADS ── */}
         <div className="rounded-2xl p-7" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.22)" }}>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>SEO & Google Ads Work Together</h2>
-          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.4)" }}>A strong organic presence makes your paid campaigns more effective — not less necessary.</p>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>A strong organic presence makes your paid campaigns more effective — not less necessary.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { icon: "🖥️", label: "Optimized treatment pages", desc: "Well-structured treatment pages improve both your organic ranking and your Quality Score for paid campaigns." },
@@ -360,7 +360,7 @@ export default function GoogleAdsPage() {
                 <span className="text-lg flex-shrink-0">{item.icon}</span>
                 <div>
                   <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -388,12 +388,12 @@ export default function GoogleAdsPage() {
               <div key={item.label} className="rounded-xl p-4" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                 <span className="text-xl mb-2 block">{item.icon}</span>
                 <p className="text-xs font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>{item.note}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.note}</p>
               </div>
             ))}
           </div>
           <div className="rounded-xl px-5 py-4" style={{ background: "rgba(162,140,117,0.06)", border: "1px solid rgba(162,140,117,0.15)" }}>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               <span style={{ color: "#a28c75" }}>Success is measured by consultations, treatments sold, revenue, and lifetime value</span> — not by clicks alone. Clicks are just the beginning of the funnel.
             </p>
           </div>
@@ -416,7 +416,7 @@ export default function GoogleAdsPage() {
                 <span className="text-lg flex-shrink-0" style={{ color: "rgba(200,100,100,0.6)" }}>✗</span>
                 <div>
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -429,7 +429,7 @@ export default function GoogleAdsPage() {
             <span className="text-2xl">⚠️</span>
             <h2 className="font-display text-2xl font-light" style={{ color: "#fffdf6" }}>When Google Ads May Not Be Worth It</h2>
           </div>
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.6)" }}>
             Google Ads aren&apos;t equally profitable in every market or for every practice. Before investing,
             make sure these conditions aren&apos;t stacked against you.
           </p>
@@ -445,7 +445,7 @@ export default function GoogleAdsPage() {
                 <span className="flex-shrink-0 mt-0.5" style={{ color: "#c8a050" }}>·</span>
                 <div>
                   <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -458,7 +458,7 @@ export default function GoogleAdsPage() {
           <p className="font-display text-xl font-light leading-relaxed" style={{ color: "#fffdf6" }}>
             Google Ads can be one of the highest-ROI marketing channels for an aesthetic practice — when built correctly.
           </p>
-          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.7)" }}>
             High-intent keywords, dedicated landing pages, accurate conversion tracking, and disciplined
             optimization are the foundation. Measure success by consultations booked, treatments sold,
             revenue generated, and lifetime patient value — not clicks alone.

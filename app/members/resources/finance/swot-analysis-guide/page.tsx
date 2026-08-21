@@ -89,7 +89,7 @@ const tips = [
 
 export default function SwotAnalysisGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -121,7 +121,7 @@ export default function SwotAnalysisGuidePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             SWOT Analysis Guide
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A SWOT analysis is one of the simplest strategic planning tools there is — four
             questions, honestly answered, that tell you exactly what to protect, fix, chase,
             and watch out for. Done once a quarter, it&apos;s how you keep strategy current
@@ -135,7 +135,7 @@ export default function SwotAnalysisGuidePage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -145,7 +145,7 @@ export default function SwotAnalysisGuidePage() {
           <h2 className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
             Why quarterly, not just once
           </h2>
-          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed max-w-3xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Most practices do a SWOT analysis once — usually when they&apos;re writing a business
             plan — and never look at it again. But a practice&apos;s strengths, weaknesses,
             opportunities, and threats change every quarter: a competitor opens down the street,
@@ -168,7 +168,7 @@ export default function SwotAnalysisGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           Four questions, two axes
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Strengths and Weaknesses look inward, at your practice. Opportunities and Threats look
           outward, at the market around you.
         </p>
@@ -180,7 +180,7 @@ export default function SwotAnalysisGuidePage() {
               <div
                 key={q.title}
                 className="rounded-xl border p-7 flex flex-col gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -194,7 +194,7 @@ export default function SwotAnalysisGuidePage() {
                     <p className="text-[11px] uppercase tracking-wide" style={{ color: "rgba(162,140,117,0.6)" }}>{q.tag}</p>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{q.body}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{q.body}</p>
               </div>
             );
           })}
@@ -212,7 +212,7 @@ export default function SwotAnalysisGuidePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           How to actually run one
         </h2>
-        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+        <p className="text-sm mb-10 max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
           Four steps, start to finish — from a blank list to a 30-day action plan.
         </p>
 
@@ -223,7 +223,7 @@ export default function SwotAnalysisGuidePage() {
               <div
                 key={step.title}
                 className="rounded-xl border p-6 flex items-start gap-4"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -233,7 +233,7 @@ export default function SwotAnalysisGuidePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{step.body}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{step.body}</p>
                 </div>
               </div>
             );
@@ -258,10 +258,10 @@ export default function SwotAnalysisGuidePage() {
             <div
               key={tip.title}
               className="rounded-xl border p-6"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
             >
               <h3 className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{tip.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>{tip.body}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>{tip.body}</p>
             </div>
           ))}
         </div>
@@ -288,7 +288,7 @@ export default function SwotAnalysisGuidePage() {
               <h3 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
                 Run this quarter&apos;s SWOT analysis
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Work through all four quadrants with guided prompts, star your top priorities,
                 and build a 30-day action plan — then save it under this quarter&apos;s name so
                 you can compare it to the next one.

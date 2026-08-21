@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function PatientReferralPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -68,7 +68,7 @@ export default function PatientReferralPage() {
           >
             How to Build a Patient Referral Program That Actually Works
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A happy patient is your most powerful marketing tool. A well-designed referral program
             gives them a simple reason and an easy way to send friends and family your way —
             without complicated tracking or high costs.
@@ -79,7 +79,7 @@ export default function PatientReferralPage() {
       {/* ── Download bar ── */}
       <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4 flex-wrap">
-          <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
             Want to share this guide with your team or use it to build your program?
           </p>
           <a
@@ -108,7 +108,7 @@ export default function PatientReferralPage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-8"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -119,7 +119,7 @@ export default function PatientReferralPage() {
               The most powerful marketing tool in your practice isn&apos;t social media, paid advertising,
               or email campaigns — it&apos;s a happy patient.
             </p>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               Patients who are excited about their results naturally talk about their experiences with
               friends, family, coworkers, and neighbors. A well-designed referral program gives them
               a simple reason and an easy way to make those recommendations. The key isn&apos;t creating
@@ -137,7 +137,7 @@ export default function PatientReferralPage() {
                 key={card.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -150,7 +150,7 @@ export default function PatientReferralPage() {
                 <h3 className="font-display text-base font-light mb-2" style={{ color: "#fffdf6" }}>
                   {card.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {card.body}
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default function PatientReferralPage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.2)",
               }}
             >
@@ -194,11 +194,11 @@ export default function PatientReferralPage() {
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)" }} />
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Customize the dollar amount for your practice. Simplicity is critical — if patients have to ask multiple questions, it&apos;s too complicated.
               </p>
             </div>
@@ -224,7 +224,7 @@ export default function PatientReferralPage() {
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)" }} />
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -239,7 +239,7 @@ export default function PatientReferralPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Giving your referral program a name makes it feel intentional and memorable. Choose a name that matches
             your brand personality and use it consistently across all materials.
           </p>
@@ -262,7 +262,7 @@ export default function PatientReferralPage() {
                   borderColor: "rgba(162,140,117,0.11)",
                 }}
               >
-                <p className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>{name}</p>
+                <p className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.75)" }}>{name}</p>
               </div>
             ))}
           </div>
@@ -279,7 +279,7 @@ export default function PatientReferralPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             <div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Every practice should have printed referral cards available throughout the office. The easier it is
                 for patients to grab a card, the more likely they are to share it.
               </p>
@@ -288,7 +288,7 @@ export default function PatientReferralPage() {
                 {["Front desk", "Reception area", "Consultation rooms", "Treatment rooms", "Checkout counter", "Event tables"].map(item => (
                   <li key={item} className="flex items-center gap-2.5">
                     <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span>
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>{item}</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -307,7 +307,7 @@ export default function PatientReferralPage() {
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)" }} />
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -324,7 +324,7 @@ export default function PatientReferralPage() {
           <div
             className="rounded-xl border p-6 mb-6"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -339,13 +339,13 @@ export default function PatientReferralPage() {
                 <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
                   This is where most practices miss a major opportunity.
                 </h3>
-                <p className="text-sm mt-1" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm mt-1" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Today&apos;s patients rarely carry physical cards. They carry their phones.
                 </p>
               </div>
             </div>
             <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>Best practice — personalized digital cards</p>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
               Each week, pull a list of new patients and create personalized digital referral cards with:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -357,7 +357,7 @@ export default function PatientReferralPage() {
               ].map(item => (
                 <div key={item} className="flex items-center gap-2.5">
                   <CheckCircle size={13} style={{ color: "rgba(162,140,117,0.5)" }} />
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -373,7 +373,7 @@ export default function PatientReferralPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Once a patient completes their first appointment, send them their personalized referral card via
             text message. This introduces the program and gives patients an easy way to participate immediately.
           </p>
@@ -391,13 +391,13 @@ export default function PatientReferralPage() {
                 New Patient Text Template
               </span>
             </div>
-            <div className="p-6" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}>
+            <div className="p-6" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}>
               <div
                 className="rounded-lg p-5 font-mono text-sm leading-loose"
                 style={{
                   background: "rgba(255,253,246,0.03)",
                   border: "1px solid rgba(255,253,246,0.07)",
-                  color: "rgba(255,253,246,0.6)",
+                  color: "rgba(255,253,246,0.7)",
                   whiteSpace: "pre-wrap",
                 }}
               >
@@ -420,7 +420,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Not every patient will receive a digital card right away. Create a simple landing page on your
             website where patients can request one — this captures existing patients who joined before the
             program was launched.
@@ -436,7 +436,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 {["Program overview", "Referral program rules", "Simple request form", "Contact information"].map(item => (
                   <li key={item} className="flex items-center gap-2.5">
                     <CheckCircle size={13} style={{ color: "rgba(162,140,117,0.5)" }} />
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -453,7 +453,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 <QrCode size={16} className="flex-shrink-0 mt-0.5" style={{ color: "#a28c75" }} />
                 <div>
                   <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.6)" }}>QR Codes Throughout Your Practice</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                     Add QR codes that direct patients to this page — at checkout, in treatment rooms, on event displays.
                   </p>
                   <p className="text-xs italic mt-2" style={{ color: "rgba(162,140,117,0.6)" }}>
@@ -482,7 +482,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
               borderLeft: "3px solid rgba(162,140,117,0.4)",
             }}
           >
-            <p className="text-sm leading-relaxed font-medium" style={{ color: "rgba(255,253,246,0.7)" }}>
+            <p className="text-sm leading-relaxed font-medium" style={{ color: "rgba(255,253,246,0.78)" }}>
               The biggest mistake practices make is creating a referral program and then never talking about it.
               Referral programs only work when patients are consistently reminded they exist. Patients often need
               multiple reminders before taking action.
@@ -508,7 +508,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 className="rounded-xl border px-4 py-3"
                 style={{ background: "rgba(162,140,117,0.04)", borderColor: "rgba(162,140,117,0.11)" }}
               >
-                <p className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</p>
+                <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
               </div>
             ))}
           </div>
@@ -523,7 +523,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Your team should naturally mention the referral program throughout the patient journey.
           </p>
 
@@ -559,8 +559,8 @@ Thank you for trusting us with your care and for sharing us with those you love!
                     {item.moment}
                   </p>
                 </div>
-                <div className="px-5 py-4" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}>
-                  <p className="text-sm leading-relaxed italic" style={{ color: "rgba(255,253,246,0.55)" }}>
+                <div className="px-5 py-4" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}>
+                  <p className="text-sm leading-relaxed italic" style={{ color: "rgba(255,253,246,0.65)" }}>
                     {item.script}
                   </p>
                 </div>
@@ -578,7 +578,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Consistent reminders dramatically increase participation across every channel.
           </p>
 
@@ -607,7 +607,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 key={card.title}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -622,7 +622,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 </h3>
                 <ul className="space-y-1.5">
                   {card.items.map(item => (
-                    <li key={item} className="text-xs flex items-start gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <li key={item} className="text-xs flex items-start gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                       <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span> {item}
                     </li>
                   ))}
@@ -641,7 +641,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             When business slows down, increase referral incentives temporarily. Creating urgency can significantly
             increase referral activity.
           </p>
@@ -665,7 +665,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 key={promo.title}
                 className="rounded-xl border p-5"
                 style={{
-                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.2)",
                 }}
               >
@@ -677,7 +677,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 </h3>
                 <ul className="space-y-1.5">
                   {promo.details.map(detail => (
-                    <li key={detail} className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
+                    <li key={detail} className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>
                       {detail}
                     </li>
                   ))}
@@ -698,7 +698,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             <div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Every event should include a referral station. Events create excitement and are one of the best
                 opportunities to generate new referrals.
               </p>
@@ -712,7 +712,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 ].map(item => (
                   <li key={item} className="flex items-center gap-2.5">
                     <CheckCircle size={13} style={{ color: "rgba(162,140,117,0.5)" }} />
-                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -722,7 +722,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
               style={{ background: "rgba(162,140,117,0.04)", borderColor: "rgba(162,140,117,0.13)" }}
             >
               <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Why events work so well</p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Patients who attend your events are already engaged and enthusiastic about your practice. That
                 energy makes them far more likely to share referral cards with friends and family in the days
                 immediately following the event.
@@ -737,7 +737,7 @@ Thank you for trusting us with your care and for sharing us with those you love!
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-6 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Recognition matters. When a patient successfully refers someone, send a simple thank-you text.
             This reinforces appreciation, encourages loyalty, and increases the likelihood of future referrals.
           </p>
@@ -755,13 +755,13 @@ Thank you for trusting us with your care and for sharing us with those you love!
                 Thank-You Text Template
               </span>
             </div>
-            <div className="p-6" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}>
+            <div className="p-6" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}>
               <div
                 className="rounded-lg p-5 font-mono text-sm leading-loose"
                 style={{
                   background: "rgba(255,253,246,0.03)",
                   border: "1px solid rgba(255,253,246,0.07)",
-                  color: "rgba(255,253,246,0.6)",
+                  color: "rgba(255,253,246,0.7)",
                   whiteSpace: "pre-wrap",
                 }}
               >
@@ -778,7 +778,7 @@ We've added a referral credit to your account and can't wait to see you again so
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -804,7 +804,7 @@ We've added a referral credit to your account and can't wait to see you again so
                   </span>
                   <div>
                     <p className="font-display text-base font-light mb-1" style={{ color: "#fffdf6" }}>{item.title}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.body}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.body}</p>
                   </div>
                 </div>
               ))}
@@ -814,7 +814,7 @@ We've added a referral credit to your account and can't wait to see you again so
               className="rounded-xl border p-5"
               style={{ background: "rgba(162,140,117,0.06)", borderColor: "rgba(162,140,117,0.2)" }}
             >
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                 <span style={{ color: "#a28c75" }}>Remember:</span> A referral program should never be a
                 &ldquo;set it and forget it&rdquo; marketing strategy. The practices seeing the greatest referral growth
                 are the ones that make referrals part of everyday conversations, patient communications,

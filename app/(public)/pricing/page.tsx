@@ -109,7 +109,7 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="bg-[#0c0004] text-[#fffdf6]">
+    <div className="bg-[#170009] text-[#fffdf6]">
 
       {/* ── 1. HERO — motion blur editorial portrait ────────── */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden">
@@ -123,7 +123,7 @@ export default function PricingPage() {
           sizes="100vw"
         />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0004]/95 via-[#0c0004]/80 to-[#0c0004]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#170009]/95 via-[#170009]/80 to-[#170009]/50" />
 
         {/* Decorative vertical rule */}
         <div className="absolute left-6 md:left-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#a28c75]/20 to-transparent" />
@@ -162,7 +162,7 @@ export default function PricingPage() {
           quality={92}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0c0004]/35" />
+        <div className="absolute inset-0 bg-[#170009]/35" />
       </div>
 
       {/* ── 2. DISCOVERY CALL ────────────────────────────────── */}
@@ -253,7 +253,7 @@ export default function PricingPage() {
           quality={92}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0c0004]/45" />
+        <div className="absolute inset-0 bg-[#170009]/45" />
       </div>
 
       {/* ── 3. MEMBERSHIP — split image + card ───────────────── */}
@@ -282,7 +282,7 @@ export default function PricingPage() {
                   quality={92}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-[#0c0004]/20" />
+                <div className="absolute inset-0 bg-[#170009]/20" />
               </div>
 
               {/* Right — card content */}
@@ -385,7 +385,7 @@ export default function PricingPage() {
               quality={92}
               sizes="(max-width: 768px) 100vw, 384px"
             />
-            <div className="absolute inset-0 bg-[#0c0004]/15" />
+            <div className="absolute inset-0 bg-[#170009]/15" />
           </div>
 
           <div className="text-center mb-14">
@@ -467,7 +467,7 @@ export default function PricingPage() {
           quality={92}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0c0004]/20" />
+        <div className="absolute inset-0 bg-[#170009]/20" />
       </div>
 
       {/* ── 5. PROJECT SERVICES ──────────────────────────────── */}
@@ -517,7 +517,7 @@ export default function PricingPage() {
           quality={92}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0c0004]/78" />
+        <div className="absolute inset-0 bg-[#170009]/78" />
 
         <div className="relative max-w-4xl mx-auto px-8 md:px-16 text-center">
           <p className="font-sans font-light text-[#a28c75] text-[10px] tracking-[0.35em] uppercase mb-6">

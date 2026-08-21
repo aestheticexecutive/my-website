@@ -54,7 +54,7 @@ const features = [
 
 export default function EventPlanningPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -103,7 +103,7 @@ export default function EventPlanningPage() {
           </h1>
           <p
             className="text-base leading-relaxed max-w-2xl mb-8"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             An interactive checklist tool covering every stage of your event — from locking in a
             date to post-event follow-up. Create events, track to-dos, mark progress, and add
@@ -179,7 +179,7 @@ export default function EventPlanningPage() {
                 >
                   {s.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                   {s.body}
                 </p>
               </div>
@@ -218,7 +218,7 @@ export default function EventPlanningPage() {
                 },
                 {
                   label: "To Do",
-                  color: "rgba(255,253,246,0.28)",
+                  color: "rgba(255,253,246,0.35)",
                   bg: "rgba(162,140,117,0.07)",
                   border: "rgba(162,140,117,0.1)",
                   desc: "Not yet started",
@@ -238,7 +238,7 @@ export default function EventPlanningPage() {
                   >
                     {st.label}
                   </span>
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.38)" }}>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.48)" }}>
                     {st.desc}
                   </span>
                 </div>
@@ -265,7 +265,7 @@ export default function EventPlanningPage() {
                 key={phase.num}
                 className="rounded-xl border p-6 flex gap-6 items-start"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.1)",
                 }}
               >
@@ -298,7 +298,7 @@ export default function EventPlanningPage() {
                     {phase.sub && (
                       <span
                         className="text-xs"
-                        style={{ color: "rgba(255,253,246,0.3)" }}
+                        style={{ color: "rgba(255,253,246,0.4)" }}
                       >
                         {phase.sub}
                       </span>
@@ -306,7 +306,7 @@ export default function EventPlanningPage() {
                   </div>
                   <p
                     className="text-sm leading-relaxed mb-3"
-                    style={{ color: "rgba(255,253,246,0.42)" }}
+                    style={{ color: "rgba(255,253,246,0.52)" }}
                   >
                     {phase.body}
                   </p>
@@ -326,7 +326,7 @@ export default function EventPlanningPage() {
         <div
           className="rounded-2xl border p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -341,7 +341,7 @@ export default function EventPlanningPage() {
               {features.map((f) => (
                 <div key={f} className="flex items-start gap-2">
                   <span style={{ color: "#a28c75", flexShrink: 0 }}>·</span>
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
                     {f}
                   </span>
                 </div>

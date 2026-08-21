@@ -59,7 +59,7 @@ const typeMeta: Record<string, { color: string; bg: string; border: string; acti
 
 export default function FinanceResourcesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -106,7 +106,7 @@ export default function FinanceResourcesPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Revenue tracking, pricing strategy, profitability analysis, budgeting,
             and KPI dashboards — because the numbers tell the real story.
@@ -135,7 +135,7 @@ export default function FinanceResourcesPage() {
 
           <p
             className="text-sm leading-relaxed mb-8 max-w-2xl"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             Everything you need to understand and track your practice&apos;s profitability —
             a comprehensive guide and a ready-to-use spreadsheet template built for aesthetic practices.
@@ -147,7 +147,7 @@ export default function FinanceResourcesPage() {
               href="/members/resources/finance/pl-guide"
               className="group rounded-xl border p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[#a28c75]/30"
               style={{
-                background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.2)",
               }}
             >
@@ -193,7 +193,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   What to track, how to categorize every dollar, and how to interpret
                   the numbers — so you know exactly where your practice stands.
@@ -219,7 +219,7 @@ export default function FinanceResourcesPage() {
               download
               className="group rounded-xl border p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[#a28c75]/30"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.15)",
               }}
             >
@@ -265,7 +265,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-3"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   Four-tab Excel workbook built for aesthetic practices. All formulas pre-built —
                   enter your numbers and it calculates gross margin, payroll %, net profit, and
@@ -324,7 +324,7 @@ export default function FinanceResourcesPage() {
           <div
             className="group rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -361,7 +361,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   A four-tab interactive dashboard covering the full financial picture of your
                   practice — from annual budget planning through monthly expense tracking,
@@ -372,7 +372,7 @@ export default function FinanceResourcesPage() {
                   <Link
                     href="/members/resources/finance/budget-tracker"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <FileText size={13} />
                     View Guide
@@ -421,7 +421,7 @@ export default function FinanceResourcesPage() {
                           {feat.label}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                         {feat.desc}
                       </p>
                     </div>
@@ -455,7 +455,7 @@ export default function FinanceResourcesPage() {
           <div
             className="group rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -492,7 +492,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   Work through Strengths, Weaknesses, Opportunities, and Threats with guided
                   prompts, star your top priorities, and build a 30-day action plan for each —
@@ -503,7 +503,7 @@ export default function FinanceResourcesPage() {
                   <Link
                     href="/members/resources/finance/swot-analysis-guide"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <FileText size={13} />
                     View Guide
@@ -550,7 +550,7 @@ export default function FinanceResourcesPage() {
                           {feat.label}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                         {feat.desc}
                       </p>
                     </div>
@@ -584,7 +584,7 @@ export default function FinanceResourcesPage() {
           <div
             className="group rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -621,7 +621,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   Build your vision, revenue and profit milestones, goals, staffing forecast,
                   and market-risk plan across your 1, 5, and 10-year horizons — then save it
@@ -632,7 +632,7 @@ export default function FinanceResourcesPage() {
                   <Link
                     href="/members/resources/finance/business-plan-guide"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <FileText size={13} />
                     View Guide
@@ -679,7 +679,7 @@ export default function FinanceResourcesPage() {
                           {feat.label}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                         {feat.desc}
                       </p>
                     </div>
@@ -713,7 +713,7 @@ export default function FinanceResourcesPage() {
           <div
             className="group rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -750,7 +750,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   Enter a treatment, your city and state, and where you want to sit against local
                   competitors — below, at, or above market. Our AI reasons through typical regional
@@ -763,7 +763,7 @@ export default function FinanceResourcesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <DollarSign size={12} />
                   Open Pricing Analysis
@@ -795,7 +795,7 @@ export default function FinanceResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -828,7 +828,7 @@ export default function FinanceResourcesPage() {
           <div
             className="group rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -865,7 +865,7 @@ export default function FinanceResourcesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,253,246,0.45)" }}
+                  style={{ color: "rgba(255,253,246,0.55)" }}
                 >
                   Enter how you paid for a device — in full, financed with a down payment, or
                   monthly-only — plus every warranty, service, and parts cost along the way.
@@ -877,7 +877,7 @@ export default function FinanceResourcesPage() {
                 <Link
                   href="/members/resources/finance/device-roi-tracker"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <Gauge size={13} />
                   Open Device ROI Tracker
@@ -911,7 +911,7 @@ export default function FinanceResourcesPage() {
                           {feat.label}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                         {feat.desc}
                       </p>
                     </div>
@@ -938,11 +938,11 @@ export default function FinanceResourcesPage() {
             const isLivetool = "href" in resource && resource.href;
             const CardWrapper = ({ children }: { children: React.ReactNode }) =>
               isLivetool ? (
-                <Link href={resource.href as string} className="group rounded-xl border p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[#a28c75]/30" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.2)" }}>
+                <Link href={resource.href as string} className="group rounded-xl border p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[#a28c75]/30" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.2)" }}>
                   {children}
                 </Link>
               ) : (
-                <div className="group rounded-xl border p-6 flex flex-col gap-4 cursor-pointer transition-all duration-300" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                <div className="group rounded-xl border p-6 flex flex-col gap-4 cursor-pointer transition-all duration-300" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   {children}
                 </div>
               );
@@ -979,7 +979,7 @@ export default function FinanceResourcesPage() {
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "rgba(255,253,246,0.45)" }}
+                    style={{ color: "rgba(255,253,246,0.55)" }}
                   >
                     {resource.description}
                   </p>

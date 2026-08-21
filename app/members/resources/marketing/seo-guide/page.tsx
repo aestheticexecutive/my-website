@@ -91,7 +91,7 @@ const quickWins = [
 
 export default function SeoGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* Hero */}
       <div
@@ -142,7 +142,7 @@ export default function SeoGuidePage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             SEO explained in plain English — no web developer terms, no technical jargon.
             Just what your practice needs to know to show up when patients are searching for
@@ -154,7 +154,7 @@ export default function SeoGuidePage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 h-11 rounded text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-            style={{ background: "#a28c75", color: "#0c0004" }}
+            style={{ background: "#a28c75", color: "#170009" }}
           >
             Open the AI Website Analyzer
             <ExternalLink size={13} />
@@ -180,7 +180,7 @@ export default function SeoGuidePage() {
           </h2>
           <p
             className="text-sm max-w-2xl leading-relaxed mb-10"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             SEO — Search Engine Optimization — is simply the process of helping Google understand
             who you are, what services you offer, where you&apos;re located, and why patients should
@@ -195,7 +195,7 @@ export default function SeoGuidePage() {
                 key={b.label}
                 className="rounded-xl border p-5"
                 style={{
-                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.18)",
                 }}
               >
@@ -205,7 +205,7 @@ export default function SeoGuidePage() {
                     {b.label}
                   </p>
                 </div>
-                <p className="text-xs leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.4)" }}>
+                <p className="text-xs leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.5)" }}>
                   {b.body}
                 </p>
               </div>
@@ -227,7 +227,7 @@ export default function SeoGuidePage() {
           >
             Real searches patients make every day
           </p>
-          <p className="text-sm mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
             Right now, potential patients in your area are typing things like these into Google.
             If your practice doesn&apos;t show up, they&apos;re choosing someone else.
           </p>
@@ -276,7 +276,7 @@ export default function SeoGuidePage() {
           </h2>
           <p
             className="text-sm max-w-2xl leading-relaxed mb-10"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             You don&apos;t need to be a web developer to do this. Open your website and check each
             one — or use the AI analyzer below to have it checked for you automatically.
@@ -288,7 +288,7 @@ export default function SeoGuidePage() {
                 key={f.number}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.15)",
                 }}
               >
@@ -308,7 +308,7 @@ export default function SeoGuidePage() {
                     </h3>
                     <p
                       className="text-sm leading-relaxed mb-0"
-                      style={{ color: "rgba(255,253,246,0.45)" }}
+                      style={{ color: "rgba(255,253,246,0.55)" }}
                     >
                       {f.body}
                     </p>
@@ -350,7 +350,7 @@ export default function SeoGuidePage() {
           </h2>
           <p
             className="text-sm max-w-2xl leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             None of these require a web developer. They require content — words, photos, and
             information you likely already have.
@@ -362,7 +362,7 @@ export default function SeoGuidePage() {
                 key={w.win}
                 className="rounded-xl border p-5 flex gap-4 items-start"
                 style={{
-                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.15)",
                 }}
               >
@@ -380,7 +380,7 @@ export default function SeoGuidePage() {
                   <p className="text-sm font-medium mb-1 leading-snug" style={{ color: "#fffdf6" }}>
                     {w.win}
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     {w.detail}
                   </p>
                 </div>
@@ -393,7 +393,7 @@ export default function SeoGuidePage() {
         <div
           className="rounded-2xl border p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -413,7 +413,7 @@ export default function SeoGuidePage() {
               </h2>
               <p
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: "rgba(255,253,246,0.45)" }}
+                style={{ color: "rgba(255,253,246,0.55)" }}
               >
                 Enter your website URL and our AI will analyze it against all 10 factors —
                 then give you a plain-English report with your score, what&apos;s working,
@@ -425,7 +425,7 @@ export default function SeoGuidePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 h-11 rounded text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   Open AI Analyzer
                   <ExternalLink size={13} />
@@ -459,7 +459,7 @@ export default function SeoGuidePage() {
                   >
                     {i + 1}
                   </div>
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>
                     {s}
                   </span>
                 </div>

@@ -91,7 +91,7 @@ function EditorField({
   };
   return (
     <div>
-      <label style={{ fontSize: "11px", color: "rgba(255,253,246,0.4)", display: "block", marginBottom: "4px" }}>
+      <label style={{ fontSize: "11px", color: "rgba(255,253,246,0.5)", display: "block", marginBottom: "4px" }}>
         {label}
       </label>
       {multiline ? (
@@ -239,7 +239,7 @@ export default function TreatmentPlanBuilderPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
 
         {/* ── HEADER ── */}
         <div className="no-print border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -249,7 +249,7 @@ export default function TreatmentPlanBuilderPage() {
               Operations
             </Link>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>Treatment Plan Builder</span>
+            <span className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>Treatment Plan Builder</span>
           </div>
           <button
             onClick={handlePrint}
@@ -285,7 +285,7 @@ export default function TreatmentPlanBuilderPage() {
           {/* ═══ EDITOR PANEL ═══ */}
           <div
             className={`no-print overflow-y-auto flex-shrink-0 ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "400px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}
+            style={{ width: "100%", maxWidth: "400px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}
           >
             <div className="p-5 space-y-6">
 
@@ -317,16 +317,16 @@ export default function TreatmentPlanBuilderPage() {
                   ))}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ fontSize: "11px", color: "rgba(255,253,246,0.4)" }}>Custom:</span>
+                  <span style={{ fontSize: "11px", color: "rgba(255,253,246,0.5)" }}>Custom:</span>
                   <input type="color" value={accentColor} onChange={(e) => setAccentColor(e.target.value)} style={{ width: "40px", height: "30px", border: "1px solid rgba(162,140,117,0.2)", borderRadius: "6px", background: "transparent", cursor: "pointer", padding: "2px" }} />
-                  <span style={{ fontSize: "11px", fontFamily: "monospace", color: "rgba(255,253,246,0.35)" }}>{accentColor}</span>
+                  <span style={{ fontSize: "11px", fontFamily: "monospace", color: "rgba(255,253,246,0.45)" }}>{accentColor}</span>
                 </div>
               </section>
 
               {/* Patient info */}
               <section>
                 {sectionLabel("Patient Details")}
-                <p style={{ fontSize: "11px", color: "rgba(255,253,246,0.3)", marginBottom: "10px" }}>Fill in to create a completed plan — or leave blank for a reusable blank template.</p>
+                <p style={{ fontSize: "11px", color: "rgba(255,253,246,0.4)", marginBottom: "10px" }}>Fill in to create a completed plan — or leave blank for a reusable blank template.</p>
                 <div className="space-y-3">
                   <EditorField label="Patient Name" value={patientName} onChange={setPatientName} placeholder="Leave blank for template line" />
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
@@ -413,7 +413,7 @@ export default function TreatmentPlanBuilderPage() {
                         value={p.notes}
                         onChange={(e) => updateProduct(p.id, "notes", e.target.value)}
                         placeholder="Usage notes (optional)"
-                        style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)", color: "rgba(255,253,246,0.7)", borderRadius: "6px", padding: "4px 9px", fontSize: "11px", width: "100%", outline: "none", marginTop: "6px" }}
+                        style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)", color: "rgba(255,253,246,0.78)", borderRadius: "6px", padding: "4px 9px", fontSize: "11px", width: "100%", outline: "none", marginTop: "6px" }}
                       />
                     </div>
                   ))}

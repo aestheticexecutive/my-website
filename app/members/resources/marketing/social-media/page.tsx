@@ -268,7 +268,7 @@ const finalSteps = [
 
 export default function SocialMediaPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -315,7 +315,7 @@ export default function SocialMediaPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             A practical guide to consistent growth, brand awareness, and patient acquisition
             for aesthetic practices — covering strategy, content frameworks, formats, and the
@@ -355,14 +355,14 @@ export default function SocialMediaPage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-8"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
             <p className="font-display text-2xl font-light mb-3" style={{ color: "#fffdf6" }}>
               Social media is one of the most powerful patient acquisition channels available to aesthetic practices.
             </p>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               The goal is not to get likes or followers. The goal is to build a patient acquisition
               engine. The most successful practices understand that social media is part of their overall
               marketing ecosystem — not a standalone strategy.
@@ -375,7 +375,7 @@ export default function SocialMediaPage() {
                 key={goal.label}
                 className="rounded-xl border p-5 flex items-start gap-4"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.12)",
                 }}
               >
@@ -389,7 +389,7 @@ export default function SocialMediaPage() {
                   <p className="font-display text-base font-light mb-1" style={{ color: "#fffdf6" }}>
                     {goal.label}
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     {goal.detail}
                   </p>
                 </div>
@@ -410,7 +410,7 @@ export default function SocialMediaPage() {
           <h2 className="font-display text-3xl font-light mb-3" style={{ color: "#fffdf6" }}>
             The 5 P&rsquo;s
           </h2>
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Before creating content, ensure your marketing strategy is built on this foundation.
             Each P is a lens for understanding and communicating your practice.
           </p>
@@ -425,7 +425,7 @@ export default function SocialMediaPage() {
                 <div
                   className="flex items-center gap-4 px-6 py-4 border-b"
                   style={{
-                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.14)",
                   }}
                 >
@@ -450,11 +450,11 @@ export default function SocialMediaPage() {
 
                 <div
                   className="px-6 py-5"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.55)" }}>
+                      <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.65)" }}>
                         {p.description}
                       </p>
                       {"insight" in p && p.insight && (
@@ -466,7 +466,7 @@ export default function SocialMediaPage() {
                             borderLeft: "3px solid rgba(162,140,117,0.3)",
                           }}
                         >
-                          <p className="text-xs leading-relaxed italic" style={{ color: "rgba(255,253,246,0.45)" }}>
+                          <p className="text-xs leading-relaxed italic" style={{ color: "rgba(255,253,246,0.55)" }}>
                             {p.insight}
                           </p>
                         </div>
@@ -507,7 +507,7 @@ export default function SocialMediaPage() {
                               <li
                                 key={q}
                                 className="text-xs flex items-start gap-2"
-                                style={{ color: "rgba(255,253,246,0.45)" }}
+                                style={{ color: "rgba(255,253,246,0.55)" }}
                               >
                                 <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
                                 {q}
@@ -536,7 +536,7 @@ export default function SocialMediaPage() {
           <h2 className="font-display text-3xl font-light mb-3" style={{ color: "#fffdf6" }}>
             Push vs Pull Marketing
           </h2>
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             The best practices use both — but in the right ratio.
           </p>
 
@@ -561,7 +561,7 @@ export default function SocialMediaPage() {
                   <p className="text-xs" style={{ color: "rgba(162,140,117,0.7)" }}>&ldquo;Buy This Now&rdquo;</p>
                 </div>
               </div>
-              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Goal: Generate immediate action.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -585,7 +585,7 @@ export default function SocialMediaPage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.12)",
               }}
             >
@@ -601,7 +601,7 @@ export default function SocialMediaPage() {
                   <p className="text-xs" style={{ color: "rgba(162,140,117,0.7)" }}>&ldquo;Discover With Us&rdquo;</p>
                 </div>
               </div>
-              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Goal: Build long-term trust and authority.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -626,7 +626,7 @@ export default function SocialMediaPage() {
           <div
             className="rounded-xl border p-6"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
               borderLeft: "3px solid rgba(162,140,117,0.45)",
             }}
@@ -652,14 +652,14 @@ export default function SocialMediaPage() {
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                     Education · Trust-building · Storytelling · Authority
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>Push</p>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Push</p>
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mt-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm leading-relaxed mt-4" style={{ color: "rgba(255,253,246,0.55)" }}>
               Practices that constantly sell often experience lower engagement and weaker brand loyalty.
               Lead with value — the bookings follow.
             </p>
@@ -678,7 +678,7 @@ export default function SocialMediaPage() {
           <h2 className="font-display text-3xl font-light mb-3" style={{ color: "#fffdf6" }}>
             Five Content Categories
           </h2>
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Every practice needs content across all five categories. An imbalanced content mix
             is one of the most common reasons practices plateau.
           </p>
@@ -688,7 +688,7 @@ export default function SocialMediaPage() {
               <div
                 key={cat.label}
                 className="rounded-xl border overflow-hidden flex flex-col"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="flex items-center gap-3 px-5 py-4 border-b"
@@ -707,7 +707,7 @@ export default function SocialMediaPage() {
                     <p className="font-display text-base font-light" style={{ color: "#fffdf6" }}>
                       {cat.label}
                     </p>
-                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>
                       {cat.purpose}
                     </p>
                   </div>
@@ -720,7 +720,7 @@ export default function SocialMediaPage() {
                     </p>
                     <ul className="space-y-1">
                       {cat.formats.map((f) => (
-                        <li key={f} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                        <li key={f} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                           <span style={{ color: "rgba(162,140,117,0.45)" }}>·</span> {f}
                         </li>
                       ))}
@@ -739,7 +739,7 @@ export default function SocialMediaPage() {
                           style={{
                             background: "rgba(162,140,117,0.05)",
                             border: "1px solid rgba(162,140,117,0.08)",
-                            color: "rgba(255,253,246,0.5)",
+                            color: "rgba(255,253,246,0.6)",
                             fontStyle: "italic",
                           }}
                         >
@@ -756,7 +756,7 @@ export default function SocialMediaPage() {
             <div
               className="rounded-xl border p-5 flex flex-col justify-between"
               style={{
-                background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.2)",
               }}
             >
@@ -764,7 +764,7 @@ export default function SocialMediaPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>
                   The 60 / 30 / 10 Rule
                 </p>
-                <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.4)" }}>
+                <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
                   A simple content distribution strategy. Most practices do the opposite.
                 </p>
               </div>
@@ -784,7 +784,7 @@ export default function SocialMediaPage() {
                     </span>
                     <div>
                       <p className="text-sm leading-none" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>{item.sub}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{item.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -811,7 +811,7 @@ export default function SocialMediaPage() {
               <div
                 key={fmt.label}
                 className="rounded-xl border overflow-hidden"
-                style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+                style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
               >
                 <div
                   className="flex items-center justify-between gap-4 px-5 py-4 border-b"
@@ -850,7 +850,7 @@ export default function SocialMediaPage() {
                     </p>
                     <ul className="space-y-1.5">
                       {fmt.bestFor.map((b) => (
-                        <li key={b} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                        <li key={b} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                           <span style={{ color: "rgba(162,140,117,0.4)" }}>·</span> {b}
                         </li>
                       ))}
@@ -862,7 +862,7 @@ export default function SocialMediaPage() {
                     </p>
                     <ul className="space-y-1.5">
                       {fmt.examples.map((e) => (
-                        <li key={e} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                        <li key={e} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                           <span style={{ color: "rgba(162,140,117,0.4)" }}>·</span> {e}
                         </li>
                       ))}
@@ -894,7 +894,7 @@ export default function SocialMediaPage() {
           <h2 className="font-display text-3xl font-light mb-3" style={{ color: "#fffdf6" }}>
             Anatomy of a High-Performing Post
           </h2>
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Every post — Reel, carousel, or caption — should include these three elements.
           </p>
 
@@ -923,7 +923,7 @@ export default function SocialMediaPage() {
                 </div>
               </div>
               <div className="p-5">
-                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Capture attention immediately. You have one line.
                 </p>
                 <div className="space-y-2">
@@ -939,7 +939,7 @@ export default function SocialMediaPage() {
                       style={{
                         background: "rgba(162,140,117,0.06)",
                         border: "1px solid rgba(162,140,117,0.1)",
-                        color: "rgba(255,253,246,0.5)",
+                        color: "rgba(255,253,246,0.6)",
                       }}
                     >
                       &ldquo;{h}&rdquo;
@@ -953,7 +953,7 @@ export default function SocialMediaPage() {
             <div
               className="rounded-xl border overflow-hidden"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.12)",
               }}
             >
@@ -973,7 +973,7 @@ export default function SocialMediaPage() {
                 </div>
               </div>
               <div className="p-5">
-                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Teach something useful. Make the audience better for having seen your post.
                 </p>
                 <div className="space-y-2">
@@ -991,7 +991,7 @@ export default function SocialMediaPage() {
                       }}
                     >
                       <span className="text-xs font-medium flex-shrink-0" style={{ color: "#a28c75" }}>{item.q}</span>
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{item.a}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{item.a}</span>
                     </div>
                   ))}
                 </div>
@@ -1022,7 +1022,7 @@ export default function SocialMediaPage() {
                 </div>
               </div>
               <div className="p-5">
-                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Tell people exactly what to do next. Never leave them guessing.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -1071,7 +1071,7 @@ export default function SocialMediaPage() {
                 key={m.label}
                 className="rounded-xl border p-5 flex items-start gap-5"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.1)",
                 }}
               >
@@ -1093,7 +1093,7 @@ export default function SocialMediaPage() {
                       {m.label}
                     </h3>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     {m.detail}
                   </p>
                 </div>
@@ -1121,7 +1121,7 @@ export default function SocialMediaPage() {
                 key={item.label}
                 className="rounded-xl border p-5 flex items-start gap-4"
                 style={{
-                  background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                  background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.16)",
                 }}
               >
@@ -1145,7 +1145,7 @@ export default function SocialMediaPage() {
                       {item.cadence}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     {item.detail}
                   </p>
                 </div>
@@ -1166,7 +1166,7 @@ export default function SocialMediaPage() {
           <h2 className="font-display text-3xl font-light mb-3" style={{ color: "#fffdf6" }}>
             Content Ideas for Med Spas
           </h2>
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Use these when you&apos;re stuck. Each one can be adapted into a Reel, carousel, or Story.
           </p>
 
@@ -1176,7 +1176,7 @@ export default function SocialMediaPage() {
                 key={category}
                 className="rounded-xl border p-5"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.11)",
                 }}
               >
@@ -1194,7 +1194,7 @@ export default function SocialMediaPage() {
                     <li
                       key={idea}
                       className="flex items-start gap-2.5 text-sm leading-snug"
-                      style={{ color: "rgba(255,253,246,0.5)" }}
+                      style={{ color: "rgba(255,253,246,0.6)" }}
                     >
                       <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0, marginTop: 2 }}>·</span>
                       {idea}
@@ -1236,7 +1236,7 @@ export default function SocialMediaPage() {
               </p>
             </div>
             <div
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
             >
               {prePostChecklist.map((item, i) => (
                 <div
@@ -1255,7 +1255,7 @@ export default function SocialMediaPage() {
                   >
                     <CheckCircle size={12} style={{ color: "rgba(162,140,117,0.6)" }} />
                   </div>
-                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</p>
+                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -1267,7 +1267,7 @@ export default function SocialMediaPage() {
           <div
             className="rounded-2xl border p-8 md:p-12"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.22)",
             }}
           >
@@ -1277,7 +1277,7 @@ export default function SocialMediaPage() {
             <h2 className="font-display text-3xl font-light mb-4" style={{ color: "#fffdf6" }}>
               The most successful practices don&apos;t use social media to sell treatments.
             </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-base leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               When you consistently provide value, patients begin to view your practice as the expert —
               and bookings naturally follow.
             </p>
@@ -1298,7 +1298,7 @@ export default function SocialMediaPage() {
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{step}</p>
+                  <p className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{step}</p>
                 </div>
               ))}
             </div>

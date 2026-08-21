@@ -286,7 +286,7 @@ export default function ConsultationConversionTrackerPage() {
 
   // Shared inline styles
   const inputStyle: React.CSSProperties = { background: "rgba(12,0,4,0.8)", borderColor: "rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" };
-  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" };
+  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #170009 100%)" };
 
   const presetOptions: { id: Preset; label: string }[] = [
     { id: "thisMonth", label: "This Month" },
@@ -297,7 +297,7 @@ export default function ConsultationConversionTrackerPage() {
   ];
 
   return (
-    <div className="bg-[#0c0004] min-h-screen pb-24">
+    <div className="bg-[#170009] min-h-screen pb-24">
       {/* Sticky sub-header */}
       <div className="sticky top-16 z-10 border-b" style={{ background: "rgba(10,0,3,0.96)", backdropFilter: "blur(16px)", borderColor: "rgba(162,140,117,0.12)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between gap-4">
@@ -306,7 +306,7 @@ export default function ConsultationConversionTrackerPage() {
               <ArrowLeft size={12} /> Operations
             </Link>
             <span style={{ color: "rgba(162,140,117,0.25)" }}>/</span>
-            <span style={{ color: "rgba(255,253,246,0.7)" }}>Consultation Conversion Tracker</span>
+            <span style={{ color: "rgba(255,253,246,0.78)" }}>Consultation Conversion Tracker</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-end">
@@ -340,7 +340,7 @@ export default function ConsultationConversionTrackerPage() {
         <div className="mb-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Operations</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Consultation Conversion Tracker</h1>
-          <p className="text-sm max-w-xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
             Log consultations by provider and service type, then run reports for any date range to see conversion rates and track notes on what drove the numbers.
           </p>
         </div>
@@ -354,12 +354,12 @@ export default function ConsultationConversionTrackerPage() {
                 <Users size={14} style={{ color: "#a28c75" }} />
                 <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Providers</h2>
               </div>
-              <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Add each provider who runs consultations — you'll select from this list when logging entries.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {data.providers.length === 0 && (
-                  <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No providers added yet.</span>
+                  <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No providers added yet.</span>
                 )}
                 {data.providers.map((p) => (
                   <span key={p} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
@@ -386,12 +386,12 @@ export default function ConsultationConversionTrackerPage() {
                 <BarChart3 size={14} style={{ color: "#a28c75" }} />
                 <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Consultation Types</h2>
               </div>
-              <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
                 Pre-loaded with common categories — edit, remove, or add your own service types.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {data.consultTypes.length === 0 && (
-                  <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No consultation types added yet.</span>
+                  <span className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No consultation types added yet.</span>
                 )}
                 {data.consultTypes.map((t) => (
                   <span key={t} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
@@ -417,7 +417,7 @@ export default function ConsultationConversionTrackerPage() {
               <div className="px-6 pt-6 pb-4 flex items-center justify-between gap-4 flex-wrap">
                 <div>
                   <h2 className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>Consultation Log</h2>
-                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+                  <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                     One row per provider + service type combination for a given day. Enter how many purchased and how many didn't.
                   </p>
                 </div>
@@ -429,7 +429,7 @@ export default function ConsultationConversionTrackerPage() {
 
               {sortedEntries.length === 0 ? (
                 <div className="px-6 py-8">
-                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.2)" }}>
+                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>
                     No consultations logged yet. Click "Add Consultation" to start tracking.
                   </p>
                 </div>
@@ -491,7 +491,7 @@ export default function ConsultationConversionTrackerPage() {
                             {rate !== null ? (
                               <span className="text-xs font-medium" style={{ color: "#a28c75" }}>{rate.toFixed(0)}%</span>
                             ) : (
-                              <span className="text-xs" style={{ color: "rgba(255,253,246,0.15)" }}>—</span>
+                              <span className="text-xs" style={{ color: "rgba(255,253,246,0.22)" }}>—</span>
                             )}
                           </div>
 
@@ -515,7 +515,7 @@ export default function ConsultationConversionTrackerPage() {
                   <StickyNote size={14} style={{ color: "#a28c75" }} />
                   <div>
                     <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Notes</h2>
-                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                       Attach a note to any date — e.g. explain why June's conversion rate was what it was. Notes show up in reports covering that date.
                     </p>
                   </div>
@@ -529,7 +529,7 @@ export default function ConsultationConversionTrackerPage() {
               <div className="divide-y" style={{ borderColor: "rgba(162,140,117,0.06)" }}>
                 {data.notes.length === 0 && (
                   <div className="px-6 py-8">
-                    <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.2)" }}>No notes yet.</p>
+                    <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>No notes yet.</p>
                   </div>
                 )}
                 {[...data.notes].sort((a, b) => (a.date < b.date ? 1 : -1)).map((note) => (
@@ -556,7 +556,7 @@ export default function ConsultationConversionTrackerPage() {
             <div className="rounded-xl border p-5 mb-8" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               <div className="flex items-center gap-2 mb-4">
                 <Calendar size={13} style={{ color: "#a28c75" }} />
-                <span className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Date Range</span>
+                <span className="text-xs" style={{ color: "rgba(255,253,246,0.55)" }}>Date Range</span>
               </div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 {presetOptions.map((p) => (
@@ -573,12 +573,12 @@ export default function ConsultationConversionTrackerPage() {
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>From</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>From</span>
                   <input type="date" value={rangeStart} onChange={(e) => { setRangeStart(e.target.value); setPreset("custom"); }}
                     className="text-xs px-3 py-2 rounded-lg border outline-none" style={inputStyle} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.3)" }}>To</span>
+                  <span className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>To</span>
                   <input type="date" value={rangeEnd} onChange={(e) => { setRangeEnd(e.target.value); setPreset("custom"); }}
                     className="text-xs px-3 py-2 rounded-lg border outline-none" style={inputStyle} />
                 </div>
@@ -604,7 +604,7 @@ export default function ConsultationConversionTrackerPage() {
 
             {overallTotal === 0 ? (
               <div className="rounded-xl border p-10 text-center mb-10" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
-                <p className="text-sm" style={{ color: "rgba(255,253,246,0.3)" }}>No consultations logged in this date range.</p>
+                <p className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>No consultations logged in this date range.</p>
               </div>
             ) : (
               <>
@@ -638,13 +638,13 @@ export default function ConsultationConversionTrackerPage() {
                 </button>
               </div>
               {filteredNotes.length === 0 ? (
-                <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No notes logged for this date range.</p>
+                <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No notes logged for this date range.</p>
               ) : (
                 <div className="space-y-3">
                   {filteredNotes.map((note) => (
                     <div key={note.id} className="rounded-xl border p-5 flex flex-col sm:flex-row gap-3" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
                       <span className="text-xs font-medium flex-shrink-0 sm:w-28" style={{ color: "#a28c75" }}>{formatDateLabel(note.date)}</span>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{note.text || <span className="italic" style={{ color: "rgba(255,253,246,0.2)" }}>Empty note</span>}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{note.text || <span className="italic" style={{ color: "rgba(255,253,246,0.28)" }}>Empty note</span>}</p>
                     </div>
                   ))}
                 </div>
@@ -675,7 +675,7 @@ function GroupTable({ rows, label }: { rows: GroupStat[]; label: string }) {
         <div key={r.name} className="grid items-center px-5 py-4"
           style={{ gridTemplateColumns: "1fr 90px 100px 130px 200px", background: i % 2 === 0 ? "rgba(20,0,8,0.5)" : "rgba(12,0,4,0.5)", minWidth: "600px", borderTop: i > 0 ? "1px solid rgba(162,140,117,0.05)" : undefined }}>
           <p className="text-sm" style={{ color: "#fffdf6" }}>{r.name}</p>
-          <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.55)" }}>{r.total}</p>
+          <p className="text-sm text-right" style={{ color: "rgba(255,253,246,0.65)" }}>{r.total}</p>
           <p className="text-sm text-right" style={{ color: "#7ecf7e" }}>{r.purchased}</p>
           <p className="text-sm text-right" style={{ color: "#e07878" }}>{r.notPurchased}</p>
           <div className="flex items-center gap-3 justify-end">

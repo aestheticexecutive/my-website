@@ -113,7 +113,7 @@ const sections = [
 
 export default function SecretShoppingPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* Hero */}
       <div
@@ -160,7 +160,7 @@ export default function SecretShoppingPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             The most honest feedback you will ever get about your practice comes from experiencing
             it the way a first-time patient does — without warning, and without your team knowing
@@ -175,7 +175,7 @@ export default function SecretShoppingPage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.22)",
           }}
         >
@@ -196,7 +196,7 @@ export default function SecretShoppingPage() {
               >
                 The experience you think you deliver and the one patients actually receive are rarely the same thing.
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                 You built your practice with intention. You trained your team. You designed the experience. But
                 every great patient journey lives or dies in the execution — and execution drifts the moment
                 no one is watching. Secret shopping is the only tool that closes the gap between your vision
@@ -243,7 +243,7 @@ export default function SecretShoppingPage() {
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {item.body}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function SecretShoppingPage() {
             >
               Who Should Be Your Shopper
             </p>
-            <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
               Choose someone your staff has{" "}
               <span style={{ color: "#fffdf6" }}>never met and doesn&apos;t recognize</span> — a trusted
               friend, a fellow practice owner, a mentor, or a professional mystery shopper service. They
@@ -322,7 +322,7 @@ export default function SecretShoppingPage() {
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed pl-6" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {item.body}
                 </p>
               </div>
@@ -345,7 +345,7 @@ export default function SecretShoppingPage() {
               >
                 A note on ethics
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                 Secret shopping competitors is a standard and accepted business practice. Use a
                 neutral identity (a friend, not your name), and do not misrepresent credentials or intent.
                 If an in-person visit is appropriate, you are not obligated to disclose your identity
@@ -394,7 +394,7 @@ export default function SecretShoppingPage() {
                 >
                   {item.freq}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                   {item.detail}
                 </p>
               </div>
@@ -442,7 +442,7 @@ export default function SecretShoppingPage() {
                 >
                   {step.title}
                 </h3>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                   {step.body}
                 </p>
               </div>
@@ -456,10 +456,10 @@ export default function SecretShoppingPage() {
               borderColor: "rgba(162,140,117,0.13)",
             }}
           >
-            <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
               <span style={{ color: "#fffdf6" }}>Present findings without blame.</span>{" "}
               Share the results with your team framed as{" "}
-              <em style={{ color: "rgba(255,253,246,0.65)" }}>
+              <em style={{ color: "rgba(255,253,246,0.75)" }}>
                 &ldquo;here&apos;s what a patient experiences — here&apos;s how we make it better&rdquo;
               </em>{" "}
               rather than as a performance evaluation. The goal is a better practice, not a gotcha moment.
@@ -499,7 +499,7 @@ export default function SecretShoppingPage() {
                   >
                     {s.title}
                   </h4>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     {s.desc}
                   </p>
                 </div>
@@ -513,14 +513,14 @@ export default function SecretShoppingPage() {
           className="rounded-2xl border overflow-hidden"
           style={{
             borderColor: "rgba(162,140,117,0.2)",
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
           }}
         >
           <div className="p-8 md:p-10">
             <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
               Ready to start?
             </h2>
-            <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.55)" }}>
               Print the questionnaire to take with you on a shop, then log your results — including
               photos and notes — in the digital tracker.
             </p>
@@ -562,7 +562,7 @@ export default function SecretShoppingPage() {
         {/* Legal note */}
         <p
           className="text-xs leading-relaxed pb-4"
-          style={{ color: "rgba(255,253,246,0.2)" }}
+          style={{ color: "rgba(255,253,246,0.28)" }}
         >
           The information on this page is provided for educational and strategic planning purposes only
           and does not constitute legal, compliance, or professional services advice. Consult a qualified

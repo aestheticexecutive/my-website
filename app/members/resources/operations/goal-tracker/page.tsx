@@ -352,7 +352,7 @@ export default function GoalTrackerPage() {
 
   if (view === "list" || !active) {
     return (
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 flex-wrap" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <Link href="/members/resources/operations" className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70" style={{ color: "rgba(162,140,117,0.6)" }}>
             <ArrowLeft size={13} />
@@ -373,18 +373,18 @@ export default function GoalTrackerPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Operations</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Goal Tracker</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-10" style={{ color: "rgba(255,253,246,0.5)" }}>
             Set goals for a period, log progress as you go, and see exactly how far off pace you are — and what you need to hit per business day to still get there. Print a worksheet for the team to fill in by hand, then log it back in.
           </p>
 
           {/* New goal stack */}
           <button onClick={createStack} className="w-full sm:w-auto rounded-xl border p-6 text-left transition-all duration-200 hover:border-[#a28c75]/40 mb-12"
-            style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
+            style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.15)" }}>
             <div className="flex items-center gap-4">
               <Target size={20} style={{ color: "#a28c75" }} />
               <div>
                 <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>New Goal Stack</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Set goals for a person, team, or the whole practice over a date range.</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>Set goals for a person, team, or the whole practice over a date range.</p>
               </div>
             </div>
           </button>
@@ -396,14 +396,14 @@ export default function GoalTrackerPage() {
           </div>
 
           {sortedStacks.length === 0 ? (
-            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No goal stacks saved yet — create one above to get started.</p>
+            <div className="rounded-xl border p-10 text-center" style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No goal stacks saved yet — create one above to get started.</p>
             </div>
           ) : (
             <div className="space-y-3">
               {sortedStacks.map((s) => (
                 <div key={s.id} className="rounded-xl border p-5 flex items-center gap-4 flex-wrap sm:flex-nowrap"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
                     <Target size={17} style={{ color: "#a28c75" }} />
                   </div>
@@ -414,7 +414,7 @@ export default function GoalTrackerPage() {
                         {s.goals.length} goal{s.goals.length === 1 ? "" : "s"}
                       </span>
                     </div>
-                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.35)" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>
                       {s.teamMember.trim() ? `${s.teamMember} · ` : ""}{formatDateShort(s.startDate)} – {formatDateShort(s.endDate)} · Created {formatDateShort(s.createdAt)}
                     </p>
                   </div>
@@ -459,7 +459,7 @@ export default function GoalTrackerPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 flex items-center justify-between gap-4 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center gap-4 min-w-0">
@@ -468,7 +468,7 @@ export default function GoalTrackerPage() {
               My Goal Stacks
             </button>
             <span style={{ color: "rgba(162,140,117,0.2)" }}>·</span>
-            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.5)" }}>{active.name}</span>
+            <span className="text-sm truncate" style={{ color: "rgba(255,253,246,0.6)" }}>{active.name}</span>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             {lastSaved && !savedFlash && (
@@ -506,30 +506,30 @@ export default function GoalTrackerPage() {
         <div className="flex h-[calc(100vh-73px)] md:h-[calc(100vh-73px)] overflow-hidden">
           {/* Editor panel */}
           <div className={`overflow-y-auto flex-shrink-0 no-print ${activeTab === "edit" ? "flex" : "hidden"} md:flex flex-col`}
-            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#0c0004" }}>
+            style={{ width: "100%", maxWidth: "460px", borderRight: "1px solid rgba(162,140,117,0.1)", background: "#170009" }}>
             <div className="p-5 space-y-6">
               {/* Stack details */}
               <section>
                 <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Stack Details</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Stack Name</label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Stack Name</label>
                     <input type="text" value={active.name} onChange={(e) => updateStackField(active.id, "name", e.target.value)}
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div>
-                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Team Member <span style={{ color: "rgba(255,253,246,0.25)" }}>(optional)</span></label>
+                    <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Team Member <span style={{ color: "rgba(255,253,246,0.32)" }}>(optional)</span></label>
                     <input type="text" value={active.teamMember} onChange={(e) => updateStackField(active.id, "teamMember", e.target.value)} placeholder="e.g. Jamie Rivera, or leave blank for practice-wide"
                       className="w-full text-sm rounded-lg px-3 py-2.5 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>Start Date</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>Start Date</label>
                       <input type="date" value={active.startDate} onChange={(e) => updateStackField(active.id, "startDate", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                     </div>
                     <div>
-                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.4)" }}>End Date</label>
+                      <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.5)" }}>End Date</label>
                       <input type="date" value={active.endDate} onChange={(e) => updateStackField(active.id, "endDate", e.target.value)}
                         className="w-full text-sm rounded-lg px-3 py-2.5 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" }} />
                     </div>
@@ -586,12 +586,12 @@ export default function GoalTrackerPage() {
                           {/* Target + unit */}
                           <div className="grid grid-cols-2 gap-2">
                             <div>
-                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Target for Period</label>
+                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Target for Period</label>
                               <input type="number" value={goal.targetValue || ""} onChange={(e) => updateGoalField(active.id, goal.id, "targetValue", parseFloat(e.target.value) || 0)}
                                 className="w-full text-xs rounded-lg px-2.5 py-2 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                             </div>
                             <div>
-                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Unit</label>
+                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Unit</label>
                               <input type="text" value={goal.unit} onChange={(e) => updateGoalField(active.id, goal.id, "unit", e.target.value)} placeholder="$, units, patients..."
                                 className="w-full text-xs rounded-lg px-2.5 py-2 outline-none placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                             </div>
@@ -600,7 +600,7 @@ export default function GoalTrackerPage() {
                           {/* Manual daily/weekly goal */}
                           <div className="grid grid-cols-2 gap-2">
                             <div>
-                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Manual Goal Cadence</label>
+                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Manual Goal Cadence</label>
                               <select value={goal.manualCadence} onChange={(e) => updateGoalField(active.id, goal.id, "manualCadence", e.target.value as Cadence)}
                                 className="w-full text-xs rounded-lg px-2.5 py-2 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }}>
                                 <option style={{ color: "#000" }}>Daily</option>
@@ -608,7 +608,7 @@ export default function GoalTrackerPage() {
                               </select>
                             </div>
                             <div>
-                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>{goal.manualCadence} Goal</label>
+                              <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>{goal.manualCadence} Goal</label>
                               <input type="number" value={goal.manualTarget || ""} onChange={(e) => updateGoalField(active.id, goal.id, "manualTarget", parseFloat(e.target.value) || 0)}
                                 className="w-full text-xs rounded-lg px-2.5 py-2 outline-none" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                             </div>
@@ -617,11 +617,11 @@ export default function GoalTrackerPage() {
                           {/* Computed stats */}
                           <div className="rounded-lg p-2.5 grid grid-cols-2 gap-x-2 gap-y-1.5" style={{ background: "rgba(162,140,117,0.06)" }}>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Average So Far" : "Current"}</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.4)" }}>{stats.isPercent ? "Average So Far" : "Current"}</p>
                               <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatNumber(stats.current, goal.unit)}</p>
                             </div>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Target Average" : "Remaining"}</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.4)" }}>{stats.isPercent ? "Target Average" : "Remaining"}</p>
                               {stats.isPercent ? (
                                 <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{formatNumber(goal.targetValue, goal.unit)}</p>
                               ) : (
@@ -629,11 +629,11 @@ export default function GoalTrackerPage() {
                               )}
                             </div>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>Business Days Left</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.4)" }}>Business Days Left</p>
                               <p className="text-xs font-medium" style={{ color: "#fffdf6" }}>{stats.businessDaysLeft ?? "—"}</p>
                             </div>
                             <div>
-                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.3)" }}>{stats.isPercent ? "Avg Needed Going Forward" : "Pace Needed / Day"}</p>
+                              <p className="text-[10px] uppercase tracking-wide" style={{ color: "rgba(255,253,246,0.4)" }}>{stats.isPercent ? "Avg Needed Going Forward" : "Pace Needed / Day"}</p>
                               <p className="text-xs font-medium" style={{ color: stats.isPercent && stats.onPaceOrAhead ? "#7ecf7e" : "#e0b84a" }}>
                                 {stats.isPercent
                                   ? stats.businessDaysLeft !== null && stats.businessDaysLeft <= 0
@@ -652,19 +652,19 @@ export default function GoalTrackerPage() {
 
                           {/* Notes */}
                           <div>
-                            <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.35)" }}>Notes</label>
+                            <label className="text-xs mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Notes</label>
                             <textarea value={goal.notes} onChange={(e) => updateGoalField(active.id, goal.id, "notes", e.target.value)} rows={2} placeholder="Context, exceptions, why a number moved..."
                               className="w-full text-xs rounded-lg px-2.5 py-2 outline-none resize-none leading-relaxed placeholder:opacity-30" style={{ background: "rgba(162,140,117,0.07)", border: "1px solid rgba(162,140,117,0.2)", color: "#fffdf6" }} />
                           </div>
 
                           {/* Progress log */}
                           <div>
-                            <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.35)" }}>Progress Log</label>
+                            <label className="text-xs mb-1.5 block" style={{ color: "rgba(255,253,246,0.45)" }}>Progress Log</label>
                             {sortedEntries.length > 0 && (
                               <div className="space-y-1 mb-2">
                                 {sortedEntries.map((e) => (
-                                  <div key={e.id} className="flex items-center gap-2 text-xs group" style={{ color: "rgba(255,253,246,0.6)" }}>
-                                    <span className="w-14 flex-shrink-0" style={{ color: "rgba(255,253,246,0.4)" }}>{formatDateMed(e.date)}</span>
+                                  <div key={e.id} className="flex items-center gap-2 text-xs group" style={{ color: "rgba(255,253,246,0.7)" }}>
+                                    <span className="w-14 flex-shrink-0" style={{ color: "rgba(255,253,246,0.5)" }}>{formatDateMed(e.date)}</span>
                                     <span className="flex-1">{formatNumber(e.currentValue, goal.unit)} · {e.businessDaysRemaining} day{e.businessDaysRemaining === 1 ? "" : "s"} left</span>
                                     <button onClick={() => deleteEntry(active.id, goal.id, e.id)} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" style={{ color: "rgba(162,140,117,0.4)" }}>
                                       <Trash2 size={10} />
@@ -691,7 +691,7 @@ export default function GoalTrackerPage() {
                   })}
 
                   {active.goals.length === 0 && (
-                    <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.25)" }}>No goals yet — add one above.</p>
+                    <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.32)" }}>No goals yet — add one above.</p>
                   )}
                 </div>
               </section>

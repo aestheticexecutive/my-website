@@ -304,7 +304,7 @@ const groupStyle = (g: string) => groups.find((x) => x.label === g) ?? groups[3]
 
 export default function AutomatedCampaignsPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -337,7 +337,7 @@ export default function AutomatedCampaignsPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             15 Automated Campaigns
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Set up once. Run 24/7. These campaigns consistently generate higher retention,
             more appointments, and increased revenue — without your team manually following
             up with every single patient.
@@ -401,7 +401,7 @@ export default function AutomatedCampaignsPage() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xl">{c.icon}</span>
-                    <span className="text-xs font-medium" style={{ color: "rgba(255,253,246,0.3)" }}>{c.num}</span>
+                    <span className="text-xs font-medium" style={{ color: "rgba(255,253,246,0.4)" }}>{c.num}</span>
                   </div>
                   <p className="text-xs font-medium leading-snug" style={{ color: "#fffdf6" }}>{c.label}</p>
                   <span className="text-xs" style={{ color: g.color }}>{c.group}</span>
@@ -467,7 +467,7 @@ export default function AutomatedCampaignsPage() {
                       <p className="text-xs tracking-[0.15em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.5)" }}>Trigger</p>
                       <div className="flex items-start gap-2">
                         <span className="text-sm flex-shrink-0" style={{ color: g.color }}>⚡</span>
-                        <p className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.75)" }}>{c.trigger}</p>
+                        <p className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.82)" }}>{c.trigger}</p>
                       </div>
                     </div>
 
@@ -478,7 +478,7 @@ export default function AutomatedCampaignsPage() {
                         {c.content.map((item) => (
                           <li key={item} className="flex items-start gap-2">
                             <span className="w-1 h-1 rounded-full flex-shrink-0 mt-1.5" style={{ background: g.color }} />
-                            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</p>
+                            <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
                           </li>
                         ))}
                       </ul>
@@ -534,7 +534,7 @@ export default function AutomatedCampaignsPage() {
                 <span className="text-xl flex-shrink-0">{item.icon}</span>
                 <div>
                   <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -549,7 +549,7 @@ export default function AutomatedCampaignsPage() {
               <p className="text-xs font-medium mb-3" style={{ color: "#c8a050" }}>📧 Email as Primary Channel</p>
               <div className="flex flex-wrap gap-1.5">
                 {["Welcome Series", "Consultation Follow-Up", "Treatment Interest Drip", "Inactive Reactivation", "Post-Treatment Care", "Abandoned Consultation", "New Treatment Launch", "Monthly Feature", "VIP & Membership", "Event Promotion", "Referral Campaign"].map((n) => (
-                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(200,160,80,0.1)", color: "rgba(255,253,246,0.6)" }}>{n}</span>
+                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(200,160,80,0.1)", color: "rgba(255,253,246,0.7)" }}>{n}</span>
                 ))}
               </div>
             </div>
@@ -557,10 +557,10 @@ export default function AutomatedCampaignsPage() {
               <p className="text-xs font-medium mb-3" style={{ color: "#7aabcf" }}>📧 + 💬 Email & Text Both Primary</p>
               <div className="flex flex-wrap gap-1.5">
                 {["Maintenance Reminder", "Birthday Campaign", "Review Request", "Retail Replenishment"].map((n) => (
-                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(100,160,220,0.08)", color: "rgba(255,253,246,0.6)" }}>{n}</span>
+                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(100,160,220,0.08)", color: "rgba(255,253,246,0.7)" }}>{n}</span>
                 ))}
               </div>
-              <p className="text-xs mt-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mt-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 These campaigns rely on immediacy. Email delivers depth; text drives the action.
               </p>
             </div>
@@ -573,7 +573,7 @@ export default function AutomatedCampaignsPage() {
           <p className="font-display text-xl font-light leading-relaxed" style={{ color: "#fffdf6" }}>
             A thoughtfully built automation system works around the clock.
           </p>
-          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(255,253,246,0.7)" }}>
             Nurturing leads, educating patients, increasing retention, and generating consistent revenue —
             without requiring your team to manually follow up with every patient. Build these 15 campaigns
             and your marketing runs even when you&apos;re not.

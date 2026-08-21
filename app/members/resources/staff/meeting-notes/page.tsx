@@ -186,10 +186,10 @@ export default function MeetingNotesPage() {
 
   // Shared inline styles
   const inputStyle: React.CSSProperties = { background: "rgba(12,0,4,0.8)", borderColor: "rgba(162,140,117,0.2)", color: "#fffdf6", colorScheme: "dark" };
-  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" };
+  const cardBg: React.CSSProperties = { background: "linear-gradient(145deg, #140008 0%, #170009 100%)" };
 
   return (
-    <div className="bg-[#0c0004] min-h-screen pb-24">
+    <div className="bg-[#170009] min-h-screen pb-24">
       {/* Sticky sub-header */}
       <div className="sticky top-16 z-10 border-b" style={{ background: "rgba(10,0,3,0.96)", backdropFilter: "blur(16px)", borderColor: "rgba(162,140,117,0.12)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between gap-4">
@@ -198,7 +198,7 @@ export default function MeetingNotesPage() {
               <ArrowLeft size={12} /> Staff
             </Link>
             <span style={{ color: "rgba(162,140,117,0.25)" }}>/</span>
-            <span style={{ color: "rgba(255,253,246,0.7)" }}>Meeting Notes</span>
+            <span style={{ color: "rgba(255,253,246,0.78)" }}>Meeting Notes</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-end">
@@ -232,7 +232,7 @@ export default function MeetingNotesPage() {
         <div className="mb-10">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Staff</p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>Meeting Notes</h1>
-          <p className="text-sm max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
             Pre-loaded with the recommended staff meeting agenda — customize the sections, then log notes for every meeting with a name and date so you can look back on past meetings and prepare for what&apos;s next.
           </p>
         </div>
@@ -241,7 +241,7 @@ export default function MeetingNotesPage() {
         {view === "notes" && (
           <div>
             <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                 {data.meetings.length} meeting{data.meetings.length === 1 ? "" : "s"} logged
               </p>
               <button onClick={addMeeting} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"
@@ -252,7 +252,7 @@ export default function MeetingNotesPage() {
 
             {sortedMeetings.length === 0 ? (
               <div className="rounded-xl border p-10 text-center" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
-                <p className="text-sm" style={{ color: "rgba(255,253,246,0.35)" }}>No meetings logged yet. Click &quot;New Meeting&quot; to start your first one.</p>
+                <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>No meetings logged yet. Click &quot;New Meeting&quot; to start your first one.</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -268,7 +268,7 @@ export default function MeetingNotesPage() {
                           {expanded ? <ChevronDown size={14} style={{ color: "rgba(162,140,117,0.5)" }} /> : <ChevronRight size={14} style={{ color: "rgba(162,140,117,0.5)" }} />}
                           <div className="min-w-0">
                             <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>
-                              {m.title.trim() || <span className="italic" style={{ color: "rgba(255,253,246,0.3)" }}>Untitled Meeting</span>}
+                              {m.title.trim() || <span className="italic" style={{ color: "rgba(255,253,246,0.4)" }}>Untitled Meeting</span>}
                             </p>
                             <p className="text-xs" style={{ color: "rgba(162,140,117,0.6)" }}>
                               {formatDateLabel(m.date)} · {filledCount}/{data.sections.length} sections filled
@@ -296,7 +296,7 @@ export default function MeetingNotesPage() {
                           </div>
 
                           {data.sections.length === 0 ? (
-                            <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.2)" }}>No agenda sections defined — add some under &quot;Agenda Sections&quot;.</p>
+                            <p className="text-xs italic" style={{ color: "rgba(255,253,246,0.28)" }}>No agenda sections defined — add some under &quot;Agenda Sections&quot;.</p>
                           ) : (
                             <div className="space-y-5">
                               {data.sections.map((s) => (
@@ -311,10 +311,10 @@ export default function MeetingNotesPage() {
 
                           {orphanEntries.length > 0 && (
                             <div className="mt-6 pt-5 border-t" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
-                              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.3)" }}>Notes from sections since removed from the template:</p>
+                              <p className="text-xs mb-3" style={{ color: "rgba(255,253,246,0.4)" }}>Notes from sections since removed from the template:</p>
                               <div className="space-y-4">
                                 {orphanEntries.map(([sid, val]) => (
-                                  <p key={sid} className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{val}</p>
+                                  <p key={sid} className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{val}</p>
                                 ))}
                               </div>
                             </div>
@@ -333,7 +333,7 @@ export default function MeetingNotesPage() {
         {view === "sections" && (
           <div>
             <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                 {data.sections.length} section{data.sections.length === 1 ? "" : "s"} · This is the template every new meeting starts with.
               </p>
               <button onClick={addSection} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"
@@ -345,7 +345,7 @@ export default function MeetingNotesPage() {
             <div className="rounded-xl border overflow-hidden" style={{ ...cardBg, borderColor: "rgba(162,140,117,0.12)" }}>
               {data.sections.length === 0 ? (
                 <div className="px-6 py-10">
-                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.2)" }}>No sections yet. Click &quot;Add Section&quot; to build your agenda.</p>
+                  <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>No sections yet. Click &quot;Add Section&quot; to build your agenda.</p>
                 </div>
               ) : (
                 <div className="divide-y" style={{ borderColor: "rgba(162,140,117,0.06)" }}>
@@ -366,7 +366,7 @@ export default function MeetingNotesPage() {
                           className="flex-1 text-sm bg-transparent outline-none border-b" style={{ color: "#fffdf6", borderColor: "rgba(162,140,117,0.4)" }} />
                       ) : (
                         <span className="flex-1 text-sm cursor-text" style={{ color: "#fffdf6" }} onClick={() => setEditingSectionId(s.id)}>
-                          {s.label || <span className="italic" style={{ color: "rgba(255,253,246,0.25)" }}>Untitled section</span>}
+                          {s.label || <span className="italic" style={{ color: "rgba(255,253,246,0.32)" }}>Untitled section</span>}
                         </span>
                       )}
                       <button onClick={() => deleteSection(s.id)} className="opacity-40 hover:opacity-80 transition-opacity flex-shrink-0" style={{ color: "#e07878" }}>
@@ -380,7 +380,7 @@ export default function MeetingNotesPage() {
 
             <div className="mt-6 flex items-start gap-2.5 rounded-xl border p-4" style={{ background: "rgba(162,140,117,0.04)", borderColor: "rgba(162,140,117,0.12)" }}>
               <ListChecks size={14} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.6)" }} />
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Changes here apply to future meetings. If you remove a section, notes already written under it are kept with the meeting and still shown when you look back — they just won&apos;t appear on new meetings.
               </p>
             </div>

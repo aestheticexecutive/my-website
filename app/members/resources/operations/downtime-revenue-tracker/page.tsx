@@ -368,7 +368,7 @@ export default function DowntimeRevenueTrackerPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#0c0004" }}>
+      <div className="min-h-screen" style={{ background: "#170009" }}>
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
@@ -388,7 +388,7 @@ export default function DowntimeRevenueTrackerPage() {
               <button
                 onClick={handlePrint}
                 className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
-                style={{ background: "#a28c75", color: "#0c0004", border: "none" }}
+                style={{ background: "#a28c75", color: "#170009", border: "none" }}
               >
                 <Printer size={13} />
                 Print Checklist
@@ -398,7 +398,7 @@ export default function DowntimeRevenueTrackerPage() {
 
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>Operations</p>
           <h1 className="font-display text-3xl md:text-4xl font-light mb-3" style={{ color: "#fffdf6" }}>Downtime Revenue Tracker</h1>
-          <p className="text-sm max-w-2xl leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm max-w-2xl leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.5)" }}>
             100 revenue actions across 7 areas. Log a completion with a date and a note any
             time your team does one — and log it again the next time it's worth repeating.
           </p>
@@ -406,7 +406,7 @@ export default function DowntimeRevenueTrackerPage() {
           <div className="flex flex-wrap items-center gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: "rgba(162,140,117,0.5)" }}>Logged at least once</p>
-              <p className="text-xl font-medium" style={{ color: "#fffdf6" }}>{stats.loggedAtLeastOnce} <span className="text-sm font-normal" style={{ color: "rgba(255,253,246,0.4)" }}>/ {TOTAL_ITEMS}</span></p>
+              <p className="text-xl font-medium" style={{ color: "#fffdf6" }}>{stats.loggedAtLeastOnce} <span className="text-sm font-normal" style={{ color: "rgba(255,253,246,0.5)" }}>/ {TOTAL_ITEMS}</span></p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: "rgba(162,140,117,0.5)" }}>Logged in the last 30 days</p>
@@ -433,7 +433,7 @@ export default function DowntimeRevenueTrackerPage() {
               return (
                 <div key={cat.id} className="rounded-xl border overflow-hidden" style={{ borderColor: "rgba(162,140,117,0.15)" }}>
                   <button onClick={() => toggleCategory(cat.id)} className="w-full flex items-center gap-4 px-5 py-4 text-left transition-colors"
-                    style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)" }}>
+                    style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)" }}>
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
                       <Icon size={15} style={{ color: "#a28c75" }} />
                     </div>
@@ -444,13 +444,13 @@ export default function DowntimeRevenueTrackerPage() {
                           {loggedCount} / {cat.items.length} logged
                         </span>
                       </div>
-                      <p className="text-xs mt-0.5 hidden sm:block" style={{ color: "rgba(255,253,246,0.35)" }}>{cat.blurb}</p>
+                      <p className="text-xs mt-0.5 hidden sm:block" style={{ color: "rgba(255,253,246,0.45)" }}>{cat.blurb}</p>
                     </div>
                     {isOpen ? <ChevronUp size={16} style={{ color: "rgba(162,140,117,0.6)" }} /> : <ChevronDown size={16} style={{ color: "rgba(162,140,117,0.6)" }} />}
                   </button>
 
                   {isOpen && (
-                    <div style={{ background: "#0c0004" }}>
+                    <div style={{ background: "#170009" }}>
                       {cat.items.map((item, i) => {
                         const entries = completions[item.id] || [];
                         const latest = latestDate(entries);
@@ -459,11 +459,11 @@ export default function DowntimeRevenueTrackerPage() {
                           <div key={item.id} className="border-t" style={{ borderColor: "rgba(162,140,117,0.08)" }}>
                             <button onClick={() => toggleItem(item.id)} className="w-full flex items-start gap-3 px-5 py-3.5 text-left transition-colors hover:bg-white/[0.02]">
                               <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-semibold"
-                                style={{ background: entries.length > 0 ? "#a28c75" : "rgba(162,140,117,0.1)", color: entries.length > 0 ? "#0c0004" : "rgba(162,140,117,0.6)" }}>
+                                style={{ background: entries.length > 0 ? "#a28c75" : "rgba(162,140,117,0.1)", color: entries.length > 0 ? "#170009" : "rgba(162,140,117,0.6)" }}>
                                 {i + 1}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{item.text}</p>
+                                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.82)" }}>{item.text}</p>
                                 <p className="text-xs mt-1" style={{ color: latest ? "#a28c75" : "rgba(255,253,246,0.3)" }}>
                                   {latest ? `Last done ${formatDateShort(latest)}${entries.length > 1 ? ` · ${entries.length} times logged` : ""}` : "Not logged yet"}
                                 </p>
@@ -476,17 +476,17 @@ export default function DowntimeRevenueTrackerPage() {
                                 <div className="rounded-lg p-3 space-y-2" style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}>
                                   <div className="flex gap-2 items-end flex-wrap">
                                     <div>
-                                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.4)" }}>Date completed</label>
+                                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.5)" }}>Date completed</label>
                                       <input type="date" value={draftDate[item.id] || todayISO()} onChange={(e) => setDraftDate((prev) => ({ ...prev, [item.id]: e.target.value }))}
                                         className="text-xs rounded px-2 py-1.5 outline-none" style={{ ...inputStyle, colorScheme: "dark" }} />
                                     </div>
                                     <div className="flex-1 min-w-[160px]">
-                                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.4)" }}>Note (optional)</label>
+                                      <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.5)" }}>Note (optional)</label>
                                       <input type="text" value={draftNote[item.id] || ""} onChange={(e) => setDraftNote((prev) => ({ ...prev, [item.id]: e.target.value }))}
                                         placeholder="Any details worth remembering..." className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                                     </div>
                                     <button onClick={() => logCompletion(item.id)} className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded transition-opacity hover:opacity-90 flex-shrink-0"
-                                      style={{ background: "#a28c75", color: "#0c0004" }}>
+                                      style={{ background: "#a28c75", color: "#170009" }}>
                                       <Plus size={12} />
                                       Log completion
                                     </button>
@@ -497,7 +497,7 @@ export default function DowntimeRevenueTrackerPage() {
                                       {[...entries].sort((a, b) => (a.date < b.date ? 1 : -1)).map((entry) => (
                                         <div key={entry.id} className="flex items-start gap-2 group">
                                           <span className="text-xs flex-shrink-0" style={{ color: "#a28c75" }}>{formatDateShort(entry.date)}</span>
-                                          <span className="text-xs flex-1" style={{ color: "rgba(255,253,246,0.5)" }}>{entry.note || "—"}</span>
+                                          <span className="text-xs flex-1" style={{ color: "rgba(255,253,246,0.6)" }}>{entry.note || "—"}</span>
                                           <button onClick={() => deleteEntry(item.id, entry.id)} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "rgba(162,140,117,0.4)" }}>
                                             <Trash2 size={11} />
                                           </button>

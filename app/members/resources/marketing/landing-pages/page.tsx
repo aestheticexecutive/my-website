@@ -42,7 +42,7 @@ function TipNumber({ n }: { n: number }) {
 
 export default function LandingPagesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
@@ -75,7 +75,7 @@ export default function LandingPagesPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Treatment Landing Page Playbook
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             Every treatment page on your site is a revenue system, not a brochure.
             Its job is twofold — get found by the right patient at the right moment,
             then convert that visit into a booked consultation.
@@ -98,7 +98,7 @@ export default function LandingPagesPage() {
               🔍
             </div>
             <h3 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>Job 1: Get Found</h3>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               Rank in Google when the right patient searches for your treatment
               in your city — at the exact moment they&apos;re ready to book.
             </p>
@@ -114,7 +114,7 @@ export default function LandingPagesPage() {
               📅
             </div>
             <h3 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>Job 2: Convert</h3>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               Turn that visit into a booked consultation by building trust,
               answering objections, and making the next step frictionless.
             </p>
@@ -124,7 +124,7 @@ export default function LandingPagesPage() {
         {/* ── VISUAL PAGE ANATOMY ── */}
         <div>
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>What a High-Converting Page Looks Like</h2>
-          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm mb-8" style={{ color: "rgba(255,253,246,0.55)" }}>
             Think of the page as a guided path — every section moves the reader one step closer to booking.
           </p>
 
@@ -281,7 +281,7 @@ export default function LandingPagesPage() {
                   >{z.num}</span>
                   <div>
                     <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{z.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{z.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>{z.desc}</p>
                   </div>
                 </div>
               ))}
@@ -301,7 +301,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={1} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>One Page, One Treatment, One Intent</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Never combine multiple treatments on a single page. Search engines and patients both reward specificity.
                 A patient searching &ldquo;Morpheus8 near me&rdquo; wants Morpheus8 — not a menu of ten treatments.
               </p>
@@ -324,7 +324,7 @@ export default function LandingPagesPage() {
                     <div className="font-medium mb-3" style={{ color: "#fffdf6" }}>Body Contouring Treatments</div>
                     <ul className="space-y-1">
                       {["Morpheus8", "EmpowerRF", "CoolSculpting", "Kybella"].map(t => (
-                        <li key={t} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.4)" }}>
+                        <li key={t} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.5)" }}>
                           <span>·</span>{t}
                         </li>
                       ))}
@@ -352,7 +352,7 @@ export default function LandingPagesPage() {
                       <div
                         key={url}
                         className="rounded-lg px-3 py-2.5 text-xs"
-                        style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,253,246,0.55)" }}
+                        style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,253,246,0.65)" }}
                       >
                         {url}
                       </div>
@@ -377,7 +377,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={2} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Title Tags &amp; Meta Descriptions</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 These are what patients see in Google before they click. Your title tag must stay under 60 characters
                 or Google truncates it. Your meta description should lead with the outcome, include the city, and end with a soft CTA.
               </p>
@@ -422,7 +422,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={3} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Heading Structure That Signals Relevance</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Search engines read your heading hierarchy literally. One H1 only — containing the treatment name and primary benefit.
                 H2s answer the real questions patients (and Google) expect to find on the page.
               </p>
@@ -433,11 +433,11 @@ export default function LandingPagesPage() {
               >
                 {[
                   { tag: "H1", text: "Morpheus8 Skin Tightening in Atlanta", size: "text-lg", indent: 0, color: "#fffdf6", note: "One per page. Treatment + benefit or location." },
-                  { tag: "H2", text: "What Is Morpheus8?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.8)", note: "Real patient questions" },
-                  { tag: "H2", text: "Who Is a Good Candidate?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.8)", note: "" },
-                  { tag: "H2", text: "What Does the Treatment Feel Like?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.8)", note: "" },
-                  { tag: "H2", text: "Results & Before/After Photos", size: "text-base", indent: 1, color: "rgba(255,253,246,0.8)", note: "" },
-                  { tag: "H2", text: "Frequently Asked Questions", size: "text-base", indent: 1, color: "rgba(255,253,246,0.8)", note: "" },
+                  { tag: "H2", text: "What Is Morpheus8?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.86)", note: "Real patient questions" },
+                  { tag: "H2", text: "Who Is a Good Candidate?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.86)", note: "" },
+                  { tag: "H2", text: "What Does the Treatment Feel Like?", size: "text-base", indent: 1, color: "rgba(255,253,246,0.86)", note: "" },
+                  { tag: "H2", text: "Results & Before/After Photos", size: "text-base", indent: 1, color: "rgba(255,253,246,0.86)", note: "" },
+                  { tag: "H2", text: "Frequently Asked Questions", size: "text-base", indent: 1, color: "rgba(255,253,246,0.86)", note: "" },
                 ].map((h, i) => (
                   <div key={i} className="flex items-center gap-3" style={{ paddingLeft: h.indent * 20 }}>
                     <span
@@ -465,7 +465,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={4} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Content Depth &amp; E-E-A-T</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Google weights medical and health-adjacent content heavily on Experience, Expertise, Authoritativeness,
                 and Trustworthiness. Thin pages won&apos;t compete. Aim for 800–1,200 words covering the full patient journey.
               </p>
@@ -489,7 +489,7 @@ export default function LandingPagesPage() {
                       {e.letter}
                     </div>
                     <p className="text-sm font-medium mb-1.5" style={{ color: "#fffdf6" }}>{e.word}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{e.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{e.desc}</p>
                   </div>
                 ))}
               </div>
@@ -506,7 +506,7 @@ export default function LandingPagesPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>Minimum word count</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                     Cover what the treatment is, how it works, candidacy, the experience, downtime, results timeline, and safety.
                     Written in plain language — not clinical copy-paste from the manufacturer.
                   </p>
@@ -520,7 +520,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={5} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Local SEO Signals</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 For most practices, you&apos;re competing locally — not nationally. These signals tell Google
                 exactly who you are and where you serve.
               </p>
@@ -540,7 +540,7 @@ export default function LandingPagesPage() {
                     <span className="text-xl flex-shrink-0">{item.icon}</span>
                     <div>
                       <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -569,7 +569,7 @@ export default function LandingPagesPage() {
                     <span className="text-xl flex-shrink-0">{item.icon}</span>
                     <div>
                       <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -583,7 +583,7 @@ export default function LandingPagesPage() {
         <div>
           <PartLabel part="Part 2" label="Conversion Architecture — Closing the Visit" />
 
-          <p className="text-sm leading-relaxed mb-10 -mt-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-10 -mt-4" style={{ color: "rgba(255,253,246,0.55)" }}>
             Ranking gets the visit. Everything below determines whether that visit becomes a booked consultation.
           </p>
 
@@ -595,7 +595,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={1} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>The First 5 Seconds (Above the Fold)</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Patients search by device name — but they convert on outcome language. Your hero section needs to answer &ldquo;what&apos;s in it for me?&rdquo; before they scroll an inch.
               </p>
 
@@ -605,7 +605,7 @@ export default function LandingPagesPage() {
                   style={{ background: "rgba(200,80,80,0.06)", border: "1px solid rgba(200,80,80,0.2)" }}
                 >
                   <div className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(200,80,80,0.7)" }}>✗ Mechanism language</div>
-                  <p className="text-base font-light" style={{ color: "rgba(255,253,246,0.65)" }}>
+                  <p className="text-base font-light" style={{ color: "rgba(255,253,246,0.75)" }}>
                     &ldquo;Morpheus8 RF Microneedling Technology&rdquo;
                   </p>
                   <p className="text-xs mt-2" style={{ color: "rgba(200,80,80,0.6)" }}>Describes the device. Patient already knows the name — they need to know why it matters to them.</p>
@@ -635,7 +635,7 @@ export default function LandingPagesPage() {
                   >
                     <div className="text-xl mb-3">{item.icon}</div>
                     <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -647,7 +647,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={2} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Trust Signals, Placed Early and Often</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Place at least 2–3 trust elements above the mid-page fold. Don&apos;t save them for the bottom.
               </p>
 
@@ -667,7 +667,7 @@ export default function LandingPagesPage() {
                     <span className="text-base flex-shrink-0 w-6">{t.rank}</span>
                     <div>
                       <p className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>{t.label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{t.desc}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{t.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -680,7 +680,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={3} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Answer Objections Before They&apos;re Asked</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Patients who don&apos;t convert usually aren&apos;t unconvinced the treatment works — they&apos;re unsure about
                 pain, cost, downtime, or whether it applies to them. Answer these directly.
               </p>
@@ -714,7 +714,7 @@ export default function LandingPagesPage() {
                     style={{ background: obj.color, border: `1px solid ${obj.border}` }}
                   >
                     <p className="text-sm font-medium italic mb-2" style={{ color: "#fffdf6" }}>{obj.q}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{obj.a}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{obj.a}</p>
                   </div>
                 ))}
               </div>
@@ -726,7 +726,7 @@ export default function LandingPagesPage() {
                 <TipNumber n={4} />
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>The Contact Form: Reduce Friction</h3>
               </div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Every additional field measurably drops completion rate. Ask for the minimum viable information
                 and make it crystal clear what happens after they hit submit.
               </p>
@@ -749,11 +749,11 @@ export default function LandingPagesPage() {
                   ))}
                   <div
                     className="w-full h-9 rounded-md flex items-center justify-center text-xs font-medium mt-4"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     Request My Consultation
                   </div>
-                  <p className="text-xs text-center mt-3" style={{ color: "rgba(255,253,246,0.3)" }}>
+                  <p className="text-xs text-center mt-3" style={{ color: "rgba(255,253,246,0.4)" }}>
                     Our team will call you within one business day to schedule.
                   </p>
                 </div>
@@ -775,7 +775,7 @@ export default function LandingPagesPage() {
                       <span className="text-sm flex-shrink-0" style={{ color: "#a28c75" }}>{a.icon}</span>
                       <div>
                         <p className="text-sm font-medium" style={{ color: "#fffdf6" }}>{a.text}</p>
-                        <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.45)" }}>{a.sub}</p>
+                        <p className="text-xs leading-relaxed mt-0.5" style={{ color: "rgba(255,253,246,0.55)" }}>{a.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -807,7 +807,7 @@ export default function LandingPagesPage() {
                   style={{ background: "rgba(200,80,80,0.06)", border: "1px solid rgba(200,80,80,0.2)" }}
                 >
                   <div className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(200,80,80,0.7)" }}>✗ Avoid</div>
-                  <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
+                  <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>
                     Countdown timers on evergreen pages
                   </p>
                   <p className="text-xs mt-3" style={{ color: "rgba(200,80,80,0.65)" }}>
@@ -823,7 +823,7 @@ export default function LandingPagesPage() {
         {/* ══════════════════════════════ PART 3 — METRICS ══ */}
         <div>
           <PartLabel part="Part 3" label="Measuring Whether the Page Is Working" />
-          <p className="text-sm leading-relaxed mb-8 -mt-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 -mt-4" style={{ color: "rgba(255,253,246,0.55)" }}>
             A landing page isn&apos;t finished at launch — it&apos;s a system you tune against data. Review these monthly.
           </p>
 
@@ -877,7 +877,7 @@ export default function LandingPagesPage() {
                 <p className="text-2xl font-light mb-3" style={{ color: "#fffdf6" }}>
                   {m.benchmark}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {m.note}
                 </p>
               </div>
@@ -888,7 +888,7 @@ export default function LandingPagesPage() {
             className="mt-6 rounded-xl px-6 py-5"
             style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.15)" }}
           >
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
               <span style={{ color: "#a28c75" }}>Diagnose in this order:</span> If conversion rate is below benchmark but traffic and rankings are healthy,
               the problem is on the page — offer clarity, trust signals, or form friction — not the SEO.
               Check those three before touching keywords.
@@ -907,7 +907,7 @@ export default function LandingPagesPage() {
           <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
             Quick-Reference Launch Checklist
           </h2>
-          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm mb-7" style={{ color: "rgba(255,253,246,0.55)" }}>
             Before you publish a treatment landing page, run through every item below.
           </p>
 
@@ -936,7 +936,7 @@ export default function LandingPagesPage() {
                 >
                   <span className="text-xs" style={{ color: "#a28c75" }}>✓</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
           </div>

@@ -59,7 +59,7 @@ const csvTips = [
 
 export default function BudgetTrackerPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div
         className="relative overflow-hidden border-b"
@@ -103,7 +103,7 @@ export default function BudgetTrackerPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Build your annual budget by category, import monthly expenses from CSV,
             and track financial health through quarterly rollups and KPI benchmarks —
@@ -115,7 +115,7 @@ export default function BudgetTrackerPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 h-12 rounded text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-            style={{ background: "#a28c75", color: "#0c0004" }}
+            style={{ background: "#a28c75", color: "#170009" }}
           >
             Open Dashboard
             <ExternalLink size={14} />
@@ -148,7 +148,7 @@ export default function BudgetTrackerPage() {
                   key={step.number}
                   className="rounded-xl border p-6"
                   style={{
-                    background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.18)",
                   }}
                 >
@@ -177,7 +177,7 @@ export default function BudgetTrackerPage() {
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "rgba(255,253,246,0.45)" }}
+                    style={{ color: "rgba(255,253,246,0.55)" }}
                   >
                     {step.body}
                   </p>
@@ -191,7 +191,7 @@ export default function BudgetTrackerPage() {
         <div
           className="rounded-xl border p-7 mb-16"
           style={{
-            background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+            background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.15)",
           }}
         >
@@ -211,7 +211,7 @@ export default function BudgetTrackerPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,253,246,0.45)" }}
+                style={{ color: "rgba(255,253,246,0.55)" }}
               >
                 The tool reads your accounting software export and automatically
                 maps expenses to the 11 standard categories. No reformatting required
@@ -226,7 +226,7 @@ export default function BudgetTrackerPage() {
                     className="flex-shrink-0 mt-0.5"
                     style={{ color: "#a28c75" }}
                   />
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>
                     {tip}
                   </span>
                 </li>
@@ -251,7 +251,7 @@ export default function BudgetTrackerPage() {
           </h2>
           <p
             className="text-sm max-w-2xl leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             Every expense in your practice maps to one of these categories. The benchmark
             ranges are derived from high-performing aesthetic and medical spa operations —
@@ -321,7 +321,7 @@ export default function BudgetTrackerPage() {
                     </td>
                     <td
                       className="px-5 py-3.5 text-xs hidden md:table-cell"
-                      style={{ color: "rgba(255,253,246,0.4)" }}
+                      style={{ color: "rgba(255,253,246,0.5)" }}
                     >
                       {cat.note}
                     </td>
@@ -354,7 +354,7 @@ export default function BudgetTrackerPage() {
                   </td>
                   <td
                     className="px-5 py-3.5 text-xs hidden md:table-cell"
-                    style={{ color: "rgba(255,253,246,0.4)" }}
+                    style={{ color: "rgba(255,253,246,0.5)" }}
                   >
                     Before owner distributions and taxes
                   </td>
@@ -380,7 +380,7 @@ export default function BudgetTrackerPage() {
           </h2>
           <p
             className="text-sm max-w-2xl leading-relaxed mb-8"
-            style={{ color: "rgba(255,253,246,0.45)" }}
+            style={{ color: "rgba(255,253,246,0.55)" }}
           >
             Your net profit margin — after all operating expenses — determines your
             financial health rating. This is based on revenue minus expenses before
@@ -411,7 +411,7 @@ export default function BudgetTrackerPage() {
                 >
                   {h.range}
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {h.note}
                 </p>
               </div>
@@ -423,7 +423,7 @@ export default function BudgetTrackerPage() {
         <div
           className="rounded-2xl border p-10 text-center"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -435,7 +435,7 @@ export default function BudgetTrackerPage() {
           </h2>
           <p
             className="text-sm max-w-md mx-auto leading-relaxed mb-7"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             All data saves automatically in your browser. No logins, no uploads —
             your numbers stay private and accessible whenever you return.
@@ -445,7 +445,7 @@ export default function BudgetTrackerPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 h-12 rounded text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-            style={{ background: "#a28c75", color: "#0c0004" }}
+            style={{ background: "#a28c75", color: "#170009" }}
           >
             Open Budget Dashboard
             <ExternalLink size={14} />

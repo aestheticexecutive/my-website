@@ -172,7 +172,7 @@ const checklist = [
 
 export default function PLGuidePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -219,7 +219,7 @@ export default function PLGuidePage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             What to track, how to categorize every dollar, and how to read the numbers — so you
             actually know whether your practice is profitable, and where the money goes.
@@ -264,7 +264,7 @@ export default function PLGuidePage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-8"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -275,7 +275,7 @@ export default function PLGuidePage() {
                 instead of understanding profitability by category.
               </p>
             </div>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               A Profit &amp; Loss Statement (P&amp;L) is the single most important financial report for
               your practice. Your bank balance tells you what you have. Your P&amp;L tells you what
               you earned, what it cost, and whether your business model actually works.
@@ -286,7 +286,7 @@ export default function PLGuidePage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.13)",
               }}
             >
@@ -302,7 +302,7 @@ export default function PLGuidePage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.6)" }} />
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -310,7 +310,7 @@ export default function PLGuidePage() {
             <div
               className="rounded-xl border p-6"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.13)",
               }}
             >
@@ -327,7 +327,7 @@ export default function PLGuidePage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.5)", fontSize: 14 }}>·</span>
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.45)" }}>{item}</span>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -343,7 +343,7 @@ export default function PLGuidePage() {
             }}
           >
             <CheckCircle size={14} style={{ color: "rgba(162,140,117,0.7)", flexShrink: 0 }} />
-            <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>
               <span style={{ color: "#a28c75" }}>Review cadence:</span>{" "}
               Your P&amp;L should be updated monthly and reviewed within the first 5 days of the following month — while the data is still actionable.
             </p>
@@ -359,7 +359,7 @@ export default function PLGuidePage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Separate revenue into categories so you know what&apos;s driving growth — and what isn&apos;t.
             A single &ldquo;total revenue&rdquo; number hides everything.
           </p>
@@ -370,7 +370,7 @@ export default function PLGuidePage() {
                 key={cat.label}
                 className="rounded-xl border p-5"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.12)",
                 }}
               >
@@ -384,7 +384,7 @@ export default function PLGuidePage() {
                 </div>
                 <ul className="space-y-1.5">
                   {cat.items.map((item) => (
-                    <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                       <span style={{ color: "rgba(162,140,117,0.5)" }}>·</span> {item}
                     </li>
                   ))}
@@ -403,7 +403,7 @@ export default function PLGuidePage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             COGS are expenses directly tied to delivering treatments. Unlike operating expenses,
             COGS move with revenue — if you do more treatments, COGS goes up.
           </p>
@@ -423,7 +423,7 @@ export default function PLGuidePage() {
                 </p>
                 <ul className="space-y-1.5">
                   {c.items.map((item) => (
-                    <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                    <li key={item} className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                       <span style={{ color: "rgba(162,140,117,0.45)" }}>·</span> {item}
                     </li>
                   ))}
@@ -443,7 +443,7 @@ export default function PLGuidePage() {
             <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>
               The Gross Profit Formula
             </p>
-            <div className="flex flex-wrap items-center gap-3 text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
+            <div className="flex flex-wrap items-center gap-3 text-sm" style={{ color: "rgba(255,253,246,0.78)" }}>
               <span className="font-display text-lg" style={{ color: "#fffdf6" }}>Revenue</span>
               <span style={{ color: "rgba(162,140,117,0.6)" }}>−</span>
               <span className="font-display text-lg" style={{ color: "#fffdf6" }}>COGS</span>
@@ -451,10 +451,10 @@ export default function PLGuidePage() {
               <span className="font-display text-lg" style={{ color: "#a28c75" }}>Gross Profit</span>
             </div>
             <div className="mt-4 pt-4 border-t" style={{ borderColor: "rgba(162,140,117,0.15)" }}>
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Example: $100,000 Revenue − $22,000 COGS = $78,000 Gross Profit (78% Gross Margin)
               </p>
-              <p className="text-xs mt-1" style={{ color: "rgba(255,253,246,0.4)" }}>
+              <p className="text-xs mt-1" style={{ color: "rgba(255,253,246,0.5)" }}>
                 Target Gross Margin: <span style={{ color: "rgba(162,140,117,0.8)" }}>70–80%</span>
               </p>
             </div>
@@ -470,7 +470,7 @@ export default function PLGuidePage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             Operating expenses are the costs of running the business — separate from the cost
             of delivering treatments. Each category has a benchmark range most healthy practices
             fall within.
@@ -486,7 +486,7 @@ export default function PLGuidePage() {
                 <div
                   className="flex items-center justify-between gap-4 px-6 py-4 border-b"
                   style={{
-                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.15)",
                   }}
                 >
@@ -514,7 +514,7 @@ export default function PLGuidePage() {
                 </div>
                 <div
                   className="p-6"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -525,7 +525,7 @@ export default function PLGuidePage() {
                         {exp.items.map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
                             <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
-                            <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.5)" }}>{item}</span>
+                            <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.6)" }}>{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -541,7 +541,7 @@ export default function PLGuidePage() {
                       <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "rgba(162,140,117,0.5)" }}>
                         Context
                       </p>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                         {exp.note}
                       </p>
                     </div>
@@ -564,7 +564,7 @@ export default function PLGuidePage() {
           <div
             className="rounded-2xl border p-8 md:p-10 mb-6"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -574,12 +574,12 @@ export default function PLGuidePage() {
             <div className="space-y-3 mb-6">
               {[
                 { label: "Revenue", sign: "", color: "#fffdf6" },
-                { label: "− COGS", sign: "−", color: "rgba(255,253,246,0.65)" },
+                { label: "− COGS", sign: "−", color: "rgba(255,253,246,0.75)" },
                 { label: "= Gross Profit", sign: "=", color: "#a28c75" },
-                { label: "− Payroll", sign: "−", color: "rgba(255,253,246,0.65)" },
-                { label: "− Marketing", sign: "−", color: "rgba(255,253,246,0.65)" },
-                { label: "− Occupancy", sign: "−", color: "rgba(255,253,246,0.65)" },
-                { label: "− Administrative", sign: "−", color: "rgba(255,253,246,0.65)" },
+                { label: "− Payroll", sign: "−", color: "rgba(255,253,246,0.75)" },
+                { label: "− Marketing", sign: "−", color: "rgba(255,253,246,0.75)" },
+                { label: "− Occupancy", sign: "−", color: "rgba(255,253,246,0.75)" },
+                { label: "− Administrative", sign: "−", color: "rgba(255,253,246,0.75)" },
                 { label: "= Net Operating Profit", sign: "=", color: "#a28c75" },
               ].map((line, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -611,7 +611,7 @@ export default function PLGuidePage() {
                   { label: "Net Profit (25%)", value: "$25,000", highlight: true },
                 ].map((item) => (
                   <div key={item.label}>
-                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>{item.label}</p>
+                    <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>{item.label}</p>
                     <p
                       className="text-sm font-medium"
                       style={{ color: item.highlight ? "#a28c75" : "rgba(255,253,246,0.7)" }}
@@ -634,7 +634,7 @@ export default function PLGuidePage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             These six metrics give you a complete picture of your practice&apos;s financial health.
             Track all of them every month — not just the ones that look good.
           </p>
@@ -645,7 +645,7 @@ export default function PLGuidePage() {
                 key={m.metric}
                 className="rounded-xl border p-6"
                 style={{
-                  background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                  background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                   borderColor: "rgba(162,140,117,0.13)",
                 }}
               >
@@ -682,7 +682,7 @@ export default function PLGuidePage() {
                 >
                   {m.formula}
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                   {m.note}
                 </p>
               </div>
@@ -717,7 +717,7 @@ export default function PLGuidePage() {
             </div>
             <div
               className="p-6"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0">
                 {checklist.map((item, i) => (
@@ -735,7 +735,7 @@ export default function PLGuidePage() {
                     >
                       <span className="text-xs" style={{ color: "rgba(162,140,117,0.5)" }}>□</span>
                     </div>
-                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.55)" }}>
+                    <span className="text-sm leading-snug" style={{ color: "rgba(255,253,246,0.65)" }}>
                       {item}
                     </span>
                   </div>
@@ -750,7 +750,7 @@ export default function PLGuidePage() {
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -765,7 +765,7 @@ export default function PLGuidePage() {
                 <h3 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
                   P&amp;L Spreadsheet Template
                 </h3>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Four-tab Excel template built for aesthetic practices. All formulas pre-built —
                   enter your numbers and it calculates everything automatically.
                 </p>

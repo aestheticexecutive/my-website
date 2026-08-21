@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 
 const formula = [
   { label: "Treatment Price", sign: "", color: "#fffdf6" },
-  { label: "− Cost of Goods Sold (COGS)", sign: "−", color: "rgba(255,253,246,0.65)" },
-  { label: "− Additional Supplies", sign: "−", color: "rgba(255,253,246,0.65)" },
-  { label: "− Provider Labor", sign: "−", color: "rgba(255,253,246,0.65)" },
-  { label: "− Provider Commission", sign: "−", color: "rgba(255,253,246,0.65)" },
+  { label: "− Cost of Goods Sold (COGS)", sign: "−", color: "rgba(255,253,246,0.75)" },
+  { label: "− Additional Supplies", sign: "−", color: "rgba(255,253,246,0.75)" },
+  { label: "− Provider Labor", sign: "−", color: "rgba(255,253,246,0.75)" },
+  { label: "− Provider Commission", sign: "−", color: "rgba(255,253,246,0.75)" },
   { label: "= Net Profit Per Treatment", sign: "=", color: "#a28c75" },
 ];
 
@@ -91,7 +91,7 @@ const monthlyTable = [
 
 export default function TreatmentProfitabilityPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* ── Hero ── */}
       <div
@@ -138,7 +138,7 @@ export default function TreatmentProfitabilityPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             See exactly what you&apos;re making on every treatment — based on direct costs only.
             Use it to identify your most profitable services, spot pricing gaps, and decide where
@@ -183,7 +183,7 @@ export default function TreatmentProfitabilityPage() {
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -194,7 +194,7 @@ export default function TreatmentProfitabilityPage() {
                 based on its direct costs — not the full overhead picture.
               </p>
             </div>
-            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
               While rent, software, and admin costs matter at the business level,
               allocating them per treatment makes the exercise overly complicated
               and the numbers vary significantly patient to patient. This calculator
@@ -218,7 +218,7 @@ export default function TreatmentProfitabilityPage() {
             <div
               className="rounded-2xl border p-8"
               style={{
-                background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.2)",
               }}
             >
@@ -238,7 +238,7 @@ export default function TreatmentProfitabilityPage() {
                 className="mt-6 pt-5 border-t"
                 style={{ borderColor: "rgba(162,140,117,0.15)" }}
               >
-                <p className="text-xs" style={{ color: "rgba(255,253,246,0.35)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
                   Margin % = Net Profit ÷ Treatment Price
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function TreatmentProfitabilityPage() {
             <div
               className="rounded-2xl border p-8"
               style={{
-                background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)",
+                background: "linear-gradient(145deg, #140008 0%, #170009 100%)",
                 borderColor: "rgba(162,140,117,0.13)",
               }}
             >
@@ -269,7 +269,7 @@ export default function TreatmentProfitabilityPage() {
               </div>
 
               <div className="mb-5">
-                <p className="text-xs tracking-wide uppercase mb-1" style={{ color: "rgba(255,253,246,0.35)" }}>
+                <p className="text-xs tracking-wide uppercase mb-1" style={{ color: "rgba(255,253,246,0.45)" }}>
                   Treatment Price
                 </p>
                 <p className="font-display text-3xl font-light" style={{ color: "#fffdf6" }}>$1,000</p>
@@ -280,10 +280,10 @@ export default function TreatmentProfitabilityPage() {
                   <div
                     key={item.label}
                     className="flex items-center justify-between"
-                    style={{ color: "rgba(255,253,246,0.55)" }}
+                    style={{ color: "rgba(255,253,246,0.65)" }}
                   >
                     <span className="text-sm">{item.label}</span>
-                    <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.7)" }}>
+                    <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.78)" }}>
                       {item.value}
                     </span>
                   </div>
@@ -292,10 +292,10 @@ export default function TreatmentProfitabilityPage() {
                   className="flex items-center justify-between pt-2 border-t"
                   style={{ borderColor: "rgba(162,140,117,0.2)" }}
                 >
-                  <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.7)" }}>
+                  <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.78)" }}>
                     Total Direct Cost
                   </span>
-                  <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.9)" }}>
+                  <span className="text-sm font-medium" style={{ color: "rgba(255,253,246,0.94)" }}>
                     $280
                   </span>
                 </div>
@@ -309,7 +309,7 @@ export default function TreatmentProfitabilityPage() {
                 }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
                     Net Profit
                   </span>
                   <span className="font-display text-xl font-light" style={{ color: "#a28c75" }}>
@@ -317,7 +317,7 @@ export default function TreatmentProfitabilityPage() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.7)" }}>
                     Profit Margin
                   </span>
                   <span
@@ -327,7 +327,7 @@ export default function TreatmentProfitabilityPage() {
                     72%
                   </span>
                 </div>
-                <p className="text-xs mt-2" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-xs mt-2" style={{ color: "rgba(255,253,246,0.4)" }}>
                   $1,000 − $280 = $720 &nbsp;·&nbsp; $720 ÷ $1,000 = 72%
                 </p>
               </div>
@@ -344,7 +344,7 @@ export default function TreatmentProfitabilityPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.12)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.6)" }}>
             For each treatment on your menu, collect five data points. The more accurate
             your inputs, the more actionable the output.
           </p>
@@ -359,7 +359,7 @@ export default function TreatmentProfitabilityPage() {
                 <div
                   className="flex items-center gap-4 px-6 py-4 border-b"
                   style={{
-                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+                    background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
                     borderColor: "rgba(162,140,117,0.14)",
                   }}
                 >
@@ -380,11 +380,11 @@ export default function TreatmentProfitabilityPage() {
                 </div>
                 <div
                   className="px-6 py-5"
-                  style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)" }}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.55)" }}>
+                      <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.65)" }}>
                         {card.description}
                       </p>
                       {card.note && (
@@ -396,7 +396,7 @@ export default function TreatmentProfitabilityPage() {
                             borderLeft: "3px solid rgba(162,140,117,0.3)",
                           }}
                         >
-                          <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                          <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                             {card.note}
                           </p>
                         </div>
@@ -415,7 +415,7 @@ export default function TreatmentProfitabilityPage() {
                           >
                             {card.formula.label}
                           </div>
-                          <p className="text-xs" style={{ color: "rgba(255,253,246,0.4)" }}>
+                          <p className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>
                             Example: {card.formula.example}
                           </p>
                         </div>
@@ -426,7 +426,7 @@ export default function TreatmentProfitabilityPage() {
                           </p>
                           <ul className="space-y-1.5">
                             {card.examples.map((ex) => (
-                              <li key={ex} className="flex items-start gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                              <li key={ex} className="flex items-start gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                                 <span style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }}>·</span>
                                 <span className="text-sm">{ex}</span>
                               </li>
@@ -501,7 +501,7 @@ export default function TreatmentProfitabilityPage() {
                 >
                   {r.range}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {r.action}
                 </p>
               </div>
@@ -523,11 +523,11 @@ export default function TreatmentProfitabilityPage() {
               <p className="font-display text-2xl font-light mb-4" style={{ color: "#fffdf6" }}>
                 This is where the &ldquo;aha moment&rdquo; happens.
               </p>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Margin % tells you how profitable a treatment is per service.
                 But margin × volume tells you which treatments are actually carrying your practice.
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A high-volume, mid-margin treatment can outperform a high-margin, low-volume one by
                 thousands of dollars per month. The monthly contribution tab makes that visible.
               </p>
@@ -561,9 +561,9 @@ export default function TreatmentProfitabilityPage() {
                     borderBottom: i < monthlyTable.length - 1 ? "1px solid rgba(162,140,117,0.06)" : undefined,
                   }}
                 >
-                  <span style={{ color: "rgba(255,253,246,0.65)" }}>{row.treatment}</span>
+                  <span style={{ color: "rgba(255,253,246,0.75)" }}>{row.treatment}</span>
                   <span className="text-right" style={{ color: "rgba(162,140,117,0.8)" }}>{row.profit}</span>
-                  <span className="text-right" style={{ color: "rgba(255,253,246,0.5)" }}>{row.volume}</span>
+                  <span className="text-right" style={{ color: "rgba(255,253,246,0.6)" }}>{row.volume}</span>
                   <span className="text-right font-medium" style={{ color: "#fffdf6" }}>{row.contribution}</span>
                 </div>
               ))}
@@ -602,10 +602,10 @@ export default function TreatmentProfitabilityPage() {
               >
                 <CheckCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: "rgba(162,140,117,0.6)" }} />
                 <div>
-                  <p className="text-sm font-medium mb-0.5" style={{ color: "rgba(255,253,246,0.75)" }}>
+                  <p className="text-sm font-medium mb-0.5" style={{ color: "rgba(255,253,246,0.82)" }}>
                     {item.label}
                   </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                     {item.detail}
                   </p>
                 </div>
@@ -619,7 +619,7 @@ export default function TreatmentProfitabilityPage() {
           <div
             className="rounded-2xl border p-8 md:p-10"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -634,7 +634,7 @@ export default function TreatmentProfitabilityPage() {
                 <h3 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
                   Treatment Profitability Template
                 </h3>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Three-tab Excel workbook. Pre-loaded with 15 common treatments and the Morpheus8
                   example. Formulas calculate profit and margin automatically — conditional color
                   coding included.

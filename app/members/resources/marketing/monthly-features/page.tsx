@@ -128,7 +128,7 @@ const operationalUses = [
 
 export default function MonthlyFeaturesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -163,7 +163,7 @@ export default function MonthlyFeaturesPage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             Monthly Feature Strategy
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             How to design and execute monthly features that grow revenue, deepen patient loyalty,
             and protect your brand positioning — without becoming the practice patients wait to visit only when something is on sale.
           </p>
@@ -180,12 +180,12 @@ export default function MonthlyFeaturesPage() {
           <h2 className="font-display text-xl font-light mb-3" style={{ color: "#fffdf6" }}>
             The Purpose of a Monthly Feature
           </h2>
-          <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.7)" }}>
             A monthly feature is not simply a promotion — it&apos;s a strategic marketing tool designed to introduce
             patients to new services, increase treatment utilization, enhance patient outcomes, and keep your
             existing patient base engaged throughout the year.
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
             The goal should never be to become the practice that patients wait to visit only when something is on sale.
             Instead, your monthly feature should create excitement around a treatment while reinforcing the value
             and expertise behind your brand.
@@ -198,7 +198,7 @@ export default function MonthlyFeaturesPage() {
 
           <div className="mb-6">
             <h3 className="text-base font-medium mb-3" style={{ color: "#fffdf6" }}>Use Elevated Language</h3>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
               The words you choose matter. A subtle language shift maintains a premium, medical aesthetic
               while still creating urgency and excitement. Luxury brands don&apos;t run sales every month —
               they feature experiences.
@@ -215,7 +215,7 @@ export default function MonthlyFeaturesPage() {
               </p>
               <ul className="space-y-2">
                 {["Monthly Promotion", "Monthly Special", "Limited-Time Discount", "Sale"].map((w) => (
-                  <li key={w} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.45)" }}>
+                  <li key={w} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
                     <span style={{ color: "rgba(255,100,100,0.5)" }}>×</span> {w}
                   </li>
                 ))}
@@ -237,7 +237,7 @@ export default function MonthlyFeaturesPage() {
                   "Provider Pick of the Month",
                   "Seasonal Spotlight",
                 ].map((w) => (
-                  <li key={w} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.7)" }}>
+                  <li key={w} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.78)" }}>
                     <span style={{ color: "#a28c75" }}>·</span> {w}
                   </li>
                 ))}
@@ -249,7 +249,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 2: Know Your Audience */}
         <div>
           <SectionHeader number="2" title="Know Who You're Marketing To" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             One of the biggest mistakes practices make is assuming monthly features are meant to attract new patients.
             They&apos;re not. Your monthly features should primarily target your <strong style={{ color: "#fffdf6" }}>existing patient base</strong>.
           </p>
@@ -267,7 +267,7 @@ export default function MonthlyFeaturesPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
               >
                 <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{item.desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -276,7 +276,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 3: Choose the Right Treatment */}
         <div>
           <SectionHeader number="3" title="Choose the Right Treatment" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Every monthly feature should have a purpose — and should support a larger business objective,
             not simply fill your marketing calendar. Before selecting a treatment, ask:
           </p>
@@ -295,7 +295,7 @@ export default function MonthlyFeaturesPage() {
             ].map((q) => (
               <div key={q} className="flex items-start gap-3">
                 <span className="mt-0.5 text-lg leading-none flex-shrink-0" style={{ color: "#a28c75" }}>?</span>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{q}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{q}</p>
               </div>
             ))}
           </div>
@@ -304,7 +304,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 4: Lead With Value */}
         <div>
           <SectionHeader number="4" title="Lead With Value — Not Discounts" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Whenever possible, avoid reducing your prices. Instead, increase the value patients receive.
             This accomplishes two things: better patient results (which drive future purchases) and price
             protection (you&apos;re teaching value, not conditioning patients to wait for discounts).
@@ -319,7 +319,7 @@ export default function MonthlyFeaturesPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <span style={{ color: "#a28c75" }}>+</span>
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{item}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</span>
               </div>
             ))}
           </div>
@@ -329,17 +329,17 @@ export default function MonthlyFeaturesPage() {
             style={{ background: "rgba(255,253,246,0.03)", border: "1px solid rgba(162,140,117,0.15)" }}
           >
             <h3 className="text-sm font-medium mb-3" style={{ color: "#fffdf6" }}>When Discounts Make Sense</h3>
-            <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
               Discounts aren&apos;t off limits — but they should be used intentionally, not as a default.
             </p>
             <ul className="space-y-2">
               {discountExceptions.map((item) => (
-                <li key={item} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.55)" }}>
+                <li key={item} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.65)" }}>
                   <span style={{ color: "#a28c75" }}>·</span> {item}
                 </li>
               ))}
             </ul>
-            <p className="text-xs leading-relaxed mt-4" style={{ color: "rgba(255,253,246,0.35)" }}>
+            <p className="text-xs leading-relaxed mt-4" style={{ color: "rgba(255,253,246,0.45)" }}>
               Outside of these situations, prioritize adding value over reducing price.
             </p>
           </div>
@@ -348,7 +348,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 5: Think Seasonally */}
         <div>
           <SectionHeader number="5" title="Think Seasonally" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Patients&apos; concerns change throughout the year. Build your annual calendar around patient
             demand instead of selecting treatments randomly each month.
           </p>
@@ -368,7 +368,7 @@ export default function MonthlyFeaturesPage() {
                     <span
                       key={item}
                       className="text-xs px-3 py-1.5 rounded-full"
-                      style={{ background: "rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.65)", border: "1px solid rgba(162,140,117,0.15)" }}
+                      style={{ background: "rgba(162,140,117,0.1)", color: "rgba(255,253,246,0.75)", border: "1px solid rgba(162,140,117,0.15)" }}
                     >
                       {item}
                     </span>
@@ -382,7 +382,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 6: Operational */}
         <div>
           <SectionHeader number="6" title="Use Features to Solve Operational Challenges" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Monthly features are also an operations strategy. A good monthly feature should solve a
             business need — not just create a marketing campaign.
           </p>
@@ -394,7 +394,7 @@ export default function MonthlyFeaturesPage() {
                 style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.1)" }}
               >
                 <Star size={12} style={{ color: "#a28c75", flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{use}</span>
+                <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{use}</span>
               </div>
             ))}
           </div>
@@ -403,7 +403,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 7: Pair Treatments */}
         <div>
           <SectionHeader number="7" title="Introduce Less Popular Treatments Through Popular Ones" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             If one treatment consistently performs well while another struggles, pair them together.
             Instead of trying to convince patients to book an underperforming treatment by itself,
             use your most popular services to introduce patients to it — lowering the barrier to trying something new.
@@ -427,7 +427,7 @@ export default function MonthlyFeaturesPage() {
                   <span className="text-xs tracking-[0.15em] uppercase mb-1 block" style={{ color: "rgba(162,140,117,0.55)" }}>
                     Bonus
                   </span>
-                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>{pair.bonus}</span>
+                  <span className="text-sm" style={{ color: "rgba(255,253,246,0.75)" }}>{pair.bonus}</span>
                 </div>
               </div>
             ))}
@@ -437,7 +437,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 8: Ask Your Team */}
         <div>
           <SectionHeader number="8" title="Ask Your Team" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Some of your best marketing ideas already exist inside your practice. Before planning each
             month&apos;s feature, ask your providers and front desk team:
           </p>
@@ -454,11 +454,11 @@ export default function MonthlyFeaturesPage() {
                 >
                   {i + 1}
                 </span>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>{q}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{q}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.4)" }}>
+          <p className="text-sm leading-relaxed mt-5" style={{ color: "rgba(255,253,246,0.5)" }}>
             Your providers have hundreds of patient conversations each month. Their feedback is one of
             your most valuable marketing resources.
           </p>
@@ -467,7 +467,7 @@ export default function MonthlyFeaturesPage() {
         {/* Section 9: Measure */}
         <div>
           <SectionHeader number="9" title="Measure What Works" />
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.65)" }}>
             Every monthly feature should be tracked. Over time, you&apos;ll build a library of historical data
             that helps you create increasingly successful monthly features year after year.
           </p>
@@ -479,7 +479,7 @@ export default function MonthlyFeaturesPage() {
               </p>
               <ul className="space-y-2">
                 {metricsToTrack.map((m) => (
-                  <li key={m} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <li key={m} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.7)" }}>
                     <span style={{ color: "#a28c75" }}>·</span> {m}
                   </li>
                 ))}
@@ -491,7 +491,7 @@ export default function MonthlyFeaturesPage() {
               </p>
               <ul className="space-y-2">
                 {reviewQuestions.map((q) => (
-                  <li key={q} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  <li key={q} className="text-sm flex items-center gap-2" style={{ color: "rgba(255,253,246,0.7)" }}>
                     <span style={{ color: "#a28c75" }}>·</span> {q}
                   </li>
                 ))}
@@ -508,7 +508,7 @@ export default function MonthlyFeaturesPage() {
           <h2 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
             Monthly Feature Planning Checklist
           </h2>
-          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,253,246,0.55)" }}>
             Before launching a new monthly feature, confirm you can answer yes to each of these.
           </p>
           <div className="space-y-3">
@@ -520,7 +520,7 @@ export default function MonthlyFeaturesPage() {
                 >
                   <span className="text-xs" style={{ color: "#a28c75" }}>✓</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>{item}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
           </div>
@@ -534,7 +534,7 @@ export default function MonthlyFeaturesPage() {
           <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.55)" }}>
             Final Thought
           </p>
-          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.7)" }}>
+          <p className="text-base leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>
             A successful monthly feature should never feel like a sale. It should feel like an opportunity
             for patients to discover something new, achieve even better results, and experience more of
             what your practice has to offer. When done well, monthly features increase treatment utilization,
@@ -552,7 +552,7 @@ export default function MonthlyFeaturesPage() {
             <h2 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
               Promotional Marketing Calendar
             </h2>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
               Plan your entire year in one place. Add monthly features, campaigns, and events — with notes
               and performance metrics for each entry.
             </p>
@@ -562,7 +562,7 @@ export default function MonthlyFeaturesPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 h-11 rounded text-xs font-medium tracking-wide flex-shrink-0 transition-all duration-200 hover:opacity-90"
-            style={{ background: "#a28c75", color: "#0c0004" }}
+            style={{ background: "#a28c75", color: "#170009" }}
           >
             <ExternalLink size={13} />
             Open Calendar

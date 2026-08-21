@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function StaffResourcesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -55,7 +55,7 @@ export default function StaffResourcesPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Hiring, onboarding, performance management, compensation benchmarking,
             and team culture — because your people are your practice.
@@ -81,7 +81,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -115,7 +115,7 @@ export default function StaffResourcesPage() {
                   AI Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Answer a few questions about your practice and the role — get a complete,
                 polished, industry-specific job post in seconds. Covers 7 roles including
                 Injector, Practice Manager, Patient Coordinator, and more.
@@ -165,7 +165,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -199,7 +199,7 @@ export default function StaffResourcesPage() {
                   AI Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Generate a complete three-stage interview guide built on the MBI framework —
                 covering Zoom screen, in-person deep dive, and working interview with owner close.
                 Surfaces skill, attitude, and passion in every candidate.
@@ -246,7 +246,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/offer-letter"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -269,7 +269,7 @@ export default function StaffResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A complete employment offer letter — every standard section already written, with fields for the details specific to a candidate. Edit the final copy however you like, then save it as a PDF or copy it straight into an email.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -308,7 +308,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/onboarding-checklist"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -331,7 +331,7 @@ export default function StaffResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Start from a Provider or Support Staff onboarding template — pre-loaded with services training, systems &amp; policy criteria, and employment policies — then add or remove whatever fits your practice. Save as many named checklists as you need and print any of them as a clean, sign-off-ready document.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -389,7 +389,7 @@ export default function StaffResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 Why a signed-off onboarding checklist matters, the three parts every onboarding covers, and how to actually run it well with a new hire.
               </p>
             </div>
@@ -426,7 +426,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -460,7 +460,7 @@ export default function StaffResourcesPage() {
                   AI Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Answer reflective questions about your best moments, your rockstar team members, and what you won&apos;t tolerate — then AI distills your authentic core values with memorable names, real definitions, and in-action behaviors.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -528,7 +528,7 @@ export default function StaffResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 7 activation areas — hiring, daily ops, recognition, meetings, visual reminders, performance reviews, and patient experience — with specific, actionable examples for each.
               </p>
             </div>
@@ -569,7 +569,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -603,7 +603,7 @@ export default function StaffResourcesPage() {
                   AI Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Answer reflective questions about your purpose, your patients, and what makes you different — then AI drafts three distinct mission statement options. Choose your favorite, polish it, and make it yours.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -650,7 +650,7 @@ export default function StaffResourcesPage() {
           {/* ── Collapsed summary row ── */}
           <summary
             className="cursor-pointer select-none"
-            style={{ background: "linear-gradient(135deg, #1a000c 0%, #0c0004 100%)" }}
+            style={{ background: "linear-gradient(135deg, #1a000c 0%, #170009 100%)" }}
           >
             <div className="px-8 py-6 flex items-center gap-5">
               {/* Icon */}
@@ -702,7 +702,7 @@ export default function StaffResourcesPage() {
           {/* ── Expanded content ── */}
           <div
             style={{
-              background: "linear-gradient(180deg, #110006 0%, #0c0004 100%)",
+              background: "linear-gradient(180deg, #110006 0%, #170009 100%)",
               borderTop: "1px solid rgba(162,140,117,0.1)",
             }}
           >
@@ -754,7 +754,7 @@ export default function StaffResourcesPage() {
                       >
                         {item.title}
                       </h4>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
                         {item.body}
                       </p>
                     </div>
@@ -778,7 +778,7 @@ export default function StaffResourcesPage() {
                   >
                     Suggested Cadence
                   </p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                     Run formal evaluations <span style={{ color: "#fffdf6" }}>twice per year</span> — once
                     mid-year and once at year-end. Supplement with brief quarterly check-ins to keep
                     goals on track between reviews.
@@ -807,7 +807,7 @@ export default function StaffResourcesPage() {
                       ["2", "Developing — occasionally meets expectations"],
                       ["1", "Unsatisfactory — requires immediate improvement"],
                     ].map(([score, label]) => (
-                      <li key={score} className="flex items-baseline gap-2 text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>
+                      <li key={score} className="flex items-baseline gap-2 text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>
                         <span
                           className="font-medium flex-shrink-0"
                           style={{ color: "#a28c75", width: "12px", display: "inline-block" }}
@@ -853,7 +853,7 @@ export default function StaffResourcesPage() {
                       download
                       className="group rounded-xl border p-5 flex flex-col gap-3 transition-all duration-300 no-underline"
                       style={{
-                        background: "linear-gradient(145deg, #1a000c 0%, #0c0004 100%)",
+                        background: "linear-gradient(145deg, #1a000c 0%, #170009 100%)",
                         borderColor: "rgba(162,140,117,0.15)",
                       }}
                     >
@@ -885,7 +885,7 @@ export default function StaffResourcesPage() {
                         >
                           {form.role}
                         </h4>
-                        <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                        <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                           {form.desc}
                         </p>
                       </div>
@@ -901,7 +901,7 @@ export default function StaffResourcesPage() {
                     </a>
                   ))}
                 </div>
-                <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.3)" }}>
+                <p className="text-xs mt-4" style={{ color: "rgba(255,253,246,0.4)" }}>
                   All forms are fully editable Word documents — customize competencies, scoring weights,
                   and branding to fit your practice.
                 </p>
@@ -927,7 +927,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/employee-write-up-form"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -950,7 +950,7 @@ export default function StaffResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A structured write-up template with editable warning levels, violation categories, and disciplinary actions — fill it out per incident, save it under the employee&apos;s name and date, and print a clean, sign-off-ready copy for the file.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1008,7 +1008,7 @@ export default function StaffResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 Why documenting out-of-the-ordinary behavior matters, what&apos;s worth writing down, and how to do it well so it holds up if it&apos;s ever needed.
               </p>
             </div>
@@ -1042,7 +1042,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/leadership-course"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1076,7 +1076,7 @@ export default function StaffResourcesPage() {
                   Course
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A self-paced curriculum built around 8 essential leadership books, TED talks, and podcasts — with weekly reflections and real actions to apply at your practice. One week at a time.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1123,7 +1123,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1157,7 +1157,7 @@ export default function StaffResourcesPage() {
                   AI Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Rate your team across 8 key areas — trust, communication, role clarity, recognition, work-life balance, and more. Get a snapshot of where your team thrives and where to focus next, with a built-in strategy builder and history tracking to see your progress over time.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1202,7 +1202,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/meeting-notes"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1225,7 +1225,7 @@ export default function StaffResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Pre-loaded with the recommended staff meeting agenda — add, remove, or reorder sections, then log notes for every meeting under a name and date so you can look back on past meetings and prepare for what&apos;s next.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1283,7 +1283,7 @@ export default function StaffResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 A six-part recurring meeting structure — what to cover and why it matters, plus tips for running a meeting the team actually gets value from.
               </p>
             </div>
@@ -1319,7 +1319,7 @@ export default function StaffResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1353,7 +1353,7 @@ export default function StaffResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Build your personal responsibility library — name each role, assign a frequency, add notes — then drag and drop every responsibility onto a full monthly calendar so you can see exactly what your month looks like before it starts.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1398,7 +1398,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/escalated-customer-service"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1442,7 +1442,7 @@ export default function StaffResourcesPage() {
                   Front of House
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 How to de-escalate difficult clients, navigate refund requests, follow the chain of command, and resolve concerns using the 7-step LEAP FWD framework. Covers all three concern types with real scripts, warnings, and a full role-play example.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1475,7 +1475,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/patient-financing"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1515,7 +1515,7 @@ export default function StaffResourcesPage() {
                   Sales Support
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 How to introduce financing options confidently — without it feeling like a pitch. Covers a 6-step talk track, word-for-word scripts, responses to every common patient question, and a customizable partner comparison table your team can fill in with your actual providers.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1546,7 +1546,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/sales-process"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1590,7 +1590,7 @@ export default function StaffResourcesPage() {
                   Sales Process
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Complete conversion playbook covering every stage from first inquiry to closed treatment plan. Includes the 7-touch outreach sequence, word-for-word scripts, 5 objection responses, the candidacy doubt technique, and a 4-touch post-consult follow-up timeline.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1623,7 +1623,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/phone-call-mastery"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1673,7 +1673,7 @@ export default function StaffResourcesPage() {
                   Part 1 of 2
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A 10-step framework for turning every inbound call into a booked, confident patient. Covers a signature greeting, discovery questions, the Signature Consultation close, pre-visit confirmation calls, the critical question, and a word-for-word provider introduction text.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1704,7 +1704,7 @@ export default function StaffResourcesPage() {
           href="/members/resources/staff/front-desk-sales"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1754,7 +1754,7 @@ export default function StaffResourcesPage() {
                   Part 2 of 2
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Cross-selling framework and word-for-word scripts for Morpheus8, Lumecca, Forma, and Vasculaze — plus the in-person arrival experience for new vs. established patients, and the confidence & trust foundation that makes all of it land.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
@@ -1831,7 +1831,7 @@ export default function StaffResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 The 6 required file categories, what goes in each, what must be stored separately (medical, I-9, investigations), retention schedules, compliance traps, and a maintenance plan — with everything you need to stay audit-ready.
               </p>
             </div>

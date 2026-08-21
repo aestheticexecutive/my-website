@@ -123,7 +123,7 @@ const builderSections = [
 
 export default function BrandKitPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* Hero */}
       <div
@@ -170,7 +170,7 @@ export default function BrandKitPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Your brand is the sum of every impression your practice makes — before a patient
             books, during their visit, and long after they leave. A brand kit documents that
@@ -186,7 +186,7 @@ export default function BrandKitPage() {
         <div
           className="rounded-2xl border p-8 md:p-10"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.22)",
           }}
         >
@@ -208,10 +208,10 @@ export default function BrandKitPage() {
                 Your brand is not your logo. It&apos;s the feeling a person gets every time they
                 interact with you.
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                 The practices that grow fastest are not always the most technically skilled or the most
                 competitively priced. They are the ones with the most{" "}
-                <span style={{ color: "rgba(255,253,246,0.85)" }}>intentional brand presence</span> — a
+                <span style={{ color: "rgba(255,253,246,0.9)" }}>intentional brand presence</span> — a
                 look, a voice, an experience that feels unmistakably theirs at every patient touchpoint.
                 A brand kit is the document that makes that possible at scale, across your team, and across
                 every channel you market through.
@@ -238,7 +238,7 @@ export default function BrandKitPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Most practice owners think of branding as visual identity — the logo, the colors, the
             Instagram grid. But brand is what a patient experiences at every moment they interact with
             you. The gap between a forgettable practice and an unforgettable one almost always shows
@@ -274,7 +274,7 @@ export default function BrandKitPage() {
                       {tp.title}
                     </h3>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                     {tp.body}
                   </p>
                 </div>
@@ -289,7 +289,7 @@ export default function BrandKitPage() {
               borderColor: "rgba(162,140,117,0.13)",
             }}
           >
-            <p className="text-sm" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,253,246,0.55)" }}>
               <span style={{ color: "#fffdf6" }}>The common thread:</span>{" "}
               every one of these touchpoints is either reinforcing your brand promise or quietly
               undermining it. A brand kit ensures your team knows which is which — and delivers the
@@ -316,7 +316,7 @@ export default function BrandKitPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             A complete brand kit is more than a style guide. It captures the visual, verbal, and
             experiential identity of your practice — everything a marketing agency, new hire, or
             social media manager needs to represent you accurately.
@@ -363,7 +363,7 @@ export default function BrandKitPage() {
                     >
                       {comp.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                       {comp.body}
                     </p>
                   </div>
@@ -426,7 +426,7 @@ export default function BrandKitPage() {
                 >
                   {item.label}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   {item.body}
                 </p>
               </div>
@@ -443,7 +443,7 @@ export default function BrandKitPage() {
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
 
-          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-8 max-w-3xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             The Brand Kit Builder walks you through four focused sections. When you&apos;re done, export
             a clean, polished document — branded in your own colors — that you can hand directly to
             your marketing agency, social media manager, or new hire.
@@ -476,7 +476,7 @@ export default function BrandKitPage() {
                     <li
                       key={item}
                       className="text-xs flex items-start gap-1.5"
-                      style={{ color: "rgba(255,253,246,0.4)" }}
+                      style={{ color: "rgba(255,253,246,0.5)" }}
                     >
                       <span style={{ color: "rgba(162,140,117,0.5)", marginTop: "1px" }}>·</span>
                       {item}
@@ -493,14 +493,14 @@ export default function BrandKitPage() {
           className="rounded-2xl border overflow-hidden"
           style={{
             borderColor: "rgba(162,140,117,0.2)",
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
           }}
         >
           <div className="p-8 md:p-10">
             <h2 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
               Ready to build yours?
             </h2>
-            <p className="text-sm mb-8 max-w-xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+            <p className="text-sm mb-8 max-w-xl" style={{ color: "rgba(255,253,246,0.55)" }}>
               Open the Brand Kit Builder, work through each section at your own pace — everything
               saves automatically. When you&apos;re ready, export a beautifully formatted brand kit
               document, styled in your own brand colors, ready to share.
@@ -526,7 +526,7 @@ export default function BrandKitPage() {
         {/* Disclaimer */}
         <p
           className="text-xs leading-relaxed pb-4"
-          style={{ color: "rgba(255,253,246,0.2)" }}
+          style={{ color: "rgba(255,253,246,0.28)" }}
         >
           The information on this page is provided for educational and strategic planning
           purposes only. Brand strategy guidance does not substitute for professional marketing,

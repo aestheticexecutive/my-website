@@ -403,7 +403,7 @@ const books = [
 /* ─── Page ───────────────────────────────────────────────────────── */
 export default function LeadershipCoursePage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
 
       {/* Accordion CSS */}
       <style>{`
@@ -445,7 +445,7 @@ export default function LeadershipCoursePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light mb-4 leading-tight" style={{ color: "#fffdf6" }}>
             12-Week Leadership Development
           </h1>
-          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+          <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
             A self-paced curriculum built around the best books, podcasts, and ideas in modern leadership — with weekly reflections and actions designed for aesthetic practice owners.
           </p>
         </div>
@@ -455,7 +455,7 @@ export default function LeadershipCoursePage() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-4">
         <div
           className="rounded-2xl border p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-8"
-          style={{ background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.2)" }}
+          style={{ background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)", borderColor: "rgba(162,140,117,0.2)" }}
         >
           {[
             { label: "Duration", value: "12 weeks", sub: "~1–2 hours per week" },
@@ -465,7 +465,7 @@ export default function LeadershipCoursePage() {
             <div key={item.label}>
               <p className="text-xs tracking-[0.22em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.5)" }}>{item.label}</p>
               <p className="font-display text-2xl font-light mb-1" style={{ color: "#fffdf6" }}>{item.value}</p>
-              <p className="text-xs" style={{ color: "rgba(255,253,246,0.38)" }}>{item.sub}</p>
+              <p className="text-xs" style={{ color: "rgba(255,253,246,0.48)" }}>{item.sub}</p>
             </div>
           ))}
         </div>
@@ -482,7 +482,7 @@ export default function LeadershipCoursePage() {
             <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.5)" }}>
               Weekly Journal — same 4 questions every week
             </p>
-            <p className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>
+            <p className="text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>
               What did I learn this week?&nbsp;&nbsp;·&nbsp;&nbsp;
               How did I apply it?&nbsp;&nbsp;·&nbsp;&nbsp;
               What challenged me?&nbsp;&nbsp;·&nbsp;&nbsp;
@@ -514,7 +514,7 @@ export default function LeadershipCoursePage() {
                 {/* Summary row */}
                 <summary
                   className="cursor-pointer select-none"
-                  style={{ background: "linear-gradient(135deg, #140008 0%, #0c0004 100%)" }}
+                  style={{ background: "linear-gradient(135deg, #140008 0%, #170009 100%)" }}
                 >
                   <div className="px-6 py-5 flex items-center gap-4">
                     {/* Week number */}
@@ -554,7 +554,7 @@ export default function LeadershipCoursePage() {
                 </summary>
 
                 {/* Expanded content */}
-                <div style={{ background: "linear-gradient(180deg, #0f0006 0%, #0c0004 100%)" }}>
+                <div style={{ background: "linear-gradient(180deg, #0f0006 0%, #170009 100%)" }}>
                   <div className="px-6 py-6 flex flex-col gap-4">
 
                     {/* Resources */}
@@ -580,16 +580,16 @@ export default function LeadershipCoursePage() {
                             <p className="text-sm font-light leading-snug" style={{ color: "#fffdf6" }}>
                               {res.title}
                               {res.author && (
-                                <span style={{ color: "rgba(255,253,246,0.45)" }}> — {res.author}</span>
+                                <span style={{ color: "rgba(255,253,246,0.55)" }}> — {res.author}</span>
                               )}
                             </p>
                             {res.source && (
-                              <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.3)" }}>
+                              <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>
                                 {res.source}
                               </p>
                             )}
                             {res.note && (
-                              <p className="text-xs mt-1 italic" style={{ color: "rgba(255,253,246,0.35)" }}>
+                              <p className="text-xs mt-1 italic" style={{ color: "rgba(255,253,246,0.45)" }}>
                                 {res.note}
                               </p>
                             )}
@@ -600,7 +600,7 @@ export default function LeadershipCoursePage() {
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1.5 text-xs tracking-[0.12em] uppercase px-3 py-1.5 rounded-lg flex-shrink-0 transition-opacity duration-200 hover:opacity-80"
-                              style={{ background: "rgba(255,253,246,0.06)", border: "1px solid rgba(255,253,246,0.1)", color: "rgba(255,253,246,0.5)" }}
+                              style={{ background: "rgba(255,253,246,0.06)", border: "1px solid rgba(255,253,246,0.1)", color: "rgba(255,253,246,0.6)" }}
                             >
                               {res.linkLabel}
                               <ExternalLink size={10} />
@@ -624,7 +624,7 @@ export default function LeadershipCoursePage() {
                           {actionMeta[wk.action.type].label}
                         </span>
                       </div>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                         {wk.action.prompt}
                       </p>
                     </div>
@@ -638,7 +638,7 @@ export default function LeadershipCoursePage() {
                         Weekly journal
                       </p>
                       {journalPrompts.map((q, i) => (
-                        <span key={i} className="text-xs italic" style={{ color: "rgba(255,253,246,0.25)" }}>
+                        <span key={i} className="text-xs italic" style={{ color: "rgba(255,253,246,0.32)" }}>
                           {q}
                         </span>
                       ))}
@@ -663,7 +663,7 @@ export default function LeadershipCoursePage() {
         <h2 className="font-display text-3xl font-light mb-2" style={{ color: "#fffdf6" }}>
           All 8 books in this course
         </h2>
-        <p className="text-sm mb-8 max-w-xl leading-relaxed" style={{ color: "rgba(255,253,246,0.38)" }}>
+        <p className="text-sm mb-8 max-w-xl leading-relaxed" style={{ color: "rgba(255,253,246,0.48)" }}>
           You can start acquiring these before you begin the course. Each one is worth owning.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -674,7 +674,7 @@ export default function LeadershipCoursePage() {
               target="_blank"
               rel="noopener noreferrer"
               className="group rounded-xl border p-5 flex flex-col gap-3 no-underline transition-all duration-200"
-              style={{ background: "linear-gradient(145deg, #140008 0%, #0c0004 100%)", borderColor: "rgba(162,140,117,0.12)" }}
+              style={{ background: "linear-gradient(145deg, #140008 0%, #170009 100%)", borderColor: "rgba(162,140,117,0.12)" }}
             >
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -686,7 +686,7 @@ export default function LeadershipCoursePage() {
                 <p className="text-sm font-light leading-snug mb-1" style={{ color: "#fffdf6" }}>
                   {book.title}
                 </p>
-                <p className="text-xs" style={{ color: "rgba(255,253,246,0.38)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,253,246,0.48)" }}>
                   {book.author}
                 </p>
               </div>

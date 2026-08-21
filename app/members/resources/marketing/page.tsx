@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MarketingResourcesPage() {
   return (
-    <div className="bg-[#0c0004] min-h-screen">
+    <div className="bg-[#170009] min-h-screen">
       {/* Hero header */}
       <div className="relative overflow-hidden border-b" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
         <div
@@ -55,7 +55,7 @@ export default function MarketingResourcesPage() {
           </h1>
           <p
             className="text-base max-w-2xl leading-relaxed"
-            style={{ color: "rgba(255,253,246,0.5)" }}
+            style={{ color: "rgba(255,253,246,0.6)" }}
           >
             Social media strategy, paid advertising, content planning, brand
             positioning, and patient acquisition systems — built for aesthetic practices.
@@ -76,7 +76,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -101,7 +101,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Build treatment pages that rank in Google and turn visits into booked consultations.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   A visual playbook covering page structure, SEO fundamentals, conversion architecture,
                   and the metrics that tell you if it&apos;s working. Includes a page anatomy wireframe, Google
                   SERP mockup, objection cards, form design, and a 15-point launch checklist.
@@ -110,7 +110,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/landing-pages"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Playbook
@@ -136,7 +136,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -160,7 +160,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -185,7 +185,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Get found by more patients on Google — in plain English.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   A complete guide to how Google ranks your practice, the 10 factors that determine
                   your visibility, and an AI-powered analyzer that reads your website and tells you
                   exactly what to fix — no web developer required.
@@ -195,7 +195,7 @@ export default function MarketingResourcesPage() {
                   <Link
                     href="/members/resources/marketing/seo-guide"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <BookOpen size={12} />
                     Read the Guide
@@ -232,7 +232,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -256,7 +256,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -281,7 +281,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   The complete playbook for ranking in Google&apos;s Local Map Pack.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   A full standard operating procedure covering every element of your Google Business Profile —
                   from initial setup through ongoing maintenance. Includes the monthly checklist your team
                   can execute without guessing.
@@ -290,7 +290,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/google-business-profile"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -316,7 +316,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -340,7 +340,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -365,7 +365,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   A practical system for collecting reviews consistently — without it ever feeling awkward.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Why Google reviews are one of your most powerful free marketing tools, how to identify
                   the right patient to ask, a word-for-word conversation script, how to automate the process,
                   and how to build a team culture that makes asking part of every checkout.
@@ -374,7 +374,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/google-reviews"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -400,7 +400,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -424,7 +424,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -449,7 +449,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   How to plan monthly features that grow revenue without discounting.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   A complete strategy guide covering brand positioning, how to choose the right treatment,
                   leading with value over discounts, seasonal planning, operational uses, and how to measure
                   what works. Plus an interactive marketing calendar to plan and track your entire year.
@@ -459,7 +459,7 @@ export default function MarketingResourcesPage() {
                   <Link
                     href="/members/resources/marketing/monthly-features"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <BookOpen size={12} />
                     Read the Guide
@@ -496,7 +496,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -520,7 +520,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -545,7 +545,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   How to turn your website into a patient-generating machine with consistent blog content.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Why blogging is one of the highest-ROI marketing moves a practice can make, what to write
                   about, how to structure every post for Google, a visual blog anatomy diagram, per-post
                   checklist, repurposing playbook, and the content cluster strategy that builds long-term authority.
@@ -554,7 +554,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/blog-strategy"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -580,7 +580,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -604,7 +604,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -629,7 +629,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Send the right message to the right patient at the right time.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   How to use email and text marketing to increase retention, reactivate lapsed patients,
                   and fill your schedule — including 15 automated campaigns to set up once, the 80/20 content
                   rule, email vs. text channel strategy, and key metrics to track.
@@ -638,7 +638,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/email-text-marketing"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -664,7 +664,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -688,7 +688,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -713,7 +713,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   15 campaigns that run 24/7 — nurturing, retaining, and reactivating patients automatically.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   The complete breakdown of every automated campaign your practice should have running —
                   each with a clear objective, trigger, recommended content, and channel strategy. Set up
                   once and let your marketing work around the clock.
@@ -722,7 +722,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/automated-campaigns"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   View All 15 Campaigns
@@ -748,7 +748,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -772,7 +772,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -797,7 +797,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   A practical guide to profitable Facebook and Instagram advertising.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   How Meta ads actually work for aesthetic practices — budget guidance, which treatments
                   to advertise, creative do&apos;s and don&apos;ts, lead forms vs. DMs, landing page rules,
                   testing strategy, key metrics, and a 9-point campaign launch checklist.
@@ -806,7 +806,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/meta-ads"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -832,7 +832,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -856,7 +856,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -880,7 +880,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Capture patients who are already searching — and turn clicks into consultations.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   How to build profitable Google Search campaigns — keyword tiers, negative keywords,
                   branded campaign protection, Quality Score, landing page rules, 12 metrics to track,
                   common mistakes, and when Google Ads may not be worth it for your market.
@@ -889,7 +889,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/google-ads"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -914,7 +914,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -938,7 +938,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -963,7 +963,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   How to capture photos that actually showcase your results.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Not just taking before-and-afters — taking them well. A complete protocol
                   covering lighting, consistent angles, patient preparation, camera settings,
                   image labeling, and HIPAA-compliant consent. Every variable locked down so
@@ -973,7 +973,7 @@ export default function MarketingResourcesPage() {
                 <Link
                   href="/members/resources/marketing/before-after-photos"
                   className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                  style={{ background: "#a28c75", color: "#0c0004" }}
+                  style={{ background: "#a28c75", color: "#170009" }}
                 >
                   <BookOpen size={12} />
                   Read the Guide
@@ -999,7 +999,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -1023,7 +1023,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1048,7 +1048,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Plan your event from start to finish — with every to-do tracked.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   123-item interactive checklist covering pre-event planning, day-of execution,
                   and post-event follow-up. Create events, mark items Done, Pending, or N/A,
                   add notes to each task, and watch your color-coded progress bar update live.
@@ -1058,7 +1058,7 @@ export default function MarketingResourcesPage() {
                   <Link
                     href="/members/resources/marketing/event-planning"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <BookOpen size={12} />
                     Learn More
@@ -1095,7 +1095,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -1118,7 +1118,7 @@ export default function MarketingResourcesPage() {
             </h2>
             <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
           </div>
-          <p className="text-sm leading-relaxed mb-7 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+          <p className="text-sm leading-relaxed mb-7 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
             Strategy, content frameworks, format guides, and the common mistakes that hold most
             practices back — everything you need to build a consistent content engine.
           </p>
@@ -1126,7 +1126,7 @@ export default function MarketingResourcesPage() {
             href="/members/resources/marketing/social-media"
             className="group inline-flex items-start gap-5 rounded-2xl border p-7 transition-all duration-300 hover:border-[#a28c75]/35 w-full md:max-w-xl"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1152,7 +1152,7 @@ export default function MarketingResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.45)" }}>
+              <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.55)" }}>
                 The 5 P&apos;s, push vs pull marketing, five content categories, post anatomy, content formats,
                 common mistakes, weekly schedule, content ideas, and a pre-post checklist.
               </p>
@@ -1182,7 +1182,7 @@ export default function MarketingResourcesPage() {
             href="/members/resources/marketing/patient-referral"
             className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1205,7 +1205,7 @@ export default function MarketingResourcesPage() {
                     Guide
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                   A 12-step system for building a patient referral program that generates consistent new patient
                   growth. Covers program structure, branding, digital referral cards, team scripts, seasonal
                   promotions, event integration, and how to keep the program top of mind year-round.
@@ -1245,7 +1245,7 @@ export default function MarketingResourcesPage() {
           <div
             className="rounded-xl border p-7 transition-all duration-300"
             style={{
-              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1270,7 +1270,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
                   Maximize the revenue that&apos;s already sitting in your patient base.
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Audit your in-house membership and manufacturer rewards enrollment (Allē, Aspire,
                   Evolus, Reva), assess how consistently you promote both, and build a real action
                   and tracking plan — pre-loaded with the source template&apos;s example opportunities
@@ -1281,7 +1281,7 @@ export default function MarketingResourcesPage() {
                   <Link
                     href="/members/resources/marketing/membership-rewards-guide"
                     className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
-                    style={{ background: "#a28c75", color: "#0c0004" }}
+                    style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <BookOpen size={12} />
                     Read the Guide
@@ -1316,7 +1316,7 @@ export default function MarketingResourcesPage() {
                         {feat.label}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
                       {feat.desc}
                     </p>
                   </div>
@@ -1337,7 +1337,7 @@ export default function MarketingResourcesPage() {
           <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
         </div>
 
-        <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.45)" }}>
+        <p className="text-sm leading-relaxed mb-8 max-w-2xl" style={{ color: "rgba(255,253,246,0.55)" }}>
           Two distinct partnership models — a structured referral program with individual service providers,
           and a community collaboration approach with larger local businesses. Both include full outreach
           templates, scripts, and relationship management guides.
@@ -1350,7 +1350,7 @@ export default function MarketingResourcesPage() {
             href="/members/resources/marketing/referral-partners"
             className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1380,7 +1380,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
                   Referral Partner Program
                 </h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Build a structured &ldquo;Give $50, Get $50&rdquo; referral program with hairstylists,
                   lash artists, real estate agents, and other individual service providers. Includes
                   program setup, outreach templates, onboarding process, and check-in scripts.
@@ -1408,7 +1408,7 @@ export default function MarketingResourcesPage() {
             href="/members/resources/marketing/community-partnerships"
             className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
             style={{
-              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
               borderColor: "rgba(162,140,117,0.2)",
             }}
           >
@@ -1438,7 +1438,7 @@ export default function MarketingResourcesPage() {
                 <h3 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
                   Strategic Community Partnerships
                 </h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.45)" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>
                   Build cross-promotional relationships with gyms, yoga studios, boutique retailers,
                   country clubs, and wellness centers. Community collaboration marketing — focused on
                   brand visibility, audience sharing, and organic lead generation.
@@ -1482,7 +1482,7 @@ export default function MarketingResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mb-5"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1516,7 +1516,7 @@ export default function MarketingResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Document your brand&apos;s complete identity in one place — mission, vision, values, color
                 palette (with live swatches), typography, brand voice, tone words, target client, and
                 experience standards. Export a beautifully formatted brand kit document, styled in your
@@ -1583,7 +1583,7 @@ export default function MarketingResourcesPage() {
                   Guide
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.42)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
                 Why an intentional brand matters, how it shows up across every patient touchpoint, and
                 what goes into a complete brand kit — before you start building yours.
               </p>
@@ -1621,7 +1621,7 @@ export default function MarketingResourcesPage() {
           rel="noopener noreferrer"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1655,7 +1655,7 @@ export default function MarketingResourcesPage() {
                   Interactive Tool
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 Build three detailed ideal client personas — demographics, lifestyle, experience priorities,
                 treatment goals, and how they find you. Then define your brand personality, voice, promise,
                 and experience. Export a clean, professional document to share with your marketing agency,
@@ -1701,7 +1701,7 @@ export default function MarketingResourcesPage() {
           href="/members/resources/marketing/lead-conversion"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
           style={{
-            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #0c0004 100%)",
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
             borderColor: "rgba(162,140,117,0.2)",
           }}
         >
@@ -1728,7 +1728,7 @@ export default function MarketingResourcesPage() {
                   Playbook
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.5)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.6)" }}>
                 A step-by-step system for responding to, nurturing, and converting new patient inquiries into consultations and treatments. Covers the 5-minute response rule, 10-step phone call framework, scheduling best practices, objection handling, and the post-consult nurture sequence.
               </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-1">
