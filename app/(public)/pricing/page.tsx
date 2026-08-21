@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
+import { MembershipLibraryList } from "@/components/ui/MembershipLibraryList";
 import { DISCOVERY_CALL_URL, ONE_ON_ONE_BOOKING_URL } from "@/lib/constants";
 import {
   CheckCircle2,
@@ -29,11 +30,11 @@ const discoveryChips = [
 ];
 
 const memberFeatures = [
-  "Complete business template library",
+  "75+ guides, tools, and templates across Marketing, Operations, Finance, and Staff — and growing every month",
+  "Interactive tools that save your data — trackers, builders, and calculators, not static PDFs",
   "Live and on-demand webinars",
-  "Financial tools and KPI trackers",
   "Member-only community",
-  "Early access to new content",
+  "Early access to new content as it's built",
   "Discounted 1-on-1 sessions — $40 vs $50 standard rate",
 ];
 
@@ -336,14 +337,37 @@ export default function PricingPage() {
                       Get on the VIP List
                       <ArrowRight size={13} />
                     </Link>
-                    <button className="w-full h-12 border border-[#a28c75]/25 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.15em] uppercase hover:border-[#a28c75]/55 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer">
+                    <a
+                      href="#whats-included"
+                      className="w-full h-12 border border-[#a28c75]/25 text-[#fffdf6]/50 font-sans text-xs font-light rounded tracking-[0.15em] uppercase hover:border-[#a28c75]/55 hover:text-[#fffdf6] transition-colors inline-flex items-center justify-center cursor-pointer"
+                    >
                       See what&apos;s inside
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── 3.5. WHAT'S INCLUDED ─────────────────────────────── */}
+      <section id="whats-included" className="py-20 md:py-28 border-b border-[#a28c75]/10 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-8 md:px-16">
+          <div className="text-center mb-14">
+            <Eyebrow center>What&apos;s inside</Eyebrow>
+            <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-normal text-[#fffdf6] leading-[1.05] mb-6">
+              Everything included in your membership
+            </h2>
+            <p className="font-sans font-light text-[#fffdf6]/50 leading-relaxed max-w-xl mx-auto">
+              Membership isn&apos;t a folder of static PDFs — it&apos;s a growing library of
+              guides and interactive tools, built from real practice-management experience,
+              organized across the four areas that actually run your business. Here&apos;s
+              everything currently in it.
+            </p>
+          </div>
+
+          <MembershipLibraryList />
         </div>
       </section>
 

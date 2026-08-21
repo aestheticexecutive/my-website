@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import { CheckCircle2, Sparkles, ArrowRight, Megaphone, Settings, TrendingUp, Users } from "lucide-react";
+import { MembershipLibraryList } from "@/components/ui/MembershipLibraryList";
+import { searchIndex } from "@/lib/search-index";
 
 function Eyebrow({ children, center }: { children: React.ReactNode; center?: boolean }) {
   return (
@@ -15,6 +17,13 @@ const perks = [
   "Early access before membership opens to the public",
   "Exclusive founders pricing, locked in for as long as you stay a member",
   "First look at the resource library as it goes live",
+];
+
+const categoryPreview = [
+  { key: "Marketing", label: "Marketing", icon: Megaphone },
+  { key: "Operations", label: "Operations", icon: Settings },
+  { key: "Finance", label: "Finance & Business Performance", icon: TrendingUp },
+  { key: "Staff", label: "Staff", icon: Users },
 ];
 
 interface WaitlistForm {
@@ -90,6 +99,35 @@ export default function WaitlistPage() {
             Membership isn&apos;t open to the public yet — but the list is. Join now
             for early access and exclusive founders pricing the moment we launch.
           </p>
+        </div>
+
+        {/* What membership includes */}
+        <div className="mb-14">
+          <p className="font-sans font-light text-[#fffdf6]/50 text-sm leading-relaxed text-center max-w-xl mx-auto mb-8">
+            Membership gives you full access to a growing library of guides and interactive
+            tools — not static PDFs, but trackers, builders, and calculators that save your
+            data — built from real practice-management experience across the four areas that
+            run your business.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {categoryPreview.map(({ key, label, icon: Icon }) => {
+              const count = searchIndex.filter((entry) => entry.category === key).length;
+              return (
+                <div
+                  key={key}
+                  className="border border-[#a28c75]/15 rounded-xl p-4 bg-[#130007] text-center"
+                >
+                  <Icon size={16} className="text-[#a28c75] mx-auto mb-2" />
+                  <p className="font-sans font-medium text-xs text-[#fffdf6]/80 leading-snug mb-1">
+                    {label}
+                  </p>
+                  <p className="font-sans text-[10px] text-[#a28c75]/70 tracking-[0.08em] uppercase">
+                    {count} resources
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="border border-[#a28c75]/20 rounded-2xl p-8 md:p-10 bg-[#130007]">
@@ -220,6 +258,26 @@ export default function WaitlistPage() {
               </button>
             </form>
           )}
+        </div>
+      </div>
+
+      {/* Full resource library */}
+      <div className="border-t border-[#a28c75]/10 py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="text-[#a28c75] text-[10px] font-sans font-medium tracking-[0.35em] uppercase mb-4">
+              Curious what&apos;s already built?
+            </p>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.2rem)] font-normal text-[#fffdf6] leading-[1.05] mb-6">
+              Everything currently in the library
+            </h2>
+            <p className="font-sans font-light text-[#fffdf6]/50 leading-relaxed max-w-xl mx-auto">
+              This is the full library as it stands today — and it grows every month
+              between now and launch, at no extra cost to founding members.
+            </p>
+          </div>
+
+          <MembershipLibraryList />
         </div>
       </div>
     </div>
