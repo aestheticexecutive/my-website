@@ -524,6 +524,26 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-14 pt-12 border-t border-[#a28c75]/10 text-center">
+            <Compass size={22} className="text-[#a28c75] mx-auto mb-5" />
+            <h3 className="font-display text-2xl md:text-3xl font-normal text-[#fffdf6] mb-3">
+              Not sure which project you need?
+            </h3>
+            <p className="font-sans font-light text-[#fffdf6]/45 max-w-md mx-auto leading-relaxed mb-8">
+              Every project starts with a conversation. Book a discovery call
+              and we&apos;ll figure out the right scope for your practice together.
+            </p>
+            <a
+              href={DISCOVERY_CALL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-12 px-10 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Book a Discovery Call
+              <ArrowRight size={13} />
+            </a>
+          </div>
         </div>
       </section>
 
