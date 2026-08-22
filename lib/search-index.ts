@@ -36,6 +36,8 @@ export const searchIndex: SearchEntry[] = [
   { title: "Printable Secret Shopper Questionnaire", description: "All 9 sections with write-in lines and scoring boxes, formatted for print.", category: "Operations", type: "Print / PDF", href: "/tools/secret-shopper-questionnaire.html", external: true },
 
   // ── Marketing ─────────────────────────────────────────────────────────────
+  { title: "Marketing Strategy Playbook", description: "The complete AIMS framework — Aim, Identity, Method, Scorecard — for building a marketing strategy that ties every channel together.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/marketing-strategy-playbook" },
+  { title: "Marketing Strategy Builder", description: "Document your goals, brand identity, channel-by-channel plan, and monthly performance metrics in one guided, saved tool.", category: "Marketing", type: "Tool", href: "/members/resources/marketing/marketing-strategy-tool" },
   { title: "Treatment Landing Pages", description: "SEO + conversion playbook for building treatment pages that rank in Google and turn visits into booked consultations.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/landing-pages" },
   { title: "SEO & Online Visibility Guide", description: "How Google ranks your practice, the 10 factors that determine visibility, and quick wins.", category: "Marketing", type: "Guide", href: "/members/resources/marketing/seo-guide" },
   { title: "AI SEO Analyzer", description: "Enter your website URL and get an AI-powered scan of all 10 SEO ranking factors with what to fix.", category: "Marketing", type: "Tool", href: "/tools/seo-analyzer.html", external: true },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Megaphone, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare, Globe, FileText, Mail, Zap, TrendingUp, Gift, Award } from "lucide-react";
+import { ArrowLeft, ArrowRight, Megaphone, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare, Globe, FileText, Mail, Zap, TrendingUp, Gift, Award, Compass } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -60,6 +60,101 @@ export default function MarketingResourcesPage() {
             Social media strategy, paid advertising, content planning, brand
             positioning, and patient acquisition systems — built for aesthetic practices.
           </p>
+        </div>
+      </div>
+
+      {/* ── Marketing Strategy Playbook (flagship) ── */}
+      <div className="border-b" style={{ borderColor: "rgba(162,140,117,0.1)" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+              Marketing Strategy Playbook
+            </h2>
+            <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+          </div>
+
+          <div
+            className="rounded-xl border p-7 transition-all duration-300"
+            style={{
+              background: "linear-gradient(145deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
+              borderColor: "rgba(162,140,117,0.3)",
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}
+                  >
+                    <Compass size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium tracking-wide"
+                    style={{ color: "#c8b3a3", background: "rgba(200,179,163,0.08)", border: "1px solid rgba(200,179,163,0.2)" }}
+                  >
+                    Complete Framework + Interactive Tool
+                  </span>
+                </div>
+
+                <h3 className="font-display text-2xl font-light mb-3 leading-snug" style={{ color: "#fffdf6" }}>
+                  The framework that ties every channel below into one strategy.
+                </h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.55)" }}>
+                  Aim, Identity, Method, Scorecard — a complete playbook for defining your goals,
+                  your brand, your channel-by-channel execution plan, and the metrics that tell you
+                  if it&apos;s working. Plus a guided builder that documents your actual strategy and
+                  tracks monthly performance, saved as you go.
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/members/resources/marketing/marketing-strategy-playbook"
+                    className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                    style={{ background: "#a28c75", color: "#170009" }}
+                  >
+                    <BookOpen size={12} />
+                    Read the Playbook
+                  </Link>
+                  <Link
+                    href="/members/resources/marketing/marketing-strategy-tool"
+                    className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide transition-all duration-200 hover:opacity-70"
+                    style={{ background: "transparent", color: "#a28c75", border: "1px solid rgba(162,140,117,0.3)" }}
+                  >
+                    <ArrowRight size={12} />
+                    Open the Builder
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — feature chips */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "The AIMS Framework", desc: "Aim, Identity, Method, Scorecard — one structure covering goals through measurement" },
+                  { label: "13 Method Channels", desc: "Every channel from SEO to events, each linked to its full guide and tool" },
+                  { label: "Guided Documentation", desc: "Answer prompts for each pillar and channel — save your actual strategy, not a template" },
+                  { label: "Monthly Scorecard", desc: "Log spend, revenue, leads, and conversions each month with ROAS calculated automatically" },
+                ].map((feat) => (
+                  <div
+                    key={feat.label}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Compass size={12} style={{ color: "#a28c75" }} />
+                      <span className="text-xs font-medium tracking-wide" style={{ color: "#fffdf6" }}>
+                        {feat.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
