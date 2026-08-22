@@ -147,20 +147,26 @@ interface ChannelMeta {
   icon: React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>;
   prompt: string;
   links: { label: string; href: string; external?: boolean }[];
+  tools?: { label: string; href: string }[];
 }
 
+const BRANDING_CHANNEL: ChannelMeta = {
+  key: "branding",
+  label: "Branding",
+  icon: Palette,
+  prompt: "Document how your visual identity, voice, and brand kit come together — and who owns keeping it current.",
+  links: [
+    { label: "Brand Kit Builder", href: "/tools/brand-kit-builder.html", external: true },
+    { label: "Why Your Brand Kit Matters", href: "/members/resources/marketing/brand-kit" },
+    { label: "Ideal Client Builder", href: "/tools/ideal-client-builder.html", external: true },
+  ],
+  tools: [
+    { label: "Brand Kit Builder", href: "/tools/brand-kit-builder.html" },
+    { label: "Ideal Client Builder", href: "/tools/ideal-client-builder.html" },
+  ],
+};
+
 const CHANNELS: ChannelMeta[] = [
-  {
-    key: "branding",
-    label: "Branding",
-    icon: Palette,
-    prompt: "Document how your visual identity, voice, and brand kit come together — and who owns keeping it current.",
-    links: [
-      { label: "Brand Kit Builder", href: "/tools/brand-kit-builder.html", external: true },
-      { label: "Why Your Brand Kit Matters", href: "/members/resources/marketing/brand-kit" },
-      { label: "Ideal Client Builder", href: "/tools/ideal-client-builder.html", external: true },
-    ],
-  },
   {
     key: "brandConsistency",
     label: "Brand Consistency",
@@ -194,6 +200,7 @@ const CHANNELS: ChannelMeta[] = [
       { label: "Google Reviews", href: "/members/resources/marketing/google-reviews" },
       { label: "Blog Strategy", href: "/members/resources/marketing/blog-strategy" },
     ],
+    tools: [{ label: "AI SEO Analyzer", href: "/tools/seo-analyzer.html" }],
   },
   {
     key: "googleAds",
@@ -232,6 +239,7 @@ const CHANNELS: ChannelMeta[] = [
       { label: "Event Planning", href: "/members/resources/marketing/event-planning" },
       { label: "Event Planner Tool", href: "/tools/event-planner.html", external: true },
     ],
+    tools: [{ label: "Event Planner Tool", href: "/tools/event-planner.html" }],
   },
   {
     key: "monthlyFeatures",
@@ -242,6 +250,7 @@ const CHANNELS: ChannelMeta[] = [
       { label: "Monthly Features", href: "/members/resources/marketing/monthly-features" },
       { label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true },
     ],
+    tools: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html" }],
   },
   {
     key: "emailText",
@@ -263,6 +272,7 @@ const CHANNELS: ChannelMeta[] = [
       { label: "Maximizing Memberships + Rewards Guide", href: "/members/resources/marketing/membership-rewards-guide" },
       { label: "Membership + Rewards Audit Tool", href: "/members/resources/marketing/membership-rewards-audit" },
     ],
+    tools: [{ label: "Membership + Rewards Audit Tool", href: "/members/resources/marketing/membership-rewards-audit" }],
   },
 ];
 
@@ -374,7 +384,7 @@ function defaultIdentity(): IdentityData {
 
 function defaultChannels(): Record<ChannelKey, ChannelEntry> {
   const out = {} as Record<ChannelKey, ChannelEntry>;
-  for (const c of CHANNELS) {
+  for (const c of [BRANDING_CHANNEL, ...CHANNELS]) {
     out[c.key] = { status: "not-started", strategy: "", owner: "", cadence: "" };
   }
   return out;
@@ -499,6 +509,149 @@ function StatChip({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ChannelCard({
+  meta,
+  entry,
+  isOpen,
+  onToggle,
+  onUpdate,
+  openTools,
+  onToggleTool,
+}: {
+  meta: ChannelMeta;
+  entry: ChannelEntry;
+  isOpen: boolean;
+  onToggle: () => void;
+  onUpdate: (field: keyof ChannelEntry, value: string) => void;
+  openTools: Set<string>;
+  onToggleTool: (href: string) => void;
+}) {
+  const Icon = meta.icon;
+  return (
+    <div className="rounded-xl overflow-hidden" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.14)" }}>
+      <button onClick={onToggle} className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
+            <Icon size={14} style={{ color: "#a28c75" }} />
+          </div>
+          <span className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{meta.label}</span>
+          <span
+            className="text-[10px] tracking-[0.1em] uppercase px-2 py-1 rounded-full flex-shrink-0"
+            style={{ background: `${STATUS_COLORS[entry.status]}1a`, color: STATUS_COLORS[entry.status], border: `1px solid ${STATUS_COLORS[entry.status]}40` }}
+          >
+            {STATUS_LABELS[entry.status]}
+          </span>
+        </div>
+        <ChevronDown size={16} className="flex-shrink-0 transition-transform" style={{ color: "rgba(162,140,117,0.6)", transform: isOpen ? "rotate(180deg)" : "none" }} />
+      </button>
+
+      {isOpen && (
+        <div className="px-5 pb-5 space-y-4">
+          <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{meta.prompt}</p>
+
+          {meta.links.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {meta.links.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors"
+                    style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
+                  >
+                    {link.label}
+                    <ExternalLink size={10} />
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors"
+                    style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
+                  >
+                    {link.label}
+                    <ArrowRight size={10} />
+                  </Link>
+                )
+              )}
+            </div>
+          )}
+
+          <div className="grid sm:grid-cols-3 gap-3">
+            <div>
+              <label className="block text-xs tracking-[0.1em] uppercase mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>Status</label>
+              <select
+                value={entry.status}
+                onChange={(e) => onUpdate("status", e.target.value)}
+                className="w-full h-10 px-3 rounded-lg text-sm outline-none"
+                style={inputStyle}
+              >
+                {(Object.keys(STATUS_LABELS) as ChannelStatus[]).map((s) => (
+                  <option key={s} value={s} style={{ background: "#170009" }}>{STATUS_LABELS[s]}</option>
+                ))}
+              </select>
+            </div>
+            <TextField label="Owner" value={entry.owner} onChange={(v) => onUpdate("owner", v)} placeholder="Who runs this?" />
+            <TextField label="Cadence" value={entry.cadence} onChange={(v) => onUpdate("cadence", v)} placeholder="e.g. 3x per week" />
+          </div>
+
+          <TextArea
+            label="Strategy & Documentation"
+            value={entry.strategy}
+            onChange={(v) => onUpdate("strategy", v)}
+            placeholder="What is the actual plan for this channel? Document what you're doing, not just what you intend to do."
+            rows={4}
+          />
+
+          {meta.tools && meta.tools.length > 0 && (
+            <div className="space-y-3 pt-1">
+              {meta.tools.map((t) => {
+                const toolOpen = openTools.has(t.href);
+                return (
+                  <div key={t.href}>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => onToggleTool(t.href)}
+                        className="flex-1 inline-flex items-center justify-between gap-2 px-4 h-10 rounded-lg text-xs font-medium tracking-wide transition-colors"
+                        style={{ background: "rgba(162,140,117,0.08)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
+                      >
+                        <span>{toolOpen ? "Hide" : "Open"} {t.label} here</span>
+                        <ChevronDown size={13} style={{ transform: toolOpen ? "rotate(180deg)" : "none", transition: "transform 0.15s" }} />
+                      </button>
+                      <a
+                        href={t.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0 transition-colors"
+                        style={{ background: "rgba(162,140,117,0.08)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
+                        title={`Open ${t.label} in a new tab`}
+                      >
+                        <ExternalLink size={13} />
+                      </a>
+                    </div>
+                    {toolOpen && (
+                      <div className="mt-2 rounded-lg overflow-hidden" style={{ border: "1px solid rgba(162,140,117,0.22)", height: "80vh" }}>
+                        <iframe
+                          src={t.href}
+                          title={t.label}
+                          className="w-full h-full"
+                          style={{ border: "none", background: "#170009" }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MarketingStrategyToolPage() {
@@ -506,6 +659,7 @@ export default function MarketingStrategyToolPage() {
   const [data, setData] = useState<StoreData>(defaultData());
   const [tab, setTab] = useState<Tab>("aim");
   const [openChannel, setOpenChannel] = useState<ChannelKey | null>("branding");
+  const [openTools, setOpenTools] = useState<Set<string>>(new Set());
   const [entryDraft, setEntryDraft] = useState(defaultScorecardEntry());
   const [openEntryId, setOpenEntryId] = useState<string | null>(null);
 
@@ -571,6 +725,14 @@ export default function MarketingStrategyToolPage() {
       channels: { ...prev.channels, [key]: { ...prev.channels[key], [field]: value } },
     }));
   }
+  function toggleTool(href: string) {
+    setOpenTools((prev) => {
+      const next = new Set(prev);
+      if (next.has(href)) next.delete(href);
+      else next.add(href);
+      return next;
+    });
+  }
 
   function addScorecardEntry() {
     const entry: ScorecardEntry = { id: uid(), createdAt: new Date().toISOString(), ...entryDraft };
@@ -591,7 +753,7 @@ export default function MarketingStrategyToolPage() {
 
   const draftStats = useMemo(() => computeScorecardStats({ ...entryDraft, id: "", createdAt: "" }), [entryDraft]);
 
-  const channelsCompleted = Object.values(data.channels).filter((c) => c.status === "active").length;
+  const channelsCompleted = CHANNELS.filter((c) => data.channels[c.key]?.status === "active").length;
 
   const tabs: { key: Tab; label: string; icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }> }[] = [
     { key: "aim", label: "Aim", icon: Compass },
@@ -756,15 +918,20 @@ export default function MarketingStrategyToolPage() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-3">
-                <a href="/tools/brand-kit-builder.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide" style={{ background: "transparent", color: "#a28c75", border: "1px solid rgba(162,140,117,0.3)" }}>
-                  <ExternalLink size={12} />
-                  Open Brand Kit Builder
-                </a>
-                <a href="/tools/ideal-client-builder.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 h-10 rounded text-xs font-medium tracking-wide" style={{ background: "transparent", color: "#a28c75", border: "1px solid rgba(162,140,117,0.3)" }}>
-                  <ExternalLink size={12} />
-                  Open Ideal Client Builder
-                </a>
+
+              <div>
+                <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>
+                  Put it into practice
+                </p>
+                <ChannelCard
+                  meta={BRANDING_CHANNEL}
+                  entry={data.channels.branding}
+                  isOpen={openChannel === "branding"}
+                  onToggle={() => setOpenChannel(openChannel === "branding" ? null : "branding")}
+                  onUpdate={(field, value) => updateChannelField("branding", field, value)}
+                  openTools={openTools}
+                  onToggleTool={toggleTool}
+                />
               </div>
             </div>
           )}
@@ -778,95 +945,18 @@ export default function MarketingStrategyToolPage() {
                 </p>
               </div>
               <div className="space-y-3">
-                {CHANNELS.map((c) => {
-                  const entry = data.channels[c.key];
-                  const isOpen = openChannel === c.key;
-                  const Icon = c.icon;
-                  return (
-                    <div key={c.key} className="rounded-xl overflow-hidden" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.14)" }}>
-                      <button
-                        onClick={() => setOpenChannel(isOpen ? null : c.key)}
-                        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}>
-                            <Icon size={14} style={{ color: "#a28c75" }} />
-                          </div>
-                          <span className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{c.label}</span>
-                          <span
-                            className="text-[10px] tracking-[0.1em] uppercase px-2 py-1 rounded-full flex-shrink-0"
-                            style={{ background: `${STATUS_COLORS[entry.status]}1a`, color: STATUS_COLORS[entry.status], border: `1px solid ${STATUS_COLORS[entry.status]}40` }}
-                          >
-                            {STATUS_LABELS[entry.status]}
-                          </span>
-                        </div>
-                        <ChevronDown size={16} className="flex-shrink-0 transition-transform" style={{ color: "rgba(162,140,117,0.6)", transform: isOpen ? "rotate(180deg)" : "none" }} />
-                      </button>
-
-                      {isOpen && (
-                        <div className="px-5 pb-5 space-y-4">
-                          <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.45)" }}>{c.prompt}</p>
-
-                          {c.links.length > 0 && (
-                            <div className="flex flex-wrap gap-2">
-                              {c.links.map((link) =>
-                                link.external ? (
-                                  <a
-                                    key={link.href}
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors"
-                                    style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
-                                  >
-                                    {link.label}
-                                    <ExternalLink size={10} />
-                                  </a>
-                                ) : (
-                                  <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors"
-                                    style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.22)", color: "#a28c75" }}
-                                  >
-                                    {link.label}
-                                    <ArrowRight size={10} />
-                                  </Link>
-                                )
-                              )}
-                            </div>
-                          )}
-
-                          <div className="grid sm:grid-cols-3 gap-3">
-                            <div>
-                              <label className="block text-xs tracking-[0.1em] uppercase mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>Status</label>
-                              <select
-                                value={entry.status}
-                                onChange={(e) => updateChannelField(c.key, "status", e.target.value)}
-                                className="w-full h-10 px-3 rounded-lg text-sm outline-none"
-                                style={inputStyle}
-                              >
-                                {(Object.keys(STATUS_LABELS) as ChannelStatus[]).map((s) => (
-                                  <option key={s} value={s} style={{ background: "#170009" }}>{STATUS_LABELS[s]}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <TextField label="Owner" value={entry.owner} onChange={(v) => updateChannelField(c.key, "owner", v)} placeholder="Who runs this?" />
-                            <TextField label="Cadence" value={entry.cadence} onChange={(v) => updateChannelField(c.key, "cadence", v)} placeholder="e.g. 3x per week" />
-                          </div>
-
-                          <TextArea
-                            label="Strategy & Documentation"
-                            value={entry.strategy}
-                            onChange={(v) => updateChannelField(c.key, "strategy", v)}
-                            placeholder="What is the actual plan for this channel? Document what you're doing, not just what you intend to do."
-                            rows={4}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                {CHANNELS.map((c) => (
+                  <ChannelCard
+                    key={c.key}
+                    meta={c}
+                    entry={data.channels[c.key]}
+                    isOpen={openChannel === c.key}
+                    onToggle={() => setOpenChannel(openChannel === c.key ? null : c.key)}
+                    onUpdate={(field, value) => updateChannelField(c.key, field, value)}
+                    openTools={openTools}
+                    onToggleTool={toggleTool}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -1065,6 +1155,17 @@ export default function MarketingStrategyToolPage() {
         {IDENTITY_FIELDS.map((f) => data.identity[f.key] && (
           <p key={f.key} style={{ fontSize: 12, marginBottom: 6 }}><strong>{f.label}:</strong> {data.identity[f.key]}</p>
         ))}
+        {(() => {
+          const b = data.channels.branding;
+          return (
+            <div style={{ marginBottom: 10, fontSize: 12 }}>
+              <strong>Branding</strong> — {STATUS_LABELS[b.status]}
+              {b.owner && ` · Owner: ${b.owner}`}
+              {b.cadence && ` · Cadence: ${b.cadence}`}
+              {b.strategy && <p style={{ marginTop: 2, color: "#333" }}>{b.strategy}</p>}
+            </div>
+          );
+        })()}
 
         <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Method</h2>
         {CHANNELS.map((c) => {

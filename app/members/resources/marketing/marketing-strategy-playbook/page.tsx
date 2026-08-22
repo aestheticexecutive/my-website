@@ -73,18 +73,19 @@ interface ChannelSection {
   links: { label: string; href: string; external?: boolean }[];
 }
 
+const brandingChannel: ChannelSection = {
+  key: "branding",
+  label: "Branding",
+  icon: Palette,
+  body: "Everything that makes the brand recognizable and repeatable — logo, colors, fonts, imagery, voice, and the client it's built for. This is the foundation every other channel draws from.",
+  links: [
+    { label: "Brand Kit Builder", href: "/tools/brand-kit-builder.html", external: true },
+    { label: "Why Your Brand Kit Matters", href: "/members/resources/marketing/brand-kit" },
+    { label: "Ideal Client Builder", href: "/tools/ideal-client-builder.html", external: true },
+  ],
+};
+
 const methodChannels: ChannelSection[] = [
-  {
-    key: "branding",
-    label: "Branding",
-    icon: Palette,
-    body: "Everything that makes the brand recognizable and repeatable — logo, colors, fonts, imagery, voice, and the client it's built for. This is the foundation every other channel draws from.",
-    links: [
-      { label: "Brand Kit Builder", href: "/tools/brand-kit-builder.html", external: true },
-      { label: "Why Your Brand Kit Matters", href: "/members/resources/marketing/brand-kit" },
-      { label: "Ideal Client Builder", href: "/tools/ideal-client-builder.html", external: true },
-    ],
-  },
   {
     key: "brand-consistency",
     label: "Brand Consistency",
@@ -403,10 +404,20 @@ export default function MarketingStrategyPlaybookPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <ResourceLink label="Brand Kit Builder" href="/tools/brand-kit-builder.html" external />
-            <ResourceLink label="Why Your Brand Kit Matters" href="/members/resources/marketing/brand-kit" />
-            <ResourceLink label="Ideal Client Builder" href="/tools/ideal-client-builder.html" external />
+          <p className="text-xs tracking-[0.15em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Put it into practice</p>
+          <div className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
+                <Palette size={15} style={{ color: "#a28c75" }} />
+              </div>
+              <h3 className="text-base font-medium" style={{ color: "#fffdf6" }}>{brandingChannel.label}</h3>
+            </div>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>{brandingChannel.body}</p>
+            <div className="flex flex-wrap gap-2">
+              {brandingChannel.links.map((link) => (
+                <ResourceLink key={link.href} label={link.label} href={link.href} external={link.external} />
+              ))}
+            </div>
           </div>
         </div>
 
