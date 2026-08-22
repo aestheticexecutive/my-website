@@ -264,35 +264,44 @@
   .detail-metric-val { font-size: 15px; font-weight: 500; color: var(--cream); margin-top: 2px; }
 
   /* ── ENTRY TYPE COLORS ── */
-  .t-feature    { background: rgba(162,140,117,0.15); }
-  .t-campaign   { background: rgba(100,140,200,0.12); }
-  .t-event      { background: rgba(130,190,120,0.12); }
-  .t-email      { background: rgba(200,160,80,0.12); }
-  .t-social     { background: rgba(160,100,200,0.12); }
-  .t-text       { background: rgba(92,176,168,0.12); }
-  .t-seo        { background: rgba(200,130,60,0.12); }
-  .t-community  { background: rgba(194,111,150,0.12); }
-  .t-other      { background: rgba(180,180,180,0.08); }
+  .t-brand-consistency              { background: rgba(162,140,117,0.15); }
+  .t-organic-social-media           { background: rgba(160,100,200,0.12); }
+  .t-paid-social-media              { background: rgba(100,140,200,0.12); }
+  .t-seo                            { background: rgba(200,130,60,0.12); }
+  .t-google-ads                     { background: rgba(79,168,216,0.12); }
+  .t-community-presence             { background: rgba(194,111,150,0.12); }
+  .t-local-partners                 { background: rgba(200,160,80,0.12); }
+  .t-patient-referral-program       { background: rgba(92,176,168,0.12); }
+  .t-events                         { background: rgba(217,122,74,0.12); }
+  .t-monthly-features               { background: rgba(130,190,120,0.12); }
+  .t-email-text-blasts              { background: rgba(143,124,201,0.12); }
+  .t-patient-experience-optimization{ background: rgba(150,184,138,0.12); }
 
-  .dot-feature  { background: #a28c75; }
-  .dot-campaign { background: #6488c8; }
-  .dot-event    { background: #7db870; }
-  .dot-email    { background: #c8a050; }
-  .dot-social   { background: #a064c8; }
-  .dot-text     { background: #5cb0a8; }
-  .dot-seo      { background: #c8823c; }
-  .dot-community{ background: #c26f96; }
-  .dot-other    { background: #888; }
+  .dot-brand-consistency              { background: #a28c75; }
+  .dot-organic-social-media           { background: #a064c8; }
+  .dot-paid-social-media              { background: #6488c8; }
+  .dot-seo                            { background: #c8823c; }
+  .dot-google-ads                     { background: #4fa8d8; }
+  .dot-community-presence             { background: #c26f96; }
+  .dot-local-partners                 { background: #c8a050; }
+  .dot-patient-referral-program       { background: #5cb0a8; }
+  .dot-events                         { background: #d97a4a; }
+  .dot-monthly-features               { background: #7db870; }
+  .dot-email-text-blasts              { background: #8f7cc9; }
+  .dot-patient-experience-optimization{ background: #96b88a; }
 
-  .sel-feature  { background: #a28c75; }
-  .sel-campaign { background: #6488c8; }
-  .sel-event    { background: #7db870; }
-  .sel-email    { background: #c8a050; }
-  .sel-social   { background: #a064c8; }
-  .sel-text     { background: #5cb0a8; }
-  .sel-seo      { background: #c8823c; }
-  .sel-community{ background: #c26f96; }
-  .sel-other    { background: #888; }
+  .sel-brand-consistency              { background: #a28c75; }
+  .sel-organic-social-media           { background: #a064c8; }
+  .sel-paid-social-media              { background: #6488c8; }
+  .sel-seo                            { background: #c8823c; }
+  .sel-google-ads                     { background: #4fa8d8; }
+  .sel-community-presence             { background: #c26f96; }
+  .sel-local-partners                 { background: #c8a050; }
+  .sel-patient-referral-program       { background: #5cb0a8; }
+  .sel-events                         { background: #d97a4a; }
+  .sel-monthly-features               { background: #7db870; }
+  .sel-email-text-blasts              { background: #8f7cc9; }
+  .sel-patient-experience-optimization{ background: #96b88a; }
 
   /* ── PRINT BUTTON ── */
   .print-btn {
@@ -355,15 +364,18 @@
 
     .print-empty { font-family: Arial, sans-serif; font-size: 10pt; color: #bbb; font-style: italic; padding: 6px 0; }
 
-    .pt-feature  { background: #a28c75; }
-    .pt-campaign { background: #6488c8; }
-    .pt-event    { background: #7db870; }
-    .pt-email    { background: #c8a050; }
-    .pt-social   { background: #a064c8; }
-    .pt-text     { background: #5cb0a8; }
-    .pt-seo      { background: #c8823c; }
-    .pt-community{ background: #c26f96; }
-    .pt-other    { background: #888; }
+    .pt-brand-consistency              { background: #a28c75; }
+    .pt-organic-social-media           { background: #a064c8; }
+    .pt-paid-social-media              { background: #6488c8; }
+    .pt-seo                            { background: #c8823c; }
+    .pt-google-ads                     { background: #4fa8d8; }
+    .pt-community-presence             { background: #c26f96; }
+    .pt-local-partners                 { background: #c8a050; }
+    .pt-patient-referral-program       { background: #5cb0a8; }
+    .pt-events                         { background: #d97a4a; }
+    .pt-monthly-features               { background: #7db870; }
+    .pt-email-text-blasts              { background: #8f7cc9; }
+    .pt-patient-experience-optimization{ background: #96b88a; }
   }
 </style>
 </head>
@@ -395,32 +407,41 @@
     <div class="legend-item active" data-type="all" onclick="toggleFilter('all')">
       <span class="legend-dot" style="background:var(--gold)"></span> All
     </div>
-    <div class="legend-item" data-type="Feature" onclick="toggleFilter('Feature')">
-      <span class="legend-dot dot-feature"></span> Feature
+    <div class="legend-item" data-type="Brand Consistency" onclick="toggleFilter('Brand Consistency')">
+      <span class="legend-dot dot-brand-consistency"></span> Brand Consistency
     </div>
-    <div class="legend-item" data-type="Campaign" onclick="toggleFilter('Campaign')">
-      <span class="legend-dot dot-campaign"></span> Campaign
+    <div class="legend-item" data-type="Organic Social Media" onclick="toggleFilter('Organic Social Media')">
+      <span class="legend-dot dot-organic-social-media"></span> Organic Social Media
     </div>
-    <div class="legend-item" data-type="Event" onclick="toggleFilter('Event')">
-      <span class="legend-dot dot-event"></span> Event
-    </div>
-    <div class="legend-item" data-type="Email" onclick="toggleFilter('Email')">
-      <span class="legend-dot dot-email"></span> Email
-    </div>
-    <div class="legend-item" data-type="Social" onclick="toggleFilter('Social')">
-      <span class="legend-dot dot-social"></span> Social
-    </div>
-    <div class="legend-item" data-type="Text" onclick="toggleFilter('Text')">
-      <span class="legend-dot dot-text"></span> Text
+    <div class="legend-item" data-type="Paid Social Media" onclick="toggleFilter('Paid Social Media')">
+      <span class="legend-dot dot-paid-social-media"></span> Paid Social Media
     </div>
     <div class="legend-item" data-type="SEO" onclick="toggleFilter('SEO')">
       <span class="legend-dot dot-seo"></span> SEO
     </div>
-    <div class="legend-item" data-type="Community" onclick="toggleFilter('Community')">
-      <span class="legend-dot dot-community"></span> Community
+    <div class="legend-item" data-type="Google Ads" onclick="toggleFilter('Google Ads')">
+      <span class="legend-dot dot-google-ads"></span> Google Ads
     </div>
-    <div class="legend-item" data-type="Other" onclick="toggleFilter('Other')">
-      <span class="legend-dot dot-other"></span> Other
+    <div class="legend-item" data-type="Community Presence" onclick="toggleFilter('Community Presence')">
+      <span class="legend-dot dot-community-presence"></span> Community Presence
+    </div>
+    <div class="legend-item" data-type="Local Partners" onclick="toggleFilter('Local Partners')">
+      <span class="legend-dot dot-local-partners"></span> Local Partners
+    </div>
+    <div class="legend-item" data-type="Patient Referral Program" onclick="toggleFilter('Patient Referral Program')">
+      <span class="legend-dot dot-patient-referral-program"></span> Patient Referral Program
+    </div>
+    <div class="legend-item" data-type="Events" onclick="toggleFilter('Events')">
+      <span class="legend-dot dot-events"></span> Events
+    </div>
+    <div class="legend-item" data-type="Monthly Features" onclick="toggleFilter('Monthly Features')">
+      <span class="legend-dot dot-monthly-features"></span> Monthly Features
+    </div>
+    <div class="legend-item" data-type="Email &amp; Text Blasts" onclick="toggleFilter('Email &amp; Text Blasts')">
+      <span class="legend-dot dot-email-text-blasts"></span> Email &amp; Text Blasts
+    </div>
+    <div class="legend-item" data-type="Patient Experience Optimization" onclick="toggleFilter('Patient Experience Optimization')">
+      <span class="legend-dot dot-patient-experience-optimization"></span> Patient Experience Optimization
     </div>
   </div>
 
@@ -443,38 +464,47 @@
     <div class="modal-body" id="formBody">
       <div class="field-group">
         <label class="field-label">Title</label>
-        <input class="field-input" id="f-title" type="text" placeholder="e.g. Morpheus8 Feature, Black Friday Campaign…" />
+        <input class="field-input" id="f-title" type="text" placeholder="e.g. New Year Membership Push, Morpheus8 Spotlight…" />
       </div>
 
       <div class="field-group">
         <label class="field-label">Type</label>
         <div class="type-picker" id="typePicker">
-          <button class="type-btn" data-type="Feature" onclick="selectType('Feature')">
-            <span class="legend-dot dot-feature"></span> Feature
+          <button class="type-btn" data-type="Brand Consistency" onclick="selectType('Brand Consistency')">
+            <span class="legend-dot dot-brand-consistency"></span> Brand Consistency
           </button>
-          <button class="type-btn" data-type="Campaign" onclick="selectType('Campaign')">
-            <span class="legend-dot dot-campaign"></span> Campaign
+          <button class="type-btn" data-type="Organic Social Media" onclick="selectType('Organic Social Media')">
+            <span class="legend-dot dot-organic-social-media"></span> Organic Social Media
           </button>
-          <button class="type-btn" data-type="Event" onclick="selectType('Event')">
-            <span class="legend-dot dot-event"></span> Event
-          </button>
-          <button class="type-btn" data-type="Email" onclick="selectType('Email')">
-            <span class="legend-dot dot-email"></span> Email
-          </button>
-          <button class="type-btn" data-type="Social" onclick="selectType('Social')">
-            <span class="legend-dot dot-social"></span> Social
-          </button>
-          <button class="type-btn" data-type="Text" onclick="selectType('Text')">
-            <span class="legend-dot dot-text"></span> Text
+          <button class="type-btn" data-type="Paid Social Media" onclick="selectType('Paid Social Media')">
+            <span class="legend-dot dot-paid-social-media"></span> Paid Social Media
           </button>
           <button class="type-btn" data-type="SEO" onclick="selectType('SEO')">
             <span class="legend-dot dot-seo"></span> SEO
           </button>
-          <button class="type-btn" data-type="Community" onclick="selectType('Community')">
-            <span class="legend-dot dot-community"></span> Community
+          <button class="type-btn" data-type="Google Ads" onclick="selectType('Google Ads')">
+            <span class="legend-dot dot-google-ads"></span> Google Ads
           </button>
-          <button class="type-btn" data-type="Other" onclick="selectType('Other')">
-            <span class="legend-dot dot-other"></span> Other
+          <button class="type-btn" data-type="Community Presence" onclick="selectType('Community Presence')">
+            <span class="legend-dot dot-community-presence"></span> Community Presence
+          </button>
+          <button class="type-btn" data-type="Local Partners" onclick="selectType('Local Partners')">
+            <span class="legend-dot dot-local-partners"></span> Local Partners
+          </button>
+          <button class="type-btn" data-type="Patient Referral Program" onclick="selectType('Patient Referral Program')">
+            <span class="legend-dot dot-patient-referral-program"></span> Patient Referral Program
+          </button>
+          <button class="type-btn" data-type="Events" onclick="selectType('Events')">
+            <span class="legend-dot dot-events"></span> Events
+          </button>
+          <button class="type-btn" data-type="Monthly Features" onclick="selectType('Monthly Features')">
+            <span class="legend-dot dot-monthly-features"></span> Monthly Features
+          </button>
+          <button class="type-btn" data-type="Email &amp; Text Blasts" onclick="selectType('Email &amp; Text Blasts')">
+            <span class="legend-dot dot-email-text-blasts"></span> Email &amp; Text Blasts
+          </button>
+          <button class="type-btn" data-type="Patient Experience Optimization" onclick="selectType('Patient Experience Optimization')">
+            <span class="legend-dot dot-patient-experience-optimization"></span> Patient Experience Optimization
           </button>
         </div>
       </div>
@@ -535,10 +565,15 @@
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const STORAGE_KEY = 'ae_promo_calendar_v1';
 const TYPE_COLORS = {
-  Feature:'#a28c75', Campaign:'#6488c8', Event:'#7db870',
-  Email:'#c8a050', Social:'#a064c8', Text:'#5cb0a8',
-  SEO:'#c8823c', Community:'#c26f96', Other:'#888'
+  'Brand Consistency':'#a28c75', 'Organic Social Media':'#a064c8', 'Paid Social Media':'#6488c8',
+  'SEO':'#c8823c', 'Google Ads':'#4fa8d8', 'Community Presence':'#c26f96',
+  'Local Partners':'#c8a050', 'Patient Referral Program':'#5cb0a8', 'Events':'#d97a4a',
+  'Monthly Features':'#7db870', 'Email & Text Blasts':'#8f7cc9', 'Patient Experience Optimization':'#96b88a'
 };
+
+function slugify(type) {
+  return String(type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 
 let state = { year: new Date().getFullYear(), filter: 'all', data: {}, modal: null };
 
@@ -567,8 +602,8 @@ function render() {
       </div>
       <div class="month-body" id="mb-${m}">
         ${filtered.map(e => `
-          <div class="entry-pill t-${e.type.toLowerCase()}" onclick="openDetail('${monthKey(state.year,m)}','${e.id}')">
-            <span class="entry-dot dot-${e.type.toLowerCase()}"></span>
+          <div class="entry-pill t-${slugify(e.type)}" onclick="openDetail('${monthKey(state.year,m)}','${e.id}')">
+            <span class="entry-dot dot-${slugify(e.type)}"></span>
             <div>
               <div class="entry-title">${escHtml(e.title)}</div>
               <div class="entry-type-tag">${e.type}</div>
@@ -599,12 +634,12 @@ function changeYear(dir) { state.year += dir; render(); }
 // ── MODAL ──
 let editingKey = null;
 let editingId = null;
-let selectedType = 'Feature';
+let selectedType = 'Brand Consistency';
 
 function openAdd(monthIdx) {
   editingKey = monthKey(state.year, monthIdx);
   editingId = null;
-  selectedType = 'Feature';
+  selectedType = 'Brand Consistency';
   document.getElementById('modalTitle').textContent = 'Add Entry';
   document.getElementById('modalSub').textContent = `${MONTHS[monthIdx]} ${state.year}`;
   document.getElementById('f-title').value = '';
@@ -621,7 +656,7 @@ function openDetail(key, id) {
   if(!entry) return;
   editingKey = key;
   editingId = id;
-  selectedType = entry.type || 'Feature';
+  selectedType = entry.type || 'Brand Consistency';
 
   const [yr, mo] = key.split('-');
   document.getElementById('modalTitle').textContent = 'Edit Entry';
@@ -648,7 +683,7 @@ function refreshTypePicker() {
   document.querySelectorAll('#typePicker .type-btn').forEach(btn => {
     const t = btn.dataset.type;
     const isSel = t === selectedType;
-    btn.className = 'type-btn' + (isSel ? ' selected sel-' + t.toLowerCase() : '');
+    btn.className = 'type-btn' + (isSel ? ' selected sel-' + slugify(t) : '');
   });
 }
 
@@ -734,7 +769,7 @@ function buildPrintDoc() {
         html += `<div class="print-entry">
           <div class="print-entry-top">
             <div class="print-entry-title">${escHtml(e.title)}</div>
-            <div class="print-entry-type pt-${e.type.toLowerCase()}">${e.type}</div>
+            <div class="print-entry-type pt-${slugify(e.type)}">${e.type}</div>
           </div>
           ${e.notes ? `<div class="print-entry-notes">${escHtml(e.notes)}</div>` : ''}
           ${metricsHtml ? `<div class="print-metrics-grid">${metricsHtml}</div>` : ''}

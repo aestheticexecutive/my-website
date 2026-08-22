@@ -26,6 +26,7 @@ import {
   Handshake,
   Gift,
   CalendarDays,
+  CalendarRange,
   Star,
   Mail,
   Camera,
@@ -38,6 +39,7 @@ type ChannelStatus = "not-started" | "in-progress" | "active" | "needs-review";
 
 type ChannelKey =
   | "branding"
+  | "promoCalendar"
   | "brandConsistency"
   | "organicSocial"
   | "paidSocial"
@@ -147,6 +149,15 @@ const BRANDING_CHANNEL: ChannelMeta = {
   ],
 };
 
+const PROMO_CALENDAR_CHANNEL: ChannelMeta = {
+  key: "promoCalendar",
+  label: "Promo Calendar",
+  icon: CalendarRange,
+  prompt: "Plan and track every feature, campaign, and event across the year in one place — its categories match every Method channel here.",
+  links: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true }],
+  tools: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html" }],
+};
+
 const CHANNELS: ChannelMeta[] = [
   {
     key: "brandConsistency",
@@ -160,7 +171,11 @@ const CHANNELS: ChannelMeta[] = [
     label: "Organic Social Media",
     icon: Share2,
     prompt: "Platforms, posting cadence, and content standards for building trust before you expect it to convert.",
-    links: [{ label: "Social Media Best Practices", href: "/members/resources/marketing/social-media" }],
+    links: [
+      { label: "Social Media Best Practices", href: "/members/resources/marketing/social-media" },
+      { label: "Social Media Planner", href: "/tools/social-media-planner.html", external: true },
+    ],
+    tools: [{ label: "Social Media Planner", href: "/tools/social-media-planner.html" }],
   },
   {
     key: "paidSocial",
@@ -227,11 +242,7 @@ const CHANNELS: ChannelMeta[] = [
     label: "Monthly Features",
     icon: Star,
     prompt: "What gets featured each month, to which demographic, and how you'll track performance.",
-    links: [
-      { label: "Monthly Features", href: "/members/resources/marketing/monthly-features" },
-      { label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true },
-    ],
-    tools: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html" }],
+    links: [{ label: "Monthly Features", href: "/members/resources/marketing/monthly-features" }],
   },
   {
     key: "emailText",
@@ -519,7 +530,7 @@ function defaultAim(): AimData {
 
 function defaultChannels(): Record<ChannelKey, ChannelEntry> {
   const out = {} as Record<ChannelKey, ChannelEntry>;
-  for (const c of [BRANDING_CHANNEL, ...CHANNELS]) {
+  for (const c of [BRANDING_CHANNEL, PROMO_CALENDAR_CHANNEL, ...CHANNELS]) {
     out[c.key] = { status: "not-started", strategy: "", owner: "", cadence: "" };
   }
   return out;
@@ -993,7 +1004,10 @@ export default function MarketingStrategyToolPage() {
   const barData = useMemo(() => aggregateBySource(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
   const lineData = useMemo(() => buildLineSeries(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
 
-  const channelsCompleted = CHANNELS.filter((c) => data.channels[c.key]?.status === "active").length;
+  const methodChannelCount = CHANNELS.length + 1;
+  const channelsCompleted =
+    CHANNELS.filter((c) => data.channels[c.key]?.status === "active").length +
+    (data.channels.promoCalendar?.status === "active" ? 1 : 0);
 
   const tabs: { key: Tab; label: string; icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }> }[] = [
     { key: "aim", label: "Aim", icon: Compass },
@@ -1175,9 +1189,23 @@ export default function MarketingStrategyToolPage() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <p className="text-xs tracking-[0.2em] uppercase" style={{ color: "rgba(162,140,117,0.6)" }}>
-                  {channelsCompleted} of {CHANNELS.length} channels marked Active
+                  {channelsCompleted} of {methodChannelCount} channels marked Active
                 </p>
               </div>
+
+              <div className="mb-6">
+                <ChannelCard
+                  meta={PROMO_CALENDAR_CHANNEL}
+                  entry={data.channels.promoCalendar}
+                  isOpen={openChannel === "promoCalendar"}
+                  onToggle={() => setOpenChannel(openChannel === "promoCalendar" ? null : "promoCalendar")}
+                  onUpdate={(field, value) => updateChannelField("promoCalendar", field, value)}
+                  openTools={openTools}
+                  onToggleTool={toggleTool}
+                />
+              </div>
+              <div className="h-px mb-6" style={{ background: "rgba(162,140,117,0.12)" }} />
+
               <div className="space-y-3">
                 {CHANNELS.map((c) => (
                   <ChannelCard
@@ -1466,6 +1494,17 @@ export default function MarketingStrategyToolPage() {
         })()}
 
         <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Method</h2>
+        {(() => {
+          const p = data.channels.promoCalendar;
+          return (
+            <div style={{ marginBottom: 10, fontSize: 12 }}>
+              <strong>Promo Calendar</strong> — {STATUS_LABELS[p.status]}
+              {p.owner && ` · Owner: ${p.owner}`}
+              {p.cadence && ` · Cadence: ${p.cadence}`}
+              {p.strategy && <p style={{ marginTop: 2, color: "#333" }}>{p.strategy}</p>}
+            </div>
+          );
+        })()}
         {CHANNELS.map((c) => {
           const entry = data.channels[c.key];
           return (

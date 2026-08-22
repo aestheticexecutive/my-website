@@ -17,6 +17,7 @@ import {
   Handshake,
   Gift,
   CalendarDays,
+  CalendarRange,
   Star,
   Mail,
   Camera,
@@ -85,6 +86,14 @@ const brandingChannel: ChannelSection = {
   ],
 };
 
+const promoCalendarChannel: ChannelSection = {
+  key: "promo-calendar",
+  label: "Promo Calendar",
+  icon: CalendarRange,
+  body: "Plan and track every feature, campaign, and event across the year in one place — the calendar's categories match every Method channel below, so you can see at a glance where your planned activity actually sits.",
+  links: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true }],
+};
+
 const methodChannels: ChannelSection[] = [
   {
     key: "brand-consistency",
@@ -98,7 +107,10 @@ const methodChannels: ChannelSection[] = [
     label: "Organic Social Media",
     icon: Share2,
     body: "A long-term brand-building tool, not an instant revenue driver — engagement and reach typically grow before bookings do. Consistency beats virality: showing up regularly builds the familiarity and trust that eventually supports paid ads, referrals, and word-of-mouth.",
-    links: [{ label: "Social Media Best Practices", href: "/members/resources/marketing/social-media" }],
+    links: [
+      { label: "Social Media Best Practices", href: "/members/resources/marketing/social-media" },
+      { label: "Social Media Planner", href: "/tools/social-media-planner.html", external: true },
+    ],
   },
   {
     key: "paid-social",
@@ -163,10 +175,7 @@ const methodChannels: ChannelSection[] = [
     label: "Monthly Features",
     icon: Star,
     body: "Language matters — “features,” not “promotions.” Monthly features should add value rather than just discount, converting already-trusting patients into services they haven't tried yet. Track performance every month to guide what gets featured next.",
-    links: [
-      { label: "Monthly Features", href: "/members/resources/marketing/monthly-features" },
-      { label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true },
-    ],
+    links: [{ label: "Monthly Features", href: "/members/resources/marketing/monthly-features" }],
   },
   {
     key: "email-text",
@@ -424,6 +433,27 @@ export default function MarketingStrategyPlaybookPage() {
         {/* METHOD */}
         <div>
           <PillarHeader number="3" title="Method" subtitle="How you're executing across every channel — the day-to-day work that puts the brand and the aim into action." />
+
+          {(() => {
+            const Icon = promoCalendarChannel.icon;
+            return (
+              <div className="rounded-xl p-6 mb-6" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
+                    <Icon size={15} style={{ color: "#a28c75" }} />
+                  </div>
+                  <h3 className="text-base font-medium" style={{ color: "#fffdf6" }}>{promoCalendarChannel.label}</h3>
+                </div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>{promoCalendarChannel.body}</p>
+                <div className="flex flex-wrap gap-2">
+                  {promoCalendarChannel.links.map((link) => (
+                    <ResourceLink key={link.href} label={link.label} href={link.href} external={link.external} />
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+
           <div className="space-y-4">
             {methodChannels.map((c) => {
               const Icon = c.icon;
