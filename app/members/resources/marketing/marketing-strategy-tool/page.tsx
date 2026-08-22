@@ -70,19 +70,11 @@ interface AimData {
   teamDevelopment: string;
 }
 
-interface IdentityData {
-  feeling: string;
-  words: string;
-  phrases: string;
-  visualIdentity: string;
-  differentiator: string;
-  slogan: string;
-  customerExperience: string;
-}
-
 interface ScorecardEntry {
   id: string;
-  month: string;
+  name: string;
+  startDate: string;
+  endDate: string;
   adSpend: string;
   agencyFee: string;
   newPatientRevenue: string;
@@ -112,7 +104,6 @@ interface ScorecardEntry {
 
 interface StoreData {
   aim: AimData;
-  identity: IdentityData;
   channels: Record<ChannelKey, ChannelEntry>;
   leadConversionNotes: string;
   scorecardEntries: ScorecardEntry[];
@@ -129,16 +120,6 @@ const AIM_FIELDS: { key: keyof Omit<AimData, "primaryAim">; label: string; promp
   { key: "recurringRevenue", label: "Recurring & Predictable Revenue", prompt: "How will you grow memberships, packages, or programs to increase retention and reduce month-to-month volatility?" },
   { key: "serviceMix", label: "Service & Product Mix Optimization", prompt: "Which services will you strategically grow, and how will you balance demand, margin, and long-term value?" },
   { key: "teamDevelopment", label: "Team Development & Culture", prompt: "How will you build a skilled, engaged team with clear expectations, accountability, and growth paths?" },
-];
-
-const IDENTITY_FIELDS: { key: keyof IdentityData; label: string }[] = [
-  { key: "feeling", label: "What do you want your brand to make people feel?" },
-  { key: "words", label: "What words embody the brand?" },
-  { key: "phrases", label: "What phrases embody the brand?" },
-  { key: "visualIdentity", label: "What color scheme, fonts, logo, and imagery embody the brand?" },
-  { key: "differentiator", label: "What is the brand's differentiator?" },
-  { key: "slogan", label: "What is the brand's slogan?" },
-  { key: "customerExperience", label: "How is the brand embodied through the patient experience?" },
 ];
 
 interface ChannelMeta {
@@ -296,16 +277,27 @@ function uid(): string {
   return Math.random().toString(36).slice(2, 11);
 }
 
-function currentMonthValue(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+function todayISO(): string {
+  return new Date().toISOString().slice(0, 10);
 }
 
-function monthLabel(value: string): string {
-  if (!value) return "";
-  const [y, m] = value.split("-").map(Number);
-  if (!y || !m) return value;
-  return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+function parseLocalDate(iso: string): Date {
+  return iso ? new Date(`${iso}T00:00:00`) : new Date();
+}
+
+function formatDateShort(iso: string): string {
+  if (!iso) return "";
+  try {
+    return parseLocalDate(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  } catch {
+    return "";
+  }
+}
+
+function formatDateRange(start: string, end: string): string {
+  if (!start && !end) return "";
+  if (!end || start === end) return formatDateShort(start);
+  return `${formatDateShort(start)} – ${formatDateShort(end)}`;
 }
 
 function parseNum(s: string): number {
@@ -356,6 +348,161 @@ function computeScorecardStats(e: ScorecardEntry) {
   };
 }
 
+// ── Chart metrics ────────────────────────────────────────────────────────────
+
+type MetricKey =
+  | "adSpend"
+  | "totalSpent"
+  | "newPatientRevenue"
+  | "allPatientRevenue"
+  | "overallRevenue"
+  | "newPatientROAS"
+  | "allPatientROAS"
+  | "newLeads"
+  | "newConsults"
+  | "newProcedures"
+  | "leadToConsult"
+  | "consultToProcedure"
+  | "newMembers"
+  | "patientReferrals"
+  | "googleReviews"
+  | "productRevenue"
+  | "reBookingRate"
+  | "avgInvoiceValue"
+  | "igFollowers"
+  | "tiktokFollowers";
+
+type MetricFormat = "money" | "percent" | "ratio" | "number";
+type MetricAgg = "sum" | "avg" | "latest";
+
+interface MetricMeta {
+  key: MetricKey;
+  label: string;
+  format: MetricFormat;
+  agg: MetricAgg;
+}
+
+const METRICS: MetricMeta[] = [
+  { key: "overallRevenue", label: "Overall Revenue", format: "money", agg: "sum" },
+  { key: "totalSpent", label: "Total Spent", format: "money", agg: "sum" },
+  { key: "adSpend", label: "Ad Spend", format: "money", agg: "sum" },
+  { key: "newPatientRevenue", label: "New Patient Revenue", format: "money", agg: "sum" },
+  { key: "allPatientRevenue", label: "All Patient Revenue", format: "money", agg: "sum" },
+  { key: "newPatientROAS", label: "New Patient ROAS", format: "ratio", agg: "avg" },
+  { key: "allPatientROAS", label: "All Patient ROAS", format: "ratio", agg: "avg" },
+  { key: "newLeads", label: "New Leads", format: "number", agg: "sum" },
+  { key: "newConsults", label: "New Patient Consults", format: "number", agg: "sum" },
+  { key: "newProcedures", label: "New Patient Procedures", format: "number", agg: "sum" },
+  { key: "leadToConsult", label: "Lead → Consult %", format: "percent", agg: "avg" },
+  { key: "consultToProcedure", label: "Consult → Procedure %", format: "percent", agg: "avg" },
+  { key: "newMembers", label: "New Members", format: "number", agg: "sum" },
+  { key: "patientReferrals", label: "Patient Referrals", format: "number", agg: "sum" },
+  { key: "googleReviews", label: "Google Reviews", format: "number", agg: "sum" },
+  { key: "productRevenue", label: "Product Revenue", format: "money", agg: "sum" },
+  { key: "reBookingRate", label: "Re-Booking Rate", format: "percent", agg: "avg" },
+  { key: "avgInvoiceValue", label: "Average Invoice Value", format: "money", agg: "avg" },
+  { key: "igFollowers", label: "Instagram Followers", format: "number", agg: "latest" },
+  { key: "tiktokFollowers", label: "TikTok Followers", format: "number", agg: "latest" },
+];
+
+function getMetricValue(e: ScorecardEntry, key: MetricKey): number {
+  switch (key) {
+    case "totalSpent":
+    case "newPatientROAS":
+    case "allPatientROAS":
+    case "leadToConsult":
+    case "consultToProcedure":
+      return computeScorecardStats(e)[key];
+    default:
+      return parseNum((e as unknown as Record<string, string>)[key] ?? "");
+  }
+}
+
+function formatMetricValue(n: number, format: MetricFormat): string {
+  switch (format) {
+    case "money":
+      return formatMoney(n);
+    case "percent":
+      return `${n.toFixed(1)}%`;
+    case "ratio":
+      return `${n.toFixed(2)}x`;
+    default:
+      return Math.round(n).toLocaleString("en-US");
+  }
+}
+
+interface SourceAgg {
+  name: string;
+  value: number;
+}
+
+function aggregateBySource(entries: ScorecardEntry[], metric: MetricMeta): SourceAgg[] {
+  const groups = new Map<string, ScorecardEntry[]>();
+  for (const e of entries) {
+    const key = e.name.trim() || "Unnamed";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(e);
+  }
+  const rows: SourceAgg[] = [];
+  groups.forEach((list, name) => {
+    const values = list.map((e) => getMetricValue(e, metric.key));
+    let value: number;
+    if (metric.agg === "sum") {
+      value = values.reduce((a, b) => a + b, 0);
+    } else if (metric.agg === "avg") {
+      value = values.reduce((a, b) => a + b, 0) / values.length;
+    } else {
+      const sorted = [...list].sort((a, b) => (a.startDate < b.startDate ? 1 : -1));
+      value = getMetricValue(sorted[0], metric.key);
+    }
+    rows.push({ name, value });
+  });
+  return rows.sort((a, b) => b.value - a.value);
+}
+
+const CHART_COLORS = ["#3987e5", "#d95926", "#199e70", "#c98500"];
+const CHART_OTHER_COLOR = "rgba(255,253,246,0.35)";
+
+function colorForIndex(i: number): string {
+  return i < CHART_COLORS.length ? CHART_COLORS[i] : CHART_OTHER_COLOR;
+}
+
+interface LinePoint {
+  t: number;
+  value: number;
+  label: string;
+}
+
+interface LineSeries {
+  name: string;
+  color: string;
+  points: LinePoint[];
+}
+
+function buildLineSeries(entries: ScorecardEntry[], metric: MetricMeta): LineSeries[] {
+  const order = aggregateBySource(entries, metric).map((r) => r.name);
+  const bySource = new Map<string, ScorecardEntry[]>();
+  for (const e of entries) {
+    const key = e.name.trim() || "Unnamed";
+    if (!bySource.has(key)) bySource.set(key, []);
+    bySource.get(key)!.push(e);
+  }
+  return order
+    .map((name, i) => {
+      const list = [...(bySource.get(name) || [])].sort((a, b) => (a.startDate < b.startDate ? -1 : 1));
+      return {
+        name,
+        color: colorForIndex(i),
+        points: list.map((e) => ({
+          t: parseLocalDate(e.startDate).getTime(),
+          value: getMetricValue(e, metric.key),
+          label: formatDateShort(e.startDate),
+        })),
+      };
+    })
+    .filter((s) => s.points.length > 0);
+}
+
 function defaultAim(): AimData {
   return {
     primaryAim: "",
@@ -370,18 +517,6 @@ function defaultAim(): AimData {
   };
 }
 
-function defaultIdentity(): IdentityData {
-  return {
-    feeling: "",
-    words: "",
-    phrases: "",
-    visualIdentity: "",
-    differentiator: "",
-    slogan: "",
-    customerExperience: "",
-  };
-}
-
 function defaultChannels(): Record<ChannelKey, ChannelEntry> {
   const out = {} as Record<ChannelKey, ChannelEntry>;
   for (const c of [BRANDING_CHANNEL, ...CHANNELS]) {
@@ -392,7 +527,9 @@ function defaultChannels(): Record<ChannelKey, ChannelEntry> {
 
 function defaultScorecardEntry(): Omit<ScorecardEntry, "id" | "createdAt"> {
   return {
-    month: currentMonthValue(),
+    name: "",
+    startDate: todayISO(),
+    endDate: todayISO(),
     adSpend: "",
     agencyFee: "",
     newPatientRevenue: "",
@@ -423,7 +560,6 @@ function defaultScorecardEntry(): Omit<ScorecardEntry, "id" | "createdAt"> {
 function defaultData(): StoreData {
   return {
     aim: defaultAim(),
-    identity: defaultIdentity(),
     channels: defaultChannels(),
     leadConversionNotes: "",
     scorecardEntries: [],
@@ -652,6 +788,101 @@ function ChannelCard({
   );
 }
 
+function BarChart({ data, format }: { data: SourceAgg[]; format: MetricFormat }) {
+  const max = Math.max(...data.map((d) => d.value), 0.0001);
+  const w = 640;
+  const h = 240;
+  const padT = 26;
+  const padB = 44;
+  const padX = 16;
+  const chartW = w - padX * 2;
+  const chartH = h - padT - padB;
+  const n = data.length;
+  const gap = 14;
+  const barW = Math.max(24, Math.min(56, (chartW - gap * (n - 1)) / n));
+  const totalW = n * barW + (n - 1) * gap;
+  const startX = padX + Math.max(0, (chartW - totalW) / 2);
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label={`Bar chart comparing ${data.length} sources`}>
+      <line x1={padX} y1={padT + chartH} x2={w - padX} y2={padT + chartH} stroke="rgba(255,253,246,0.15)" strokeWidth={1} />
+      {data.map((d, i) => {
+        const barH = max > 0 ? (d.value / max) * chartH : 0;
+        const x = startX + i * (barW + gap);
+        const y = padT + chartH - barH;
+        return (
+          <g key={d.name}>
+            <title>{d.name}: {formatMetricValue(d.value, format)}</title>
+            <rect x={x} y={y} width={barW} height={Math.max(barH, 1)} rx={4} fill="#a28c75" />
+            <text x={x + barW / 2} y={Math.max(y - 8, 12)} textAnchor="middle" fontSize="10" fill="#fffdf6">
+              {formatMetricValue(d.value, format)}
+            </text>
+            <text x={x + barW / 2} y={padT + chartH + 18} textAnchor="middle" fontSize="9" fill="rgba(255,253,246,0.5)">
+              {d.name.length > 14 ? `${d.name.slice(0, 13)}…` : d.name}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function LineChart({ series, format }: { series: LineSeries[]; format: MetricFormat }) {
+  const allPoints = series.flatMap((s) => s.points);
+  const tMin = Math.min(...allPoints.map((p) => p.t));
+  const tMax = Math.max(...allPoints.map((p) => p.t));
+  const vMax = Math.max(...allPoints.map((p) => p.value), 0.0001);
+  const w = 640;
+  const h = 240;
+  const padT = 20;
+  const padB = 34;
+  const padL = 14;
+  const padR = 14;
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+
+  function xFor(t: number) {
+    if (tMax === tMin) return padL + chartW / 2;
+    return padL + ((t - tMin) / (tMax - tMin)) * chartW;
+  }
+  function yFor(v: number) {
+    return padT + chartH - (vMax > 0 ? (v / vMax) * chartH : 0);
+  }
+
+  return (
+    <div>
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="Line chart of performance over time">
+        <line x1={padL} y1={padT + chartH} x2={w - padR} y2={padT + chartH} stroke="rgba(255,253,246,0.15)" strokeWidth={1} />
+        {series.map((s) => (
+          <g key={s.name}>
+            <polyline
+              fill="none"
+              stroke={s.color}
+              strokeWidth={2}
+              points={s.points.map((p) => `${xFor(p.t)},${yFor(p.value)}`).join(" ")}
+            />
+            {s.points.map((p, i) => (
+              <circle key={i} cx={xFor(p.t)} cy={yFor(p.value)} r={4} fill={s.color}>
+                <title>{s.name} — {p.label}: {formatMetricValue(p.value, format)}</title>
+              </circle>
+            ))}
+          </g>
+        ))}
+      </svg>
+      {series.length > 1 && (
+        <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3">
+          {series.map((s) => (
+            <div key={s.name} className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: s.color }} />
+              <span className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>{s.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MarketingStrategyToolPage() {
@@ -677,10 +908,16 @@ export default function MarketingStrategyToolPage() {
         const parsed = JSON.parse(raw);
         setData({
           aim: { ...defaultAim(), ...(parsed.aim ?? {}) },
-          identity: { ...defaultIdentity(), ...(parsed.identity ?? {}) },
           channels: { ...defaultChannels(), ...(parsed.channels ?? {}) },
           leadConversionNotes: parsed.leadConversionNotes ?? "",
-          scorecardEntries: Array.isArray(parsed.scorecardEntries) ? parsed.scorecardEntries : [],
+          scorecardEntries: Array.isArray(parsed.scorecardEntries)
+            ? parsed.scorecardEntries.map((e: Record<string, string>) => ({
+                ...e,
+                name: e.name ?? "",
+                startDate: e.startDate ?? (e.month ? `${e.month}-01` : todayISO()),
+                endDate: e.endDate ?? e.startDate ?? todayISO(),
+              }))
+            : [],
         });
         if (parsed._savedAt) setLastSaved(parsed._savedAt);
       }
@@ -716,9 +953,6 @@ export default function MarketingStrategyToolPage() {
   function updateAimField<K extends keyof AimData>(key: K, value: AimData[K]) {
     setData((prev) => ({ ...prev, aim: { ...prev.aim, [key]: value } }));
   }
-  function updateIdentityField<K extends keyof IdentityData>(key: K, value: IdentityData[K]) {
-    setData((prev) => ({ ...prev, identity: { ...prev.identity, [key]: value } }));
-  }
   function updateChannelField(key: ChannelKey, field: keyof ChannelEntry, value: string) {
     setData((prev) => ({
       ...prev,
@@ -735,9 +969,10 @@ export default function MarketingStrategyToolPage() {
   }
 
   function addScorecardEntry() {
+    if (!entryDraft.name.trim()) return;
     const entry: ScorecardEntry = { id: uid(), createdAt: new Date().toISOString(), ...entryDraft };
     setData((prev) => ({ ...prev, scorecardEntries: [entry, ...prev.scorecardEntries] }));
-    setEntryDraft({ ...defaultScorecardEntry(), month: currentMonthValue() });
+    setEntryDraft(defaultScorecardEntry());
   }
   function deleteScorecardEntry(id: string) {
     setData((prev) => ({ ...prev, scorecardEntries: prev.scorecardEntries.filter((e) => e.id !== id) }));
@@ -745,13 +980,18 @@ export default function MarketingStrategyToolPage() {
   }
 
   const sortedEntries = useMemo(
-    () => [...data.scorecardEntries].sort((a, b) => (a.month < b.month ? 1 : -1)),
+    () => [...data.scorecardEntries].sort((a, b) => (a.startDate < b.startDate ? 1 : -1)),
     [data.scorecardEntries]
   );
   const latestEntry = sortedEntries[0] ?? null;
   const latestStats = latestEntry ? computeScorecardStats(latestEntry) : null;
 
   const draftStats = useMemo(() => computeScorecardStats({ ...entryDraft, id: "", createdAt: "" }), [entryDraft]);
+
+  const [chartMetric, setChartMetric] = useState<MetricKey>("overallRevenue");
+  const activeMetric = METRICS.find((m) => m.key === chartMetric)!;
+  const barData = useMemo(() => aggregateBySource(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
+  const lineData = useMemo(() => buildLineSeries(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
 
   const channelsCompleted = CHANNELS.filter((c) => data.channels[c.key]?.status === "active").length;
 
@@ -908,15 +1148,9 @@ export default function MarketingStrategyToolPage() {
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
                   Your brand is the perception people have of your business — how it feels, not just how
                   it looks. It&apos;s shaped by every interaction, and it exists whether you define it or
-                  not. Answer these honestly; they&apos;re the foundation everything else in this playbook builds on.
+                  not. Work through it below in the Brand Kit Builder and Ideal Client Builder — everything
+                  from your mission and voice to your ideal patient personas lives there, in one place.
                 </p>
-              </div>
-              <div className="space-y-5">
-                {IDENTITY_FIELDS.map((f) => (
-                  <div key={f.key} className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
-                    <TextArea label={f.label} value={data.identity[f.key]} onChange={(v) => updateIdentityField(f.key, v)} rows={2} />
-                  </div>
-                ))}
               </div>
 
               <div>
@@ -991,20 +1225,39 @@ export default function MarketingStrategyToolPage() {
                   <h2 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Marketing Analytics</h2>
                 </div>
                 <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
-                  Log a scorecard entry every month to track performance and see how you&apos;re trending over time.
+                  Log a scorecard entry for each campaign or initiative — name it, set the date range it
+                  covers, and track performance. Log the same source again later to see it trend over time.
                 </p>
 
                 {/* Add entry form */}
                 <div className="rounded-xl p-6 mb-6" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
-                  <div className="mb-5 max-w-[200px]">
-                    <label className="block text-xs tracking-[0.1em] uppercase mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>Month</label>
-                    <input
-                      type="month"
-                      value={entryDraft.month}
-                      onChange={(e) => setEntryDraft((d) => ({ ...d, month: e.target.value }))}
-                      className="w-full h-10 px-3 rounded-lg text-sm outline-none"
-                      style={inputStyle}
+                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
+                    <TextField
+                      label="Name / Source"
+                      value={entryDraft.name}
+                      onChange={(v) => setEntryDraft((d) => ({ ...d, name: v }))}
+                      placeholder="e.g. Instagram Ad — Lip Filler"
                     />
+                    <div>
+                      <label className="block text-xs tracking-[0.1em] uppercase mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>Start Date</label>
+                      <input
+                        type="date"
+                        value={entryDraft.startDate}
+                        onChange={(e) => setEntryDraft((d) => ({ ...d, startDate: e.target.value }))}
+                        className="w-full h-10 px-3 rounded-lg text-sm outline-none"
+                        style={inputStyle}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-[0.1em] uppercase mb-2" style={{ color: "rgba(255,253,246,0.4)" }}>End Date</label>
+                      <input
+                        type="date"
+                        value={entryDraft.endDate}
+                        onChange={(e) => setEntryDraft((d) => ({ ...d, endDate: e.target.value }))}
+                        className="w-full h-10 px-3 rounded-lg text-sm outline-none"
+                        style={inputStyle}
+                      />
+                    </div>
                   </div>
 
                   <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Spend & Investment</p>
@@ -1068,14 +1321,15 @@ export default function MarketingStrategyToolPage() {
 
                   <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Insights &amp; Decision-Making</p>
                   <div className="space-y-3 mb-6">
-                    <TextArea label="What worked / underperformed" value={entryDraft.whatWorked} onChange={(v) => setEntryDraft((d) => ({ ...d, whatWorked: v }))} placeholder="Key findings from this month's data..." rows={2} />
+                    <TextArea label="What worked / underperformed" value={entryDraft.whatWorked} onChange={(v) => setEntryDraft((d) => ({ ...d, whatWorked: v }))} placeholder="Key findings from this entry's data..." rows={2} />
                     <TextArea label="What underperformed" value={entryDraft.whatUnderperformed} onChange={(v) => setEntryDraft((d) => ({ ...d, whatUnderperformed: v }))} placeholder="Where were the drop-offs or inefficiencies?" rows={2} />
-                    <TextArea label="Thoughts for next month" value={entryDraft.nextMonthActions} onChange={(v) => setEntryDraft((d) => ({ ...d, nextMonthActions: v }))} placeholder="Budget reallocations, campaign adjustments, messaging refinements..." rows={2} />
+                    <TextArea label="Next Steps" value={entryDraft.nextMonthActions} onChange={(v) => setEntryDraft((d) => ({ ...d, nextMonthActions: v }))} placeholder="Budget reallocations, campaign adjustments, messaging refinements..." rows={2} />
                   </div>
 
                   <button
                     onClick={addScorecardEntry}
-                    className="inline-flex items-center gap-2 px-5 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all hover:opacity-90"
+                    disabled={!entryDraft.name.trim()}
+                    className="inline-flex items-center gap-2 px-5 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:opacity-40"
                     style={{ background: "#a28c75", color: "#170009" }}
                   >
                     <Plus size={14} />
@@ -1087,7 +1341,7 @@ export default function MarketingStrategyToolPage() {
                 {sortedEntries.length > 0 && (
                   <div>
                     <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>
-                      Monthly History ({sortedEntries.length})
+                      Logged Entries ({sortedEntries.length})
                     </p>
                     <div className="space-y-3">
                       {sortedEntries.map((e) => {
@@ -1096,7 +1350,10 @@ export default function MarketingStrategyToolPage() {
                         return (
                           <div key={e.id} className="rounded-xl overflow-hidden" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.14)" }}>
                             <button onClick={() => setOpenEntryId(isOpen ? null : e.id)} className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left flex-wrap">
-                              <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>{monthLabel(e.month)}</span>
+                              <div className="min-w-0">
+                                <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{e.name || "Untitled Entry"}</p>
+                                <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>{formatDateRange(e.startDate, e.endDate)}</p>
+                              </div>
                               <div className="flex items-center gap-4 flex-wrap">
                                 <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Overall Revenue: <strong style={{ color: "#a28c75" }}>{formatMoney(parseNum(e.overallRevenue))}</strong></span>
                                 <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>All Patient ROAS: <strong style={{ color: "#a28c75" }}>{formatRatio(stats.allPatientROAS)}</strong></span>
@@ -1119,7 +1376,7 @@ export default function MarketingStrategyToolPage() {
                                   <div className="space-y-2 mb-4 text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
                                     {e.whatWorked && <p><span style={{ color: "#a28c75" }}>What worked:</span> {e.whatWorked}</p>}
                                     {e.whatUnderperformed && <p><span style={{ color: "#a28c75" }}>What underperformed:</span> {e.whatUnderperformed}</p>}
-                                    {e.nextMonthActions && <p><span style={{ color: "#a28c75" }}>Next month:</span> {e.nextMonthActions}</p>}
+                                    {e.nextMonthActions && <p><span style={{ color: "#a28c75" }}>Next steps:</span> {e.nextMonthActions}</p>}
                                   </div>
                                 )}
                                 <button onClick={() => deleteScorecardEntry(e.id)} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors" style={{ color: "rgba(200,100,100,0.7)", border: "1px solid rgba(200,100,100,0.2)" }}>
@@ -1134,6 +1391,50 @@ export default function MarketingStrategyToolPage() {
                     </div>
                   </div>
                 )}
+
+                {/* Charts */}
+                <div className="mt-10">
+                  <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+                    <p className="text-xs tracking-[0.2em] uppercase" style={{ color: "rgba(162,140,117,0.6)" }}>
+                      Performance by Source
+                    </p>
+                    <select
+                      value={chartMetric}
+                      onChange={(e) => setChartMetric(e.target.value as MetricKey)}
+                      className="h-9 px-3 rounded-lg text-xs outline-none"
+                      style={inputStyle}
+                    >
+                      {METRICS.map((m) => (
+                        <option key={m.key} value={m.key} style={{ background: "#170009" }}>{m.label}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {sortedEntries.length === 0 ? (
+                    <div className="rounded-xl p-8 text-center" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
+                      <p className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>
+                        Log a scorecard entry above to see your data charted here.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      <div className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
+                        <p className="text-sm font-medium mb-4" style={{ color: "#fffdf6" }}>
+                          {activeMetric.label} by source
+                        </p>
+                        <BarChart data={barData} format={activeMetric.format} />
+                      </div>
+                      {lineData.some((s) => s.points.length > 1) && (
+                        <div className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
+                          <p className="text-sm font-medium mb-4" style={{ color: "#fffdf6" }}>
+                            {activeMetric.label} over time
+                          </p>
+                          <LineChart series={lineData} format={activeMetric.format} />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}
@@ -1152,9 +1453,6 @@ export default function MarketingStrategyToolPage() {
         ))}
 
         <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Identity</h2>
-        {IDENTITY_FIELDS.map((f) => data.identity[f.key] && (
-          <p key={f.key} style={{ fontSize: 12, marginBottom: 6 }}><strong>{f.label}:</strong> {data.identity[f.key]}</p>
-        ))}
         {(() => {
           const b = data.channels.branding;
           return (
@@ -1184,7 +1482,7 @@ export default function MarketingStrategyToolPage() {
         {data.leadConversionNotes && <p style={{ fontSize: 12, marginBottom: 10 }}><strong>Lead Conversion:</strong> {data.leadConversionNotes}</p>}
         {latestEntry && latestStats && (
           <div style={{ fontSize: 12 }}>
-            <p style={{ marginBottom: 4 }}><strong>Latest month:</strong> {monthLabel(latestEntry.month)}</p>
+            <p style={{ marginBottom: 4 }}><strong>Most recent entry:</strong> {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})</p>
             <p>Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}</p>
             <p>Overall Revenue: {formatMoney(parseNum(latestEntry.overallRevenue))} · Re-Booking Rate: {latestEntry.reBookingRate || "—"}%</p>
           </div>
