@@ -17,7 +17,6 @@ import {
   Handshake,
   Gift,
   CalendarDays,
-  CalendarRange,
   Star,
   Mail,
   Camera,
@@ -86,22 +85,15 @@ const brandingChannel: ChannelSection = {
   ],
 };
 
-const promoCalendarChannel: ChannelSection = {
-  key: "promo-calendar",
-  label: "Promo Calendar",
-  icon: CalendarRange,
-  body: "Plan and track every feature, campaign, and event across the year in one place — the calendar's categories match every Method channel below, so you can see at a glance where your planned activity actually sits.",
-  links: [{ label: "Promo Calendar Tool", href: "/tools/promo-calendar.html", external: true }],
+const brandConsistencyChannel: ChannelSection = {
+  key: "brand-consistency",
+  label: "Brand Consistency",
+  icon: ListChecks,
+  body: "Brand consistency is what turns a one-time visit into a returning, referring patient — because they know exactly what to expect every time. Every touchpoint (website, social, phone, in-clinic, follow-up) should be intentionally choreographed to feel like the same brand, and that requires ongoing auditing: content review, approval workflows, secret shopping, and quarterly brand audits. Staff alignment matters just as much as the visual identity — every team member needs to understand the tone and why consistency protects long-term brand equity.",
+  links: [],
 };
 
 const methodChannels: ChannelSection[] = [
-  {
-    key: "brand-consistency",
-    label: "Brand Consistency",
-    icon: ListChecks,
-    body: "Brand consistency is what turns a one-time visit into a returning, referring patient — because they know exactly what to expect every time. Every touchpoint (website, social, phone, in-clinic, follow-up) should be intentionally choreographed to feel like the same brand, and that requires ongoing auditing: content review, approval workflows, secret shopping, and quarterly brand audits. Staff alignment matters just as much as the visual identity — every team member needs to understand the tone and why consistency protects long-term brand equity.",
-    links: [],
-  },
   {
     key: "organic-social",
     label: "Organic Social Media",
@@ -414,19 +406,28 @@ export default function MarketingStrategyPlaybookPage() {
           </div>
 
           <p className="text-xs tracking-[0.15em] uppercase mb-4" style={{ color: "rgba(162,140,117,0.6)" }}>Put it into practice</p>
-          <div className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
-                <Palette size={15} style={{ color: "#a28c75" }} />
-              </div>
-              <h3 className="text-base font-medium" style={{ color: "#fffdf6" }}>{brandingChannel.label}</h3>
-            </div>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>{brandingChannel.body}</p>
-            <div className="flex flex-wrap gap-2">
-              {brandingChannel.links.map((link) => (
-                <ResourceLink key={link.href} label={link.label} href={link.href} external={link.external} />
-              ))}
-            </div>
+          <div className="space-y-4">
+            {[brandingChannel, brandConsistencyChannel].map((c) => {
+              const Icon = c.icon;
+              return (
+                <div key={c.key} className="rounded-xl p-6" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
+                      <Icon size={15} style={{ color: "#a28c75" }} />
+                    </div>
+                    <h3 className="text-base font-medium" style={{ color: "#fffdf6" }}>{c.label}</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>{c.body}</p>
+                  {c.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {c.links.map((link) => (
+                        <ResourceLink key={link.href} label={link.label} href={link.href} external={link.external} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -434,25 +435,16 @@ export default function MarketingStrategyPlaybookPage() {
         <div>
           <PillarHeader number="3" title="Method" subtitle="How you're executing across every channel — the day-to-day work that puts the brand and the aim into action." />
 
-          {(() => {
-            const Icon = promoCalendarChannel.icon;
-            return (
-              <div className="rounded-xl p-6 mb-6" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.22)" }}>
-                    <Icon size={15} style={{ color: "#a28c75" }} />
-                  </div>
-                  <h3 className="text-base font-medium" style={{ color: "#fffdf6" }}>{promoCalendarChannel.label}</h3>
-                </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,253,246,0.55)" }}>{promoCalendarChannel.body}</p>
-                <div className="flex flex-wrap gap-2">
-                  {promoCalendarChannel.links.map((link) => (
-                    <ResourceLink key={link.href} label={link.label} href={link.href} external={link.external} />
-                  ))}
-                </div>
-              </div>
-            );
-          })()}
+          <a
+            href="/tools/promo-calendar.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all hover:opacity-90 mb-6"
+            style={{ background: "#a28c75", color: "#170009" }}
+          >
+            Open the Promo Calendar Tool
+            <ExternalLink size={13} />
+          </a>
 
           <div className="space-y-4">
             {methodChannels.map((c) => {

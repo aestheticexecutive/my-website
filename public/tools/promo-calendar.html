@@ -276,6 +276,7 @@
   .t-monthly-features               { background: rgba(130,190,120,0.12); }
   .t-email-text-blasts              { background: rgba(143,124,201,0.12); }
   .t-patient-experience-optimization{ background: rgba(150,184,138,0.12); }
+  .t-other                          { background: rgba(180,180,180,0.08); }
 
   .dot-brand-consistency              { background: #a28c75; }
   .dot-organic-social-media           { background: #a064c8; }
@@ -289,6 +290,7 @@
   .dot-monthly-features               { background: #7db870; }
   .dot-email-text-blasts              { background: #8f7cc9; }
   .dot-patient-experience-optimization{ background: #96b88a; }
+  .dot-other                          { background: #888; }
 
   .sel-brand-consistency              { background: #a28c75; }
   .sel-organic-social-media           { background: #a064c8; }
@@ -302,6 +304,7 @@
   .sel-monthly-features               { background: #7db870; }
   .sel-email-text-blasts              { background: #8f7cc9; }
   .sel-patient-experience-optimization{ background: #96b88a; }
+  .sel-other                          { background: #888; }
 
   /* ── PRINT BUTTON ── */
   .print-btn {
@@ -376,6 +379,7 @@
     .pt-monthly-features               { background: #7db870; }
     .pt-email-text-blasts              { background: #8f7cc9; }
     .pt-patient-experience-optimization{ background: #96b88a; }
+    .pt-other                          { background: #888; }
   }
 </style>
 </head>
@@ -443,6 +447,9 @@
     <div class="legend-item" data-type="Patient Experience Optimization" onclick="toggleFilter('Patient Experience Optimization')">
       <span class="legend-dot dot-patient-experience-optimization"></span> Patient Experience Optimization
     </div>
+    <div class="legend-item" data-type="Other" onclick="toggleFilter('Other')">
+      <span class="legend-dot dot-other"></span> Other
+    </div>
   </div>
 
   <!-- Calendar -->
@@ -506,6 +513,9 @@
           <button class="type-btn" data-type="Patient Experience Optimization" onclick="selectType('Patient Experience Optimization')">
             <span class="legend-dot dot-patient-experience-optimization"></span> Patient Experience Optimization
           </button>
+          <button class="type-btn" data-type="Other" onclick="selectType('Other')">
+            <span class="legend-dot dot-other"></span> Other
+          </button>
         </div>
       </div>
 
@@ -568,7 +578,8 @@ const TYPE_COLORS = {
   'Brand Consistency':'#a28c75', 'Organic Social Media':'#a064c8', 'Paid Social Media':'#6488c8',
   'SEO':'#c8823c', 'Google Ads':'#4fa8d8', 'Community Presence':'#c26f96',
   'Local Partners':'#c8a050', 'Patient Referral Program':'#5cb0a8', 'Events':'#d97a4a',
-  'Monthly Features':'#7db870', 'Email & Text Blasts':'#8f7cc9', 'Patient Experience Optimization':'#96b88a'
+  'Monthly Features':'#7db870', 'Email & Text Blasts':'#8f7cc9', 'Patient Experience Optimization':'#96b88a',
+  'Other':'#888'
 };
 
 function slugify(type) {
