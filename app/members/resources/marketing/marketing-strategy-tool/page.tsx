@@ -30,6 +30,8 @@ import {
   Star,
   Mail,
   Camera,
+  Pencil,
+  Copy,
 } from "lucide-react";
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -103,10 +105,18 @@ interface ScorecardEntry {
   createdAt: string;
 }
 
-interface StoreData {
+interface Strategy {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
   aim: AimData;
   channels: Record<ChannelKey, ChannelEntry>;
   leadConversionNotes: string;
+}
+
+interface StoreData {
+  strategies: Strategy[];
   scorecardEntries: ScorecardEntry[];
 }
 
@@ -561,11 +571,28 @@ function defaultScorecardEntry(): Omit<ScorecardEntry, "id" | "createdAt"> {
   };
 }
 
-function defaultData(): StoreData {
+function defaultStrategy(name: string): Strategy {
+  const now = new Date().toISOString();
   return {
+    id: uid(),
+    name,
+    createdAt: now,
+    updatedAt: now,
     aim: defaultAim(),
     channels: defaultChannels(),
     leadConversionNotes: "",
+  };
+}
+
+const TRACKED_CHANNELS = [BRANDING_CHANNEL, BRAND_CONSISTENCY_CHANNEL, ...CHANNELS];
+
+function strategyActiveCount(s: Strategy): number {
+  return TRACKED_CHANNELS.filter((c) => s.channels[c.key]?.status === "active").length;
+}
+
+function defaultData(): StoreData {
+  return {
+    strategies: [],
     scorecardEntries: [],
   };
 }
@@ -892,6 +919,13 @@ function LineChart({ series, format }: { series: LineSeries[]; format: MetricFor
 export default function MarketingStrategyToolPage() {
   const { user } = useUser();
   const [data, setData] = useState<StoreData>(defaultData());
+  const [view, setView] = useState<"list" | "editor">("list");
+  const [activeStrategyId, setActiveStrategyId] = useState<string | null>(null);
+  const [creatingStrategy, setCreatingStrategy] = useState(false);
+  const [newStrategyName, setNewStrategyName] = useState("");
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState("");
+
   const [tab, setTab] = useState<Tab>("aim");
   const [openChannel, setOpenChannel] = useState<ChannelKey | null>("branding");
   const [openTools, setOpenTools] = useState<Set<string>>(new Set());
@@ -910,10 +944,36 @@ export default function MarketingStrategyToolPage() {
       const raw = localStorage.getItem(storageKey);
       if (raw) {
         const parsed = JSON.parse(raw);
+        let strategies: Strategy[];
+        if (Array.isArray(parsed.strategies)) {
+          strategies = parsed.strategies.map((s: Record<string, unknown>) => ({
+            id: (s.id as string) ?? uid(),
+            name: (s.name as string) ?? "Untitled Strategy",
+            createdAt: (s.createdAt as string) ?? new Date().toISOString(),
+            updatedAt: (s.updatedAt as string) ?? (s.createdAt as string) ?? new Date().toISOString(),
+            aim: { ...defaultAim(), ...((s.aim as Partial<AimData>) ?? {}) },
+            channels: { ...defaultChannels(), ...((s.channels as Partial<Record<ChannelKey, ChannelEntry>>) ?? {}) },
+            leadConversionNotes: (s.leadConversionNotes as string) ?? "",
+          }));
+        } else if (parsed.aim || parsed.channels) {
+          // Migrate legacy single-strategy shape into the first named strategy.
+          const now = new Date().toISOString();
+          strategies = [
+            {
+              id: uid(),
+              name: "My Strategy",
+              createdAt: now,
+              updatedAt: now,
+              aim: { ...defaultAim(), ...(parsed.aim ?? {}) },
+              channels: { ...defaultChannels(), ...(parsed.channels ?? {}) },
+              leadConversionNotes: parsed.leadConversionNotes ?? "",
+            },
+          ];
+        } else {
+          strategies = [];
+        }
         setData({
-          aim: { ...defaultAim(), ...(parsed.aim ?? {}) },
-          channels: { ...defaultChannels(), ...(parsed.channels ?? {}) },
-          leadConversionNotes: parsed.leadConversionNotes ?? "",
+          strategies,
           scorecardEntries: Array.isArray(parsed.scorecardEntries)
             ? parsed.scorecardEntries.map((e: Record<string, string>) => ({
                 ...e,
@@ -954,13 +1014,77 @@ export default function MarketingStrategyToolPage() {
 
   const handlePrint = () => window.print();
 
+  function openStrategy(id: string) {
+    setActiveStrategyId(id);
+    setView("editor");
+    setTab("aim");
+    setOpenChannel("branding");
+  }
+  function backToList() {
+    setView("list");
+    setActiveStrategyId(null);
+  }
+  function createStrategy() {
+    const name = newStrategyName.trim();
+    if (!name) return;
+    const s = defaultStrategy(name);
+    setData((prev) => ({ ...prev, strategies: [s, ...prev.strategies] }));
+    setNewStrategyName("");
+    setCreatingStrategy(false);
+    openStrategy(s.id);
+  }
+  function deleteStrategy(id: string) {
+    setData((prev) => ({ ...prev, strategies: prev.strategies.filter((s) => s.id !== id) }));
+    if (activeStrategyId === id) backToList();
+  }
+  function duplicateStrategy(id: string) {
+    setData((prev) => {
+      const src = prev.strategies.find((s) => s.id === id);
+      if (!src) return prev;
+      const now = new Date().toISOString();
+      const copy: Strategy = { ...JSON.parse(JSON.stringify(src)), id: uid(), name: `${src.name} (Copy)`, createdAt: now, updatedAt: now };
+      return { ...prev, strategies: [copy, ...prev.strategies] };
+    });
+  }
+  function startRename(s: Strategy) {
+    setRenamingId(s.id);
+    setRenameValue(s.name);
+  }
+  function commitRename() {
+    if (renamingId) {
+      const name = renameValue.trim();
+      if (name) {
+        setData((prev) => ({ ...prev, strategies: prev.strategies.map((s) => (s.id === renamingId ? { ...s, name } : s)) }));
+      }
+    }
+    setRenamingId(null);
+    setRenameValue("");
+  }
+
   function updateAimField<K extends keyof AimData>(key: K, value: AimData[K]) {
-    setData((prev) => ({ ...prev, aim: { ...prev.aim, [key]: value } }));
+    setData((prev) => ({
+      ...prev,
+      strategies: prev.strategies.map((s) =>
+        s.id === activeStrategyId ? { ...s, aim: { ...s.aim, [key]: value }, updatedAt: new Date().toISOString() } : s
+      ),
+    }));
   }
   function updateChannelField(key: ChannelKey, field: keyof ChannelEntry, value: string) {
     setData((prev) => ({
       ...prev,
-      channels: { ...prev.channels, [key]: { ...prev.channels[key], [field]: value } },
+      strategies: prev.strategies.map((s) =>
+        s.id === activeStrategyId
+          ? { ...s, channels: { ...s.channels, [key]: { ...s.channels[key], [field]: value } }, updatedAt: new Date().toISOString() }
+          : s
+      ),
+    }));
+  }
+  function updateLeadConversionNotes(value: string) {
+    setData((prev) => ({
+      ...prev,
+      strategies: prev.strategies.map((s) =>
+        s.id === activeStrategyId ? { ...s, leadConversionNotes: value, updatedAt: new Date().toISOString() } : s
+      ),
     }));
   }
   function toggleTool(href: string) {
@@ -983,6 +1107,13 @@ export default function MarketingStrategyToolPage() {
     if (openEntryId === id) setOpenEntryId(null);
   }
 
+  const sortedStrategies = useMemo(
+    () => [...data.strategies].sort((a, b) => (a.updatedAt < b.updatedAt ? 1 : -1)),
+    [data.strategies]
+  );
+  const activeStrategy = data.strategies.find((s) => s.id === activeStrategyId) ?? null;
+  const showEditor = view === "editor" && !!activeStrategy;
+
   const sortedEntries = useMemo(
     () => [...data.scorecardEntries].sort((a, b) => (a.startDate < b.startDate ? 1 : -1)),
     [data.scorecardEntries]
@@ -998,7 +1129,7 @@ export default function MarketingStrategyToolPage() {
   const lineData = useMemo(() => buildLineSeries(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
 
   const methodChannelCount = CHANNELS.length;
-  const channelsCompleted = CHANNELS.filter((c) => data.channels[c.key]?.status === "active").length;
+  const channelsCompleted = activeStrategy ? CHANNELS.filter((c) => activeStrategy.channels[c.key]?.status === "active").length : 0;
 
   const tabs: { key: Tab; label: string; icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }> }[] = [
     { key: "aim", label: "Aim", icon: Compass },
@@ -1032,14 +1163,25 @@ export default function MarketingStrategyToolPage() {
         {/* Header */}
         <div className="border-b px-6 md:px-10 py-6 no-print" style={{ borderColor: "rgba(162,140,117,0.12)" }}>
           <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
-            <Link
-              href="/members/resources/marketing"
-              className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70"
-              style={{ color: "rgba(162,140,117,0.6)" }}
-            >
-              <ArrowLeft size={13} />
-              Marketing
-            </Link>
+            {showEditor ? (
+              <button
+                onClick={backToList}
+                className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70"
+                style={{ color: "rgba(162,140,117,0.6)" }}
+              >
+                <ArrowLeft size={13} />
+                My Strategies
+              </button>
+            ) : (
+              <Link
+                href="/members/resources/marketing"
+                className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase transition-colors hover:opacity-70"
+                style={{ color: "rgba(162,140,117,0.6)" }}
+              >
+                <ArrowLeft size={13} />
+                Marketing
+              </Link>
+            )}
             <div className="flex items-center gap-2">
               {lastSaved && !savedFlash && (
                 <span className="text-xs hidden sm:block" style={{ color: "rgba(162,140,117,0.4)" }}>
@@ -1058,53 +1200,166 @@ export default function MarketingStrategyToolPage() {
                 {savedFlash ? <Check size={12} /> : <Save size={12} />}
                 {savedFlash ? "Saved!" : "Save"}
               </button>
-              <button
-                onClick={handlePrint}
-                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
-                style={{ background: "#a28c75", color: "#170009" }}
-              >
-                <Printer size={13} />
-                Print
-              </button>
+              {showEditor && (
+                <button
+                  onClick={handlePrint}
+                  className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
+                  style={{ background: "#a28c75", color: "#170009" }}
+                >
+                  <Printer size={13} />
+                  Print
+                </button>
+              )}
             </div>
           </div>
 
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#a28c75" }}>
-            Marketing
+            Marketing{showEditor ? " · Strategy Builder" : ""}
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-light mb-3" style={{ color: "#fffdf6" }}>
-            Marketing Strategy Builder
+            {showEditor && activeStrategy ? activeStrategy.name : "Marketing Strategy Builder"}
           </h1>
           <p className="text-sm max-w-2xl leading-relaxed mb-8" style={{ color: "rgba(255,253,246,0.5)" }}>
-            Work through the AIMS framework — Aim, Identity, Method, Scorecard — and document your
-            practice&apos;s actual marketing strategy as you go, channel by channel, with the metrics
-            that tell you if it&apos;s working.
+            {showEditor
+              ? "Work through the AIMS framework — Aim, Identity, Method, Scorecard — and document this strategy's plan channel by channel, with the metrics that tell you if it's working."
+              : "Create a new strategy every month, quarter, or year — each one starts fresh with its own Aim, Identity, and Method to fill out. Your Scorecard and analytics stay shared across every strategy you build."}
           </p>
 
           {/* Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {tabs.map((t) => {
-              const Icon = t.icon;
-              const isActive = tab === t.key;
-              return (
-                <button
-                  key={t.key}
-                  onClick={() => setTab(t.key)}
-                  className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-sm font-medium tracking-wide transition-all"
-                  style={{
-                    background: isActive ? "#a28c75" : "rgba(162,140,117,0.08)",
-                    color: isActive ? "#170009" : "rgba(255,253,246,0.6)",
-                    border: `1px solid ${isActive ? "#a28c75" : "rgba(162,140,117,0.2)"}`,
-                  }}
-                >
-                  <Icon size={14} />
-                  {t.label}
-                </button>
-              );
-            })}
-          </div>
+          {showEditor && (
+            <div className="flex flex-wrap gap-2">
+              {tabs.map((t) => {
+                const Icon = t.icon;
+                const isActive = tab === t.key;
+                return (
+                  <button
+                    key={t.key}
+                    onClick={() => setTab(t.key)}
+                    className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-sm font-medium tracking-wide transition-all"
+                    style={{
+                      background: isActive ? "#a28c75" : "rgba(162,140,117,0.08)",
+                      color: isActive ? "#170009" : "rgba(255,253,246,0.6)",
+                      border: `1px solid ${isActive ? "#a28c75" : "rgba(162,140,117,0.2)"}`,
+                    }}
+                  >
+                    <Icon size={14} />
+                    {t.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
+        {!showEditor && (
+          <div className="max-w-4xl mx-auto px-6 md:px-10 py-12 no-print">
+            {creatingStrategy ? (
+              <div className="rounded-xl p-6 mb-8" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
+                <TextField
+                  label="Name this strategy"
+                  value={newStrategyName}
+                  onChange={setNewStrategyName}
+                  placeholder="e.g. Q1 2026 Strategy, 2026 Annual Plan..."
+                />
+                <div className="flex gap-3 mt-4">
+                  <button
+                    onClick={createStrategy}
+                    disabled={!newStrategyName.trim()}
+                    className="inline-flex items-center gap-2 px-5 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:opacity-40"
+                    style={{ background: "#a28c75", color: "#170009" }}
+                  >
+                    <Plus size={14} />
+                    Create Strategy
+                  </button>
+                  <button
+                    onClick={() => { setCreatingStrategy(false); setNewStrategyName(""); }}
+                    className="inline-flex items-center gap-2 px-5 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all"
+                    style={{ background: "transparent", color: "rgba(255,253,246,0.5)", border: "1px solid rgba(162,140,117,0.2)" }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setCreatingStrategy(true)}
+                className="inline-flex items-center gap-2 px-6 h-11 rounded text-xs font-medium tracking-[0.15em] uppercase transition-all hover:opacity-90 mb-8"
+                style={{ background: "#a28c75", color: "#170009" }}
+              >
+                <Plus size={14} />
+                New Strategy
+              </button>
+            )}
+
+            {sortedStrategies.length === 0 ? (
+              <p className="text-sm" style={{ color: "rgba(255,253,246,0.4)" }}>
+                No strategies yet — create your first one above.
+              </p>
+            ) : (
+              <div className="space-y-3">
+                {sortedStrategies.map((s) => {
+                  const active = strategyActiveCount(s);
+                  const isRenaming = renamingId === s.id;
+                  return (
+                    <div key={s.id} className="rounded-xl overflow-hidden" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.14)" }}>
+                      <div className="flex items-center gap-3 px-5 py-4">
+                        {isRenaming ? (
+                          <input
+                            autoFocus
+                            value={renameValue}
+                            onChange={(e) => setRenameValue(e.target.value)}
+                            onBlur={commitRename}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") commitRename();
+                              if (e.key === "Escape") { setRenamingId(null); setRenameValue(""); }
+                            }}
+                            className="flex-1 h-9 px-3 rounded-lg text-sm outline-none"
+                            style={inputStyle}
+                          />
+                        ) : (
+                          <button onClick={() => openStrategy(s.id)} className="flex-1 text-left min-w-0">
+                            <p className="text-sm font-medium truncate" style={{ color: "#fffdf6" }}>{s.name}</p>
+                            <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>
+                              Created {formatDateShort(s.createdAt.slice(0, 10))} · {active} of {TRACKED_CHANNELS.length} channels active
+                            </p>
+                          </button>
+                        )}
+                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                          <button
+                            onClick={() => startRename(s)}
+                            title="Rename"
+                            className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:opacity-80"
+                            style={{ color: "rgba(162,140,117,0.6)" }}
+                          >
+                            <Pencil size={14} />
+                          </button>
+                          <button
+                            onClick={() => duplicateStrategy(s.id)}
+                            title="Duplicate"
+                            className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:opacity-80"
+                            style={{ color: "rgba(162,140,117,0.6)" }}
+                          >
+                            <Copy size={14} />
+                          </button>
+                          <button
+                            onClick={() => deleteStrategy(s.id)}
+                            title="Delete"
+                            className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:opacity-80"
+                            style={{ color: "rgba(200,100,100,0.6)" }}
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {showEditor && activeStrategy && (
         <div className="max-w-4xl mx-auto px-6 md:px-10 py-12 no-print">
           {/* ── AIM ── */}
           {tab === "aim" && (
@@ -1112,7 +1367,7 @@ export default function MarketingStrategyToolPage() {
               <div className="rounded-xl p-6" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
                 <TextArea
                   label="Your Primary Aim — what are you aiming for right now?"
-                  value={data.aim.primaryAim}
+                  value={activeStrategy.aim.primaryAim}
                   onChange={(v) => updateAimField("primaryAim", v)}
                   placeholder="In one or two sentences, what is this practice's marketing working toward this year?"
                   rows={3}
@@ -1138,7 +1393,7 @@ export default function MarketingStrategyToolPage() {
                           <p className="text-xs leading-relaxed mt-1" style={{ color: "rgba(255,253,246,0.45)" }}>{f.prompt}</p>
                         </div>
                       </div>
-                      <TextArea value={data.aim[f.key]} onChange={(v) => updateAimField(f.key, v)} placeholder="Document your goal and how you'll get there..." rows={2} />
+                      <TextArea value={activeStrategy.aim[f.key]} onChange={(v) => updateAimField(f.key, v)} placeholder="Document your goal and how you'll get there..." rows={2} />
                     </div>
                   ))}
                 </div>
@@ -1167,7 +1422,7 @@ export default function MarketingStrategyToolPage() {
                     <ChannelCard
                       key={meta.key}
                       meta={meta}
-                      entry={data.channels[meta.key]}
+                      entry={activeStrategy.channels[meta.key]}
                       isOpen={openChannel === meta.key}
                       onToggle={() => setOpenChannel(openChannel === meta.key ? null : meta.key)}
                       onUpdate={(field, value) => updateChannelField(meta.key, field, value)}
@@ -1238,7 +1493,7 @@ export default function MarketingStrategyToolPage() {
                   <ChannelCard
                     key={c.key}
                     meta={c}
-                    entry={data.channels[c.key]}
+                    entry={activeStrategy.channels[c.key]}
                     isOpen={openChannel === c.key}
                     onToggle={() => setOpenChannel(openChannel === c.key ? null : c.key)}
                     onUpdate={(field, value) => updateChannelField(c.key, field, value)}
@@ -1261,8 +1516,8 @@ export default function MarketingStrategyToolPage() {
                 </div>
                 <div className="rounded-xl p-6 mb-3" style={{ background: "rgba(162,140,117,0.04)", border: "1px solid rgba(162,140,117,0.12)" }}>
                   <TextArea
-                    value={data.leadConversionNotes}
-                    onChange={(v) => setData((prev) => ({ ...prev, leadConversionNotes: v }))}
+                    value={activeStrategy.leadConversionNotes}
+                    onChange={updateLeadConversionNotes}
                     placeholder="Document your lead response and conversion process — response time targets, who owns follow-up, and where leads tend to fall off."
                     rows={4}
                   />
@@ -1494,55 +1749,60 @@ export default function MarketingStrategyToolPage() {
             </div>
           )}
         </div>
+        )}
       </div>
 
       {/* Print doc */}
-      <div id="strategy-print-doc" style={{ display: "none" }}>
-        <h1 style={{ fontSize: 24, marginBottom: 4 }}>Marketing Strategy — {user?.fullName || "Practice"}</h1>
-        <p style={{ fontSize: 11, color: "#555", marginBottom: 24 }}>Printed {new Date().toLocaleDateString()}</p>
+      {activeStrategy && (
+        <div id="strategy-print-doc" style={{ display: "none" }}>
+          <h1 style={{ fontSize: 24, marginBottom: 4 }}>Marketing Strategy — {activeStrategy.name}</h1>
+          <p style={{ fontSize: 11, color: "#555", marginBottom: 24 }}>
+            {user?.fullName ? `${user.fullName} · ` : ""}Printed {new Date().toLocaleDateString()}
+          </p>
 
-        <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Aim</h2>
-        {data.aim.primaryAim && <p style={{ fontSize: 12, marginBottom: 8 }}><strong>Primary Aim:</strong> {data.aim.primaryAim}</p>}
-        {AIM_FIELDS.map((f) => data.aim[f.key] && (
-          <p key={f.key} style={{ fontSize: 12, marginBottom: 6 }}><strong>{f.label}:</strong> {data.aim[f.key]}</p>
-        ))}
+          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Aim</h2>
+          {activeStrategy.aim.primaryAim && <p style={{ fontSize: 12, marginBottom: 8 }}><strong>Primary Aim:</strong> {activeStrategy.aim.primaryAim}</p>}
+          {AIM_FIELDS.map((f) => activeStrategy.aim[f.key] && (
+            <p key={f.key} style={{ fontSize: 12, marginBottom: 6 }}><strong>{f.label}:</strong> {activeStrategy.aim[f.key]}</p>
+          ))}
 
-        <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Identity</h2>
-        {[BRANDING_CHANNEL, BRAND_CONSISTENCY_CHANNEL].map((meta) => {
-          const entry = data.channels[meta.key];
-          return (
-            <div key={meta.key} style={{ marginBottom: 10, fontSize: 12 }}>
-              <strong>{meta.label}</strong> — {STATUS_LABELS[entry.status]}
-              {entry.owner && ` · Owner: ${entry.owner}`}
-              {entry.cadence && ` · Cadence: ${entry.cadence}`}
-              {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
+          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Identity</h2>
+          {[BRANDING_CHANNEL, BRAND_CONSISTENCY_CHANNEL].map((meta) => {
+            const entry = activeStrategy.channels[meta.key];
+            return (
+              <div key={meta.key} style={{ marginBottom: 10, fontSize: 12 }}>
+                <strong>{meta.label}</strong> — {STATUS_LABELS[entry.status]}
+                {entry.owner && ` · Owner: ${entry.owner}`}
+                {entry.cadence && ` · Cadence: ${entry.cadence}`}
+                {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
+              </div>
+            );
+          })}
+
+          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Method</h2>
+          {CHANNELS.map((c) => {
+            const entry = activeStrategy.channels[c.key];
+            return (
+              <div key={c.key} style={{ marginBottom: 10, fontSize: 12 }}>
+                <strong>{c.label}</strong> — {STATUS_LABELS[entry.status]}
+                {entry.owner && ` · Owner: ${entry.owner}`}
+                {entry.cadence && ` · Cadence: ${entry.cadence}`}
+                {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
+              </div>
+            );
+          })}
+
+          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Scorecard</h2>
+          {activeStrategy.leadConversionNotes && <p style={{ fontSize: 12, marginBottom: 10 }}><strong>Lead Conversion:</strong> {activeStrategy.leadConversionNotes}</p>}
+          {latestEntry && latestStats && (
+            <div style={{ fontSize: 12 }}>
+              <p style={{ marginBottom: 4 }}><strong>Most recent entry:</strong> {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})</p>
+              <p>Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}</p>
+              <p>Overall Revenue: {formatMoney(parseNum(latestEntry.overallRevenue))} · Re-Booking Rate: {latestEntry.reBookingRate || "—"}%</p>
             </div>
-          );
-        })}
-
-        <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Method</h2>
-        {CHANNELS.map((c) => {
-          const entry = data.channels[c.key];
-          return (
-            <div key={c.key} style={{ marginBottom: 10, fontSize: 12 }}>
-              <strong>{c.label}</strong> — {STATUS_LABELS[entry.status]}
-              {entry.owner && ` · Owner: ${entry.owner}`}
-              {entry.cadence && ` · Cadence: ${entry.cadence}`}
-              {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
-            </div>
-          );
-        })}
-
-        <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Scorecard</h2>
-        {data.leadConversionNotes && <p style={{ fontSize: 12, marginBottom: 10 }}><strong>Lead Conversion:</strong> {data.leadConversionNotes}</p>}
-        {latestEntry && latestStats && (
-          <div style={{ fontSize: 12 }}>
-            <p style={{ marginBottom: 4 }}><strong>Most recent entry:</strong> {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})</p>
-            <p>Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}</p>
-            <p>Overall Revenue: {formatMoney(parseNum(latestEntry.overallRevenue))} · Re-Booking Rate: {latestEntry.reBookingRate || "—"}%</p>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </>
   );
 }
