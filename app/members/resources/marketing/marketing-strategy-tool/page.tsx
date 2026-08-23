@@ -87,6 +87,10 @@ interface ScorecardEntry {
   newConsults: string;
   newProcedures: string;
   overallVisits: string;
+  createdAt: string;
+}
+
+interface BusinessHealthData {
   newMembers: string;
   totalMembers: string;
   patientReferrals: string;
@@ -102,7 +106,6 @@ interface ScorecardEntry {
   whatWorked: string;
   whatUnderperformed: string;
   nextMonthActions: string;
-  createdAt: string;
 }
 
 interface Strategy {
@@ -118,6 +121,7 @@ interface Strategy {
 interface StoreData {
   strategies: Strategy[];
   scorecardEntries: ScorecardEntry[];
+  businessHealth: BusinessHealthData;
 }
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -369,22 +373,13 @@ type MetricKey =
   | "totalSpent"
   | "newPatientRevenue"
   | "allPatientRevenue"
-  | "overallRevenue"
   | "newPatientROAS"
   | "allPatientROAS"
   | "newLeads"
   | "newConsults"
   | "newProcedures"
   | "leadToConsult"
-  | "consultToProcedure"
-  | "newMembers"
-  | "patientReferrals"
-  | "googleReviews"
-  | "productRevenue"
-  | "reBookingRate"
-  | "avgInvoiceValue"
-  | "igFollowers"
-  | "tiktokFollowers";
+  | "consultToProcedure";
 
 type MetricFormat = "money" | "percent" | "ratio" | "number";
 type MetricAgg = "sum" | "avg" | "latest";
@@ -397,7 +392,6 @@ interface MetricMeta {
 }
 
 const METRICS: MetricMeta[] = [
-  { key: "overallRevenue", label: "Overall Revenue", format: "money", agg: "sum" },
   { key: "totalSpent", label: "Total Spent", format: "money", agg: "sum" },
   { key: "adSpend", label: "Ad Spend", format: "money", agg: "sum" },
   { key: "newPatientRevenue", label: "New Patient Revenue", format: "money", agg: "sum" },
@@ -409,14 +403,6 @@ const METRICS: MetricMeta[] = [
   { key: "newProcedures", label: "New Patient Procedures", format: "number", agg: "sum" },
   { key: "leadToConsult", label: "Lead → Consult %", format: "percent", agg: "avg" },
   { key: "consultToProcedure", label: "Consult → Procedure %", format: "percent", agg: "avg" },
-  { key: "newMembers", label: "New Members", format: "number", agg: "sum" },
-  { key: "patientReferrals", label: "Patient Referrals", format: "number", agg: "sum" },
-  { key: "googleReviews", label: "Google Reviews", format: "number", agg: "sum" },
-  { key: "productRevenue", label: "Product Revenue", format: "money", agg: "sum" },
-  { key: "reBookingRate", label: "Re-Booking Rate", format: "percent", agg: "avg" },
-  { key: "avgInvoiceValue", label: "Average Invoice Value", format: "money", agg: "avg" },
-  { key: "igFollowers", label: "Instagram Followers", format: "number", agg: "latest" },
-  { key: "tiktokFollowers", label: "TikTok Followers", format: "number", agg: "latest" },
 ];
 
 function getMetricValue(e: ScorecardEntry, key: MetricKey): number {
@@ -553,6 +539,11 @@ function defaultScorecardEntry(): Omit<ScorecardEntry, "id" | "createdAt"> {
     newConsults: "",
     newProcedures: "",
     overallVisits: "",
+  };
+}
+
+function defaultBusinessHealth(): BusinessHealthData {
+  return {
     newMembers: "",
     totalMembers: "",
     patientReferrals: "",
@@ -594,6 +585,7 @@ function defaultData(): StoreData {
   return {
     strategies: [],
     scorecardEntries: [],
+    businessHealth: defaultBusinessHealth(),
   };
 }
 
@@ -972,17 +964,52 @@ export default function MarketingStrategyToolPage() {
         } else {
           strategies = [];
         }
-        setData({
-          strategies,
-          scorecardEntries: Array.isArray(parsed.scorecardEntries)
-            ? parsed.scorecardEntries.map((e: Record<string, string>) => ({
-                ...e,
-                name: e.name ?? "",
-                startDate: e.startDate ?? (e.month ? `${e.month}-01` : todayISO()),
-                endDate: e.endDate ?? e.startDate ?? todayISO(),
-              }))
-            : [],
-        });
+        const legacyEntries: Record<string, string>[] = Array.isArray(parsed.scorecardEntries) ? parsed.scorecardEntries : [];
+        const scorecardEntries: ScorecardEntry[] = legacyEntries.map((e) => ({
+          id: e.id ?? uid(),
+          name: e.name ?? "",
+          startDate: e.startDate ?? (e.month ? `${e.month}-01` : todayISO()),
+          endDate: e.endDate ?? e.startDate ?? todayISO(),
+          adSpend: e.adSpend ?? "",
+          agencyFee: e.agencyFee ?? "",
+          newPatientRevenue: e.newPatientRevenue ?? "",
+          allPatientRevenue: e.allPatientRevenue ?? "",
+          impressions: e.impressions ?? "",
+          newLeads: e.newLeads ?? "",
+          newConsults: e.newConsults ?? "",
+          newProcedures: e.newProcedures ?? "",
+          overallVisits: e.overallVisits ?? "",
+          createdAt: e.createdAt ?? new Date().toISOString(),
+        }));
+
+        let businessHealth: BusinessHealthData;
+        if (parsed.businessHealth) {
+          businessHealth = { ...defaultBusinessHealth(), ...parsed.businessHealth };
+        } else {
+          // Migrate business-health fields that used to live on the most recent entry.
+          const legacySource = [...legacyEntries].sort((a, b) => ((a.startDate ?? "") < (b.startDate ?? "") ? 1 : -1))[0];
+          businessHealth = legacySource
+            ? {
+                newMembers: legacySource.newMembers ?? "",
+                totalMembers: legacySource.totalMembers ?? "",
+                patientReferrals: legacySource.patientReferrals ?? "",
+                googleReviews: legacySource.googleReviews ?? "",
+                featureRevenue: legacySource.featureRevenue ?? "",
+                productRevenue: legacySource.productRevenue ?? "",
+                productAttachRate: legacySource.productAttachRate ?? "",
+                overallRevenue: legacySource.overallRevenue ?? "",
+                reBookingRate: legacySource.reBookingRate ?? "",
+                avgInvoiceValue: legacySource.avgInvoiceValue ?? "",
+                igFollowers: legacySource.igFollowers ?? "",
+                tiktokFollowers: legacySource.tiktokFollowers ?? "",
+                whatWorked: legacySource.whatWorked ?? "",
+                whatUnderperformed: legacySource.whatUnderperformed ?? "",
+                nextMonthActions: legacySource.nextMonthActions ?? "",
+              }
+            : defaultBusinessHealth();
+        }
+
+        setData({ strategies, scorecardEntries, businessHealth });
         if (parsed._savedAt) setLastSaved(parsed._savedAt);
       }
     } catch {}
@@ -1087,6 +1114,9 @@ export default function MarketingStrategyToolPage() {
       ),
     }));
   }
+  function updateBusinessHealthField<K extends keyof BusinessHealthData>(key: K, value: BusinessHealthData[K]) {
+    setData((prev) => ({ ...prev, businessHealth: { ...prev.businessHealth, [key]: value } }));
+  }
   function toggleTool(href: string) {
     setOpenTools((prev) => {
       const next = new Set(prev);
@@ -1123,7 +1153,7 @@ export default function MarketingStrategyToolPage() {
 
   const draftStats = useMemo(() => computeScorecardStats({ ...entryDraft, id: "", createdAt: "" }), [entryDraft]);
 
-  const [chartMetric, setChartMetric] = useState<MetricKey>("overallRevenue");
+  const [chartMetric, setChartMetric] = useState<MetricKey>("allPatientRevenue");
   const activeMetric = METRICS.find((m) => m.key === chartMetric)!;
   const barData = useMemo(() => aggregateBySource(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
   const lineData = useMemo(() => buildLineSeries(data.scorecardEntries, activeMetric), [data.scorecardEntries, activeMetric]);
@@ -1601,41 +1631,6 @@ export default function MarketingStrategyToolPage() {
                     <StatChip label="All Patient ROAS" value={formatRatio(draftStats.allPatientROAS)} />
                   </div>
 
-                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Growth &amp; Loyalty</p>
-                  <div className="grid sm:grid-cols-4 gap-3 mb-5">
-                    <NumberField label="Total New Members" value={entryDraft.newMembers} onChange={(v) => setEntryDraft((d) => ({ ...d, newMembers: v }))} />
-                    <NumberField label="Total Members" value={entryDraft.totalMembers} onChange={(v) => setEntryDraft((d) => ({ ...d, totalMembers: v }))} />
-                    <NumberField label="Total Patient Referrals" value={entryDraft.patientReferrals} onChange={(v) => setEntryDraft((d) => ({ ...d, patientReferrals: v }))} />
-                    <NumberField label="Total Google Reviews" value={entryDraft.googleReviews} onChange={(v) => setEntryDraft((d) => ({ ...d, googleReviews: v }))} />
-                  </div>
-
-                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Revenue Performance</p>
-                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
-                    <NumberField label="Revenue from Features" prefix="$" value={entryDraft.featureRevenue} onChange={(v) => setEntryDraft((d) => ({ ...d, featureRevenue: v }))} />
-                    <NumberField label="Product Revenue" prefix="$" value={entryDraft.productRevenue} onChange={(v) => setEntryDraft((d) => ({ ...d, productRevenue: v }))} />
-                    <NumberField label="Product Attachment Rate %" value={entryDraft.productAttachRate} onChange={(v) => setEntryDraft((d) => ({ ...d, productAttachRate: v }))} />
-                  </div>
-
-                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Operational &amp; Financial Health</p>
-                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
-                    <NumberField label="Overall Revenue" prefix="$" value={entryDraft.overallRevenue} onChange={(v) => setEntryDraft((d) => ({ ...d, overallRevenue: v }))} />
-                    <NumberField label="Re-Booking Rate %" value={entryDraft.reBookingRate} onChange={(v) => setEntryDraft((d) => ({ ...d, reBookingRate: v }))} />
-                    <NumberField label="Average Invoice Value" prefix="$" value={entryDraft.avgInvoiceValue} onChange={(v) => setEntryDraft((d) => ({ ...d, avgInvoiceValue: v }))} />
-                  </div>
-
-                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Brand Growth (Digital Presence)</p>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
-                    <NumberField label="Instagram Follower Count" value={entryDraft.igFollowers} onChange={(v) => setEntryDraft((d) => ({ ...d, igFollowers: v }))} />
-                    <NumberField label="TikTok Follower Count" value={entryDraft.tiktokFollowers} onChange={(v) => setEntryDraft((d) => ({ ...d, tiktokFollowers: v }))} />
-                  </div>
-
-                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Insights &amp; Decision-Making</p>
-                  <div className="space-y-3 mb-6">
-                    <TextArea label="What worked / underperformed" value={entryDraft.whatWorked} onChange={(v) => setEntryDraft((d) => ({ ...d, whatWorked: v }))} placeholder="Key findings from this entry's data..." rows={2} />
-                    <TextArea label="What underperformed" value={entryDraft.whatUnderperformed} onChange={(v) => setEntryDraft((d) => ({ ...d, whatUnderperformed: v }))} placeholder="Where were the drop-offs or inefficiencies?" rows={2} />
-                    <TextArea label="Next Steps" value={entryDraft.nextMonthActions} onChange={(v) => setEntryDraft((d) => ({ ...d, nextMonthActions: v }))} placeholder="Budget reallocations, campaign adjustments, messaging refinements..." rows={2} />
-                  </div>
-
                   <button
                     onClick={addScorecardEntry}
                     disabled={!entryDraft.name.trim()}
@@ -1665,7 +1660,7 @@ export default function MarketingStrategyToolPage() {
                                 <p className="text-xs mt-0.5" style={{ color: "rgba(255,253,246,0.4)" }}>{formatDateRange(e.startDate, e.endDate)}</p>
                               </div>
                               <div className="flex items-center gap-4 flex-wrap">
-                                <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>Overall Revenue: <strong style={{ color: "#a28c75" }}>{formatMoney(parseNum(e.overallRevenue))}</strong></span>
+                                <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>All Patient Revenue: <strong style={{ color: "#a28c75" }}>{formatMoney(parseNum(e.allPatientRevenue))}</strong></span>
                                 <span className="text-xs" style={{ color: "rgba(255,253,246,0.5)" }}>All Patient ROAS: <strong style={{ color: "#a28c75" }}>{formatRatio(stats.allPatientROAS)}</strong></span>
                                 <ChevronDown size={16} style={{ color: "rgba(162,140,117,0.6)", transform: isOpen ? "rotate(180deg)" : "none" }} />
                               </div>
@@ -1675,20 +1670,13 @@ export default function MarketingStrategyToolPage() {
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                                   <StatChip label="Total Spent" value={formatMoney(stats.totalSpent)} />
                                   <StatChip label="New Patient ROAS" value={formatRatio(stats.newPatientROAS)} />
+                                  <StatChip label="All Patient ROAS" value={formatRatio(stats.allPatientROAS)} />
+                                  <StatChip label="Impression → Lead" value={formatPercent(stats.impressionToLead)} />
                                   <StatChip label="Lead → Consult" value={formatPercent(stats.leadToConsult)} />
                                   <StatChip label="Consult → Procedure" value={formatPercent(stats.consultToProcedure)} />
-                                  <StatChip label="New Members" value={e.newMembers || "—"} />
-                                  <StatChip label="Google Reviews" value={e.googleReviews || "—"} />
-                                  <StatChip label="Re-Booking Rate" value={e.reBookingRate ? `${e.reBookingRate}%` : "—"} />
-                                  <StatChip label="Avg Invoice Value" value={e.avgInvoiceValue ? formatMoney(parseNum(e.avgInvoiceValue)) : "—"} />
+                                  <StatChip label="New Leads" value={e.newLeads || "—"} />
+                                  <StatChip label="New Procedures" value={e.newProcedures || "—"} />
                                 </div>
-                                {(e.whatWorked || e.whatUnderperformed || e.nextMonthActions) && (
-                                  <div className="space-y-2 mb-4 text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.65)" }}>
-                                    {e.whatWorked && <p><span style={{ color: "#a28c75" }}>What worked:</span> {e.whatWorked}</p>}
-                                    {e.whatUnderperformed && <p><span style={{ color: "#a28c75" }}>What underperformed:</span> {e.whatUnderperformed}</p>}
-                                    {e.nextMonthActions && <p><span style={{ color: "#a28c75" }}>Next steps:</span> {e.nextMonthActions}</p>}
-                                  </div>
-                                )}
                                 <button onClick={() => deleteScorecardEntry(e.id)} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors" style={{ color: "rgba(200,100,100,0.7)", border: "1px solid rgba(200,100,100,0.2)" }}>
                                   <Trash2 size={11} />
                                   Delete Entry
@@ -1746,6 +1734,55 @@ export default function MarketingStrategyToolPage() {
                   )}
                 </div>
               </div>
+
+              {/* Business & Marketing Health */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <TrendingUp size={16} style={{ color: "#a28c75" }} />
+                  <h2 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>Business &amp; Marketing Health</h2>
+                </div>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,253,246,0.5)" }}>
+                  A single, ongoing snapshot of practice-wide health — not tied to any one source or
+                  campaign. Update it whenever your numbers change; there&apos;s only one to keep current.
+                </p>
+
+                <div className="rounded-xl p-6" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
+                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Growth &amp; Loyalty</p>
+                  <div className="grid sm:grid-cols-4 gap-3 mb-5">
+                    <NumberField label="Total New Members" value={data.businessHealth.newMembers} onChange={(v) => updateBusinessHealthField("newMembers", v)} />
+                    <NumberField label="Total Members" value={data.businessHealth.totalMembers} onChange={(v) => updateBusinessHealthField("totalMembers", v)} />
+                    <NumberField label="Total Patient Referrals" value={data.businessHealth.patientReferrals} onChange={(v) => updateBusinessHealthField("patientReferrals", v)} />
+                    <NumberField label="Total Google Reviews" value={data.businessHealth.googleReviews} onChange={(v) => updateBusinessHealthField("googleReviews", v)} />
+                  </div>
+
+                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Revenue Performance</p>
+                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
+                    <NumberField label="Revenue from Features" prefix="$" value={data.businessHealth.featureRevenue} onChange={(v) => updateBusinessHealthField("featureRevenue", v)} />
+                    <NumberField label="Product Revenue" prefix="$" value={data.businessHealth.productRevenue} onChange={(v) => updateBusinessHealthField("productRevenue", v)} />
+                    <NumberField label="Product Attachment Rate %" value={data.businessHealth.productAttachRate} onChange={(v) => updateBusinessHealthField("productAttachRate", v)} />
+                  </div>
+
+                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Operational &amp; Financial Health</p>
+                  <div className="grid sm:grid-cols-3 gap-3 mb-5">
+                    <NumberField label="Overall Revenue" prefix="$" value={data.businessHealth.overallRevenue} onChange={(v) => updateBusinessHealthField("overallRevenue", v)} />
+                    <NumberField label="Re-Booking Rate %" value={data.businessHealth.reBookingRate} onChange={(v) => updateBusinessHealthField("reBookingRate", v)} />
+                    <NumberField label="Average Invoice Value" prefix="$" value={data.businessHealth.avgInvoiceValue} onChange={(v) => updateBusinessHealthField("avgInvoiceValue", v)} />
+                  </div>
+
+                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Brand Growth (Digital Presence)</p>
+                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                    <NumberField label="Instagram Follower Count" value={data.businessHealth.igFollowers} onChange={(v) => updateBusinessHealthField("igFollowers", v)} />
+                    <NumberField label="TikTok Follower Count" value={data.businessHealth.tiktokFollowers} onChange={(v) => updateBusinessHealthField("tiktokFollowers", v)} />
+                  </div>
+
+                  <p className="text-[11px] tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(162,140,117,0.6)" }}>Insights &amp; Decision-Making</p>
+                  <div className="space-y-3">
+                    <TextArea label="What worked" value={data.businessHealth.whatWorked} onChange={(v) => updateBusinessHealthField("whatWorked", v)} placeholder="Key findings from your data..." rows={2} />
+                    <TextArea label="What underperformed" value={data.businessHealth.whatUnderperformed} onChange={(v) => updateBusinessHealthField("whatUnderperformed", v)} placeholder="Where were the drop-offs or inefficiencies?" rows={2} />
+                    <TextArea label="Next Steps" value={data.businessHealth.nextMonthActions} onChange={(v) => updateBusinessHealthField("nextMonthActions", v)} placeholder="Budget reallocations, campaign adjustments, messaging refinements..." rows={2} />
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -1795,12 +1832,19 @@ export default function MarketingStrategyToolPage() {
           <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Scorecard</h2>
           {activeStrategy.leadConversionNotes && <p style={{ fontSize: 12, marginBottom: 10 }}><strong>Lead Conversion:</strong> {activeStrategy.leadConversionNotes}</p>}
           {latestEntry && latestStats && (
-            <div style={{ fontSize: 12 }}>
+            <div style={{ fontSize: 12, marginBottom: 10 }}>
               <p style={{ marginBottom: 4 }}><strong>Most recent entry:</strong> {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})</p>
               <p>Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}</p>
-              <p>Overall Revenue: {formatMoney(parseNum(latestEntry.overallRevenue))} · Re-Booking Rate: {latestEntry.reBookingRate || "—"}%</p>
             </div>
           )}
+          <div style={{ fontSize: 12 }}>
+            <p style={{ marginBottom: 4 }}><strong>Business &amp; Marketing Health:</strong></p>
+            <p>Overall Revenue: {formatMoney(parseNum(data.businessHealth.overallRevenue))} · Re-Booking Rate: {data.businessHealth.reBookingRate || "—"}% · Avg Invoice: {data.businessHealth.avgInvoiceValue ? formatMoney(parseNum(data.businessHealth.avgInvoiceValue)) : "—"}</p>
+            <p>Total Members: {data.businessHealth.totalMembers || "—"} · New Members: {data.businessHealth.newMembers || "—"} · Referrals: {data.businessHealth.patientReferrals || "—"} · Google Reviews: {data.businessHealth.googleReviews || "—"}</p>
+            {data.businessHealth.whatWorked && <p style={{ marginTop: 4 }}><strong>What worked:</strong> {data.businessHealth.whatWorked}</p>}
+            {data.businessHealth.whatUnderperformed && <p><strong>What underperformed:</strong> {data.businessHealth.whatUnderperformed}</p>}
+            {data.businessHealth.nextMonthActions && <p><strong>Next steps:</strong> {data.businessHealth.nextMonthActions}</p>}
+          </div>
         </div>
       )}
     </>
