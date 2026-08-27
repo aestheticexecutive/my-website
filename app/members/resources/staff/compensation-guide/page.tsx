@@ -13,6 +13,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import type { Metadata } from "next";
+import CompensationCalculator from "./CompensationCalculator";
 
 export const metadata: Metadata = {
   title: "Compensation & Commission Structure Guide | Aesthetic Executive",
@@ -198,6 +199,11 @@ export default function CompensationGuidePage() {
         </div>
       </div>
 
+      {/* Interactive calculator */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-14">
+        <CompensationCalculator />
+      </div>
+
       {/* Why it surprises people */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 pb-14 pt-10">
         <div className="flex items-center gap-4 mb-3">
@@ -347,6 +353,11 @@ export default function CompensationGuidePage() {
               they produce beyond that. It keeps the incentive real without ever paying commission on
               revenue that hasn&apos;t covered the role&apos;s true cost yet, and it&apos;s a structure you
               can explain to a provider in one sentence.
+            </p>
+            <p className="text-xs leading-relaxed italic mt-4" style={{ color: "rgba(255,253,246,0.4)" }}>
+              A quick note: every state regulates provider compensation and fee-splitting
+              differently. Check your state medical board&apos;s rules — or talk to a healthcare
+              attorney — before finalizing any commission structure.
             </p>
           </div>
         </div>
