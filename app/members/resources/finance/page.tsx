@@ -28,6 +28,13 @@ const resources: { title: string; type: string; description: string; href?: stri
       "Track all 16 key performance indicators for your practice — month over month, tagged by team member. Includes industry benchmarks, trend indicators, and a side-by-side compare view.",
     href: "/members/resources/finance/kpi-tracker",
   },
+  {
+    title: "Second Location Feasibility Model",
+    type: "Tool",
+    description:
+      "Model startup investment, financing, a realistic staffing ramp, and a revenue ramp for a new location. Calculates your break-even month, full payback timeline, and the peak capital you'll actually need on hand.",
+    href: "/members/resources/finance/expansion-feasibility",
+  },
 ];
 
 const typeMeta: Record<string, { color: string; bg: string; border: string; action: string }> = {
