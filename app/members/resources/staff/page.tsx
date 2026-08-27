@@ -365,6 +365,63 @@ export default function StaffResourcesPage() {
             </div>
           </div>
         </Link>
+
+        {/* Sibling guide card */}
+        <Link
+          href="/members/resources/staff/non-provider-compensation-guide"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{
+            background: "rgba(162,140,117,0.03)",
+            borderColor: "rgba(162,140,117,0.13)",
+          }}
+        >
+          <div className="p-7 flex flex-col md:flex-row md:items-center gap-5">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.1)",
+                border: "1px solid rgba(162,140,117,0.2)",
+              }}
+            >
+              <Users size={20} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                <h3 className="font-display text-lg font-light" style={{ color: "#fffdf6" }}>
+                  Non-Provider Compensation &amp; Bonus Structures
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.1)",
+                    border: "1px solid rgba(162,140,117,0.22)",
+                    color: "rgba(162,140,117,0.75)",
+                  }}
+                >
+                  Guide
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
+                Bonus structures for front desk, aestheticians, and office managers — retail attach
+                rate, membership enrollment, and KPI-tied bonuses for roles that support revenue
+                instead of billing for it directly.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg transition-all duration-200"
+                style={{
+                  background: "rgba(162,140,117,0.08)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                  color: "rgba(162,140,117,0.7)",
+                }}
+              >
+                Read Guide
+                <ExternalLink size={11} />
+              </span>
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* ── New Hire Onboarding ── */}

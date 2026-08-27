@@ -11,6 +11,7 @@ import {
   MessageCircle,
   BarChart3,
   ExternalLink,
+  Users,
 } from "lucide-react";
 import type { Metadata } from "next";
 import CompensationCalculator from "./CompensationCalculator";
@@ -407,7 +408,7 @@ export default function CompensationGuidePage() {
       </div>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-10">
         <Link
           href="/members/resources/finance/kpi-tracker"
           className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
@@ -441,6 +442,29 @@ export default function CompensationGuidePage() {
                 <ExternalLink size={12} />
               </span>
             </div>
+          </div>
+        </Link>
+      </div>
+
+      {/* See also: non-provider guide */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
+        <Link
+          href="/members/resources/staff/non-provider-compensation-guide"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{ background: "rgba(162,140,117,0.04)", borderColor: "rgba(162,140,117,0.15)" }}
+        >
+          <div className="p-7 flex items-center gap-5">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}
+            >
+              <Users size={18} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>Non-Provider Compensation &amp; Bonus Structures</p>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>The sibling guide for front desk, aestheticians, and office managers.</p>
+            </div>
+            <ExternalLink size={13} style={{ color: "rgba(162,140,117,0.5)", flexShrink: 0 }} />
           </div>
         </Link>
       </div>
