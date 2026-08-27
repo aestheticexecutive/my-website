@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Users, Download, ExternalLink, Wand2, ClipboardList, Star, ChevronDown, Sparkles, Target, Heart, GraduationCap, Activity, FolderOpen, CalendarDays, Headphones, TrendingUp, DollarSign, Phone, ShoppingBag, NotebookPen, FileWarning, FileSignature } from "lucide-react";
+import { ArrowLeft, Users, Download, ExternalLink, Wand2, ClipboardList, Star, ChevronDown, Sparkles, Target, Heart, GraduationCap, Activity, FolderOpen, CalendarDays, Headphones, TrendingUp, DollarSign, Phone, ShoppingBag, NotebookPen, FileWarning, FileSignature, Scale } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -287,6 +287,80 @@ export default function StaffResourcesPage() {
               >
                 Open Tool
                 <ExternalLink size={12} />
+              </span>
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      {/* ── Compensation & Commission Structure ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-20">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display text-2xl font-light flex-shrink-0" style={{ color: "#fffdf6" }}>
+            Compensation &amp; Commission Structure
+          </h2>
+          <div className="h-px flex-1" style={{ background: "rgba(162,140,117,0.15)" }} />
+        </div>
+
+        <Link
+          href="/members/resources/staff/compensation-guide"
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40"
+          style={{
+            background: "rgba(162,140,117,0.03)",
+            borderColor: "rgba(162,140,117,0.13)",
+          }}
+        >
+          <div className="p-7 md:p-8 flex flex-col md:flex-row md:items-center gap-6">
+
+            {/* Icon */}
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(162,140,117,0.1)",
+                border: "1px solid rgba(162,140,117,0.2)",
+              }}
+            >
+              <Scale size={20} style={{ color: "#a28c75" }} />
+            </div>
+
+            {/* Copy */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>
+                  Compensation &amp; Commission Structure Guide
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium tracking-wide"
+                  style={{
+                    background: "rgba(162,140,117,0.1)",
+                    border: "1px solid rgba(162,140,117,0.22)",
+                    color: "rgba(162,140,117,0.75)",
+                  }}
+                >
+                  Guide
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.52)" }}>
+                Flat, commission, or hybrid pay for injectors and providers — plus the break-even
+                multiple every owner should know before a raise conversation: roughly 3.5x a provider&apos;s
+                all-in comp is what their role needs to produce just for the practice to wash.
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="flex-shrink-0">
+              <span
+                className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg transition-all duration-200"
+                style={{
+                  background: "rgba(162,140,117,0.08)",
+                  border: "1px solid rgba(162,140,117,0.2)",
+                  color: "rgba(162,140,117,0.7)",
+                }}
+              >
+                Read Guide
+                <ExternalLink size={11} />
               </span>
             </div>
           </div>
