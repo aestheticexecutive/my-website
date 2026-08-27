@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, TrendingUp, Download, ExternalLink, BarChart2, FileText, Calculator, Layers, Compass, ShieldCheck, Target, Milestone, DollarSign, ListChecks, RefreshCw, Gauge } from "lucide-react";
+import { ArrowLeft, TrendingUp, Download, ExternalLink, BarChart2, FileText, Calculator, Layers, Compass, ShieldCheck, Target, Milestone, DollarSign, ListChecks, RefreshCw, Gauge, Banknote } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -427,6 +427,90 @@ export default function FinanceResourcesPage() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Cash Flow Forecasting Featured Section ── */}
+      <div
+        className="border-b"
+        style={{ borderColor: "rgba(162,140,117,0.1)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12">
+          <div className="flex items-center gap-4 mb-8">
+            <h2
+              className="font-display text-2xl font-light flex-shrink-0"
+              style={{ color: "#fffdf6" }}
+            >
+              Cash Flow Forecasting
+            </h2>
+            <div
+              className="h-px flex-1"
+              style={{ background: "rgba(162,140,117,0.15)" }}
+            />
+          </div>
+
+          <p
+            className="text-sm leading-relaxed mb-8 max-w-2xl"
+            style={{ color: "rgba(255,253,246,0.55)" }}
+          >
+            Profit and cash aren&apos;t the same thing — a profitable month can still run your
+            practice short on cash if revenue is financed out slowly or a big payment lands the
+            same week as payroll. This forecasts the cash itself, month by month and week by week.
+          </p>
+
+          <div
+            className="rounded-2xl border p-8 md:p-10"
+            style={{
+              background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
+              borderColor: "rgba(162,140,117,0.2)",
+            }}
+          >
+            <div className="flex flex-col md:flex-row md:items-center gap-8">
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(162,140,117,0.12)", border: "1px solid rgba(162,140,117,0.25)" }}
+              >
+                <Banknote size={22} style={{ color: "#a28c75" }} />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display text-2xl font-light mb-2" style={{ color: "#fffdf6" }}>
+                  Cash Flow Forecast Template
+                </h3>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,253,246,0.6)" }}>
+                  A 12-month and 13-week Excel forecast, pre-built with formulas and a working
+                  example. Enter your beginning balance and expected inflows/outflows — every
+                  running total, net cash flow, and ending balance calculates automatically.
+                </p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                  {[
+                    "12-month rolling forecast",
+                    "13-week short-term forecast",
+                    "Minimum reserve target & cushion tracking",
+                    "Pre-filled working example",
+                  ].map((feat) => (
+                    <li key={feat} className="text-xs flex items-center gap-1.5" style={{ color: "rgba(162,140,117,0.65)" }}>
+                      <span style={{ color: "#a28c75" }}>·</span> {feat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex-shrink-0">
+                <a
+                  href="/downloads/ae-cash-flow-forecast-template.xlsx"
+                  download
+                  className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase px-5 py-2.5 rounded-lg transition-all duration-200 hover:opacity-90"
+                  style={{
+                    background: "rgba(162,140,117,0.14)",
+                    border: "1px solid rgba(162,140,117,0.3)",
+                    color: "#a28c75",
+                  }}
+                >
+                  <Download size={13} />
+                  Download .xlsx
+                </a>
               </div>
             </div>
           </div>

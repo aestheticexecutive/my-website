@@ -51,6 +51,15 @@ const templates: {
     href: "/downloads/ae-pl-template.xlsx",
   },
   {
+    title: "Cash Flow Forecast Template",
+    category: "Finance",
+    description:
+      "12-month and 13-week Excel cash flow forecast, pre-built with formulas and a working example. Enter your beginning balance and expected inflows/outflows — running totals, net cash flow, and ending balance calculate automatically, with a minimum-reserve cushion line to flag tight periods.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-cash-flow-forecast-template.xlsx",
+  },
+  {
     title: "Treatment Profitability Template",
     category: "Finance",
     description:
