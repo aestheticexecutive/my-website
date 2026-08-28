@@ -35,6 +35,13 @@ const resources: { title: string; type: string; description: string; href?: stri
       "Model startup investment, financing, a realistic staffing ramp, and a revenue ramp for a new location. Calculates your break-even month, full payback timeline, and the peak capital you'll actually need on hand.",
     href: "/members/resources/finance/expansion-feasibility",
   },
+  {
+    title: "Client LTV & Acquisition Cost Calculator",
+    type: "Tool",
+    description:
+      "Turn retention rate, visit frequency, and average ticket into a patient's lifetime value, then see exactly how much you can afford to spend acquiring one — and how your actual spend compares.",
+    href: "/members/resources/finance/ltv-cac-calculator",
+  },
 ];
 
 const typeMeta: Record<string, { color: string; bg: string; border: string; action: string }> = {
