@@ -67,7 +67,7 @@ const paths = [
     description:
       "Direct time with Kyla — a single call when you need quick, focused advice on one thing, or ongoing regular sessions when you want more hands-on, continued support.",
     bullets: [
-      "30-minute sessions",
+      "Schedule in 30-minute increments",
       "Book as-needed or recurring",
       "Discounted rate for members",
     ],
@@ -328,7 +328,7 @@ export default function HomePage() {
               Ready to get to work?
             </h2>
             <p className="font-sans font-light text-[#fffdf6]/50 text-lg leading-relaxed max-w-sm mx-auto mb-12">
-              Get on the VIP list, book a project, or start with a conversation.
+              Get on the VIP list or start with a conversation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
