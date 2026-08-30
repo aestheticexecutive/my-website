@@ -29,12 +29,12 @@ const philosophy = [
 ];
 
 const offers = [
-  "Lead follow-up & consultation conversion",
-  "Patient retention & membership programs",
-  "Team sales training & confidence",
-  "Community partnerships & promotions",
-  "Consistent, trackable marketing",
-  "Operational systems built to scale",
+  "Marketing strategy & patient acquisition",
+  "Day-to-day operations & systems",
+  "Financial clarity & business performance",
+  "Team culture, hiring & retention",
+  "Ready-to-use tools, templates & guides",
+  "A personalized roadmap for where you are",
 ];
 
 export default function AboutPage() {
@@ -63,9 +63,9 @@ export default function AboutPage() {
               </p>
 
               <p className="text-base text-warm-500 leading-relaxed mb-10">
-                And if there&apos;s one thing I&apos;ve learned, it&apos;s this: growing an
-                aesthetic practice doesn&apos;t have to be as complicated, or as expensive,
-                as people make it seem.
+                And if there&apos;s one thing I&apos;ve learned, it&apos;s this: every
+                successful aesthetics practice has these three things: strategy, systems,
+                and passion.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -125,7 +125,7 @@ export default function AboutPage() {
             <div className="lg:sticky lg:top-24">
               <p className="font-display text-3xl md:text-4xl font-light text-cream leading-snug mb-6">
                 &ldquo;No gatekeeping. No unnecessary complexity. No convincing you that you
-                need to spend thousands of dollars every month just to grow your
+                need to spend unnecessarily every month to grow your
                 business.&rdquo;
               </p>
               <p className="text-sm text-warm-400 tracking-[0.15em] uppercase">
@@ -180,8 +180,17 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-            {/* Left — label + intro line */}
+            {/* Left — photo + label + intro line */}
             <div className="lg:sticky lg:top-24">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl max-w-sm mb-8">
+                <Image
+                  src="/images/kyla-evans.jpg"
+                  alt="Kyla Evans, Founder of Aesthetic Executive"
+                  width={920}
+                  height={1150}
+                  className="w-full h-auto"
+                />
+              </div>
               <p className="text-xs tracking-[0.3em] uppercase text-gold-600 mb-6">
                 The Founder
               </p>
@@ -293,7 +302,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl border border-warm-200 p-8 shadow-sm">
               <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
                 <p className="text-xs tracking-[0.2em] uppercase text-warm-400">
-                  Areas of focus
+                  Aesthetic Executive Membership
                 </p>
                 <ComingSoonBadge theme="light" />
               </div>
