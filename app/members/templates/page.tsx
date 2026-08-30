@@ -24,6 +24,51 @@ const templates: {
   href?: string;
 }[] = [
   {
+    title: "Peer Shoutout / Recognition Card",
+    category: "HR & Staffing",
+    description:
+      "A printable card version of the shoutout format from the Peer Recognition Program Guide — 4 per page, ready to cut apart and hand out or post on a board.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-peer-shoutout-card.docx",
+  },
+  {
+    title: "Stay Interview Notes Template",
+    category: "HR & Staffing",
+    description:
+      "A structured one-pager for the stay-interview conversations from the Staff Retention Guide — the four questions, a follow-up actions table, and space for notes.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-stay-interview-notes.docx",
+  },
+  {
+    title: "New Hire Welcome Packet",
+    category: "HR & Staffing",
+    description:
+      "A friendlier complement to the Onboarding Checklist Builder — parking, dress code, who's who, key contacts, and a first-week checklist.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-new-hire-welcome-packet.docx",
+  },
+  {
+    title: "Vendor Contact & Reorder Sheet",
+    category: "Operations",
+    description:
+      "One master list of every vendor — contact info, order method, lead time, and an auto-calculating next expected reorder date. An offline companion to the Inventory Management System.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-vendor-contact-reorder-sheet.xlsx",
+  },
+  {
+    title: "Daily Cash Drawer Reconciliation Log",
+    category: "Operations",
+    description:
+      "A running log for counting the front-desk cash drawer — opening float, cash sales, and payouts auto-calculate the expected close, with an over/short line for each day.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-cash-drawer-reconciliation-log.xlsx",
+  },
+  {
     title: "Event RSVP Tracking Sheet",
     category: "Marketing",
     description:

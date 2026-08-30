@@ -12,6 +12,7 @@ import {
   ExternalLink,
   Heart,
   NotebookPen,
+  Download,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -208,6 +209,32 @@ export default function PeerRecognitionGuidePage() {
             <strong style={{ color: "#fffdf6", fontStyle: "normal" }}>[why it mattered].</strong>&rdquo;
           </p>
         </div>
+
+        <a
+          href="/downloads/ae-peer-shoutout-card.docx"
+          download
+          className="group block rounded-2xl border overflow-hidden transition-all duration-300 hover:border-[#a28c75]/40 mt-5"
+          style={{ background: "rgba(162,140,117,0.04)", borderColor: "rgba(162,140,117,0.15)" }}
+        >
+          <div className="p-7 flex items-center gap-5">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "rgba(162,140,117,0.1)", border: "1px solid rgba(162,140,117,0.2)" }}
+            >
+              <Download size={18} style={{ color: "#a28c75" }} />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-medium mb-1" style={{ color: "#fffdf6" }}>Peer Shoutout / Recognition Card</p>
+              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>A printable version of this exact format — 4 cards per page, ready to cut apart and hand out or post on a board.</p>
+            </div>
+            <span
+              className="flex-shrink-0 text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-lg"
+              style={{ background: "rgba(162,140,117,0.08)", border: "1px solid rgba(162,140,117,0.2)", color: "rgba(162,140,117,0.7)" }}
+            >
+              .docx
+            </span>
+          </div>
+        </a>
       </div>
 
       {/* Employee of the month */}

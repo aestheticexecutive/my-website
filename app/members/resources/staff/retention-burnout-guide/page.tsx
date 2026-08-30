@@ -16,6 +16,7 @@ import {
   Eye,
   MessageCircle,
   ExternalLink,
+  Download,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -379,6 +380,15 @@ export default function RetentionBurnoutGuidePage() {
                 </li>
               ))}
             </ul>
+            <a
+              href="/downloads/ae-stay-interview-notes.docx"
+              download
+              className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase mt-5 hover:opacity-80 transition-opacity"
+              style={{ color: "#a28c75" }}
+            >
+              <Download size={12} />
+              Download the Stay Interview Notes template (.docx)
+            </a>
           </div>
         </div>
       </div>
