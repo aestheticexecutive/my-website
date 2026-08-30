@@ -14,28 +14,33 @@ import {
   type RoadmapResult,
 } from "@/lib/roadmap-data";
 
-function ItemCard({ item }: { item: RoadmapItem }) {
+function ItemCard({ item, number }: { item: RoadmapItem; number: number }) {
   const isDownload = item.href.startsWith("/downloads/") || item.href.startsWith("/templates/");
   const cardClass =
-    "group flex items-start justify-between gap-4 bg-white border border-warm-200 rounded-xl p-5 hover:border-gold-300 hover:shadow-sm transition-all duration-200";
+    "group flex items-start gap-3.5 bg-white border border-warm-200 rounded-xl p-5 hover:border-gold-300 hover:shadow-sm transition-all duration-200";
   const inner = (
     <>
-      <div className="min-w-0">
-        <div className="flex items-center gap-2.5 flex-wrap mb-1">
-          <h3 className="font-display text-base font-medium text-warm-900">{item.title}</h3>
-          <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-50 border border-gold-100 text-gold-600 font-medium tracking-wide uppercase">
-            {item.type}
-          </span>
+      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-warm-100 text-warm-600 text-[11px] font-medium flex items-center justify-center mt-0.5">
+        {number}
+      </span>
+      <div className="min-w-0 flex-1 flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2.5 flex-wrap mb-1">
+            <h3 className="font-display text-base font-medium text-warm-900">{item.title}</h3>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-50 border border-gold-100 text-gold-600 font-medium tracking-wide uppercase">
+              {item.type}
+            </span>
+          </div>
+          <p className="text-sm text-warm-600 leading-relaxed">{item.description}</p>
         </div>
-        <p className="text-sm text-warm-600 leading-relaxed">{item.description}</p>
+        {item.external ? (
+          <ExternalLink size={15} className="text-warm-400 group-hover:text-warm-700 transition-colors flex-shrink-0 mt-1" />
+        ) : isDownload ? (
+          <Download size={15} className="text-warm-400 group-hover:text-warm-700 transition-colors flex-shrink-0 mt-1" />
+        ) : (
+          <ArrowRight size={15} className="text-warm-400 group-hover:text-warm-700 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+        )}
       </div>
-      {item.external ? (
-        <ExternalLink size={15} className="text-warm-400 group-hover:text-warm-700 transition-colors flex-shrink-0 mt-1" />
-      ) : isDownload ? (
-        <Download size={15} className="text-warm-400 group-hover:text-warm-700 transition-colors flex-shrink-0 mt-1" />
-      ) : (
-        <ArrowRight size={15} className="text-warm-400 group-hover:text-warm-700 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
-      )}
     </>
   );
 
@@ -126,6 +131,22 @@ export default function RoadmapPage() {
 
   const result: RoadmapResult | null = completed ? buildRoadmap(answers) : null;
 
+  // A single running sequence number across every phase, so "the order to
+  // tackle them" reads as one continuous list even though it's grouped.
+  const sequence = new Map<string, number>();
+  if (result) {
+    let n = 1;
+    [
+      ...result.phase1.items,
+      ...result.phase2.items,
+      ...result.phase3.groups.flatMap((g) => g.items),
+      ...result.phase4.items,
+    ].forEach((item) => {
+      sequence.set(item.href, n);
+      n += 1;
+    });
+  }
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
       <Link
@@ -195,7 +216,7 @@ export default function RoadmapPage() {
 
       {result && (
         <div>
-          <div className="flex items-center justify-between flex-wrap gap-4 mb-10">
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
             <div className="flex flex-wrap gap-2">
               {(Object.keys(answers) as (keyof Answers)[]).map((k) =>
                 answers[k] ? (
@@ -213,12 +234,17 @@ export default function RoadmapPage() {
             </button>
           </div>
 
+          <p className="text-sm text-warm-600 mb-10">
+            Every guide, tool, and template on the site — <strong className="text-warm-800 font-medium">{result.totalCount} in all</strong> —
+            numbered in the order to work through them.
+          </p>
+
           <div className="space-y-14">
             <section>
               <PhaseHeading title={result.phase1.title} sub={result.phase1.sub} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {result.phase1.items.map((item) => (
-                  <ItemCard key={item.href} item={item} />
+                  <ItemCard key={item.href} item={item} number={sequence.get(item.href)!} />
                 ))}
               </div>
             </section>
@@ -227,7 +253,7 @@ export default function RoadmapPage() {
               <PhaseHeading title={result.phase2.title} sub={result.phase2.sub} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {result.phase2.items.map((item) => (
-                  <ItemCard key={item.href} item={item} />
+                  <ItemCard key={item.href} item={item} number={sequence.get(item.href)!} />
                 ))}
               </div>
             </section>
@@ -243,7 +269,7 @@ export default function RoadmapPage() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {g.items.map((item) => (
-                        <ItemCard key={item.href} item={item} />
+                        <ItemCard key={item.href} item={item} number={sequence.get(item.href)!} />
                       ))}
                     </div>
                   </div>
@@ -255,7 +281,7 @@ export default function RoadmapPage() {
               <PhaseHeading title={result.phase4.title} sub={result.phase4.sub} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {result.phase4.items.map((item) => (
-                  <ItemCard key={item.href} item={item} />
+                  <ItemCard key={item.href} item={item} number={sequence.get(item.href)!} />
                 ))}
               </div>
             </section>
