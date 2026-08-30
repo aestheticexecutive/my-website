@@ -24,6 +24,78 @@ const templates: {
   href?: string;
 }[] = [
   {
+    title: "Interview Scorecard",
+    category: "HR & Staffing",
+    description:
+      "A candidate rating rubric built on the MBI framework — skill, attitude, passion — plus communication and reliability, with an overall recommendation section.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-interview-scorecard.docx",
+  },
+  {
+    title: "Team Directory / Org Chart",
+    category: "HR & Staffing",
+    description:
+      "A simple roster — name, role, department, who reports to whom, contact info, and start date — for the whole team.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-team-directory.xlsx",
+  },
+  {
+    title: "Room & Equipment Turnover Checklist",
+    category: "Operations",
+    description:
+      "A per-room reset checklist for between every patient and end-of-day, plus a daily turnover log.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-room-equipment-turnover-checklist.docx",
+  },
+  {
+    title: "Equipment Maintenance Log",
+    category: "Operations",
+    description:
+      "A per-device service history with the next service due date calculated automatically from the service interval.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-equipment-maintenance-log.xlsx",
+  },
+  {
+    title: "Vendor Price Comparison Worksheet",
+    category: "Finance",
+    description:
+      "A side-by-side grid for comparing up to three vendor quotes — effective cost per unit calculates automatically from price plus amortized shipping.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-vendor-price-comparison-worksheet.xlsx",
+  },
+  {
+    title: "Annual Subscription & Renewal Calendar",
+    category: "Finance",
+    description:
+      "Every recurring cost in one place, with an auto-calculating cancel-by date and a live days-until-renewal count.",
+    format: "XLSX",
+    updated: "August 2026",
+    href: "/downloads/ae-subscription-renewal-calendar.xlsx",
+  },
+  {
+    title: "Partnership / Referral Outreach One-Sheet",
+    category: "Marketing",
+    description:
+      "A leave-behind fact sheet for pitching a referral or cross-promotion partnership to a local business.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-partnership-outreach-one-sheet.docx",
+  },
+  {
+    title: "Testimonial Collection Sheet",
+    category: "Marketing",
+    description:
+      "A quick worksheet for capturing a patient's spoken testimonial right after a great visit.",
+    format: "DOCX",
+    updated: "August 2026",
+    href: "/downloads/ae-testimonial-collection-sheet.docx",
+  },
+  {
     title: "Peer Shoutout / Recognition Card",
     category: "HR & Staffing",
     description:
