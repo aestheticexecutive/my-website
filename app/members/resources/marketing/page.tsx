@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Megaphone, ExternalLink, Users, BookOpen, Handshake, Building2, Share2, Search, Camera, CalendarDays, MapPin, Star, MessageSquare, Globe, FileText, Mail, Zap, TrendingUp, Gift, Award, Compass } from "lucide-react";
+import { RoadmapPrompt } from "@/components/layout/RoadmapPrompt";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -61,6 +62,11 @@ export default function MarketingResourcesPage() {
             positioning, and patient acquisition systems — built for aesthetic practices.
           </p>
         </div>
+      </div>
+
+      {/* Roadmap prompt */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
+        <RoadmapPrompt />
       </div>
 
       {/* ── Marketing Strategy Playbook (flagship) ── */}

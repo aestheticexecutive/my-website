@@ -16,6 +16,7 @@ export const searchIndex: SearchEntry[] = [
   // ── Home ──────────────────────────────────────────────────────────────────
   { title: "Dashboard", description: "Your member home base — quick links to Templates, Webinars, and Resources plus recent activity.", category: "Home", type: "Page", href: "/members/dashboard" },
   { title: "All Resources", description: "Browse every resource category — Marketing, Operations, Finance, and Staff.", category: "Home", type: "Page", href: "/members/resources" },
+  { title: "Where Should I Start?", description: "A 4-question practice assessment that builds a personalized, phased roadmap through every guide, tool, and template on the site.", category: "Home", type: "Tool", href: "/members/roadmap" },
 
   // ── Operations ────────────────────────────────────────────────────────────
   { title: "Consultation Conversion Tracker", description: "Log consultations by provider and service type, then run reports by date range to see conversion rates and track notes on what drove the numbers.", category: "Operations", type: "Tool", href: "/members/resources/operations/consultation-conversion-tracker" },

@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
-import { FileText, Video, BookOpen, ArrowRight } from "lucide-react";
+import { FileText, Video, BookOpen, ArrowRight, Compass } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,6 +46,33 @@ export default async function DashboardPage() {
           Your library is ready. Here&apos;s what&apos;s new.
         </p>
       </div>
+
+      {/* Roadmap feature */}
+      <Link
+        href="/members/roadmap"
+        className="group relative overflow-hidden flex flex-col sm:flex-row sm:items-center gap-6 rounded-xl p-7 sm:p-8 mb-8 border border-gold-200 transition-all duration-200 hover:shadow-md"
+        style={{ background: "linear-gradient(135deg, #faf7f4 0%, #f0e8e0 100%)" }}
+      >
+        <div className="w-14 h-14 rounded-2xl bg-white border border-gold-200 flex items-center justify-center flex-shrink-0">
+          <Compass size={26} className="text-gold-600" />
+        </div>
+        <div className="flex-1">
+          <p className="text-xs text-gold-600 tracking-widest uppercase mb-1.5 font-medium">Where Should I Start?</p>
+          <h2 className="font-display text-2xl font-light text-warm-900 mb-1.5">
+            Get a personalized path through the library
+          </h2>
+          <p className="text-sm text-warm-600 max-w-xl">
+            Answer 4 quick questions about your practice, and we&apos;ll put together a roadmap through
+            every guide, tool, and template — in the order that actually makes sense for you.
+          </p>
+        </div>
+        <div className="flex-shrink-0">
+          <span className="inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-warm-900 text-cream text-sm font-medium tracking-wide group-hover:bg-warm-800 transition-colors">
+            Take the Assessment
+            <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+          </span>
+        </div>
+      </Link>
 
       {/* Quick links */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">

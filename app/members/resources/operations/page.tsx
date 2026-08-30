@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Settings, Download, ExternalLink, Search, FileText, ClipboardList, Percent, ListChecks, Package, Target, ShoppingBag, Headset, Clock, CalendarClock } from "lucide-react";
+import { RoadmapPrompt } from "@/components/layout/RoadmapPrompt";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -61,6 +62,11 @@ export default function OperationsResourcesPage() {
             and day-to-day practice operations — built to run a tight ship.
           </p>
         </div>
+      </div>
+
+      {/* Roadmap prompt */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
+        <RoadmapPrompt />
       </div>
 
       {/* ── Daily Operations Checklists ── */}

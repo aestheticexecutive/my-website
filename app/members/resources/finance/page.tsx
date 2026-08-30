@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, TrendingUp, Download, ExternalLink, BarChart2, FileText, Calculator, Layers, Compass, ShieldCheck, Target, Milestone, DollarSign, ListChecks, RefreshCw, Gauge, Banknote } from "lucide-react";
+import { RoadmapPrompt } from "@/components/layout/RoadmapPrompt";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -126,6 +127,11 @@ export default function FinanceResourcesPage() {
             and KPI dashboards — because the numbers tell the real story.
           </p>
         </div>
+      </div>
+
+      {/* Roadmap prompt */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
+        <RoadmapPrompt />
       </div>
 
       {/* ── P&L Resources Featured Section ── */}

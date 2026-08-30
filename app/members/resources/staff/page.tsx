@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Users, Download, ExternalLink, Wand2, ClipboardList, Star, ChevronDown, Sparkles, Target, Heart, GraduationCap, Activity, FolderOpen, CalendarDays, Headphones, TrendingUp, DollarSign, Phone, ShoppingBag, NotebookPen, FileWarning, FileSignature, Scale, Award } from "lucide-react";
+import { RoadmapPrompt } from "@/components/layout/RoadmapPrompt";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -61,6 +62,11 @@ export default function StaffResourcesPage() {
             and team culture — because your people are your practice.
           </p>
         </div>
+      </div>
+
+      {/* Roadmap prompt */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-8">
+        <RoadmapPrompt />
       </div>
 
       {/* ── Job Listing Templates ── */}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download, FileText, Search, ExternalLink } from "lucide-react";
+import { Download, FileText, Search, ExternalLink, Compass, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -272,6 +272,21 @@ export default function TemplatesPage() {
           Ready-to-use templates built for aesthetic practices.
         </p>
       </div>
+
+      {/* Roadmap prompt */}
+      <Link
+        href="/members/roadmap"
+        className="group flex items-center gap-4 bg-white border border-warm-200 rounded-xl px-5 py-4 mb-6 hover:border-gold-300 hover:shadow-sm transition-all duration-200"
+      >
+        <div className="w-9 h-9 rounded-lg bg-gold-50 border border-gold-100 flex items-center justify-center flex-shrink-0">
+          <Compass size={16} className="text-gold-600" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-warm-900">Not sure where to start?</p>
+          <p className="text-xs text-warm-600">Answer 4 quick questions for a personalized path through everything here.</p>
+        </div>
+        <ArrowRight size={15} className="flex-shrink-0 text-warm-400 group-hover:text-warm-700 group-hover:translate-x-0.5 transition-all" />
+      </Link>
 
       {/* Search + filter bar */}
       <div className="bg-white border border-warm-200 rounded-xl px-5 py-4 mb-6 flex flex-wrap gap-4 items-center">

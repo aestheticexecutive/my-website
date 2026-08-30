@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Megaphone, Settings, TrendingUp, Users, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { RoadmapPrompt } from "@/components/layout/RoadmapPrompt";
 
 export const metadata: Metadata = {
   title: "Resources | Aesthetic Executive",
@@ -86,6 +87,11 @@ export default function ResourcesHubPage() {
             style={{ background: "rgba(162,140,117,0.35)" }}
           />
         </div>
+      </div>
+
+      {/* Roadmap prompt */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-8">
+        <RoadmapPrompt />
       </div>
 
       {/* Section cards */}
