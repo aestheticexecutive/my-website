@@ -31,11 +31,11 @@ const discoveryChips = [
 ];
 
 const memberFeatures = [
-  "75+ guides, tools, and templates across Marketing, Operations, Finance, and Staff — and growing every month",
+  "100+ guides, tools, and templates across Marketing, Operations, Finance, and Staff — and growing every month",
   "Interactive tools that save your data — trackers, builders, and calculators, not static PDFs",
   "Live and on-demand webinars",
   "Member-only community",
-  "Early access to new content as it's built",
+  "Access to new content as it's released",
   "Discounted 1-on-1 sessions — $40 vs $50 standard rate",
 ];
 
@@ -140,8 +140,7 @@ export default function PricingPage() {
           </h1>
           <p className="font-sans font-light text-[#fffdf6]/50 text-lg leading-relaxed max-w-md mb-14">
             Aesthetic Executive gives practice owners and managers the strategy,
-            tools, and support to run their business with confidence — without
-            the six-figure consultant.
+            tools, and support to run their business with confidence.
           </p>
           <div className="w-16 h-px bg-[#a28c75]/60" />
         </div>
@@ -216,7 +215,7 @@ export default function PricingPage() {
               </div>
               <ul className="space-y-4 mb-10">
                 {[
-                  "15 minutes, by phone or video",
+                  "15 minutes, by video call",
                   "No sales pitch — just a real conversation",
                   "Walk away with clarity, regardless",
                 ].map((item) => (
@@ -363,10 +362,10 @@ export default function PricingPage() {
               Everything included in your membership
             </h2>
             <p className="font-sans font-light text-[#fffdf6]/50 leading-relaxed max-w-xl mx-auto">
-              Membership isn&apos;t a folder of static PDFs — it&apos;s a growing library of
-              guides and interactive tools, built from real practice-management experience,
-              organized across the four areas that actually run your business. Here&apos;s
-              everything currently in it.
+              The Aesthetic Executive membership isn&apos;t a folder of static PDFs —
+              it&apos;s a growing library of guides and interactive tools, built from real
+              practice-management experience, organized across the four areas that actually
+              run your business. Here&apos;s everything currently in it.
             </p>
           </div>
 
