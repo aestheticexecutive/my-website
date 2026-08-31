@@ -96,18 +96,18 @@ export default function WaitlistPage() {
             Get on the <em className="italic text-[#c8b3a3]">VIP List</em>
           </h1>
           <p className="font-sans font-light text-[#fffdf6]/50 text-lg leading-relaxed max-w-lg mx-auto">
-            Membership isn&apos;t open to the public yet — but the list is. Join now
-            for early access and exclusive founders pricing the moment we launch.
+            The Aesthetic Executive Membership isn&apos;t open to the public yet — but the
+            VIP list is. Join now for early access and exclusive founders pricing the moment
+            we launch.
           </p>
         </div>
 
         {/* What membership includes */}
         <div className="mb-14">
           <p className="font-sans font-light text-[#fffdf6]/50 text-sm leading-relaxed text-center max-w-xl mx-auto mb-8">
-            Membership gives you full access to a growing library of guides and interactive
-            tools — not static PDFs, but trackers, builders, and calculators that save your
-            data — built from real practice-management experience across the four areas that
-            run your business.
+            The Aesthetic Executive Membership gives you full access to a growing library of
+            guides and interactive tools built from real practice-management experience
+            across the four areas that run your business.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {categoryPreview.map(({ key, label, icon: Icon }) => {
