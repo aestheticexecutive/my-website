@@ -1,15 +1,13 @@
 // Generic per-member, per-tool JSON storage. Replaces the old localStorage-only
-// persistence used by the /members resource tools. Local dev runs against
-// SQLite (see .env.local). Before deploying, switch the datasource provider to
-// "postgresql" and point DATABASE_URL at the production Postgres connection
-// string, then run `npx prisma migrate deploy`.
+// persistence used by the /members resource tools. Runs against the real
+// Prisma Postgres instance (see .env.local) — both locally and in production.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
