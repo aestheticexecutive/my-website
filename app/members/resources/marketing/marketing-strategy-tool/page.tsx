@@ -991,6 +991,69 @@ function migrateStoreData(raw: unknown): StoreData {
   return { strategies, scorecardEntries, businessHealth };
 }
 
+// ── Print layout ─────────────────────────────────────────────────────────────
+
+const PRINT_GOLD = "#a2793f";
+const PRINT_MUTED = "#7a7168";
+const PRINT_BORDER = "#e6ddcf";
+
+function channelHasContent(entry: ChannelEntry): boolean {
+  return entry.status !== "not-started" || !!entry.owner.trim() || !!entry.cadence.trim() || !!entry.strategy.trim();
+}
+
+function PrintSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="print-block" style={{ marginBottom: 26 }}>
+      <h2
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: 12,
+          fontWeight: 400,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+          color: PRINT_GOLD,
+          borderBottom: `1px solid ${PRINT_BORDER}`,
+          paddingBottom: 7,
+          marginBottom: 14,
+        }}
+      >
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
+function PrintEmptyNote({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{ fontSize: 10.5, color: PRINT_MUTED, fontStyle: "italic" }}>{children}</p>
+  );
+}
+
+function PrintChannelRow({ label, entry }: { label: string; entry: ChannelEntry }) {
+  return (
+    <div className="print-block" style={{ marginBottom: 12 }}>
+      <p style={{ fontSize: 11, marginBottom: entry.strategy ? 3 : 0 }}>
+        <strong>{label}</strong>
+        <span
+          style={{
+            color: PRINT_GOLD,
+            marginLeft: 9,
+            fontSize: 9,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+          }}
+        >
+          {STATUS_LABELS[entry.status]}
+        </span>
+        {entry.owner && <span style={{ color: PRINT_MUTED }}> · Owner: {entry.owner}</span>}
+        {entry.cadence && <span style={{ color: PRINT_MUTED }}> · Cadence: {entry.cadence}</span>}
+      </p>
+      {entry.strategy && <p style={{ fontSize: 10.5, color: "#3a332c", lineHeight: 1.55 }}>{entry.strategy}</p>}
+    </div>
+  );
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MarketingStrategyToolPage() {
@@ -1160,20 +1223,25 @@ export default function MarketingStrategyToolPage() {
     <>
       <style>{`
         @media print {
+          @page { margin: 0.65in; }
           body * { visibility: hidden; }
           .no-print { display: none !important; }
           #strategy-print-doc, #strategy-print-doc * { visibility: visible; }
           #strategy-print-doc {
             display: block !important;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 0.5in;
+            position: static;
+            width: auto;
             margin: 0;
-            color: #111;
+            padding: 0;
+            color: #262019;
             background: #fff;
+            font-family: var(--font-sans), system-ui, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.5;
           }
+          #strategy-print-doc h1,
+          #strategy-print-doc h2 { page-break-after: avoid; break-after: avoid; }
+          #strategy-print-doc .print-block { page-break-inside: avoid; break-inside: avoid; }
         }
       `}</style>
 
@@ -1778,63 +1846,123 @@ export default function MarketingStrategyToolPage() {
       </div>
 
       {/* Print doc */}
-      {activeStrategy && (
-        <div id="strategy-print-doc" style={{ display: "none" }}>
-          <h1 style={{ fontSize: 24, marginBottom: 4 }}>Marketing Strategy — {activeStrategy.name}</h1>
-          <p style={{ fontSize: 11, color: "#555", marginBottom: 24 }}>
-            {user?.fullName ? `${user.fullName} · ` : ""}Printed {new Date().toLocaleDateString()}
-          </p>
+      {activeStrategy && (() => {
+        const identityChannels = [BRANDING_CHANNEL, BRAND_CONSISTENCY_CHANNEL].filter((m) =>
+          channelHasContent(activeStrategy.channels[m.key])
+        );
+        const methodChannels = CHANNELS.filter((c) => channelHasContent(activeStrategy.channels[c.key]));
+        const bh = data.businessHealth;
+        const hasBusinessHealth =
+          !!bh.overallRevenue || !!bh.reBookingRate || !!bh.avgInvoiceValue || !!bh.totalMembers ||
+          !!bh.newMembers || !!bh.patientReferrals || !!bh.googleReviews || !!bh.whatWorked ||
+          !!bh.whatUnderperformed || !!bh.nextMonthActions;
 
-          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Aim</h2>
-          {activeStrategy.aim.primaryAim && <p style={{ fontSize: 12, marginBottom: 8 }}><strong>Primary Aim:</strong> {activeStrategy.aim.primaryAim}</p>}
-          {AIM_FIELDS.map((f) => activeStrategy.aim[f.key] && (
-            <p key={f.key} style={{ fontSize: 12, marginBottom: 6 }}><strong>{f.label}:</strong> {activeStrategy.aim[f.key]}</p>
-          ))}
+        return (
+          <div id="strategy-print-doc" style={{ display: "none" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 10,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: PRINT_GOLD,
+                marginBottom: 6,
+              }}
+            >
+              Aesthetic Executive · Marketing Strategy
+            </p>
+            <h1
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 400,
+                fontSize: 26,
+                color: "#1c1712",
+                marginBottom: 6,
+              }}
+            >
+              {activeStrategy.name}
+            </h1>
+            <p style={{ fontSize: 10.5, color: PRINT_MUTED, marginBottom: 8 }}>
+              {user?.fullName ? `Prepared by ${user.fullName} · ` : ""}
+              Printed {new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}
+            </p>
+            <div style={{ height: 2, background: PRINT_GOLD, width: 56, marginBottom: 28 }} />
 
-          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Identity</h2>
-          {[BRANDING_CHANNEL, BRAND_CONSISTENCY_CHANNEL].map((meta) => {
-            const entry = activeStrategy.channels[meta.key];
-            return (
-              <div key={meta.key} style={{ marginBottom: 10, fontSize: 12 }}>
-                <strong>{meta.label}</strong> — {STATUS_LABELS[entry.status]}
-                {entry.owner && ` · Owner: ${entry.owner}`}
-                {entry.cadence && ` · Cadence: ${entry.cadence}`}
-                {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
-              </div>
-            );
-          })}
+            <PrintSection title="Aim">
+              {activeStrategy.aim.primaryAim && (
+                <p style={{ fontSize: 11.5, marginBottom: 14, lineHeight: 1.55 }}>{activeStrategy.aim.primaryAim}</p>
+              )}
+              {AIM_FIELDS.map(
+                (f) =>
+                  activeStrategy.aim[f.key] && (
+                    <div key={f.key} className="print-block" style={{ marginBottom: 10 }}>
+                      <p style={{ fontSize: 10.5, fontWeight: 600, marginBottom: 2 }}>{f.label}</p>
+                      <p style={{ fontSize: 10.5, color: "#3a332c", lineHeight: 1.55 }}>{activeStrategy.aim[f.key]}</p>
+                    </div>
+                  )
+              )}
+              {!activeStrategy.aim.primaryAim && AIM_FIELDS.every((f) => !activeStrategy.aim[f.key]) && (
+                <PrintEmptyNote>Nothing documented yet.</PrintEmptyNote>
+              )}
+            </PrintSection>
 
-          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Method</h2>
-          {CHANNELS.map((c) => {
-            const entry = activeStrategy.channels[c.key];
-            return (
-              <div key={c.key} style={{ marginBottom: 10, fontSize: 12 }}>
-                <strong>{c.label}</strong> — {STATUS_LABELS[entry.status]}
-                {entry.owner && ` · Owner: ${entry.owner}`}
-                {entry.cadence && ` · Cadence: ${entry.cadence}`}
-                {entry.strategy && <p style={{ marginTop: 2, color: "#333" }}>{entry.strategy}</p>}
-              </div>
-            );
-          })}
+            <PrintSection title="Identity">
+              {identityChannels.length > 0 ? (
+                identityChannels.map((meta) => (
+                  <PrintChannelRow key={meta.key} label={meta.label} entry={activeStrategy.channels[meta.key]} />
+                ))
+              ) : (
+                <PrintEmptyNote>Nothing documented yet.</PrintEmptyNote>
+              )}
+            </PrintSection>
 
-          <h2 style={{ fontSize: 16, marginTop: 20, marginBottom: 8 }}>Scorecard</h2>
-          {activeStrategy.leadConversionNotes && <p style={{ fontSize: 12, marginBottom: 10 }}><strong>Lead Conversion:</strong> {activeStrategy.leadConversionNotes}</p>}
-          {latestEntry && latestStats && (
-            <div style={{ fontSize: 12, marginBottom: 10 }}>
-              <p style={{ marginBottom: 4 }}><strong>Most recent entry:</strong> {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})</p>
-              <p>Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}</p>
-            </div>
-          )}
-          <div style={{ fontSize: 12 }}>
-            <p style={{ marginBottom: 4 }}><strong>Business &amp; Marketing Health:</strong></p>
-            <p>Overall Revenue: {formatMoney(parseNum(data.businessHealth.overallRevenue))} · Re-Booking Rate: {data.businessHealth.reBookingRate || "—"}% · Avg Invoice: {data.businessHealth.avgInvoiceValue ? formatMoney(parseNum(data.businessHealth.avgInvoiceValue)) : "—"}</p>
-            <p>Total Members: {data.businessHealth.totalMembers || "—"} · New Members: {data.businessHealth.newMembers || "—"} · Referrals: {data.businessHealth.patientReferrals || "—"} · Google Reviews: {data.businessHealth.googleReviews || "—"}</p>
-            {data.businessHealth.whatWorked && <p style={{ marginTop: 4 }}><strong>What worked:</strong> {data.businessHealth.whatWorked}</p>}
-            {data.businessHealth.whatUnderperformed && <p><strong>What underperformed:</strong> {data.businessHealth.whatUnderperformed}</p>}
-            {data.businessHealth.nextMonthActions && <p><strong>Next steps:</strong> {data.businessHealth.nextMonthActions}</p>}
+            <PrintSection title="Method">
+              {methodChannels.length > 0 ? (
+                methodChannels.map((c) => (
+                  <PrintChannelRow key={c.key} label={c.label} entry={activeStrategy.channels[c.key]} />
+                ))
+              ) : (
+                <PrintEmptyNote>No channels marked active yet.</PrintEmptyNote>
+              )}
+            </PrintSection>
+
+            <PrintSection title="Scorecard">
+              {activeStrategy.leadConversionNotes && (
+                <div className="print-block" style={{ marginBottom: 14 }}>
+                  <p style={{ fontSize: 10.5, fontWeight: 600, marginBottom: 2 }}>Lead Conversion</p>
+                  <p style={{ fontSize: 10.5, color: "#3a332c", lineHeight: 1.55 }}>{activeStrategy.leadConversionNotes}</p>
+                </div>
+              )}
+              {latestEntry && latestStats && (
+                <div className="print-block" style={{ marginBottom: 14 }}>
+                  <p style={{ fontSize: 10.5, fontWeight: 600, marginBottom: 2 }}>
+                    Most Recent Scorecard Entry — {latestEntry.name || "Untitled"} ({formatDateRange(latestEntry.startDate, latestEntry.endDate)})
+                  </p>
+                  <p style={{ fontSize: 10.5, color: "#3a332c" }}>
+                    Total Spent: {formatMoney(latestStats.totalSpent)} · New Patient ROAS: {formatRatio(latestStats.newPatientROAS)} · All Patient ROAS: {formatRatio(latestStats.allPatientROAS)}
+                  </p>
+                </div>
+              )}
+              {hasBusinessHealth ? (
+                <div className="print-block">
+                  <p style={{ fontSize: 10.5, fontWeight: 600, marginBottom: 4 }}>Business &amp; Marketing Health</p>
+                  <p style={{ fontSize: 10.5, color: "#3a332c", marginBottom: 3 }}>
+                    Overall Revenue: {formatMoney(parseNum(bh.overallRevenue))} · Re-Booking Rate: {bh.reBookingRate || "—"}% · Avg Invoice: {bh.avgInvoiceValue ? formatMoney(parseNum(bh.avgInvoiceValue)) : "—"}
+                  </p>
+                  <p style={{ fontSize: 10.5, color: "#3a332c" }}>
+                    Total Members: {bh.totalMembers || "—"} · New Members: {bh.newMembers || "—"} · Referrals: {bh.patientReferrals || "—"} · Google Reviews: {bh.googleReviews || "—"}
+                  </p>
+                  {bh.whatWorked && <p style={{ fontSize: 10.5, color: "#3a332c", marginTop: 8 }}><strong>What worked:</strong> {bh.whatWorked}</p>}
+                  {bh.whatUnderperformed && <p style={{ fontSize: 10.5, color: "#3a332c", marginTop: 4 }}><strong>What underperformed:</strong> {bh.whatUnderperformed}</p>}
+                  {bh.nextMonthActions && <p style={{ fontSize: 10.5, color: "#3a332c", marginTop: 4 }}><strong>Next steps:</strong> {bh.nextMonthActions}</p>}
+                </div>
+              ) : (
+                !activeStrategy.leadConversionNotes && !latestEntry && <PrintEmptyNote>Nothing documented yet.</PrintEmptyNote>
+              )}
+            </PrintSection>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </>
   );
 }
