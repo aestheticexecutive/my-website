@@ -1,0 +1,24 @@
+// Generic per-member, per-tool JSON storage. Replaces the old localStorage-only
+// persistence used by the /members resource tools. Local dev runs against
+// SQLite (see .env.local). Before deploying, switch the datasource provider to
+// "postgresql" and point DATABASE_URL at the production Postgres connection
+// string, then run `npx prisma migrate deploy`.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model MemberToolData {
+  userId    String
+  toolKey   String
+  data      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([userId, toolKey])
+}

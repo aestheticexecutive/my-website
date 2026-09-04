@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   ArrowRight,
@@ -906,11 +907,99 @@ function LineChart({ series, format }: { series: LineSeries[]; format: MetricFor
   );
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateStoreData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+
+  let strategies: Strategy[];
+  if (Array.isArray(parsed.strategies)) {
+    strategies = (parsed.strategies as Record<string, unknown>[]).map((s) => ({
+      id: (s.id as string) ?? uid(),
+      name: (s.name as string) ?? "Untitled Strategy",
+      createdAt: (s.createdAt as string) ?? new Date().toISOString(),
+      updatedAt: (s.updatedAt as string) ?? (s.createdAt as string) ?? new Date().toISOString(),
+      aim: { ...defaultAim(), ...((s.aim as Partial<AimData>) ?? {}) },
+      channels: { ...defaultChannels(), ...((s.channels as Partial<Record<ChannelKey, ChannelEntry>>) ?? {}) },
+      leadConversionNotes: (s.leadConversionNotes as string) ?? "",
+    }));
+  } else if (parsed.aim || parsed.channels) {
+    // Migrate legacy single-strategy shape into the first named strategy.
+    const now = new Date().toISOString();
+    strategies = [
+      {
+        id: uid(),
+        name: "My Strategy",
+        createdAt: now,
+        updatedAt: now,
+        aim: { ...defaultAim(), ...((parsed.aim as Partial<AimData>) ?? {}) },
+        channels: { ...defaultChannels(), ...((parsed.channels as Partial<Record<ChannelKey, ChannelEntry>>) ?? {}) },
+        leadConversionNotes: (parsed.leadConversionNotes as string) ?? "",
+      },
+    ];
+  } else {
+    strategies = [];
+  }
+
+  const legacyEntries: Record<string, string>[] = Array.isArray(parsed.scorecardEntries)
+    ? (parsed.scorecardEntries as Record<string, string>[])
+    : [];
+  const scorecardEntries: ScorecardEntry[] = legacyEntries.map((e) => ({
+    id: e.id ?? uid(),
+    name: e.name ?? "",
+    startDate: e.startDate ?? (e.month ? `${e.month}-01` : todayISO()),
+    endDate: e.endDate ?? e.startDate ?? todayISO(),
+    adSpend: e.adSpend ?? "",
+    agencyFee: e.agencyFee ?? "",
+    newPatientRevenue: e.newPatientRevenue ?? "",
+    allPatientRevenue: e.allPatientRevenue ?? "",
+    impressions: e.impressions ?? "",
+    newLeads: e.newLeads ?? "",
+    newConsults: e.newConsults ?? "",
+    newProcedures: e.newProcedures ?? "",
+    overallVisits: e.overallVisits ?? "",
+    createdAt: e.createdAt ?? new Date().toISOString(),
+  }));
+
+  let businessHealth: BusinessHealthData;
+  if (parsed.businessHealth) {
+    businessHealth = { ...defaultBusinessHealth(), ...(parsed.businessHealth as Partial<BusinessHealthData>) };
+  } else {
+    // Migrate business-health fields that used to live on the most recent entry.
+    const legacySource = [...legacyEntries].sort((a, b) => ((a.startDate ?? "") < (b.startDate ?? "") ? 1 : -1))[0];
+    businessHealth = legacySource
+      ? {
+          newMembers: legacySource.newMembers ?? "",
+          totalMembers: legacySource.totalMembers ?? "",
+          patientReferrals: legacySource.patientReferrals ?? "",
+          googleReviews: legacySource.googleReviews ?? "",
+          featureRevenue: legacySource.featureRevenue ?? "",
+          productRevenue: legacySource.productRevenue ?? "",
+          productAttachRate: legacySource.productAttachRate ?? "",
+          overallRevenue: legacySource.overallRevenue ?? "",
+          reBookingRate: legacySource.reBookingRate ?? "",
+          avgInvoiceValue: legacySource.avgInvoiceValue ?? "",
+          igFollowers: legacySource.igFollowers ?? "",
+          tiktokFollowers: legacySource.tiktokFollowers ?? "",
+          whatWorked: legacySource.whatWorked ?? "",
+          whatUnderperformed: legacySource.whatUnderperformed ?? "",
+          nextMonthActions: legacySource.nextMonthActions ?? "",
+        }
+      : defaultBusinessHealth();
+  }
+
+  return { strategies, scorecardEntries, businessHealth };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MarketingStrategyToolPage() {
   const { user } = useUser();
-  const [data, setData] = useState<StoreData>(defaultData());
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "marketing_strategy",
+    defaultData(),
+    migrateStoreData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeStrategyId, setActiveStrategyId] = useState<string | null>(null);
   const [creatingStrategy, setCreatingStrategy] = useState(false);
@@ -925,105 +1014,7 @@ export default function MarketingStrategyToolPage() {
   const [openEntryId, setOpenEntryId] = useState<string | null>(null);
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_marketing_strategy_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        let strategies: Strategy[];
-        if (Array.isArray(parsed.strategies)) {
-          strategies = parsed.strategies.map((s: Record<string, unknown>) => ({
-            id: (s.id as string) ?? uid(),
-            name: (s.name as string) ?? "Untitled Strategy",
-            createdAt: (s.createdAt as string) ?? new Date().toISOString(),
-            updatedAt: (s.updatedAt as string) ?? (s.createdAt as string) ?? new Date().toISOString(),
-            aim: { ...defaultAim(), ...((s.aim as Partial<AimData>) ?? {}) },
-            channels: { ...defaultChannels(), ...((s.channels as Partial<Record<ChannelKey, ChannelEntry>>) ?? {}) },
-            leadConversionNotes: (s.leadConversionNotes as string) ?? "",
-          }));
-        } else if (parsed.aim || parsed.channels) {
-          // Migrate legacy single-strategy shape into the first named strategy.
-          const now = new Date().toISOString();
-          strategies = [
-            {
-              id: uid(),
-              name: "My Strategy",
-              createdAt: now,
-              updatedAt: now,
-              aim: { ...defaultAim(), ...(parsed.aim ?? {}) },
-              channels: { ...defaultChannels(), ...(parsed.channels ?? {}) },
-              leadConversionNotes: parsed.leadConversionNotes ?? "",
-            },
-          ];
-        } else {
-          strategies = [];
-        }
-        const legacyEntries: Record<string, string>[] = Array.isArray(parsed.scorecardEntries) ? parsed.scorecardEntries : [];
-        const scorecardEntries: ScorecardEntry[] = legacyEntries.map((e) => ({
-          id: e.id ?? uid(),
-          name: e.name ?? "",
-          startDate: e.startDate ?? (e.month ? `${e.month}-01` : todayISO()),
-          endDate: e.endDate ?? e.startDate ?? todayISO(),
-          adSpend: e.adSpend ?? "",
-          agencyFee: e.agencyFee ?? "",
-          newPatientRevenue: e.newPatientRevenue ?? "",
-          allPatientRevenue: e.allPatientRevenue ?? "",
-          impressions: e.impressions ?? "",
-          newLeads: e.newLeads ?? "",
-          newConsults: e.newConsults ?? "",
-          newProcedures: e.newProcedures ?? "",
-          overallVisits: e.overallVisits ?? "",
-          createdAt: e.createdAt ?? new Date().toISOString(),
-        }));
-
-        let businessHealth: BusinessHealthData;
-        if (parsed.businessHealth) {
-          businessHealth = { ...defaultBusinessHealth(), ...parsed.businessHealth };
-        } else {
-          // Migrate business-health fields that used to live on the most recent entry.
-          const legacySource = [...legacyEntries].sort((a, b) => ((a.startDate ?? "") < (b.startDate ?? "") ? 1 : -1))[0];
-          businessHealth = legacySource
-            ? {
-                newMembers: legacySource.newMembers ?? "",
-                totalMembers: legacySource.totalMembers ?? "",
-                patientReferrals: legacySource.patientReferrals ?? "",
-                googleReviews: legacySource.googleReviews ?? "",
-                featureRevenue: legacySource.featureRevenue ?? "",
-                productRevenue: legacySource.productRevenue ?? "",
-                productAttachRate: legacySource.productAttachRate ?? "",
-                overallRevenue: legacySource.overallRevenue ?? "",
-                reBookingRate: legacySource.reBookingRate ?? "",
-                avgInvoiceValue: legacySource.avgInvoiceValue ?? "",
-                igFollowers: legacySource.igFollowers ?? "",
-                tiktokFollowers: legacySource.tiktokFollowers ?? "",
-                whatWorked: legacySource.whatWorked ?? "",
-                whatUnderperformed: legacySource.whatUnderperformed ?? "",
-                nextMonthActions: legacySource.nextMonthActions ?? "",
-              }
-            : defaultBusinessHealth();
-        }
-
-        setData({ strategies, scorecardEntries, businessHealth });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -1031,13 +1022,10 @@ export default function MarketingStrategyToolPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 

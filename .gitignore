@@ -27,3 +27,7 @@ Thumbs.db
 next-env.d.ts
 .clerk/
 .claude/
+
+# Prisma local dev database
+/prisma/*.db
+/prisma/*.db-journal

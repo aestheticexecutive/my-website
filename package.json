@@ -6,10 +6,14 @@
     "dev": "rm -f proxy.ts && next dev",
     "build": "rm -f proxy.ts && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.4.1",
+    "@prisma/client": "^6.12.0",
     "@stripe/stripe-js": "^9.6.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
@@ -27,7 +31,13 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "prisma": "^6.12.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "@prisma/client@6.12.0": true,
+    "prisma@6.12.0": true,
+    "@prisma/engines@6.12.0": true
   }
 }
