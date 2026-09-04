@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Printer,
@@ -208,10 +208,6 @@ interface CompletionEntry {
 
 type CompletionMap = Record<string, CompletionEntry[]>;
 
-interface StoreData {
-  completions: CompletionMap;
-}
-
 function uid() {
   return Math.random().toString(36).slice(2, 11);
 }
@@ -251,43 +247,30 @@ function daysAgo(iso: string): number {
   return Math.floor((Date.now() - then) / (1000 * 60 * 60 * 24));
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateDowntimeData(raw: unknown): CompletionMap {
+  const parsed = (raw ?? {}) as { completions?: unknown };
+  return parsed.completions && typeof parsed.completions === "object"
+    ? (parsed.completions as CompletionMap)
+    : {};
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function DowntimeRevenueTrackerPage() {
-  const { user } = useUser();
-  const [completions, setCompletions] = useState<CompletionMap>({});
+  const { data: completions, setData: setCompletions, lastSaved, saveNow } = useServerSyncedState<CompletionMap>(
+    "downtime_tracker",
+    {},
+    migrateDowntimeData
+  );
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({ [CATEGORIES[0].id]: true });
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
   const [draftDate, setDraftDate] = useState<Record<string, string>>({});
   const [draftNote, setDraftNote] = useState<Record<string, string>>({});
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_downtime_tracker_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed: StoreData & { _savedAt?: string } = JSON.parse(raw);
-        setCompletions(parsed.completions && typeof parsed.completions === "object" ? parsed.completions : {});
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ completions, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [completions, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -295,13 +278,10 @@ export default function DowntimeRevenueTrackerPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ completions, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, completions]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 
@@ -400,7 +380,7 @@ export default function DowntimeRevenueTrackerPage() {
           <h1 className="font-display text-3xl md:text-4xl font-light mb-3" style={{ color: "#fffdf6" }}>Downtime Revenue Tracker</h1>
           <p className="text-sm max-w-2xl leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.5)" }}>
             100 revenue actions across 7 areas. Log a completion with a date and a note any
-            time your team does one — and log it again the next time it's worth repeating.
+            time your team does one — and log it again the next time it&apos;s worth repeating.
           </p>
 
           <div className="flex flex-wrap items-center gap-6">

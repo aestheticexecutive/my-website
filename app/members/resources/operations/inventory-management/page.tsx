@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -192,16 +192,29 @@ function computeUtilization(itemId: string, start: string, end: string, counts: 
   return { opening, received, closing, usedUnits };
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateInventoryData(raw: unknown): InventoryData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return {
+    items: Array.isArray(parsed.items) ? (parsed.items as InventoryItem[]) : [],
+    counts: Array.isArray(parsed.counts) ? (parsed.counts as CountEntry[]) : [],
+    receipts: Array.isArray(parsed.receipts) ? (parsed.receipts as ReceiptEntry[]) : [],
+  };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function InventoryManagementPage() {
-  const { user } = useUser();
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<InventoryData>(
+    "inventory",
+    { items: [], counts: [], receipts: [] },
+    migrateInventoryData
+  );
   const [view, setView] = useState<"items" | "activity" | "reports">("items");
-  const [data, setData] = useState<InventoryData>({ items: [], counts: [], receipts: [] });
   const [editingField, setEditingField] = useState<string | null>(null); // `${itemId}:${field}`
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
 
   // Log Activity state
@@ -214,47 +227,16 @@ export default function InventoryManagementPage() {
   const [rangeStart, setRangeStart] = useState<string>(getPresetRange("thisMonth").start);
   const [rangeEnd, setRangeEnd] = useState<string>(getPresetRange("thisMonth").end);
 
-  const storageKey = user ? `ae_inventory_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({
-          items: Array.isArray(parsed.items) ? parsed.items : [],
-          counts: Array.isArray(parsed.counts) ? parsed.counts : [],
-          receipts: Array.isArray(parsed.receipts) ? parsed.receipts : [],
-        });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
-
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
     return () => clearInterval(t);
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   // ── Item CRUD ──
 
@@ -658,7 +640,7 @@ export default function InventoryManagementPage() {
                       <PackagePlus size={14} style={{ color: "#a28c75" }} />
                       <div>
                         <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Receive Stock</h2>
-                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Log new stock as it arrives from orders — it's added to on-hand immediately.</p>
+                        <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>Log new stock as it arrives from orders — it&apos;s added to on-hand immediately.</p>
                       </div>
                     </div>
                     <button onClick={addReceipt} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"

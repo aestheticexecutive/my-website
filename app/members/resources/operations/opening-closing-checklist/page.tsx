@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft, Plus, Trash2, Printer, Eye, Settings2, ToggleLeft, ToggleRight, Save, Check } from "lucide-react";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -105,6 +105,35 @@ function isValidSections(val: unknown): val is ChecklistSection[] {
   );
 }
 
+// ── Server-synced data shape ─────────────────────────────────────────────────
+
+interface ChecklistData {
+  practiceName: string;
+  tagline: string;
+  footerNote: string;
+  accentColor: string;
+  sections: ChecklistSection[];
+}
+
+const defaultChecklistData: ChecklistData = {
+  practiceName: "Your Practice Name",
+  tagline: "",
+  footerNote: "Report any incomplete items to the Practice Manager immediately.",
+  accentColor: "#4a0018",
+  sections: defaultSections,
+};
+
+function migrateChecklistData(raw: unknown): ChecklistData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return {
+    practiceName: typeof parsed.practiceName === "string" ? parsed.practiceName : defaultChecklistData.practiceName,
+    tagline: typeof parsed.tagline === "string" ? parsed.tagline : defaultChecklistData.tagline,
+    footerNote: typeof parsed.footerNote === "string" ? parsed.footerNote : defaultChecklistData.footerNote,
+    accentColor: typeof parsed.accentColor === "string" ? parsed.accentColor : defaultChecklistData.accentColor,
+    sections: isValidSections(parsed.sections) ? parsed.sections : defaultChecklistData.sections,
+  };
+}
+
 function relativeTime(iso: string): string {
   const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
   if (diff < 10) return "just now";
@@ -116,48 +145,43 @@ function relativeTime(iso: string): string {
 // ── Component ──────────────────────────────────────────────────────────────
 
 export default function OpeningClosingChecklistPage() {
-  const { user } = useUser();
+  const { data, setData, status, lastSaved, saveNow } = useServerSyncedState<ChecklistData>(
+    "checklist",
+    defaultChecklistData,
+    migrateChecklistData
+  );
+
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
-  const [practiceName, setPracticeName] = useState("Your Practice Name");
-  const [tagline, setTagline] = useState("");
-  const [footerNote, setFooterNote] = useState("Report any incomplete items to the Practice Manager immediately.");
-  const [accentColor, setAccentColor] = useState("#4a0018");
-  const [sections, setSections] = useState<ChecklistSection[]>(defaultSections);
+  const [practiceName, setPracticeName] = useState(defaultChecklistData.practiceName);
+  const [tagline, setTagline] = useState(defaultChecklistData.tagline);
+  const [footerNote, setFooterNote] = useState(defaultChecklistData.footerNote);
+  const [accentColor, setAccentColor] = useState(defaultChecklistData.accentColor);
+  const [sections, setSections] = useState<ChecklistSection[]>(defaultChecklistData.sections);
 
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
 
-  const storageKey = user ? `ae_checklist_${user.id}` : null;
-
-  // Load saved checklist on mount
+  // Seed the editable fields from the server-synced data exactly once, the
+  // first time loading finishes (not on every subsequent data change, since
+  // this page pushes its own edits back into `data` below).
+  const hasSeededRef = useRef(false);
   useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (typeof parsed.practiceName === "string") setPracticeName(parsed.practiceName);
-        if (typeof parsed.tagline === "string") setTagline(parsed.tagline);
-        if (typeof parsed.footerNote === "string") setFooterNote(parsed.footerNote);
-        if (typeof parsed.accentColor === "string") setAccentColor(parsed.accentColor);
-        if (isValidSections(parsed.sections)) setSections(parsed.sections);
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
+    if (status === "loading" || hasSeededRef.current) return;
+    setPracticeName(data.practiceName);
+    setTagline(data.tagline);
+    setFooterNote(data.footerNote);
+    setAccentColor(data.accentColor);
+    setSections(data.sections);
+    hasSeededRef.current = true;
+  }, [status, data]);
 
-  // Debounced autosave
+  // Push edits back into the server-synced blob (the hook debounces the
+  // actual save), once seeded.
   useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ practiceName, tagline, footerNote, accentColor, sections, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [practiceName, tagline, footerNote, accentColor, sections, storageKey]);
+    if (!hasSeededRef.current) return;
+    setData({ practiceName, tagline, footerNote, accentColor, sections });
+  }, [practiceName, tagline, footerNote, accentColor, sections, setData]);
 
   // Refresh relative time display every 30s
   useEffect(() => {
@@ -166,13 +190,10 @@ export default function OpeningClosingChecklistPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ practiceName, tagline, footerNote, accentColor, sections, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, practiceName, tagline, footerNote, accentColor, sections]);
+  }, [saveNow]);
 
   const toggleItem = useCallback((sectionId: string, itemId: string) => {
     setSections((prev) =>

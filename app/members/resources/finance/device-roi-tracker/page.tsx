@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -278,11 +278,21 @@ function computeStats(device: Device): DeviceStats {
   };
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateDeviceRoiData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return { devices: Array.isArray(parsed.devices) ? (parsed.devices as Device[]) : [] };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function DeviceRoiTrackerPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>({ devices: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "device_roi",
+    { devices: [] },
+    migrateDeviceRoiData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
@@ -300,32 +310,7 @@ export default function DeviceRoiTrackerPage() {
   });
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_device_roi_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({ devices: Array.isArray(parsed.devices) ? parsed.devices : [] });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -333,13 +318,10 @@ export default function DeviceRoiTrackerPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 
@@ -637,7 +619,7 @@ export default function DeviceRoiTrackerPage() {
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-[10px] leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Leave down payment at $0 if you're financing the entire cost with monthly payments only.</p>
+                    <p className="text-[10px] leading-relaxed" style={{ color: "rgba(255,253,246,0.4)" }}>Leave down payment at $0 if you&apos;re financing the entire cost with monthly payments only.</p>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
                         <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Down Payment</label>

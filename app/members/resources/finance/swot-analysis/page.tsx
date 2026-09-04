@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -166,43 +166,28 @@ function relativeTime(iso: string): string {
   return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateSwotData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return { analyses: Array.isArray(parsed.analyses) ? (parsed.analyses as SwotAnalysis[]) : [] };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function SwotAnalysisPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>({ analyses: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "swot_analyses",
+    { analyses: [] },
+    migrateSwotData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
   const [itemDrafts, setItemDrafts] = useState<Record<Quadrant, string>>({ strengths: "", weaknesses: "", opportunities: "", threats: "" });
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_swot_analyses_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({ analyses: Array.isArray(parsed.analyses) ? parsed.analyses : [] });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -210,13 +195,10 @@ export default function SwotAnalysisPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 

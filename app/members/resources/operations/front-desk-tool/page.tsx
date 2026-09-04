@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -147,43 +147,28 @@ function relativeTime(iso: string): string {
 
 type BulletField = "responsibilities" | "goals" | "rewardIdeas";
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateFrontDeskData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return { plans: Array.isArray(parsed.plans) ? (parsed.plans as FrontDeskPlan[]) : [] };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function FrontDeskToolPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>({ plans: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "front_desk_plans",
+    { plans: [] },
+    migrateFrontDeskData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
   const [drafts, setDrafts] = useState<Record<BulletField, string>>({ responsibilities: "", goals: "", rewardIdeas: "" });
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_front_desk_plans_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({ plans: Array.isArray(parsed.plans) ? parsed.plans : [] });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -191,13 +176,10 @@ export default function FrontDeskToolPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 
@@ -639,17 +621,17 @@ export default function FrontDeskToolPage() {
                 <p className="text-xs tracking-[0.2em] uppercase mb-1" style={{ color: "rgba(162,140,117,0.6)" }}>Step 6 · Tracking + Feedback System</p>
                 <div className="space-y-2">
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What you'll track</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What you&apos;ll track</label>
                     <input type="text" value={active.whatToTrack} onChange={(e) => updateField(active.id, "whatToTrack", e.target.value)}
                       placeholder="e.g. rebooking %, upsell revenue, reviews" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How often you'll review</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How often you&apos;ll review</label>
                     <input type="text" value={active.reviewCadence} onChange={(e) => updateField(active.id, "reviewCadence", e.target.value)}
                       placeholder="e.g. weekly huddles, monthly 1:1s" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How you'll celebrate wins + coach gaps</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>How you&apos;ll celebrate wins + coach gaps</label>
                     <textarea rows={2} value={active.celebratePlan} onChange={(e) => updateField(active.id, "celebratePlan", e.target.value)}
                       placeholder="e.g. incentives, positive feedback" className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none placeholder:opacity-30" style={inputStyle} />
                   </div>

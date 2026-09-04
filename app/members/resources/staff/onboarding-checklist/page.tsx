@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -186,43 +186,32 @@ function relativeTime(iso: string): string {
   return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 }
 
+function defaultData(): StoreData {
+  return { checklists: [] };
+}
+
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateOnboardingChecklistData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return { checklists: Array.isArray(parsed.checklists) ? (parsed.checklists as OnboardingChecklist[]) : [] };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function OnboardingChecklistPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>({ checklists: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "onboarding_checklists",
+    defaultData(),
+    migrateOnboardingChecklistData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
   const [editingField, setEditingField] = useState<string | null>(null); // `${scope}:${id}`
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_onboarding_checklists_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({ checklists: Array.isArray(parsed.checklists) ? parsed.checklists : [] });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -230,13 +219,10 @@ export default function OnboardingChecklistPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 

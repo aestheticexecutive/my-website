@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -150,50 +150,35 @@ function computeGroupStats(entries: ConsultEntry[], keyFn: (e: ConsultEntry) => 
     .sort((a, b) => b.rate - a.rate || b.total - a.total);
 }
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateTrackerData(raw: unknown): TrackerData {
+  const parsed = (raw ?? {}) as Partial<Record<keyof TrackerData, unknown>>;
+  return {
+    providers: Array.isArray(parsed.providers) ? (parsed.providers as string[]) : [],
+    consultTypes: Array.isArray(parsed.consultTypes) ? (parsed.consultTypes as string[]) : DEFAULT_CONSULT_TYPES,
+    entries: Array.isArray(parsed.entries) ? (parsed.entries as ConsultEntry[]) : [],
+    notes: Array.isArray(parsed.notes) ? (parsed.notes as NoteEntry[]) : [],
+  };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function ConsultationConversionTrackerPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<TrackerData>({ providers: [], consultTypes: DEFAULT_CONSULT_TYPES, entries: [], notes: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<TrackerData>(
+    "consult_tracker",
+    { providers: [], consultTypes: DEFAULT_CONSULT_TYPES, entries: [], notes: [] },
+    migrateTrackerData
+  );
   const [view, setView] = useState<"log" | "report">("log");
   const [newProvider, setNewProvider] = useState("");
   const [newType, setNewType] = useState("");
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
 
   const [preset, setPreset] = useState<Preset>("thisMonth");
   const [rangeStart, setRangeStart] = useState<string>(getPresetRange("thisMonth").start);
   const [rangeEnd, setRangeEnd] = useState<string>(getPresetRange("thisMonth").end);
-
-  const storageKey = user ? `ae_consult_tracker_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({
-          providers: Array.isArray(parsed.providers) ? parsed.providers : [],
-          consultTypes: Array.isArray(parsed.consultTypes) ? parsed.consultTypes : DEFAULT_CONSULT_TYPES,
-          entries: Array.isArray(parsed.entries) ? parsed.entries : [],
-          notes: Array.isArray(parsed.notes) ? parsed.notes : [],
-        });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -201,13 +186,10 @@ export default function ConsultationConversionTrackerPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   // ── Providers / types ──
 
@@ -355,7 +337,7 @@ export default function ConsultationConversionTrackerPage() {
                 <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Providers</h2>
               </div>
               <p className="text-xs mb-5" style={{ color: "rgba(255,253,246,0.45)" }}>
-                Add each provider who runs consultations — you'll select from this list when logging entries.
+                Add each provider who runs consultations — you&apos;ll select from this list when logging entries.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {data.providers.length === 0 && (
@@ -418,7 +400,7 @@ export default function ConsultationConversionTrackerPage() {
                 <div>
                   <h2 className="text-sm font-medium mb-0.5" style={{ color: "#fffdf6" }}>Consultation Log</h2>
                   <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
-                    One row per provider + service type combination for a given day. Enter how many purchased and how many didn't.
+                    One row per provider + service type combination for a given day. Enter how many purchased and how many didn&apos;t.
                   </p>
                 </div>
                 <button onClick={addEntry} className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-lg border transition-colors flex-shrink-0"
@@ -430,7 +412,7 @@ export default function ConsultationConversionTrackerPage() {
               {sortedEntries.length === 0 ? (
                 <div className="px-6 py-8">
                   <p className="text-xs italic text-center" style={{ color: "rgba(255,253,246,0.28)" }}>
-                    No consultations logged yet. Click "Add Consultation" to start tracking.
+                    No consultations logged yet. Click &quot;Add Consultation&quot; to start tracking.
                   </p>
                 </div>
               ) : (
@@ -516,7 +498,7 @@ export default function ConsultationConversionTrackerPage() {
                   <div>
                     <h2 className="text-sm font-medium" style={{ color: "#fffdf6" }}>Notes</h2>
                     <p className="text-xs" style={{ color: "rgba(255,253,246,0.45)" }}>
-                      Attach a note to any date — e.g. explain why June's conversion rate was what it was. Notes show up in reports covering that date.
+                      Attach a note to any date — e.g. explain why June&apos;s conversion rate was what it was. Notes show up in reports covering that date.
                     </p>
                   </div>
                 </div>

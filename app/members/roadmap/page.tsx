@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Compass, Download, ExternalLink, RotateCcw } from "lucide-react";
 import {
@@ -13,6 +12,14 @@ import {
   type RoadmapItem,
   type RoadmapResult,
 } from "@/lib/roadmap-data";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
+
+interface RoadmapData {
+  answers: Answers;
+  completed: boolean;
+}
+
+const defaultRoadmapData: RoadmapData = { answers: emptyAnswers, completed: false };
 
 function ItemCard({ item, number }: { item: RoadmapItem; number: number }) {
   const isDownload = item.href.startsWith("/downloads/") || item.href.startsWith("/templates/");
@@ -82,52 +89,26 @@ const ANSWER_LABEL: Record<string, Record<string, string>> = {
 };
 
 export default function RoadmapPage() {
-  const { user } = useUser();
-  const [answers, setAnswers] = useState<Answers>(emptyAnswers);
+  const { data, setData, status } = useServerSyncedState<RoadmapData>("roadmap", defaultRoadmapData);
+  const { answers, completed } = data;
   const [step, setStep] = useState(0);
-  const [completed, setCompleted] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-
-  const storageKey = user ? `ae_roadmap_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed.answers) setAnswers({ ...emptyAnswers, ...parsed.answers });
-        if (parsed.completed) setCompleted(true);
-      }
-    } catch {}
-    setLoaded(true);
-  }, [storageKey]);
-
-  function persist(nextAnswers: Answers, nextCompleted: boolean) {
-    if (!storageKey) return;
-    localStorage.setItem(storageKey, JSON.stringify({ answers: nextAnswers, completed: nextCompleted }));
-  }
 
   function selectAnswer(questionId: keyof Answers, value: string) {
     const next = { ...answers, [questionId]: value } as Answers;
-    setAnswers(next);
     if (step < questions.length - 1) {
       setStep(step + 1);
-      persist(next, false);
+      setData({ answers: next, completed: false });
     } else {
-      setCompleted(true);
-      persist(next, true);
+      setData({ answers: next, completed: true });
     }
   }
 
   function retake() {
-    setAnswers(emptyAnswers);
     setStep(0);
-    setCompleted(false);
-    persist(emptyAnswers, false);
+    setData(defaultRoadmapData);
   }
 
-  if (!loaded) return null;
+  if (status === "loading") return null;
 
   const result: RoadmapResult | null = completed ? buildRoadmap(answers) : null;
 

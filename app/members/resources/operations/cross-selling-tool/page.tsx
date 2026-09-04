@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -152,43 +152,28 @@ function relativeTime(iso: string): string {
 
 type BulletField = "combos" | "toolsToBuild" | "goals";
 
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateCrossSellData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as { plans?: unknown };
+  return { plans: Array.isArray(parsed.plans) ? (parsed.plans as CrossSellPlan[]) : [] };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function CrossSellingToolPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>({ plans: [] });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "cross_sell_plans",
+    { plans: [] },
+    migrateCrossSellData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
   const [drafts, setDrafts] = useState<Record<BulletField, string>>({ combos: "", toolsToBuild: "", goals: "" });
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_cross_sell_plans_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({ plans: Array.isArray(parsed.plans) ? parsed.plans : [] });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -196,13 +181,10 @@ export default function CrossSellingToolPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   const handlePrint = () => window.print();
 
@@ -560,12 +542,12 @@ export default function CrossSellingToolPage() {
                       placeholder="% (estimate if needed)" className="w-full text-xs rounded px-2 py-1.5 outline-none placeholder:opacity-30" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What's working</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>What&apos;s working</label>
                     <textarea rows={2} value={active.whatsWorking} onChange={(e) => updateField(active.id, "whatsWorking", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Where it's falling short</label>
+                    <label className="text-[10px] mb-1 block" style={{ color: "rgba(255,253,246,0.45)" }}>Where it&apos;s falling short</label>
                     <textarea rows={2} value={active.whatsFallingShort} onChange={(e) => updateField(active.id, "whatsFallingShort", e.target.value)}
                       className="w-full text-xs rounded px-2 py-1.5 outline-none resize-none" style={inputStyle} />
                   </div>
@@ -579,7 +561,7 @@ export default function CrossSellingToolPage() {
                     </label>
                     <label className="flex items-center gap-2.5 cursor-pointer">
                       <input type="checkbox" checked={active.confidentBenefit} onChange={() => updateField(active.id, "confidentBenefit", !active.confidentBenefit)} className="w-3.5 h-3.5 accent-[#a28c75]" />
-                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.75)" }}>They're made with confidence and patient benefit in mind</span>
+                      <span className="text-xs" style={{ color: "rgba(255,253,246,0.75)" }}>They&apos;re made with confidence and patient benefit in mind</span>
                     </label>
                   </div>
                 </div>
@@ -770,7 +752,7 @@ export default function CrossSellingToolPage() {
                   <div style={{ fontSize: "8.5pt", color: "#333", marginBottom: "6px" }}>
                     <strong>% of patients with add-on:</strong> {active.pctAddOn || "—"}
                   </div>
-                  <div style={{ fontSize: "8.5pt", color: "#333", marginBottom: "4px" }}><strong>What's working:</strong> {active.whatsWorking || "—"}</div>
+                  <div style={{ fontSize: "8.5pt", color: "#333", marginBottom: "4px" }}><strong>What&apos;s working:</strong> {active.whatsWorking || "—"}</div>
                   <div style={{ fontSize: "8.5pt", color: "#333", marginBottom: "8px" }}><strong>Falling short:</strong> {active.whatsFallingShort || "—"}</div>
                   <div style={{ fontSize: "8.5pt", color: active.rightTiming ? "#1a1a1a" : "#ccc" }}>{active.rightTiming ? "☑" : "☐"} Recommendations made at the right times</div>
                   <div style={{ fontSize: "8.5pt", color: active.confidentBenefit ? "#1a1a1a" : "#ccc" }}>{active.confidentBenefit ? "☑" : "☐"} Made with confidence and patient benefit in mind</div>

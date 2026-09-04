@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useCallback, useMemo, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+import React, { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Building2,
@@ -161,6 +161,21 @@ function defaultScenario(name: string): Scenario {
 
 function defaultData(): StoreData {
   return { scenarios: [] };
+}
+
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateExpansionFeasibilityData(raw: unknown): StoreData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  if (Array.isArray(parsed.scenarios)) {
+    const scenarios: Scenario[] = (parsed.scenarios as (Partial<Scenario> & Record<string, unknown>)[]).map((s) => ({
+      ...defaultScenario(""),
+      ...s,
+      staff: Array.isArray(s.staff) ? (s.staff as StaffPosition[]) : [],
+    }));
+    return { scenarios };
+  }
+  return defaultData();
 }
 
 // ── Financial model ──────────────────────────────────────────────────────────
@@ -467,8 +482,11 @@ const TABS: { key: Tab; label: string; icon: typeof Settings2 }[] = [
 ];
 
 export default function ExpansionFeasibilityPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<StoreData>(defaultData());
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<StoreData>(
+    "expansion_feasibility",
+    defaultData(),
+    migrateExpansionFeasibilityData
+  );
   const [view, setView] = useState<"list" | "editor">("list");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
@@ -478,47 +496,12 @@ export default function ExpansionFeasibilityPage() {
   const [tab, setTab] = useState<Tab>("setup");
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
-
-  const storageKey = user ? `ae_expansion_feasibility_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed.scenarios)) {
-          const scenarios: Scenario[] = parsed.scenarios.map((s: Partial<Scenario> & Record<string, unknown>) => ({
-            ...defaultScenario(""),
-            ...s,
-            staff: Array.isArray(s.staff) ? s.staff : [],
-          }));
-          setData({ scenarios });
-        }
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   // ── Scenario CRUD ──
 

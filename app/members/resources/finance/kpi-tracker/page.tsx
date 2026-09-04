@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   TrendingUp,
@@ -154,41 +154,17 @@ function kpiHasData(kpiId: string, monthData: MonthData): boolean {
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function KpiTrackerPage() {
-  const { user } = useUser();
-  const [data, setData] = useState<UserKpiData>({ teams: [], months: {} });
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<UserKpiData>(
+    "kpi",
+    { teams: [], months: {} }
+  );
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonthKey());
   const [compareMonth, setCompareMonth] = useState(getPrevMonthKey(getCurrentMonthKey()));
   const [view, setView] = useState<"entry" | "compare">("entry");
   const [newTeam, setNewTeam] = useState("");
   const [openNotes, setOpenNotes] = useState<Set<string>>(new Set());
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0); // forces relative-time refresh
-
-  const storageKey = user ? `ae_kpi_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData(parsed);
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  // Auto-save debounced
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   // Refresh relative time display every 30s
   useEffect(() => {
@@ -197,13 +173,10 @@ export default function KpiTrackerPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   // ── Entry operations ──
 
@@ -269,7 +242,8 @@ export default function KpiTrackerPage() {
   function toggleNotes(uid: string) {
     setOpenNotes((prev) => {
       const next = new Set(prev);
-      next.has(uid) ? next.delete(uid) : next.add(uid);
+      if (next.has(uid)) next.delete(uid);
+      else next.add(uid);
       return next;
     });
   }

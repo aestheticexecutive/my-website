@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { useServerSyncedState } from "@/lib/useServerSyncedState";
 import {
   ArrowLeft,
   Plus,
@@ -79,45 +79,34 @@ function emptyContentFor(sections: AgendaSection[]): Record<string, string> {
   return content;
 }
 
+function defaultData(): MeetingNotesData {
+  return { sections: defaultSections, meetings: [] };
+}
+
+// ── Migration ────────────────────────────────────────────────────────────────
+
+function migrateMeetingNotesData(raw: unknown): MeetingNotesData {
+  const parsed = (raw ?? {}) as Record<string, unknown>;
+  return {
+    sections: Array.isArray(parsed.sections) && parsed.sections.length > 0 ? (parsed.sections as AgendaSection[]) : defaultSections,
+    meetings: Array.isArray(parsed.meetings) ? (parsed.meetings as MeetingEntry[]) : [],
+  };
+}
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MeetingNotesPage() {
-  const { user } = useUser();
+  const { data, setData, lastSaved, saveNow } = useServerSyncedState<MeetingNotesData>(
+    "meeting_notes",
+    defaultData(),
+    migrateMeetingNotesData
+  );
   const [view, setView] = useState<"notes" | "sections">("notes");
-  const [data, setData] = useState<MeetingNotesData>({ sections: defaultSections, meetings: [] });
   const [editingSectionId, setEditingSectionId] = useState<string | null>(null);
   const [expandedMeetingId, setExpandedMeetingId] = useState<string | null>(null);
 
   const [savedFlash, setSavedFlash] = useState(false);
-  const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [, setTick] = useState(0);
-
-  const storageKey = user ? `ae_meeting_notes_${user.id}` : null;
-
-  useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setData({
-          sections: Array.isArray(parsed.sections) && parsed.sections.length > 0 ? parsed.sections : defaultSections,
-          meetings: Array.isArray(parsed.meetings) ? parsed.meetings : [],
-        });
-        if (parsed._savedAt) setLastSaved(parsed._savedAt);
-      }
-    } catch {}
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!storageKey) return;
-    const t = setTimeout(() => {
-      const now = new Date().toISOString();
-      localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-      setLastSaved(now);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [data, storageKey]);
 
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30000);
@@ -125,13 +114,10 @@ export default function MeetingNotesPage() {
   }, []);
 
   const handleSave = useCallback(() => {
-    if (!storageKey) return;
-    const now = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify({ ...data, _savedAt: now }));
-    setLastSaved(now);
+    saveNow();
     setSavedFlash(true);
     setTimeout(() => setSavedFlash(false), 2000);
-  }, [storageKey, data]);
+  }, [saveNow]);
 
   // ── Sections ──
 
