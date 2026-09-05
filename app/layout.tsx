@@ -38,7 +38,17 @@ export default function RootLayout({
       className={`${tenorSans.variable} ${beVietnamPro.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider
+          localization={{
+            signIn: {
+              start: {
+                title: "Sign in to Aesthetic Executive",
+              },
+            },
+          }}
+        >
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
