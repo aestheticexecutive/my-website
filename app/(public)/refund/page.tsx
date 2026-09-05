@@ -59,7 +59,7 @@ const sections = [
         <p>A valid credit card must be kept on file to process:</p>
         <ul className="list-disc pl-5 space-y-1 mt-2">
           <li>Membership payments (including auto-renewals)</li>
-          <li>One-on-one meeting fees — charged the day of your scheduled session</li>
+          <li>One-on-one meeting fees — charged upon scheduling the session</li>
           <li>Project-based invoices</li>
         </ul>
         <p className="mt-3">By booking a membership, a one-on-one session, or a project, you authorize Aesthetic Executive to charge the card on file for the applicable amount, including renewals, no-show/late-cancellation fees, and full-duration meeting charges as described above.</p>
