@@ -53,7 +53,7 @@ const sections = [
     id: "payment-method",
     title: "5. Payment Method on File",
     body: (
-      <p>A valid credit card must be kept on file to process membership payments, one-on-one session fees (charged the day of the scheduled session), and project-based invoices. By using our services, you authorize us to charge the card on file for all applicable fees.</p>
+      <p>A valid credit card must be kept on file to process membership payments, one-on-one session fees (charged upon booking the session), and project-based invoices. By using our services, you authorize us to charge the card on file for all applicable fees.</p>
     ),
   },
   {
