@@ -1,7 +1,13 @@
 import { SignUp } from "@clerk/nextjs";
 import Link from "next/link";
 
-export default function SignUpPage() {
+export default async function SignUpPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirect_url?: string }>;
+}) {
+  const { redirect_url } = await searchParams;
+
   return (
     <div className="min-h-screen bg-blush flex flex-col items-center justify-center px-4 py-16">
       <div className="mb-8 text-center">
@@ -17,7 +23,7 @@ export default function SignUpPage() {
           Create your account to get started with your membership.
         </p>
       </div>
-      <SignUp />
+      <SignUp forceRedirectUrl={redirect_url} />
     </div>
   );
 }
