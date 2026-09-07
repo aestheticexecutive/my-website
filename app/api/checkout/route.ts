@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { stripe, STRIPE_PRICE_ID } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 
@@ -7,6 +7,11 @@ export async function POST() {
 
   if (!userId) {
     return new NextResponse("Unauthorized", { status: 401 });
+  }
+
+  const user = await currentUser();
+  if (user?.publicMetadata?.profileComplete !== true) {
+    return NextResponse.json({ error: "profile_incomplete" }, { status: 403 });
   }
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";

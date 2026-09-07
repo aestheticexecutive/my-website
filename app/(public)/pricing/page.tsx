@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 import { MembershipLibraryList } from "@/components/ui/MembershipLibraryList";
+import { SubscribeButton } from "@/components/ui/SubscribeButton";
 import { DISCOVERY_CALL_URL, ONE_ON_ONE_BOOKING_URL } from "@/lib/constants";
 import {
   CheckCircle2,
@@ -266,7 +265,6 @@ export default function PricingPage() {
               <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-normal text-[#fffdf6] leading-[1.05]">
                 Full Access Membership
               </h2>
-              <ComingSoonBadge />
             </div>
           </div>
 
@@ -311,7 +309,7 @@ export default function PricingPage() {
                     Billed annually — $2,997/year
                   </p>
                   <p className="font-sans font-light text-[#a28c75] text-sm italic">
-                    Founders pricing — locked in when you join the VIP list.
+                    Cancel anytime — no long-term contract.
                   </p>
                 </div>
 
@@ -331,13 +329,10 @@ export default function PricingPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3">
-                    <Link
-                      href="/waitlist"
-                      className="w-full h-12 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      Get on the VIP List
+                    <SubscribeButton className="w-full h-12 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer">
+                      Subscribe Now
                       <ArrowRight size={13} />
-                    </Link>
+                    </SubscribeButton>
                     <a
                       href="#whats-included"
                       onClick={() => setIsLibraryExpanded(true)}
@@ -568,16 +563,13 @@ export default function PricingPage() {
             to work?
           </h2>
           <p className="font-sans font-light text-[#fffdf6]/45 text-lg leading-relaxed max-w-xs mx-auto mb-14">
-            Get on the VIP list or start with a conversation.
+            Subscribe to the membership or start with a conversation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/waitlist"
-              className="h-12 px-10 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
-            >
-              Get on the VIP List
+            <SubscribeButton className="h-12 px-10 bg-[#a28c75] text-[#0c0004] font-sans text-xs font-semibold rounded tracking-[0.2em] uppercase hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2 cursor-pointer">
+              Subscribe Now
               <ArrowRight size={13} />
-            </Link>
+            </SubscribeButton>
             <a
               href={DISCOVERY_CALL_URL}
               target="_blank"

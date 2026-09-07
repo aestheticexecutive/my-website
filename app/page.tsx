@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { PublicHeader } from "@/components/layout/PublicHeader";
 import { Footer } from "@/components/layout/Footer";
-import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 import { DISCOVERY_CALL_URL, ONE_ON_ONE_BOOKING_URL } from "@/lib/constants";
 
 function Eyebrow({ children, center }: { children: React.ReactNode; center?: boolean }) {
@@ -25,9 +24,9 @@ const paths = [
     icon: Library,
     image: "/images/2f5a4a0386d3cfb51151c7ed6df0834f.jpg",
     name: "Membership",
-    comingSoon: true,
+    comingSoon: false,
     price: "$249.75/mo",
-    priceNote: "founders pricing, billed annually",
+    priceNote: "billed annually",
     description:
       "Full access to the resource library — templates, tools, webinars, and courses built specifically for aesthetic and wellness practices. Everything you need to run day-to-day, always there when you need it.",
     bullets: [
@@ -36,8 +35,8 @@ const paths = [
       "Member-only community",
       "Discounted 1-on-1 rates",
     ],
-    cta: "Get on the VIP List",
-    href: "/waitlist",
+    cta: "View membership details",
+    href: "/pricing",
   },
   {
     icon: Target,
@@ -108,10 +107,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/waitlist"
+                href="/pricing"
                 className="h-12 px-8 bg-[#a28c75] text-[#0c0004] text-sm font-medium rounded tracking-wide hover:bg-[#c8b3a3] transition-colors inline-flex items-center gap-2"
               >
-                Get on the VIP List
+                View Membership
                 <ArrowRight size={16} />
               </Link>
               <a
@@ -183,7 +182,6 @@ export default function HomePage() {
                         <h3 className="font-display text-2xl font-normal text-[#fffdf6]">
                           {path.name}
                         </h3>
-                        {path.comingSoon && <ComingSoonBadge />}
                       </div>
                       <p className="font-sans text-sm mb-4">
                         <span className="text-[#a28c75] font-medium">{path.price}</span>
@@ -328,14 +326,14 @@ export default function HomePage() {
               Ready to get to work?
             </h2>
             <p className="font-sans font-light text-[#fffdf6]/50 text-lg leading-relaxed max-w-sm mx-auto mb-12">
-              Get on the VIP list or start with a conversation.
+              View membership pricing or start with a conversation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/waitlist"
+                href="/pricing"
                 className="h-12 px-9 bg-[#a28c75] text-[#0c0004] text-sm font-medium rounded tracking-wide hover:bg-[#c8b3a3] transition-colors inline-flex items-center justify-center gap-2"
               >
-                Get on the VIP List
+                View Membership
                 <ArrowRight size={15} />
               </Link>
               <a

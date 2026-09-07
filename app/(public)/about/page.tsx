@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 
 export const metadata: Metadata = {
   title: "About Kyla Evans | Aesthetic Executive",
@@ -70,17 +69,11 @@ export default function AboutPage() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/waitlist"
+                  href="/pricing"
                   className="h-12 px-7 bg-warm-900 text-cream text-sm font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center gap-2"
                 >
-                  Get on the VIP List
+                  View Membership
                   <ArrowRight size={15} />
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="h-12 px-7 bg-transparent text-warm-700 text-sm font-medium rounded tracking-wide border border-warm-300 hover:border-warm-500 transition-colors inline-flex items-center"
-                >
-                  View Pricing
                 </Link>
               </div>
             </div>
@@ -304,7 +297,6 @@ export default function AboutPage() {
                 <p className="text-xs tracking-[0.2em] uppercase text-warm-400">
                   Aesthetic Executive Membership
                 </p>
-                <ComingSoonBadge theme="light" />
               </div>
               <ul className="space-y-4">
                 {offers.map((item) => (
@@ -319,10 +311,10 @@ export default function AboutPage() {
               </ul>
               <div className="mt-8 pt-6 border-t border-warm-100">
                 <Link
-                  href="/waitlist"
+                  href="/pricing"
                   className="w-full h-11 bg-warm-900 text-cream text-sm font-medium rounded tracking-wide hover:bg-warm-800 transition-colors inline-flex items-center justify-center gap-2"
                 >
-                  Get on the VIP List
+                  View Membership
                   <ArrowRight size={14} />
                 </Link>
               </div>
@@ -339,15 +331,15 @@ export default function AboutPage() {
             Ready to build a practice that runs like a business?
           </h2>
           <p className="text-warm-400 mb-8 max-w-lg mx-auto leading-relaxed">
-            Get on the VIP list for early access and exclusive founders
-            pricing when membership opens — or start with a conversation.
+            View membership pricing and everything included — or start with a
+            conversation.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/waitlist"
+              href="/pricing"
               className="h-12 px-8 bg-gold-400 text-warm-950 text-sm font-medium rounded tracking-wide hover:bg-gold-500 transition-colors inline-flex items-center gap-2 shadow-lg"
             >
-              Get on the VIP List
+              View Membership
               <ArrowRight size={15} />
             </Link>
             <Link
