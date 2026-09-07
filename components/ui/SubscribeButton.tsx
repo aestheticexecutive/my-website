@@ -19,7 +19,7 @@ export function SubscribeButton({ className, children }: SubscribeButtonProps) {
     if (!isLoaded) return;
 
     if (!isSignedIn) {
-      router.push("/sign-up");
+      router.push(`/sign-up?redirect_url=${encodeURIComponent("/onboarding?intent=subscribe")}`);
       return;
     }
 
@@ -33,7 +33,7 @@ export function SubscribeButton({ className, children }: SubscribeButtonProps) {
         return;
       }
       if (res.status === 403) {
-        router.push("/onboarding");
+        router.push("/onboarding?intent=subscribe");
         return;
       }
       if (!res.ok) {

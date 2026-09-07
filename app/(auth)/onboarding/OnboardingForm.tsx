@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 interface OnboardingFormProps {
   initialFirstName: string;
   initialLastName: string;
+  wantsToSubscribe: boolean;
 }
 
 interface FormState {
@@ -21,7 +22,7 @@ const inputClasses =
 const labelClasses =
   "block text-xs font-medium tracking-[0.1em] uppercase text-warm-500 mb-2";
 
-export function OnboardingForm({ initialFirstName, initialLastName }: OnboardingFormProps) {
+export function OnboardingForm({ initialFirstName, initialLastName, wantsToSubscribe }: OnboardingFormProps) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>({
     firstName: initialFirstName,
@@ -56,6 +57,19 @@ export function OnboardingForm({ initialFirstName, initialLastName }: Onboarding
         setStatus("error");
         return;
       }
+
+      if (wantsToSubscribe) {
+        const checkoutRes = await fetch("/api/checkout", { method: "POST" });
+        const checkoutData = await checkoutRes.json().catch(() => null);
+        if (checkoutRes.ok && checkoutData?.url) {
+          window.location.href = checkoutData.url;
+          return;
+        }
+        // Profile is already saved at this point - fall through to the
+        // dashboard (which bounces to /pricing) rather than stranding them
+        // on a broken checkout state.
+      }
+
       router.push("/members/dashboard");
     } catch {
       setErrorMessage("Something went wrong. Please try again.");
@@ -134,7 +148,7 @@ export function OnboardingForm({ initialFirstName, initialLastName }: Onboarding
           disabled={status === "submitting" || !allFieldsFilled}
           className="w-full h-12 bg-gold-400 text-warm-950 text-sm font-medium rounded-lg tracking-wide hover:bg-gold-300 transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {status === "submitting" ? "Saving..." : "Continue"}
+          {status === "submitting" ? "Saving..." : wantsToSubscribe ? "Continue to Payment" : "Continue"}
           {status !== "submitting" && <ArrowRight size={15} />}
         </button>
       </form>
