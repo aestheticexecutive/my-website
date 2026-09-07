@@ -12,14 +12,18 @@ export default async function MembersLayout({
     redirect("/sign-in");
   }
 
-  // TODO: Re-enable subscription check before going live.
-  // Connect Stripe webhook first so publicMetadata gets populated.
-  // const user = await currentUser();
-  // const hasActiveSubscription =
-  //   user?.publicMetadata?.hasActiveSubscription === true;
-  // if (!hasActiveSubscription) {
-  //   redirect("/pricing?upgrade=true");
-  // }
+  const user = await currentUser();
+
+  const profileComplete = user?.publicMetadata?.profileComplete === true;
+  if (!profileComplete) {
+    redirect("/onboarding");
+  }
+
+  const hasActiveSubscription =
+    user?.publicMetadata?.hasActiveSubscription === true;
+  if (!hasActiveSubscription) {
+    redirect("/pricing?upgrade=true");
+  }
 
   return (
     <div className="min-h-screen bg-warm-50 flex flex-col">
