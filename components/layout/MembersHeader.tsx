@@ -9,6 +9,7 @@ import {
   FileText,
   Video,
   BookOpen,
+  UserCog,
   Menu,
   X,
 } from "lucide-react";
@@ -20,6 +21,7 @@ const navLinks = [
   { href: "/members/templates", label: "Templates", icon: FileText },
   { href: "/members/webinars", label: "Webinars", icon: Video },
   { href: "/members/resources", label: "Resources", icon: BookOpen },
+  { href: "/members/account", label: "Account", icon: UserCog },
 ];
 
 export function MembersHeader() {
