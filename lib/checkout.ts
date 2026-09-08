@@ -21,6 +21,7 @@ export async function createCheckoutSession(userId: string): Promise<string> {
     success_url: `${appUrl}/members/dashboard?checkout=success`,
     cancel_url: `${appUrl}/pricing`,
     allow_promotion_codes: true,
+    payment_method_collection: "if_required",
     metadata: {
       clerkUserId: userId,
     },
