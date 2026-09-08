@@ -19,7 +19,10 @@ export function SubscribeButton({ className, children }: SubscribeButtonProps) {
     if (!isLoaded) return;
 
     if (!isSignedIn) {
-      router.push(`/sign-up?redirect_url=${encodeURIComponent("/onboarding?intent=subscribe")}`);
+      // A full page load, not router.push - the sign-up page reads
+      // redirect_url server-side per request, and a client-side transition
+      // can serve a stale prefetched render that's missing the query string.
+      window.location.href = `/sign-up?redirect_url=${encodeURIComponent("/onboarding?intent=subscribe")}`;
       return;
     }
 
@@ -33,7 +36,7 @@ export function SubscribeButton({ className, children }: SubscribeButtonProps) {
         return;
       }
       if (res.status === 403) {
-        router.push("/onboarding?intent=subscribe");
+        window.location.href = "/onboarding?intent=subscribe";
         return;
       }
       if (!res.ok) {
