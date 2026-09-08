@@ -17,7 +17,7 @@ export default function SignUpPage() {
           Create your account to get started with your membership.
         </p>
       </div>
-      <SignUp />
+      <SignUp forceRedirectUrl="/onboarding" />
     </div>
   );
 }
