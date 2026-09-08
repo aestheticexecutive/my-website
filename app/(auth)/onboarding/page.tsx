@@ -4,33 +4,30 @@ import Link from "next/link";
 import { createCheckoutSession } from "@/lib/checkout";
 import { OnboardingForm } from "./OnboardingForm";
 
-export default async function OnboardingPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ intent?: string }>;
-}) {
+export default async function OnboardingPage() {
   const user = await currentUser();
   if (!user) {
     redirect("/sign-in");
   }
 
-  const { intent } = await searchParams;
-  const wantsToSubscribe = intent === "subscribe";
-
   if (user.publicMetadata?.profileComplete === true) {
-    if (wantsToSubscribe) {
-      // redirect() throws internally to perform the navigation, so it must
-      // never be called inside this try block - only the Stripe call is
-      // wrapped, and we redirect afterward based on whether it succeeded.
-      let checkoutUrl: string | null = null;
-      try {
-        checkoutUrl = await createCheckoutSession(user.id);
-      } catch (err) {
-        console.error("Stripe checkout session creation failed:", err);
-      }
-      redirect(checkoutUrl ?? "/pricing?checkout_error=true");
+    // Already a paying member (e.g. they bookmarked this page) - nothing to
+    // do here, straight to the dashboard, no new checkout session.
+    if (user.publicMetadata?.hasActiveSubscription === true) {
+      redirect("/members/dashboard");
     }
-    redirect("/members/dashboard");
+
+    // Profile's done but they never finished paying - continue straight to
+    // checkout. redirect() throws internally to perform the navigation, so
+    // it must never be called inside this try block - only the Stripe call
+    // is wrapped, and we redirect afterward based on whether it succeeded.
+    let checkoutUrl: string | null = null;
+    try {
+      checkoutUrl = await createCheckoutSession(user.id);
+    } catch (err) {
+      console.error("Stripe checkout session creation failed:", err);
+    }
+    redirect(checkoutUrl ?? "/pricing?checkout_error=true");
   }
 
   return (
@@ -51,7 +48,6 @@ export default async function OnboardingPage({
       <OnboardingForm
         initialFirstName={user.firstName ?? ""}
         initialLastName={user.lastName ?? ""}
-        wantsToSubscribe={wantsToSubscribe}
       />
     </div>
   );

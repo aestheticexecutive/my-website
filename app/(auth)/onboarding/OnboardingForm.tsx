@@ -1,13 +1,11 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 interface OnboardingFormProps {
   initialFirstName: string;
   initialLastName: string;
-  wantsToSubscribe: boolean;
 }
 
 interface FormState {
@@ -22,8 +20,7 @@ const inputClasses =
 const labelClasses =
   "block text-xs font-medium tracking-[0.1em] uppercase text-warm-500 mb-2";
 
-export function OnboardingForm({ initialFirstName, initialLastName, wantsToSubscribe }: OnboardingFormProps) {
-  const router = useRouter();
+export function OnboardingForm({ initialFirstName, initialLastName }: OnboardingFormProps) {
   const [form, setForm] = useState<FormState>({
     firstName: initialFirstName,
     lastName: initialLastName,
@@ -58,19 +55,19 @@ export function OnboardingForm({ initialFirstName, initialLastName, wantsToSubsc
         return;
       }
 
-      if (wantsToSubscribe) {
-        const checkoutRes = await fetch("/api/checkout", { method: "POST" });
-        const checkoutData = await checkoutRes.json().catch(() => null);
-        if (checkoutRes.ok && checkoutData?.url) {
-          window.location.href = checkoutData.url;
-          return;
-        }
-        // Profile is already saved at this point - fall through to the
-        // dashboard (which bounces to /pricing) rather than stranding them
-        // on a broken checkout state.
+      // Profile's saved - every account on this site is headed toward the
+      // paid membership, so continue straight to checkout rather than
+      // stopping at an intermediate page.
+      const checkoutRes = await fetch("/api/checkout", { method: "POST" });
+      const checkoutData = await checkoutRes.json().catch(() => null);
+      if (checkoutRes.ok && checkoutData?.url) {
+        window.location.href = checkoutData.url;
+        return;
       }
-
-      router.push("/members/dashboard");
+      // Profile is already saved at this point - fall through to the
+      // dashboard (which bounces to /pricing) rather than stranding them
+      // on a broken checkout state.
+      window.location.href = "/members/dashboard";
     } catch {
       setErrorMessage("Something went wrong. Please try again.");
       setStatus("error");
@@ -148,7 +145,7 @@ export function OnboardingForm({ initialFirstName, initialLastName, wantsToSubsc
           disabled={status === "submitting" || !allFieldsFilled}
           className="w-full h-12 bg-gold-400 text-warm-950 text-sm font-medium rounded-lg tracking-wide hover:bg-gold-300 transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {status === "submitting" ? "Saving..." : wantsToSubscribe ? "Continue to Payment" : "Continue"}
+          {status === "submitting" ? "Saving..." : "Continue to Payment"}
           {status !== "submitting" && <ArrowRight size={15} />}
         </button>
       </form>
