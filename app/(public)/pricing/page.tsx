@@ -178,7 +178,7 @@ export default function PricingPage() {
                 <em className="italic text-[#c8b3a3]">right for you</em>
               </h2>
               <p className="font-sans font-light text-[#fffdf6]/50 leading-relaxed mb-10">
-                A free 15-minute call — no pitch, no pressure. We&apos;ll talk
+                A free 30-minute call — no pitch, no pressure. We&apos;ll talk
                 through where you are, what you&apos;re working toward, and
                 whether Aesthetic Executive is the right fit.
               </p>
@@ -214,7 +214,7 @@ export default function PricingPage() {
               </div>
               <ul className="space-y-4 mb-10">
                 {[
-                  "15 minutes, by video call",
+                  "30 minutes, by video call",
                   "No sales pitch — just a real conversation",
                   "Walk away with clarity, regardless",
                 ].map((item) => (

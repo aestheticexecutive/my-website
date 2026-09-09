@@ -235,7 +235,7 @@ export default function HomePage() {
                 <em className="italic text-[#c8b3a3]">right for you</em>
               </h2>
               <p className="font-sans font-light text-[#fffdf6]/50 leading-relaxed max-w-lg mx-auto mb-10">
-                Book a free 15 minute discovery call with Kyla. She&apos;ll talk
+                Book a free 30 minute discovery call with Kyla. She&apos;ll talk
                 you through where your practice is right now and help you
                 figure out whether membership, a project, a one-on-one call, or
                 a combination makes the most sense for you.
