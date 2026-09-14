@@ -41,9 +41,9 @@ const primaryCategories = [
 ];
 
 const descriptionKeywords = [
-  "Botox", "Dermal Fillers", "Morpheus8", "RF Microneedling",
-  "Laser Hair Removal", "IPL", "Skin Tightening", "Medical Weight Loss",
-  "Acne Scar Treatment", "Hyperpigmentation", "Wrinkle Reduction",
+  "Botox", "Lip Fillers", "Laser Hair Removal", "Microneedling",
+  "HydraFacial", "Chemical Peel", "IV Therapy", "Weight Loss Injections",
+  "CoolSculpting", "PRP Facial", "Med Spa",
 ];
 
 const serviceSplitExample = {
@@ -60,7 +60,7 @@ const serviceSplitExample = {
   doSameFor: [
     "Microneedling", "Laser Hair Removal", "Chemical Peels",
     "Morpheus8", "Body Contouring", "Skin Tightening",
-    "IPL", "Weight Loss", "Hormone Therapy",
+    "IPL", "Weight Loss", "Hormone Therapy", "etc.",
   ],
 };
 
@@ -501,7 +501,7 @@ export default function GoogleBusinessProfilePage() {
                   Add Products — Most Practices Ignore This
                 </p>
                 <div className="grid grid-cols-2 gap-y-1.5">
-                  {["Skin Care Lines", "Memberships", "Treatment Packages", "Gift Cards", "Popular Procedures"].map((p) => (
+                  {["Skin Care Lines", "Memberships", "Gift Cards", "Supplements", "At-Home Self-Care Devices"].map((p) => (
                     <div key={p} className="flex items-center gap-2">
                       <span style={{ color: "rgba(162,140,117,0.45)", fontSize: "9px" }}>·</span>
                       <span className="text-xs" style={{ color: "rgba(255,253,246,0.65)" }}>{p}</span>
@@ -725,10 +725,17 @@ export default function GoogleBusinessProfilePage() {
               ))}
               <div
                 className="mt-4 rounded-lg px-4 py-3 border-l-2"
-                style={{ background: "rgba(162,140,117,0.04)", borderLeftColor: "rgba(162,140,117,0.3)" }}
+                style={{ background: "rgba(248,113,113,0.05)", borderLeftColor: "rgba(248,113,113,0.35)" }}
               >
-                <p className="text-xs italic leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
-                  &quot;We&apos;re so glad you loved your Morpheus8 treatment. Thank you for trusting our team.&quot;
+                <p className="text-xs font-medium mb-1.5" style={{ color: "#fffdf6" }}>
+                  HIPAA — don&apos;t name a patient&apos;s treatment for them
+                </p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.55)" }}>
+                  Never state or confirm what treatment a patient received unless they explicitly
+                  named it themselves in their review — doing so is a HIPAA violation, even in a
+                  reply. If they do name it (e.g. &quot;I loved my facial&quot;), restate that treatment
+                  naturally in your response. It&apos;s a safe, patient-confirmed detail — and repeating
+                  it reinforces the keyword for SEO.
                 </p>
               </div>
             </div>
