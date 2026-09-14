@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Globe } from "lucide-react";
+import { ArrowLeft, Globe, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -148,7 +148,7 @@ export default function LandingPagesPage() {
                   className="flex-1 h-5 rounded-sm text-xs flex items-center px-2"
                   style={{ background: "rgba(162,140,117,0.08)", color: "rgba(162,140,117,0.5)" }}
                 >
-                  yourpractice.com/morpheus8
+                  yourpractice.com/treatment-name
                 </div>
               </div>
 
@@ -242,7 +242,7 @@ export default function LandingPagesPage() {
                 {
                   num: "①", color: "#a28c75", bg: "rgba(162,140,117,0.08)", border: "rgba(162,140,117,0.2)",
                   label: "Above the Fold",
-                  desc: "Lead with patient outcome, not device name. One clear CTA visible before scrolling. Real photo — not stock.",
+                  desc: "Lead with the treatment name, your practice name and location, and the main outcome — the clearest signal AI search engines use to understand what you offer. One clear CTA visible before scrolling. Real photo — not stock.",
                 },
                 {
                   num: "②", color: "#7aabcf", bg: "rgba(100,150,200,0.06)", border: "rgba(100,150,200,0.15)",
@@ -303,7 +303,8 @@ export default function LandingPagesPage() {
               </div>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
                 Never combine multiple treatments on a single page. Search engines and patients both reward specificity.
-                A patient searching &ldquo;Morpheus8 near me&rdquo; wants Morpheus8 — not a menu of ten treatments.
+                A patient searching &ldquo;microneedling near me&rdquo; wants microneedling — not a menu of ten treatments.
+                This could cause them to be overwhelmed and click out of your website.
               </p>
 
               {/* Side-by-side comparison */}
@@ -388,16 +389,16 @@ export default function LandingPagesPage() {
                 style={{ background: "#fff", maxWidth: 560 }}
               >
                 <div className="text-xs mb-4" style={{ color: "#4d5156", fontFamily: "Arial, sans-serif" }}>
-                  <span style={{ color: "#202124" }}>yourpractice.com</span> › morpheus8
+                  <span style={{ color: "#202124" }}>yourpractice.com</span> › laser-hair-removal
                 </div>
 
                 <div className="mb-1" style={{ fontFamily: "Arial, sans-serif" }}>
                   <span style={{ color: "#1a0dab", fontSize: 18, lineHeight: 1.3 }}>
-                    Morpheus8 Skin Tightening in Atlanta | Glow Med Spa
+                    Laser Hair Removal in Atlanta | Glow Med Spa
                   </span>
                 </div>
                 <div style={{ color: "#4d5156", fontSize: 13, fontFamily: "Arial, sans-serif", lineHeight: 1.5, maxWidth: 520 }}>
-                  Tighter, smoother skin without surgery. See if Morpheus8 is right for you — schedule your consultation in Atlanta today.
+                  Smooth, hair-free skin that lasts. See if laser hair removal is right for you — schedule your consultation in Atlanta today.
                 </div>
 
                 {/* Annotations */}
@@ -596,7 +597,7 @@ export default function LandingPagesPage() {
                 <h3 className="font-display text-xl font-light" style={{ color: "#fffdf6" }}>The First 5 Seconds (Above the Fold)</h3>
               </div>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,253,246,0.65)" }}>
-                Patients search by device name — but they convert on outcome language. Your hero section needs to answer &ldquo;what&apos;s in it for me?&rdquo; before they scroll an inch.
+                Patients search by treatment name — but they convert on outcome language. Your hero section needs to answer &ldquo;what&apos;s in it for me?&rdquo; before they scroll an inch.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -606,9 +607,9 @@ export default function LandingPagesPage() {
                 >
                   <div className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(200,80,80,0.7)" }}>✗ Mechanism language</div>
                   <p className="text-base font-light" style={{ color: "rgba(255,253,246,0.75)" }}>
-                    &ldquo;Morpheus8 RF Microneedling Technology&rdquo;
+                    &ldquo;Advanced Microneedling Technology&rdquo;
                   </p>
-                  <p className="text-xs mt-2" style={{ color: "rgba(200,80,80,0.6)" }}>Describes the device. Patient already knows the name — they need to know why it matters to them.</p>
+                  <p className="text-xs mt-2" style={{ color: "rgba(200,80,80,0.6)" }}>Names the treatment but leaves out your practice, your location, and the outcome — exactly what patients and AI search tools need to understand what you offer.</p>
                 </div>
                 <div
                   className="rounded-xl p-5"
@@ -616,9 +617,9 @@ export default function LandingPagesPage() {
                 >
                   <div className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(100,180,100,0.7)" }}>✓ Outcome language</div>
                   <p className="text-base font-light" style={{ color: "#fffdf6" }}>
-                    &ldquo;Tighter, Smoother Skin Without Surgery&rdquo;
+                    &ldquo;Tighter, Smoother Skin with Microneedling — Glow Med Spa, Atlanta&rdquo;
                   </p>
-                  <p className="text-xs mt-2" style={{ color: "rgba(100,180,100,0.6)" }}>Answers &quot;what does this do for me?&quot; in under two seconds.</p>
+                  <p className="text-xs mt-2" style={{ color: "rgba(100,180,100,0.6)" }}>Names the treatment, your practice, your location, and the outcome — all above the fold, in one glance.</p>
                 </div>
               </div>
 
@@ -656,7 +657,7 @@ export default function LandingPagesPage() {
                   { rank: "🥇", label: "Before/After Gallery", desc: "Your single highest-converting asset. Real patients with consent. Nothing builds more immediate confidence than seeing a real result." },
                   { rank: "🥈", label: "Provider Credentials", desc: "Name, credentials, and a line on years of experience with this specific device or technique. A direct trust and ranking signal." },
                   { rank: "🥉", label: "Google Review Snippets", desc: "Pull 3–5 real patient quotes with star ratings. Seeing a 4.9★ with 200 reviews removes doubt faster than anything you could write." },
-                  { rank: "  ", label: "Device/Brand Logos", desc: "Recognizable names like InMode signal legitimate, medical-grade technology to patients who may not know what separates a real med spa from a spa." },
+                  { rank: "  ", label: "Device/Brand Logos", desc: "Recognizable names signal legitimate medical-grade technology to patients who may not know what separates a real med spa from a spa." },
                   { rank: "  ", label: "Volume Indicators", desc: "'500+ treatments performed' or '8 years with this device' — if your numbers are strong, say them plainly." },
                 ].map((t) => (
                   <div
@@ -796,7 +797,7 @@ export default function LandingPagesPage() {
                 >
                   <div className="text-xs tracking-[0.15em] uppercase mb-3" style={{ color: "rgba(100,180,100,0.7)" }}>✓ Do this</div>
                   <p className="text-sm italic leading-relaxed" style={{ color: "#fffdf6" }}>
-                    &ldquo;New Patient Special: $200 Off Your First Morpheus8 Session&rdquo;
+                    &ldquo;New Patient Special: $200 Off Your First Halo Session&rdquo;
                   </p>
                   <p className="text-xs mt-3" style={{ color: "rgba(100,180,100,0.65)" }}>
                     State the offer directly and confidently. No hedging, no apologies for asking.
@@ -939,6 +940,51 @@ export default function LandingPagesPage() {
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.78)" }}>{item}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* ══════════════════════════════ CTA — SEO AUDIT TOOL ══ */}
+        <div
+          className="rounded-2xl border p-10"
+          style={{
+            background: "linear-gradient(135deg, #2f0410 0%, #1a000c 60%, #170009 100%)",
+            borderColor: "rgba(162,140,117,0.2)",
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p
+                className="text-xs tracking-[0.25em] uppercase mb-4"
+                style={{ color: "rgba(162,140,117,0.6)" }}
+              >
+                AI Website Analyzer
+              </p>
+              <h2
+                className="font-display text-3xl font-light mb-3 leading-snug"
+                style={{ color: "#fffdf6" }}
+              >
+                See how your treatment pages actually score
+              </h2>
+              <p
+                className="text-sm leading-relaxed mb-6"
+                style={{ color: "rgba(255,253,246,0.55)" }}
+              >
+                Before you rebuild a page from this playbook, run it through the audit tool.
+                Enter your URL and it&apos;ll check your site against these same SEO and
+                conversion factors — then hand you a plain-English report on what&apos;s
+                working, what&apos;s missing, and what to fix first.
+              </p>
+              <a
+                href="/tools/seo-analyzer.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 h-11 rounded text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+                style={{ background: "#a28c75", color: "#170009" }}
+              >
+                Open the SEO Audit Tool
+                <ExternalLink size={13} />
+              </a>
+            </div>
           </div>
         </div>
 
