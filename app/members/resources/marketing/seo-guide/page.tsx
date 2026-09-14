@@ -10,14 +10,22 @@ export const metadata: Metadata = {
 
 const benefits = [
   { label: "Get new patient leads without paying for ads", body: "Paid ads stop the moment you stop paying. SEO builds over time and keeps working in the background." },
-  { label: "Show up when patients are actively searching", body: "Someone searching 'Morpheus8 near me' is already interested. SEO puts you in front of them at exactly the right moment." },
+  { label: "Show up when patients are actively searching", body: "Someone searching 'medical weight loss near me' is already interested. SEO puts you in front of them at exactly the right moment." },
   { label: "Build trust before the patient even calls", body: "Practices that show up at the top of Google feel more established and credible — even before a patient reads a word." },
   { label: "Increase website traffic and consultation bookings", body: "More visibility means more clicks, more visits, and more opportunities to convert a searcher into a booked appointment." },
   { label: "Reduce dependence on social media algorithms", body: "Instagram and TikTok can bury your content on any given day. Google search results are far more stable and predictable." },
   { label: "Create compounding, long-term growth", body: "Unlike an ad that disappears, a well-optimized page keeps bringing in patients month after month with no ongoing spend." },
 ];
 
-const factors = [
+interface Factor {
+  number: string;
+  title: string;
+  body: string;
+  example: string | null;
+  link?: { href: string; label: string };
+}
+
+const factors: Factor[] = [
   {
     number: "01",
     title: "A separate page for every major treatment",
@@ -70,7 +78,8 @@ const factors = [
     number: "09",
     title: "A complete, actively maintained Google Business Profile",
     body: "Your Google Business Profile is how you appear on Google Maps and in the local results box — which often shows up before any website. Keep your hours, photos, services, and contact info updated, and actively collect new reviews every month.",
-    example: "Goal: 5–10 new reviews per month · Post an update at least once a week",
+    example: "Goal: 10–20 new reviews per month · Post an update at least once a week",
+    link: { href: "/members/resources/marketing/google-business-profile", label: "Read the full Google Business Profile Optimization guide" },
   },
   {
     number: "10",
@@ -82,7 +91,7 @@ const factors = [
 
 const quickWins = [
   { win: "Add before-and-after photos to every treatment page", detail: "Don't keep them only in a gallery. Put real results where patients are already reading about the treatment." },
-  { win: "Create a separate page for each of your top 5 treatments", detail: "If you currently have one big services page, split it into individual pages — this alone can meaningfully improve your rankings." },
+  { win: "Create a separate page for each of your treatments", detail: "If you currently have one big services page, split it into individual pages — this alone can meaningfully improve your rankings." },
   { win: "Add a FAQ section to every treatment page", detail: "Think of 5–7 questions patients commonly ask before booking, and answer them on the page." },
   { win: "Mention every city within 30 minutes of your practice", detail: "Add a line to your homepage, contact page, or footer listing the communities you serve." },
   { win: "Publish one educational blog post this week", detail: "Start with a comparison article — like your most popular treatment vs. a common alternative." },
@@ -233,7 +242,6 @@ export default function SeoGuidePage() {
           </p>
           <div className="flex flex-wrap gap-2">
             {[
-              '"Morpheus8 near me"',
               '"Best med spa in [your city]"',
               '"Laser hair removal [your city]"',
               '"How to tighten loose skin"',
@@ -326,6 +334,16 @@ export default function SeoGuidePage() {
                           </p>
                         ))}
                       </div>
+                    )}
+                    {f.link && (
+                      <Link
+                        href={f.link.href}
+                        className="inline-flex items-center gap-1.5 mt-3 text-xs font-medium tracking-wide transition-opacity hover:opacity-80"
+                        style={{ color: "#a28c75" }}
+                      >
+                        {f.link.label}
+                        <span aria-hidden="true">→</span>
+                      </Link>
                     )}
                   </div>
                 </div>
