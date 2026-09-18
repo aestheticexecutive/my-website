@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog Strategy for Aesthetic Practices | Aesthetic Executive",
   description:
-    "How to turn your website into a patient-generating machine with consistent, SEO-focused blog content — what to write, how often, and how to make every post work harder.",
+    "An effective blog strategy is one of the most important marketing levers you can pull for SEO — what to write, how often, and how to make every post work harder.",
 };
 
 function SectionLabel({ label }: { label: string }) {
@@ -55,9 +55,10 @@ export default function BlogStrategyPage() {
             Blog Strategy
           </h1>
           <p className="text-base max-w-2xl leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
-            How to turn your website into a patient-generating machine. Consistent,
-            well-structured blog content is one of the easiest ways to improve Google rankings,
-            increase traffic, and attract patients who are actively searching for your treatments.
+            Having an effective blog strategy is one of the most important marketing levers
+            you can pull — it&apos;s a straightforward way to improve your Google rankings,
+            drive more website traffic, and reach patients who are actively searching for
+            the treatments you offer.
           </p>
         </div>
       </div>
@@ -126,7 +127,7 @@ export default function BlogStrategyPage() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm" style={{ color: "rgba(255,253,246,0.65)" }}>Minimum</span>
-                    <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>2 posts / month</span>
+                    <span className="text-sm font-medium" style={{ color: "#fffdf6" }}>1 post / month</span>
                   </div>
                   <div className="flex gap-2">
                     {[...Array(4)].map((_, i) => (
@@ -134,12 +135,12 @@ export default function BlogStrategyPage() {
                         key={i}
                         className="flex-1 h-8 rounded-lg flex items-center justify-center text-xs"
                         style={{
-                          background: i < 2 ? "rgba(162,140,117,0.25)" : "rgba(255,255,255,0.04)",
-                          border: `1px solid ${i < 2 ? "rgba(162,140,117,0.4)" : "rgba(255,255,255,0.06)"}`,
-                          color: i < 2 ? "#a28c75" : "rgba(255,255,255,0.15)",
+                          background: i < 1 ? "rgba(162,140,117,0.25)" : "rgba(255,255,255,0.04)",
+                          border: `1px solid ${i < 1 ? "rgba(162,140,117,0.4)" : "rgba(255,255,255,0.06)"}`,
+                          color: i < 1 ? "#a28c75" : "rgba(255,255,255,0.15)",
                         }}
                       >
-                        {i < 2 ? "✓" : "—"}
+                        {i < 1 ? "✓" : "—"}
                       </div>
                     ))}
                   </div>
@@ -169,7 +170,7 @@ export default function BlogStrategyPage() {
                 </div>
               </div>
               <p className="text-xs mt-5 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
-                Consistency matters more than volume. A steady 2 posts/month for a year beats
+                Consistency matters more than volume. A steady 1 post/month for a year beats
                 a burst of 10 posts followed by silence.
               </p>
             </div>
@@ -342,7 +343,7 @@ export default function BlogStrategyPage() {
                   ))}
                 </div>
                 <div className="flex-1 h-5 rounded-sm text-xs flex items-center px-2" style={{ background: "rgba(162,140,117,0.08)", color: "rgba(162,140,117,0.5)" }}>
-                  yourpractice.com/blog/morpheus8-recovery
+                  yourpractice.com/blog/microneedling-recovery
                 </div>
               </div>
 
@@ -366,7 +367,7 @@ export default function BlogStrategyPage() {
                 <div className="rounded-lg p-3" style={{ background: "rgba(120,180,120,0.07)", border: "1px solid rgba(120,180,120,0.16)" }}>
                   <div className="text-xs font-medium mb-2" style={{ color: "#7db870" }}>③ H2 Sections</div>
                   <div className="space-y-2">
-                    {["What is Morpheus8?", "Who is a candidate?", "What to expect"].map((h) => (
+                    {["What is microneedling?", "Who is a candidate?", "What to expect"].map((h) => (
                       <div key={h}>
                         <div className="h-2 rounded mb-1" style={{ background: "rgba(120,180,120,0.2)", width: "70%" }} />
                         <div className="h-1.5 rounded mb-0.5" style={{ background: "rgba(255,253,246,0.05)", width: "90%" }} />
@@ -400,7 +401,7 @@ export default function BlogStrategyPage() {
                 {
                   num: "①", color: "#a28c75", bg: "rgba(162,140,117,0.07)", border: "rgba(162,140,117,0.2)",
                   label: "Keyword-Focused Title (H1)",
-                  desc: "Match exactly what patients search. 'Morpheus8 Recovery Time: What to Expect' outperforms 'All About Morpheus8.' One H1 per post — no exceptions.",
+                  desc: "Match exactly what patients search. 'Microneedling Recovery Time: What to Expect' outperforms 'All About Microneedling.' One H1 per post — no exceptions.",
                 },
                 {
                   num: "②", color: "#7aabcf", bg: "rgba(100,150,200,0.06)", border: "rgba(100,150,200,0.16)",
@@ -420,7 +421,7 @@ export default function BlogStrategyPage() {
                 {
                   num: "⑤", color: "#a064c8", bg: "rgba(160,100,200,0.06)", border: "rgba(160,100,200,0.16)",
                   label: "Clear Call-to-Action",
-                  desc: "Every blog post ends with a path to booking. 'Ready to see if Morpheus8 is right for you? Schedule a consultation with our team today.' Link directly to your booking page.",
+                  desc: "Every blog post ends with a path to booking. 'Ready to see if microneedling is right for you? Schedule a consultation with our team today.' Link directly to your booking page.",
                 },
               ].map((z) => (
                 <div key={z.num} className="rounded-xl px-5 py-4 flex items-start gap-4" style={{ background: z.bg, border: `1px solid ${z.border}` }}>
