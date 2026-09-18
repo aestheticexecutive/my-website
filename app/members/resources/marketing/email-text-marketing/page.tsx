@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -227,21 +227,21 @@ export default function EmailTextMarketingPage() {
                 <p className="text-xs tracking-[0.15em] uppercase" style={{ color: "rgba(100,160,220,0.7)" }}>Text Frequency</p>
               </div>
               <div className="flex items-end gap-3 mb-5">
-                <div className="text-6xl font-light leading-none" style={{ color: "#7aabcf" }}>2–6</div>
+                <div className="text-6xl font-light leading-none" style={{ color: "#7aabcf" }}>1–2</div>
                 <div className="pb-1 text-sm" style={{ color: "rgba(255,253,246,0.5)" }}>campaigns / month</div>
               </div>
               <div className="flex gap-1.5 mb-5">
-                {[...Array(6)].map((_, i) => (
+                {[...Array(2)].map((_, i) => (
                   <div
                     key={i}
                     className="flex-1 h-9 rounded-lg flex items-center justify-center text-xs"
                     style={{
-                      background: i < 4 ? "rgba(100,160,220,0.12)" : "rgba(255,255,255,0.04)",
-                      border: `1px solid ${i < 4 ? "rgba(100,160,220,0.28)" : "rgba(255,255,255,0.07)"}`,
-                      color: i < 4 ? "#7aabcf" : "rgba(255,255,255,0.15)",
+                      background: "rgba(100,160,220,0.12)",
+                      border: "1px solid rgba(100,160,220,0.28)",
+                      color: "#7aabcf",
                     }}
                   >
-                    {i < 4 ? "✓" : "—"}
+                    ✓
                   </div>
                 ))}
               </div>
@@ -326,7 +326,7 @@ export default function EmailTextMarketingPage() {
           <SectionLabel label="What Every Email Should Include" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { num: "01", label: "A Compelling Subject Line", desc: "This is what determines open rate. Use curiosity, specificity, or urgency. 'July Feature: 25% Off Morpheus8' outperforms 'Our July Newsletter.'" },
+              { num: "01", label: "A Compelling Subject Line", desc: "This is what determines open rate. Use curiosity, specificity, or urgency. 'July Feature: Free Morpheus8 Neck Treatment' outperforms 'Our July Newsletter.'" },
               { num: "02", label: "Professional Visuals", desc: "Before & afters, clean imagery, and on-brand design. Emails with strong visuals get significantly higher click rates." },
               { num: "03", label: "One Primary CTA", desc: "Don't give patients five things to click. One clear action — Book Now, Read More, Claim Your Offer — performs better every time." },
               { num: "04", label: "Mobile-Friendly Formatting", desc: "Over 60% of emails are opened on mobile. Short paragraphs, large tap targets, and single-column layout are non-negotiable." },
@@ -354,7 +354,7 @@ export default function EmailTextMarketingPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { label: "Keep it under 160 characters", desc: "Messages longer than 160 characters split into multiple texts and feel spammy. Lead with the offer, include the link, done." },
+              { label: "Keep it short and sweet", desc: "Lead with the offer, include the link, and done. Keeping things to the point increases how many patients actually read what you send." },
               { label: "Personalize with first name", desc: "\"Hi Sarah\" beats \"Hi there\" every time. Even simple personalization meaningfully improves response rates." },
               { label: "One clear action", desc: "One ask per text. Not \"book, call us, or visit our website\" — just \"Book your spot here: [link].\" Choices reduce action." },
               { label: "Include urgency", desc: "A reason to act now — a limited number of appointments, an offer ending Friday, a spot that opens tomorrow." },
@@ -373,46 +373,28 @@ export default function EmailTextMarketingPage() {
           </div>
         </div>
 
-        {/* ── 15 AUTOMATED CAMPAIGNS ── */}
-        <div>
-          <SectionLabel label="15 Automated Campaigns Every Practice Should Have" />
-          <p className="text-sm leading-relaxed mb-8 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
-            Set these up once. They run in the background 24/7, nurturing and reactivating patients without
-            any manual effort from your team.
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-            {[
-              { num: "01", icon: "👋", label: "Welcome Series", desc: "Nurture new leads before they book their first consult" },
-              { num: "02", icon: "📋", label: "Consultation Follow-Up", desc: "Follow up after consults who didn't book on the spot" },
-              { num: "03", icon: "💉", label: "Treatment Interest Drip", desc: "Educate patients who've shown interest in a treatment" },
-              { num: "04", icon: "😴", label: "Inactive Reactivation", desc: "Re-engage patients inactive for 6–18 months" },
-              { num: "05", icon: "🗓️", label: "Maintenance Reminders", desc: "Remind patients when they're due for their next session" },
-              { num: "06", icon: "🎂", label: "Birthday Campaign", desc: "A personalized offer on (or near) their birthday" },
-              { num: "07", icon: "⭐", label: "Review Request", desc: "Ask satisfied patients for a Google review after treatment" },
-              { num: "08", icon: "🩺", label: "Post-Treatment Care", desc: "Aftercare instructions delivered at the right time" },
-              { num: "09", icon: "📅", label: "Abandoned Consultation", desc: "Follow up when someone books, then cancels without rescheduling" },
-              { num: "10", icon: "✨", label: "New Treatment Launch", desc: "Multi-touch campaign introducing a new service" },
-              { num: "11", icon: "🌟", label: "Monthly Feature", desc: "Announce and promote each month's featured treatment" },
-              { num: "12", icon: "💎", label: "VIP Offers", desc: "Exclusive early access and offers for your top patients" },
-              { num: "13", icon: "🎉", label: "Event Promotion", desc: "Reminder sequence leading up to in-practice events" },
-              { num: "14", icon: "🧴", label: "Retail Replenishment", desc: "Remind skincare purchasers when they're likely running low" },
-              { num: "15", icon: "🤝", label: "Referral Program", desc: "Prompt happy patients to refer a friend with an incentive" },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="rounded-xl p-4"
-                style={{ background: "rgba(162,140,117,0.05)", border: "1px solid rgba(162,140,117,0.12)" }}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="text-xs font-medium" style={{ color: "rgba(162,140,117,0.45)" }}>{item.num}</span>
-                </div>
-                <p className="text-xs font-medium mb-1.5 leading-snug" style={{ color: "#fffdf6" }}>{item.label}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>{item.desc}</p>
-              </div>
-            ))}
+        {/* ── AUTOMATED CAMPAIGNS CTA ── */}
+        <div
+          className="rounded-xl p-7 flex flex-col sm:flex-row sm:items-center gap-6"
+          style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}
+        >
+          <div className="flex-1">
+            <h2 className="font-display text-xl font-light mb-2" style={{ color: "#fffdf6" }}>
+              15 Automated Campaigns Every Practice Should Have
+            </h2>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,253,246,0.6)" }}>
+              Set-and-forget sequences that nurture and reactivate patients in the background, 24/7.
+              See the full breakdown of all 15 campaigns in the dedicated guide.
+            </p>
           </div>
+          <Link
+            href="/members/resources/marketing/automated-campaigns"
+            className="inline-flex items-center gap-2 px-6 h-11 rounded text-xs font-medium tracking-wide flex-shrink-0 transition-all duration-200 hover:opacity-90"
+            style={{ background: "#a28c75", color: "#170009" }}
+          >
+            <ArrowRight size={13} />
+            View the Guide
+          </Link>
         </div>
 
         {/* ── 10 WAYS TO USE ── */}
@@ -457,8 +439,8 @@ export default function EmailTextMarketingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { icon: "📂", label: "Open Rate", note: "Email: target 35–50%+. Low? Your subject lines need work." },
-              { icon: "🔗", label: "Click-Through Rate", note: "CTR: % of total recipients who clicked. Target 2–5% for email." },
-              { icon: "👁️", label: "Click-to-Open Rate", note: "CTOR: % of openers who clicked. Better measure of content quality." },
+              { icon: "🔗", label: "Click-Through Rate", note: "CTR: % of everyone you sent to who clicked — reflects your subject line and your content together. Target 2–5% for email." },
+              { icon: "👁️", label: "Click-to-Open Rate", note: "CTOR: % of people who opened who then clicked — isolates how compelling your content was, separate from whether they opened it." },
               { icon: "📅", label: "Conversion Rate", note: "Appointments booked / messages sent. The most important number." },
               { icon: "💰", label: "Revenue Generated", note: "Track campaign-attributed revenue, not just clicks." },
               { icon: "📈", label: "Appointments Booked", note: "The clearest signal that your campaign worked." },
