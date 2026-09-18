@@ -27,23 +27,23 @@ function SectionHeader({ number, title }: { number: string; title: string }) {
 const seasonalCalendar = [
   {
     season: "January",
-    items: ["Skin rejuvenation", "Body contouring", "Weight management"],
+    items: ["Laser treatments", "Skin rejuvenation", "Body contouring", "Weight management"],
   },
   {
     season: "Spring",
-    items: ["Laser hair removal", "Skin brightening", "Wedding preparation"],
+    items: ["Laser hair removal", "Skin brightening", "Wedding preparation", "Injectables", "Body contouring", "Weight management"],
   },
   {
     season: "Summer",
-    items: ["Lumecca / IPL", "Skincare & sunscreen", "Hydration treatments"],
+    items: ["Weight management", "Injectables", "Skincare & sunscreen", "Hydration treatments"],
   },
   {
     season: "Fall",
-    items: ["RF Microneedling", "CO₂ resurfacing", "Body tightening"],
+    items: ["Skin rejuvenation", "Laser treatments", "Injectables"],
   },
   {
     season: "Holiday Season",
-    items: ["Gift cards", "Injectables", "Skin maintenance", "Holiday glow packages"],
+    items: ["Gift cards", "Injectables", "Skin maintenance", "Holiday packages"],
   },
 ];
 
@@ -55,18 +55,18 @@ const valueAdds = [
   "LED therapy",
   "Dermaplaning",
   "Hydrating mask",
-  "Neck treatment with facial",
+  "Neck treatment",
   "Hands treated alongside face",
   "Laser hair removal area added",
   "Complimentary skincare consultation",
-  "Complimentary consultation for another concern",
+  "Complimentary skin care bundle",
 ];
 
 const treatmentPairings = [
-  { purchase: "Morpheus8", bonus: "Complimentary laser hair removal area" },
-  { purchase: "Filler", bonus: "Complimentary skincare consultation" },
-  { purchase: "IPL package", bonus: "Complimentary LED treatment" },
-  { purchase: "Body contouring", bonus: "Complimentary skin tightening demo" },
+  { purchase: "Facial balancing", bonus: "Complimentary IPL treatment" },
+  { purchase: "Laser hair removal package", bonus: "Complimentary vein treatment" },
+  { purchase: "Medical weight loss", bonus: "Complimentary skin tightening treatment" },
+  { purchase: "Laser series", bonus: "Complimentary facial" },
 ];
 
 const teamQuestions = [
