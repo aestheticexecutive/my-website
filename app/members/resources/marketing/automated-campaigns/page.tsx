@@ -77,8 +77,8 @@ const campaigns = [
     icon: "💉",
     label: "Treatment Interest Drip",
     group: "Acquisition",
-    objective: "Continue the sales conversation after the visit",
-    trigger: "Patient expresses interest but does not purchase",
+    objective: "Continue the conversation after the visit",
+    trigger: "Patient expresses interest but does not purchase. This can be from interest expressed on an intake form or during conversation.",
     channels: "Primarily email, supported by text reminders",
     emailPrimary: true,
     content: [
@@ -119,7 +119,7 @@ const campaigns = [
       "Botox and neurotoxin: remind at 3–4 month intervals",
       "Dermal fillers: remind at 9–12 month intervals",
       "Laser hair removal: remind for maintenance sessions",
-      "Morpheus8: remind for annual or bi-annual maintenance",
+      "Skin rejuvenation treatments: remind for annual or bi-annual maintenance",
       "Skincare replenishment when product runs low",
     ],
   },
@@ -271,7 +271,7 @@ const campaigns = [
       "Notify patients when they're likely running low",
       "Make reordering easy — one-click link to purchase",
       "Remind them why the product matters for their results",
-      "Pair with a complementary product recommendation",
+      "Pair with a complimentary skin analysis",
     ],
   },
   {
@@ -508,7 +508,7 @@ export default function AutomatedCampaignsPage() {
               {
                 icon: "📊",
                 label: "Segment your database",
-                desc: "Don't send every campaign to everyone. Maintenance reminders go to Botox patients. Reactivation goes to 6-month inactives. Relevance drives results.",
+                desc: "Don't send every campaign to everyone. Send content to the most relevant audience so patients don't experience fatigue from the volume of marketing messages they receive. Relevance drives results.",
               },
               {
                 icon: "📈",
@@ -538,32 +538,6 @@ export default function AutomatedCampaignsPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* ── CHANNEL GUIDE ── */}
-        <div className="rounded-2xl p-7" style={{ background: "linear-gradient(145deg, #2f0410 0%, #1a000c 100%)", border: "1px solid rgba(162,140,117,0.2)" }}>
-          <h2 className="font-display text-2xl font-light mb-6" style={{ color: "#fffdf6" }}>Quick Channel Reference</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="rounded-xl p-5" style={{ background: "rgba(200,160,80,0.07)", border: "1px solid rgba(200,160,80,0.2)" }}>
-              <p className="text-xs font-medium mb-3" style={{ color: "#c8a050" }}>📧 Email as Primary Channel</p>
-              <div className="flex flex-wrap gap-1.5">
-                {["Welcome Series", "Consultation Follow-Up", "Treatment Interest Drip", "Inactive Reactivation", "Post-Treatment Care", "Abandoned Consultation", "New Treatment Launch", "Monthly Feature", "VIP & Membership", "Event Promotion", "Referral Campaign"].map((n) => (
-                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(200,160,80,0.1)", color: "rgba(255,253,246,0.7)" }}>{n}</span>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-xl p-5" style={{ background: "rgba(100,160,220,0.07)", border: "1px solid rgba(100,160,220,0.18)" }}>
-              <p className="text-xs font-medium mb-3" style={{ color: "#7aabcf" }}>📧 + 💬 Email & Text Both Primary</p>
-              <div className="flex flex-wrap gap-1.5">
-                {["Maintenance Reminder", "Birthday Campaign", "Review Request", "Retail Replenishment"].map((n) => (
-                  <span key={n} className="inline-flex text-xs px-2 py-1 rounded" style={{ background: "rgba(100,160,220,0.08)", color: "rgba(255,253,246,0.7)" }}>{n}</span>
-                ))}
-              </div>
-              <p className="text-xs mt-4 leading-relaxed" style={{ color: "rgba(255,253,246,0.5)" }}>
-                These campaigns rely on immediacy. Email delivers depth; text drives the action.
-              </p>
-            </div>
           </div>
         </div>
 
