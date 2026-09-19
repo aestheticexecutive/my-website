@@ -92,7 +92,7 @@ export default function MetaAdsPage() {
                   </div>
                   <div className="h-24 rounded-lg mb-2 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(47,4,16,0.8), rgba(162,140,117,0.15))" }}>
                     <div className="text-center">
-                      <div className="text-xs font-medium mb-1" style={{ color: "#a28c75" }}>✨ Morpheus8</div>
+                      <div className="text-xs font-medium mb-1" style={{ color: "#a28c75" }}>✨ Lip Filler</div>
                       <div className="text-xs" style={{ color: "rgba(255,253,246,0.6)" }}>Limited spots this month</div>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function MetaAdsPage() {
               <p className="text-xs tracking-[0.15em] uppercase mb-5" style={{ color: "rgba(162,140,117,0.6)" }}>Market considerations</p>
               <div className="space-y-4">
                 {[
-                  { icon: "🏙️", label: "Competitive markets", note: "Larger budgets and stronger creative required. Cost per lead is higher but patient quality can be excellent." },
+                  { icon: "🏙️", label: "Competitive markets", note: "Larger budgets and stronger creative required. Cost per lead is higher but patient quality can be better." },
                   { icon: "🌿", label: "Smaller markets", note: "Lower cost per lead. Less competition means your budget works harder. Brand awareness builds faster." },
                   { icon: "💰", label: "High-ticket treatments", note: "Require larger budgets to generate enough qualified leads — the math still works, it just takes more volume." },
                   { icon: "✅", label: "New patient offers", note: "Lower barrier to entry. Higher lead volume. Use to build your patient base, then upsell." },
@@ -282,7 +282,7 @@ export default function MetaAdsPage() {
             {[
               { num: "01", label: "Lead with the patient's problem", desc: "Start with what they feel — 'Tired of stubborn skin texture?' — before mentioning the treatment. Problem-first copy converts better because it mirrors how patients think." },
               { num: "02", label: "Use simple, plain language", desc: "Avoid excessive medical terminology. 'RF microneedling that remodels collagen' loses people. 'Tighten and smooth your skin — without surgery' keeps them reading." },
-              { num: "03", label: "Create urgency without discounting", desc: "Limited-time value-adds ('complimentary skincare consultation with any booking this month') create urgency without training patients to expect discounts." },
+              { num: "03", label: "Create urgency without discounting", desc: "Limited-time value-adds ('complimentary treatment upgrade with any booking this month') create urgency without training patients to expect discounts." },
               { num: "04", label: "One objective per ad", desc: "Awareness ads build recognition. Conversion ads book appointments. Don't ask one ad to do both — it will fail at both." },
               { num: "05", label: "Speak to the outcome, not the mechanism", desc: "'Fuller, more defined lips' lands better than 'hyaluronic acid filler injection.' Patients care about results, not ingredients." },
             ].map((item) => (
@@ -311,11 +311,11 @@ export default function MetaAdsPage() {
               </div>
               <div className="space-y-3 mb-5">
                 {[
-                  "Patient fills out a form before contacting you — higher intent",
+                  "Patient fills out a contact form first — higher intent",
                   "Requires more effort upfront, so unserious leads self-filter",
                   "Easier for your team to follow up with structure",
                   "Best for high-ticket treatments requiring a consultation",
-                  "Pairs well with a CRM or email automation for follow-up",
+                  "Pairs well with a CRM and text automation for follow-up",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span className="flex-shrink-0 mt-0.5" style={{ color: "#a28c75" }}>·</span>
@@ -518,6 +518,63 @@ export default function MetaAdsPage() {
               <span style={{ color: "#a28c75" }}>Free resource:</span> Meta Blueprint offers free advertising courses covering campaign setup, optimization, and reporting.
               Certification is optional — the free training is genuinely useful.
             </p>
+          </div>
+        </div>
+
+        {/* ── AGENCY OR DIY ── */}
+        <div>
+          <SectionLabel label="Should You Run Ads Yourself or Hire an Agency?" />
+          <p className="text-sm leading-relaxed mb-7 -mt-2" style={{ color: "rgba(255,253,246,0.55)" }}>
+            Marketing agencies can be expensive, and finding the right one can be genuinely difficult.
+            The right choice depends on how much time you can realistically dedicate to it.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Run it yourself */}
+            <div className="rounded-2xl p-7" style={{ background: "linear-gradient(145deg, rgba(120,180,120,0.09) 0%, rgba(0,0,0,0) 100%)", border: "1px solid rgba(120,180,120,0.2)" }}>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-2xl">🙋</span>
+                <p className="text-sm font-medium" style={{ color: "#7db870" }}>Run It Yourself</p>
+              </div>
+              <div className="space-y-3 mb-5">
+                {[
+                  "You have the time to dedicate to learning Meta Ads Manager",
+                  "You're willing to take Meta's free Blueprint courses and actually apply them",
+                  "You can commit real effort to building, testing, and optimizing the campaign",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <span className="flex-shrink-0 mt-0.5" style={{ color: "#7db870" }}>·</span>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-lg px-4 py-3 text-xs" style={{ background: "rgba(120,180,120,0.08)", color: "#7db870" }}>
+                Best for: practices with the time and willingness to actually learn the platform.
+              </div>
+            </div>
+
+            {/* Hire an agency */}
+            <div className="rounded-2xl p-7" style={{ background: "linear-gradient(145deg, rgba(162,140,117,0.1) 0%, rgba(0,0,0,0) 100%)", border: "1px solid rgba(162,140,117,0.25)" }}>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-2xl">🤝</span>
+                <p className="text-sm font-medium" style={{ color: "#a28c75" }}>Hire an Agency</p>
+              </div>
+              <div className="space-y-3 mb-5">
+                {[
+                  "You don't have the time to dedicate to the courses and the ongoing testing",
+                  "You still need proper analytics in place to track performance and actual revenue generated",
+                  "That tracking is what tells you whether the campaign is actually working — not just running",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <span className="flex-shrink-0 mt-0.5" style={{ color: "#a28c75" }}>·</span>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(255,253,246,0.75)" }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-lg px-4 py-3 text-xs" style={{ background: "rgba(162,140,117,0.08)", color: "#a28c75" }}>
+                Without that tracking, you risk wasting thousands a month on agency fees and ad spend that isn&apos;t working.
+              </div>
+            </div>
           </div>
         </div>
 
